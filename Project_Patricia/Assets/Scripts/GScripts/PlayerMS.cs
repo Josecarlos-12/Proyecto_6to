@@ -39,9 +39,10 @@ public class PlayerMS : MonoBehaviour
     {
         horizontalMove = Input.GetAxis("Horizontal");
         verticalMove = Input.GetAxis("Vertical");
-        
 
-            if (Input.GetKey(KeyCode.LeftShift))
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            if(currentStamina > 0)
             {
                 playerSpeed = 20f;
                 UseStamina(1);
@@ -50,13 +51,12 @@ public class PlayerMS : MonoBehaviour
             {
                 playerSpeed = 10f;
             }
-        
 
-            
-                           
+        }
+        
     }
 
-    public void UseStamina(int amount)
+    public void UseStamina(float amount)
     {
         if (currentStamina - amount >= 0)
         {
