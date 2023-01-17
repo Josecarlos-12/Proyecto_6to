@@ -71,7 +71,7 @@ public class PlayerInteraction : MonoBehaviour
             bPills= false;
         }
 
-        //raycast con layer detectar asi haya algo al frente de tu bjetivo
+        //raycast con layer detectar si hay algo al frente de tu objetivo
         if(Physics.Raycast(cam.transform.position, cam.forward, out hit, distance, door))
         {
             
@@ -97,6 +97,7 @@ public class PlayerInteraction : MonoBehaviour
 
         if(bPills && Input.GetKeyDown(KeyCode.E) )
         {
+            Debug.Log("Recogiste pastillas");
             Destroy(gamePills);
             bPills= false;
             texE.SetActive(false);
