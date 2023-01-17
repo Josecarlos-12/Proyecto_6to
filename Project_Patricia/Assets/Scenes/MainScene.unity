@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 2182.4404, g: 2316.6406, b: 3443.9883, a: 1}
+  m_IndirectSpecularColor: {r: 2160.043, g: 2263.8164, b: 3286.5469, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -489,6 +489,7 @@ GameObject:
   - component: {fileID: 192456603}
   - component: {fileID: 192456602}
   - component: {fileID: 192456601}
+  - component: {fileID: 192456607}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -618,6 +619,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &192456607
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 192456600}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68831090ce004b548b1c90183fe8f58c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inv: {fileID: 1805755185}
+  player: {fileID: 192456600}
+  sanity: 100
 --- !u!1 &310339666
 GameObject:
   m_ObjectHideFlags: 0
@@ -1439,6 +1455,7 @@ GameObject:
   - component: {fileID: 1171013031}
   - component: {fileID: 1171013030}
   - component: {fileID: 1171013029}
+  - component: {fileID: 1171013033}
   m_Layer: 0
   m_Name: Pills
   m_TagString: Pills
@@ -1525,6 +1542,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1171013033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1171013028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51e5a7318fc020449b1edd1fa677c45b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  addSanity: 25
+  player: {fileID: 192456600}
 --- !u!1 &1370167480
 GameObject:
   m_ObjectHideFlags: 0
@@ -1798,6 +1829,37 @@ Transform:
   m_Father: {fileID: 1370167481}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 1.927, y: 4.867, z: 0.108}
+--- !u!1 &1805755185
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1805755186}
+  m_Layer: 0
+  m_Name: Inventario
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1805755186
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1805755185}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -3.3495243, y: 5.342049, z: -2.5636704}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1823688464
 GameObject:
   m_ObjectHideFlags: 0
