@@ -8,8 +8,8 @@ public class PlayerInteraction : MonoBehaviour
     [SerializeField] private Transform cam;
     [SerializeField] private RaycastHit hit;
     [SerializeField] private float distance;
-    private LayerMask door;
-     public bool bDoor, bHandle, bLife, bPills;
+    private LayerMask bdoor;
+    public bool bDoor, bHandle, bLife, bPills;
 
     [Header("Press")]
     [SerializeField] private GameObject texE;
@@ -22,10 +22,21 @@ public class PlayerInteraction : MonoBehaviour
     [Header("Call other Scripts")]
     //[SerializeField] private PlayerLife life;
     [SerializeField] private Weapon weapon;
+
+    public Animator door;
     
 
     private void Update()
     {
+        /*if ( bDoor && Input.GetKeyDown(KeyCode.E) )
+        {
+            DoorOpens();
+        }
+        else
+        {
+            DoorClose();
+        }*/
+
         Detected();
         Press();
     }
@@ -35,11 +46,11 @@ public class PlayerInteraction : MonoBehaviour
         //Raycast con tag no detecta si hay algun objeto al frente de tu objetivo
         if (Physics.Raycast(cam.transform.position, cam.forward, out hit, distance))
         {
-            /*if (hit.transform.CompareTag("Door"))
+            if (hit.transform.CompareTag("Door"))
             {
                 texE.SetActive(true);
                 bDoor = true;
-            }*/
+            }
 
             if (hit.transform.CompareTag("Handle"))
             {
@@ -82,10 +93,10 @@ public class PlayerInteraction : MonoBehaviour
         }
 
         //raycast con layer detectar asi haya algo al frente de tu bjetivo
-        if (Physics.Raycast(cam.transform.position, cam.forward, out hit, distance, door))
+        /*if (Physics.Raycast(cam.transform.position, cam.forward, out hit, distance, door))
         {
             
-        }
+        }*/
     }
 
     public void Press()
@@ -113,6 +124,18 @@ public class PlayerInteraction : MonoBehaviour
         }
     }
 
+    /*void DoorOpens( )
+    {
+        Debug.Log("Puerta Abierta");
+        door.SetBool("Open", true);
+        door.SetBool("Closed", false);
+    }
+    void DoorClose( )
+    {
+        Debug.Log("Puerta cerrada");
+        door.SetBool("open", false);
+        door.SetBool("closed", true);
+    }*/
 
     private void OnDrawGizmos()
     {
