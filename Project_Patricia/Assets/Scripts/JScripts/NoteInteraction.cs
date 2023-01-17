@@ -15,6 +15,7 @@ public class NoteInteraction : MonoBehaviour
     public Image imageNote;
     public GameObject note;
     public GameObject traduction;
+    [TextArea(4,4)]
     public string noteText;
     public TextMeshProUGUI text;
 

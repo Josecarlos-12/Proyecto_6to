@@ -9,7 +9,7 @@ public class PlayerInteraction : MonoBehaviour
     [SerializeField] private RaycastHit hit;
     [SerializeField] private float distance;
     private LayerMask door;
-    [HideInInspector] public bool bDoor, bHandle, bLife, bPills;
+     public bool bDoor, bHandle, bLife, bPills;
 
     [Header("Press")]
     [SerializeField] private GameObject texE;
@@ -35,18 +35,22 @@ public class PlayerInteraction : MonoBehaviour
         //Raycast con tag no detecta si hay algun objeto al frente de tu objetivo
         if (Physics.Raycast(cam.transform.position, cam.forward, out hit, distance))
         {
-            if (hit.transform.CompareTag("Door"))
+            /*if (hit.transform.CompareTag("Door"))
             {
                 texE.SetActive(true);
                 bDoor = true;
-            }
+            }*/
 
-            /*if (hit.transform.CompareTag("Handle"))
+            if (hit.transform.CompareTag("Handle"))
             {
                 texE.SetActive(true);
                 gameHandle = hit.transform.gameObject;
                 bHandle = true;
-            }*/
+            }
+            else if (!hit.transform.CompareTag("Handle"))
+            {
+                bHandle=false;
+            }
 
             /*if (hit.transform.CompareTag("life"))
             {
@@ -61,18 +65,24 @@ public class PlayerInteraction : MonoBehaviour
                 gamePills=hit.transform.gameObject;
                 bPills= true;
             }        
+            else if (!hit.transform.CompareTag("Pills"))
+            {
+                bPills = false;
+            }            
         }
         else
+        {            
+            bPills = false;
+            bHandle=false;            
+        }
+
+        if (!bPills && !bHandle)
         {
             texE.SetActive(false);
-            bDoor = false;
-            bHandle = false; 
-            bLife = false;
-            bPills= false;
         }
 
         //raycast con layer detectar asi haya algo al frente de tu bjetivo
-        if(Physics.Raycast(cam.transform.position, cam.forward, out hit, distance, door))
+        if (Physics.Raycast(cam.transform.position, cam.forward, out hit, distance, door))
         {
             
         }
@@ -80,13 +90,13 @@ public class PlayerInteraction : MonoBehaviour
 
     public void Press()
     {
-        /*if(bHandle && Input.GetKeyDown(KeyCode.E))
+        if(bHandle && Input.GetKeyDown(KeyCode.E))
         {
             //weapon.handle += 1;
             Destroy(gameHandle);
             bHandle = false;
             texE.SetActive(false);
-        }*/
+        }
         /*if (bLife && Input.GetKeyDown(KeyCode.E))
         {
             //life.ReloadLife();
