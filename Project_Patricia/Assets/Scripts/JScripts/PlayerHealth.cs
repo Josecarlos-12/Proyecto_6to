@@ -22,7 +22,7 @@ public class PlayerHealth : MonoBehaviour
     {
         if ( sanity <= 0 )
         {
-            //player.GetComponent<FirstPersonController>().enabled = false;
+            player.GetComponent<PlayerMS>().enabled = false;
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
             inv.SetActive(false);
