@@ -19,9 +19,9 @@ public class PlayerInteraction : MonoBehaviour
     [SerializeField] private GameObject gameHandle;
     [SerializeField] private GameObject gamePills;
 
-    //[Header("Call other Scripts")]
+    [Header("Call other Scripts")]
     //[SerializeField] private PlayerLife life;
-    //[SerializeField] private Weapon weapon;
+    [SerializeField] private Weapon weapon;
     
 
     private void Update()
@@ -92,7 +92,7 @@ public class PlayerInteraction : MonoBehaviour
     {
         if(bHandle && Input.GetKeyDown(KeyCode.E))
         {
-            //weapon.handle += 1;
+            weapon.handle += 1;
             Destroy(gameHandle);
             bHandle = false;
             texE.SetActive(false);
