@@ -7,8 +7,18 @@ public class PlayerMS : MonoBehaviour
 {
     public float horizontalMove;
     public float verticalMove;
+    private Vector3 playerInput;
+
     public CharacterController player;
+
     public float playerSpeed = 10f;
+    private Vector3 movePlayer;
+    public float gravity;
+    public float fallVelocity;
+
+    public Camera mainCamera;
+    private Vector3 camForward;
+    private Vector3 camRight;
 
     public Slider staminaBar;
 
@@ -40,6 +50,22 @@ public class PlayerMS : MonoBehaviour
         horizontalMove = Input.GetAxis("Horizontal");
         verticalMove = Input.GetAxis("Vertical");
 
+        playerInput = new Vector3(horizontalMove, 0, verticalMove);
+        playerInput = Vector3.ClampMagnitude(playerInput, 1);
+
+        camDirection();
+
+        movePlayer = playerInput.x * camRight + playerInput.z * camForward;
+        movePlayer = movePlayer * playerSpeed;
+
+        player.transform.LookAt(player.transform.position + movePlayer);
+
+        SetGravity();
+
+        player.Move(movePlayer * Time.deltaTime);
+
+        Debug.Log(player.velocity.magnitude);
+
         if (Input.GetKey(KeyCode.LeftShift))
         {
             if(currentStamina > 0)
@@ -53,7 +79,35 @@ public class PlayerMS : MonoBehaviour
             }
 
         }
+
+       
         
+    }
+
+    void camDirection()
+    {
+        camForward = mainCamera.transform.forward;
+        camRight = mainCamera.transform.right;
+
+        camForward.y = 0;
+        camRight.y = 0;
+
+        camForward = camForward.normalized;
+        camRight = camRight.normalized;
+    }
+
+    void SetGravity()
+    {
+        if(player.isGrounded)
+        {
+            fallVelocity = -gravity * Time.deltaTime;
+            movePlayer.y = fallVelocity;
+        }
+        else 
+        {
+            fallVelocity -= gravity * Time.deltaTime;
+            movePlayer.y = fallVelocity;
+        }
     }
 
     public void UseStamina(float amount)
@@ -77,11 +131,6 @@ public class PlayerMS : MonoBehaviour
         }
     }
 
-    private void FixedUpdate()
-    {
-        player.Move(new Vector3(horizontalMove, 0, verticalMove) * playerSpeed * Time.deltaTime);
-    }
-
     private IEnumerator RegenStamina()
     {
         yield return new WaitForSeconds(2);
@@ -94,4 +143,6 @@ public class PlayerMS : MonoBehaviour
         }
         regen = null;
     }
+
+    
 }
