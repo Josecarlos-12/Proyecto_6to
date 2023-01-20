@@ -18,9 +18,12 @@ public class NoteInteraction : MonoBehaviour
     [TextArea(4,4)]
     public string noteText;
     public TextMeshProUGUI text;
+    public BoxCollider col;
 
     [Header("Press")]
     [SerializeField] private GameObject texE;
+
+    public NotesUI noteList;
 
     // Start is called before the first frame update
     void Start( )
@@ -39,6 +42,7 @@ public class NoteInteraction : MonoBehaviour
         if ( into && Input.GetKeyDown(KeyCode.E)) 
         {
             count++;
+            col.enabled = false;
         }
 
         if ( count == 1 )
@@ -58,9 +62,12 @@ public class NoteInteraction : MonoBehaviour
         }
         if ( count == 4 )
         {
+            noteList.sNote.Add(noteList.save);
             Time.timeScale = 1;
             note.SetActive(false);
-            count = 0;
+            texE.SetActive(false);
+            Destroy(gameObject);
+            //count = 0;
         }
     }
     private void OnTriggerEnter(Collider other)
@@ -69,7 +76,6 @@ public class NoteInteraction : MonoBehaviour
         {
             into = true;
             texE.SetActive(true);
-
         }
     }
 
