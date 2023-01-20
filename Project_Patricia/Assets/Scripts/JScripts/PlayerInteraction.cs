@@ -1,15 +1,17 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerInteraction : MonoBehaviour
 {
     [SerializeField] private Transform cam;
+    [SerializeField] private Transform objUi;
     [SerializeField] private RaycastHit hit;
     [SerializeField] private float distance;
     private LayerMask bdoor;
-    public bool bDoor, bHandle, bLife, bPills;
+    public bool bDoor, bHandle, bLife, bPills, bObj, inHand, bKey;
 
     [Header("Press")]
     [SerializeField] private GameObject texE;
@@ -18,27 +20,23 @@ public class PlayerInteraction : MonoBehaviour
     [SerializeField] private GameObject gameLife;
     [SerializeField] private GameObject gameHandle;
     [SerializeField] private GameObject gamePills;
+    [SerializeField] private GameObject gameKeys;
+    [SerializeField] private GameObject gameObj, transGame;
 
     [Header("Call other Scripts")]
     //[SerializeField] private PlayerLife life;
     [SerializeField] private Weapon weapon;
+    [SerializeField] private PlayerCamera playerCam;
+    [SerializeField] private Inventary invePills;
 
     public Animator door;
     
 
     private void Update()
-    {
-        /*if ( bDoor && Input.GetKeyDown(KeyCode.E) )
-        {
-            DoorOpens();
-        }
-        else
-        {
-            DoorClose();
-        }*/
-
+    {        
         Detected();
         Press();
+        //GrabObject();
     }
 
     public void Detected()
@@ -63,6 +61,18 @@ public class PlayerInteraction : MonoBehaviour
                 bHandle=false;
             }
 
+            if (hit.transform.CompareTag("objCamera"))
+            {
+                texE.SetActive(true);
+                gameObj = hit.transform.gameObject;
+                transGame=hit.transform.gameObject;
+                bObj = true;                
+            }
+            else if (!hit.transform.CompareTag("objCamera"))
+            {
+                bObj= false;
+            }
+
             /*if (hit.transform.CompareTag("life"))
             {
                 texE.SetActive(true);
@@ -80,23 +90,31 @@ public class PlayerInteraction : MonoBehaviour
             {
                 bPills = false;
             }            
+
+
+            if (hit.transform.CompareTag("Key"))
+            {
+                texE.SetActive(true);
+                gameKeys = hit.transform.gameObject;
+                bKey = true;
+            }
+            else if (!hit.transform.CompareTag("Key"))
+            {
+                bKey = false;
+            }
         }
         else
         {            
             bPills = false;
-            bHandle=false;            
+            bHandle=false;      
+            bObj= false;
+            bKey= false;
         }
 
-        if (!bPills && !bHandle)
+        if (!bPills && !bHandle && !bObj && !bKey)
         {
             texE.SetActive(false);
         }
-
-        //raycast con layer detectar asi haya algo al frente de tu bjetivo
-        /*if (Physics.Raycast(cam.transform.position, cam.forward, out hit, distance, door))
-        {
-            
-        }*/
     }
 
     public void Press()
@@ -116,26 +134,52 @@ public class PlayerInteraction : MonoBehaviour
             texE.SetActive(false);
         }*/
 
+        /*if (bObj && Input.GetKeyDown(KeyCode.E))
+        {
+            inHand = true;
+            playerCam.moveCamera = false;
+            gameObj.transform.parent = cam;
+            gameObj.transform.position = new Vector3(objUi.position.x, objUi.position.y, objUi.position.z);
+            gameObj.transform.localScale= new Vector3(gameObj.transform.localScale.x + 0.5f, gameObj.transform.localScale.y + 0.5f, gameObj.gameObject.transform.localScale.z + 0.5f);
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+            texE.SetActive(false);
+        }
+        if (!bObj && Input.GetKeyDown(KeyCode.E))
+        {
+            playerCam.moveCamera = true;
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+            inHand = false;
+            gameObj.transform.parent = null;
+            //gameObj.transform.localScale = new Vector3(gameObj.transform.localScale.x - 0.5f, gameObj.transform.localScale.y - 0.5f, gameObj.gameObject.transform.localScale.z - 0.5f);
+        }*/
+
         if(bPills && Input.GetKeyDown(KeyCode.E) )
         {
+            invePills.pills++;
             Destroy(gamePills);
             bPills= false;
             texE.SetActive(false);
         }
+
+        if (bKey && Input.GetKeyDown(KeyCode.E))
+        {
+            invePills.bKEy = true;
+            Destroy(gameKeys);
+            bKey = false;
+            texE.SetActive(false);
+        }
     }
 
-    /*void DoorOpens( )
+    public void GrabObject()
     {
-        Debug.Log("Puerta Abierta");
-        door.SetBool("Open", true);
-        door.SetBool("Closed", false);
+        if ( inHand=true && Input.GetKeyDown(KeyCode.E))
+        {
+            //inHand = false;
+            //gameObj.transform.parent = null;            
+        }
     }
-    void DoorClose( )
-    {
-        Debug.Log("Puerta cerrada");
-        door.SetBool("open", false);
-        door.SetBool("closed", true);
-    }*/
 
     private void OnDrawGizmos()
     {

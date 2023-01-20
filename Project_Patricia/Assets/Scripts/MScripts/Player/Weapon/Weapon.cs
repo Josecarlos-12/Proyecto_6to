@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using static UnityEngine.EventSystems.EventTrigger;
@@ -11,22 +12,37 @@ public class Weapon : MonoBehaviour
     [SerializeField] private float initialShoot, timeShoot, saveTime, saveTimeMax;
     [SerializeField] private GameObject bullet, weapon, aim;
     [SerializeField] private Transform initialBullet;
+    [SerializeField] private TextMeshProUGUI bulletText;
+    [SerializeField] private GameObject bulletContainer;
+    [SerializeField] private Animator animBullet;
 
     [Header("Reload")]
     public int handle = 2;
     public int clicks = 10, clickMax=10;
 
+    [Header("Call Other Script")]
+    public PlayerInteraction obj;
+    public Inventary inventary;
+
     private void Start()
     {
+        obj=GetComponent<PlayerInteraction>();
         weapon.SetActive(false);
         aim.SetActive(false);
     }
 
     private void Update()
-    {
+    {        
+
+        BulletContainer();
         SaveWeapon();
         Shoot();
         Reloaded();
+    }
+
+    public void BulletContainer()
+    {
+        bulletText.text="X" + clicks.ToString();
     }
 
     public void Reloaded()
@@ -50,22 +66,39 @@ public class Weapon : MonoBehaviour
 
     public void SaveWeapon()
     {
-        if (Input.GetKeyDown(KeyCode.F))
+        if (Input.GetKeyDown(KeyCode.F) && !obj.inHand &&  inventary.rifle)
         {
             save = !save;
             if (save)
             {
                 weapon.SetActive(true);
                 aim.SetActive(true);
+                bulletContainer.SetActive(true);
+                animBullet.SetBool("Exit", false);
             }
-            else
+            else if (!save)
             {
                 weapon.SetActive(false);
                 aim.SetActive(false);
-            }
+                animBullet.SetBool("Exit", true);
+            }            
         }
 
-        if(!shoot && save)
+        if (obj.inHand)
+        {
+            weapon.SetActive(false);
+            aim.SetActive(false);
+            animBullet.SetBool("Exit", true);
+        }
+
+        if (!inventary.rifle)
+        {
+            weapon.SetActive(false);
+            aim.SetActive(false);
+            //animBullet.SetBool("Exit", true);
+        }
+
+        if (!shoot && save)
         {
             saveTime += Time.deltaTime;
 
@@ -75,6 +108,7 @@ public class Weapon : MonoBehaviour
                 save = false;
                 weapon.SetActive(false);
                 aim.SetActive(false);
+                animBullet.SetBool("Exit", true);
             }
         }
         else
@@ -85,17 +119,20 @@ public class Weapon : MonoBehaviour
 
     public void Shoot()
     {
-        if (!save && Input.GetMouseButtonDown(0) && canShoot)
+        if (!save && Input.GetMouseButtonDown(0) && canShoot && !obj.inHand && inventary.rifle)
         {
             weapon.SetActive(true);
             aim.SetActive(true);
+            bulletContainer.SetActive(true);
+            animBullet.SetBool("Exit", false);
             save = true;
         }
 
         if (canShoot && save)
         {          
-            if (Input.GetMouseButtonDown(0) && Time.time > initialShoot && clicks > 0)
+            if (Input.GetMouseButtonDown(0) && Time.time > initialShoot && clicks > 0 && !obj.inHand && inventary.rifle)
             {                                                  
+                animBullet.SetBool("Exit", false);
                 Instantiate(bullet, initialBullet.transform.position, initialBullet.transform.rotation);                    
                 initialShoot = Time.time + timeShoot;
                 shoot = true;
@@ -107,5 +144,5 @@ public class Weapon : MonoBehaviour
             }
         }
 
-    }
+    }    
 }
