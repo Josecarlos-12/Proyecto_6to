@@ -18,6 +18,11 @@ public class PlayerMove : MonoBehaviour
     [SerializeField] private Image energyBar;
     [SerializeField] private float time, maxTime, timeRege, maxRege;
 
+    [Header("Raycast")]
+    [SerializeField] private float distance;
+    [SerializeField] private float radius;
+    [SerializeField] private RaycastHit hit;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -26,9 +31,9 @@ public class PlayerMove : MonoBehaviour
 
     private void Update()
     {
+        GizmosRun();
         Move();
         Running();
-        //Crouch();
         //ReductionEnergy();
         //UpdateEnergy();
     }
@@ -93,8 +98,6 @@ public class PlayerMove : MonoBehaviour
     {
         yield return new WaitForSeconds(3);
         timeRege += Time.deltaTime;
-
-
     }
 
     public void Running()
@@ -110,19 +113,22 @@ public class PlayerMove : MonoBehaviour
             speed = speedNormal;
             shift = false;
         }
+    }       
+
+    public void GizmosRun()
+    {
+        /*if(Physics.SphereCast(transform.position, transform.forward, out hit, distance))
+        {
+            if (hit.transform.CompareTag("ObjStop"))
+            {
+                Debug.Log("Toco");
+            }
+        }*/
     }
 
-    public void Crouch()
+    private void OnDrawGizmos()
     {
-        // Cambia a velocidad de agachado
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            speed = speedCrouch;
-        }
-        else if (Input.GetKeyUp(KeyCode.E))
-        {
-            speed = speedNormal;
-        }
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(transform.position, distance);
     }
-   
 }
