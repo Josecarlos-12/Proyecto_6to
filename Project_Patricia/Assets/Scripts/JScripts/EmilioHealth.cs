@@ -5,20 +5,14 @@ using UnityEngine;
 public class EmilioHealth : MonoBehaviour
 {
 
-    public float health = 1f;
+    public int health = 1;
 
-    // Start is called before the first frame update
-    void Start()
+    public void TakeDamage( int damageAmount)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
+        health -= damageAmount;
         if ( health <= 0 )
         {
-            Destroy( gameObject );
+            Debug.Log("Emilio desaparecio");
         }
         if ( health > 1 )
         {

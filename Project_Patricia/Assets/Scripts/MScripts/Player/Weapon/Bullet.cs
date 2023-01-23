@@ -15,6 +15,7 @@ public class Bullet : MonoBehaviour
     [SerializeField] private float distance;
     [SerializeField] private RaycastHit hit;
 
+    public int damageAmount = 1;
 
     private void Start()
     {
@@ -49,5 +50,14 @@ public class Bullet : MonoBehaviour
     {
         Gizmos.color = Color.green;
         Gizmos.DrawRay(transform.position, transform.forward * distance);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+         if(other.tag == "Emilio") 
+        {
+            other.GetComponent<EmilioHealth>().TakeDamage(damageAmount);
+            Destroy(gameObject);
+        }
     }
 }
