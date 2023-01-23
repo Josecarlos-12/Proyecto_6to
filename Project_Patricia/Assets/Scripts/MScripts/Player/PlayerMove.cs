@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -22,6 +23,7 @@ public class PlayerMove : MonoBehaviour
     [SerializeField] private float distance;
     [SerializeField] private float radius;
     [SerializeField] private RaycastHit hit;
+    [SerializeField] private LayerMask layer;
 
     private void Start()
     {
@@ -117,13 +119,10 @@ public class PlayerMove : MonoBehaviour
 
     public void GizmosRun()
     {
-        /*if(Physics.SphereCast(transform.position, transform.forward, out hit, distance))
+        if(Physics.CheckSphere(transform.position, distance, layer))
         {
-            if (hit.transform.CompareTag("ObjStop"))
-            {
-                Debug.Log("Toco");
-            }
-        }*/
+            Debug.Log(layer);
+        }
     }
 
     private void OnDrawGizmos()

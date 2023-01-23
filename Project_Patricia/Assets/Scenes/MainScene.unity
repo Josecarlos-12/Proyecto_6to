@@ -24,7 +24,7 @@ RenderSettings:
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
-  m_AmbientMode: 0
+  m_AmbientMode: 4
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
   m_SkyboxMaterial: {fileID: 0}
   m_HaloStrength: 0.5
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 2161.3564, g: 2265.334, b: 3288.5703, a: 1}
+  m_IndirectSpecularColor: {r: 2161.1572, g: 2265.2793, b: 3288.4844, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -737,6 +737,9 @@ MonoBehaviour:
   maxRege: 0
   distance: 4
   radius: 3
+  layer:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!54 &192456602
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1164,7 +1167,7 @@ GameObject:
   - component: {fileID: 367312108}
   - component: {fileID: 367312107}
   - component: {fileID: 367312106}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Wall
   m_TagString: ObjStop
   m_Icon: {fileID: 0}
