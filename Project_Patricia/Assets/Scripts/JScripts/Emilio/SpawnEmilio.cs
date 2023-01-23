@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -21,13 +20,8 @@ public class SpawnEmilio : MonoBehaviour
         {
             for ( int i = 0; i < emilio.Length; i++ )
             {
-                Instantiate(prefab, emilio[i].transform.position);
+                Instantiate(prefab, emilio[i].transform.position, emilio[i].transform.rotation);
             }
         }
-    }
-
-    private void Instantiate(GameObject prefab, Vector3 position)
-    {
-        throw new NotImplementedException();
     }
 }
