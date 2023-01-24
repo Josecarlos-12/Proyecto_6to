@@ -22,15 +22,19 @@ public class DoorScripts : MonoBehaviour
 
     private Coroutine AnimationCoroutine;
 
+    BoxCollider bx;
+
     private void Awake()
     {
         StartRotation = transform.rotation.eulerAngles;
         Forward = transform.right;
+        bx = GetComponent<BoxCollider>();
     }
     public void Open(Vector3 UserPosition)
     {
         if (!IsOpen)
         {
+            bx.isTrigger = true;
             if (AnimationCoroutine != null)
             {
                 StopCoroutine(AnimationCoroutine);
@@ -38,7 +42,7 @@ public class DoorScripts : MonoBehaviour
             if (IsRotatingDoor)
             {
                 float dot = Vector3.Dot(Forward, (UserPosition - transform.position).normalized);
-                Debug.Log($"Dot:{dot.ToString("N3")}");
+                //Debug.Log($"Dot:{dot.ToString("N3")}");
                 AnimationCoroutine = StartCoroutine(DoRotationOpen(dot));
             }
         }
@@ -71,7 +75,8 @@ public class DoorScripts : MonoBehaviour
     {
         if (IsOpen)
         {
-            if(AnimationCoroutine != null)
+            bx.isTrigger = false;
+            if (AnimationCoroutine != null)
             {
                 StopCoroutine(AnimationCoroutine);
             }
@@ -87,7 +92,6 @@ public class DoorScripts : MonoBehaviour
         Quaternion endRotation = Quaternion.Euler(StartRotation);
 
         IsOpen = false;
-
         float time = 0;
         while (time < 1)
         {

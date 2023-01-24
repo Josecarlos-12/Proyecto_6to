@@ -54,10 +54,10 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-         if(other.tag == "Emilio") 
+         if(other.CompareTag("Emilio") ) 
         {
             other.GetComponent<EmilioHealth>().TakeDamage(damageAmount);
-            Destroy(gameObject);
+            
         }
     }
 }

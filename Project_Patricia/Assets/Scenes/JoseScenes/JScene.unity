@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 2025.8369, g: 1992.1484, b: 2399.246, a: 1}
+  m_IndirectSpecularColor: {r: 2161.755, g: 2265.664, b: 3288.7969, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1257,15 +1257,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 1823688467}
+  objUi: {fileID: 0}
   distance: 10
   bDoor: 0
   bHandle: 0
   bLife: 0
   bPills: 0
+  bObj: 0
+  inHand: 0
+  bKey: 0
   texE: {fileID: 1852512624}
   gameLife: {fileID: 0}
   gameHandle: {fileID: 0}
   gamePills: {fileID: 364855242}
+  gameKeys: {fileID: 0}
+  gameObj: {fileID: 0}
+  transGame: {fileID: 0}
+  weapon: {fileID: 0}
+  playerCam: {fileID: 0}
+  invePills: {fileID: 0}
+  door: {fileID: 0}
 --- !u!114 &1823688470
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1278,8 +1289,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67ceafbc76d7ca44ea3da580396d4ac7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  object01: {fileID: 364855242}
-  object02: {fileID: 1874061287}
+  object01: {fileID: 0}
+  object02: {fileID: 0}
 --- !u!114 &1823688471
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1295,6 +1306,11 @@ MonoBehaviour:
   inv: {fileID: 523738689}
   player: {fileID: 1823688464}
   sanity: 100
+  jumpScare: {fileID: 0}
+  cam: {fileID: 0}
+  bjumpScare: 0
+  timer: 0
+  maxTimer: 0
 --- !u!1 &1852512624
 GameObject:
   m_ObjectHideFlags: 0
@@ -1471,7 +1487,9 @@ MonoBehaviour:
   traduction: {fileID: 1460912359}
   noteText: aaaaaaaaaaaaaaaaaaaaaaaaaaa
   text: {fileID: 1460912360}
+  col: {fileID: 0}
   texE: {fileID: 2018450614}
+  noteList: {fileID: 0}
 --- !u!65 &1874061289
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1744,6 +1762,6 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -2, y: -2}
+  m_AnchoredPosition: {x: -583, y: -370.25}
   m_SizeDelta: {x: 62.9503, y: 41.722}
   m_Pivot: {x: 0.5, y: 0.5}
