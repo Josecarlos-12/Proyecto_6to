@@ -15,7 +15,7 @@ public class MenuKey : MonoBehaviour
 
     [SerializeField] GameObject Button;
     public TMP_Text ButtonText;
-    public Movement PlayerMov;
+    //public Movement PlayerMov;
     public KeyCode NewKey;
     public State state;
 

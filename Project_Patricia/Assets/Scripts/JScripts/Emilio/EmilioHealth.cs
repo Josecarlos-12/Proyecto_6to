@@ -12,6 +12,7 @@ public class EmilioHealth : MonoBehaviour
         health -= damageAmount;
         if ( health <= 0 )
         {
+            Destroy(gameObject);
             Debug.Log("Emilio desaparecio");
         }
         if ( health > 1 )
