@@ -8,7 +8,7 @@ public class PlayerMove : MonoBehaviour
 {
     [Header("Move")]
     [SerializeField] private float speedNormal;
-    [SerializeField] private float speedMax, speed, speedCrouch;
+    [SerializeField] private float speedMax, speed, speedLess;
     public Rigidbody rb;
     private Vector3 movementVector = Vector3.zero;
     [SerializeField] private bool run, shift;
@@ -25,10 +25,14 @@ public class PlayerMove : MonoBehaviour
     [SerializeField] private RaycastHit hit;
     [SerializeField] private LayerMask layer;
 
+    [Header("Colliders")]
+    public GameObject[] coll;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
         speed = speedNormal;
+        coll[2].SetActive(false);
     }
 
     private void Update()
@@ -36,6 +40,7 @@ public class PlayerMove : MonoBehaviour
         GizmosRun();
         Move();
         Running();
+        LessSpeed();
         //ReductionEnergy();
         //UpdateEnergy();
     }
@@ -109,13 +114,31 @@ public class PlayerMove : MonoBehaviour
         {
             speed = speedMax;
             shift = true;
+            coll[1].SetActive(true); 
+            coll[2].SetActive(true);
         }
         else if (Input.GetKeyUp(KeyCode.LeftShift) || energy <= 0)
         {
             speed = speedNormal;
             shift = false;
-        }
+            coll[2].SetActive(false);
+        }        
     }       
+
+    public void LessSpeed()
+    {
+        if (Input.GetKeyDown(KeyCode.LeftControl))
+        {
+            speed = speedLess;
+            coll[1].SetActive(false);
+            coll[2].SetActive(false);
+        }
+        else if (Input.GetKeyUp(KeyCode.LeftControl))
+        {
+            speed = speedNormal;
+            coll[1].SetActive(true);
+        }
+    }
 
     public void GizmosRun()
     {
