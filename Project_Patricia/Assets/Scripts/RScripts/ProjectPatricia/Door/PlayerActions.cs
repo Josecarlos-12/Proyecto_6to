@@ -47,12 +47,9 @@ public class PlayerActions : MonoBehaviour
         if (Physics.Raycast(Camera.position, Camera.forward, out RaycastHit hit, MaxUseDistance, UseLayers) 
             && hit.collider.TryGetComponent<DoorScripts>(out DoorScripts door))
         {
-            if (door.IsOpen)
-            {
-                boxText.SetActive(true);
-                SearchKey(door);
-                Debug.Log("Detect2");
-            }
+            boxText.SetActive(true);
+            SearchKey(door);
+            Debug.Log("Detect2");
         }
         else
         {

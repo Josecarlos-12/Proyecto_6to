@@ -11,6 +11,7 @@ public class NotesUI : MonoBehaviour
     public List<string> sNote= new List<string>();
     public string save;
     public int noteCount;
+    public Weapon weapon;
 
     private void Update()
     {
@@ -29,6 +30,7 @@ public class NotesUI : MonoBehaviour
                 Cursor.visible = true;
                 Time.timeScale = 0;
                 note.SetActive(true);
+                weapon.canShoot = false;
             }
             if(!bNote)
             {
@@ -36,6 +38,7 @@ public class NotesUI : MonoBehaviour
                 Cursor.visible = false;
                 Time.timeScale = 1;
                 note.SetActive(false);
+                weapon.canShoot = true;
             }
             
         }
