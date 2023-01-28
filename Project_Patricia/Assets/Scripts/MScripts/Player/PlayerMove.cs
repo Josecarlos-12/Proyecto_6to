@@ -11,7 +11,7 @@ public class PlayerMove : MonoBehaviour
     [SerializeField] private float speedMax, speed, speedLess;
     public Rigidbody rb;
     private Vector3 movementVector = Vector3.zero;
-    [SerializeField] private bool run, shift;
+    [SerializeField] private bool run, shift, crounch;
 
     [Header("Energy")]
     [SerializeField] private float energy = 10;
@@ -32,7 +32,6 @@ public class PlayerMove : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         speed = speedNormal;
-        coll[2].SetActive(false);
     }
 
     private void Update()
@@ -67,6 +66,32 @@ public class PlayerMove : MonoBehaviour
         {
             run = false;
         }               
+
+        if(run && shift)
+        {
+            coll[0].SetActive(true);
+            coll[1].SetActive(true);
+            coll[2].SetActive(true);
+        }
+        else if (run)
+        {
+            coll[0].SetActive(true);
+            coll[1].SetActive(true);
+            coll[2].SetActive(false);
+        }
+        if (run && crounch)
+        {
+            Debug.Log("Agachado Move");
+            coll[0].SetActive(true);
+            coll[1].SetActive(false);
+            coll[2].SetActive(false);
+        }
+        else if(!run)
+        {
+            coll[0].SetActive(false);
+            coll[1].SetActive(false);
+            coll[2].SetActive(false);
+        }
 
         velocity.y = rb.velocity.y;
         rb.velocity = velocity;
@@ -114,14 +139,11 @@ public class PlayerMove : MonoBehaviour
         {
             speed = speedMax;
             shift = true;
-            coll[1].SetActive(true); 
-            coll[2].SetActive(true);
         }
         else if (Input.GetKeyUp(KeyCode.LeftShift) || energy <= 0)
         {
             speed = speedNormal;
             shift = false;
-            coll[2].SetActive(false);
         }        
     }       
 
@@ -130,14 +152,18 @@ public class PlayerMove : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.LeftControl))
         {
             speed = speedLess;
-            coll[1].SetActive(false);
-            coll[2].SetActive(false);
+            crounch= true;
         }
         else if (Input.GetKeyUp(KeyCode.LeftControl))
         {
             speed = speedNormal;
-            coll[1].SetActive(true);
+            crounch= false;
         }
+    }
+
+    public void Triggers()
+    {
+
     }
 
     public void GizmosRun()
