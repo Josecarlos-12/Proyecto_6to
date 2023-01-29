@@ -10,7 +10,7 @@ public class Weapon : MonoBehaviour
     [Header("Weapon")]
     public bool canShoot, save, shoot;
     [SerializeField] private float initialShoot, timeShoot, saveTime, saveTimeMax;
-    [SerializeField] private GameObject bullet, weapon, aim;
+    public GameObject bullet, weapon, aim;
     [SerializeField] private Transform initialBullet;
     [SerializeField] private TextMeshProUGUI bulletText;
     [SerializeField] private GameObject bulletContainer;

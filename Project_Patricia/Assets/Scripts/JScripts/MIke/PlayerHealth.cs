@@ -20,7 +20,7 @@ public class PlayerHealth : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        cam = GetComponent<PlayerCamera>();
+        //cam = GetComponent<PlayerCamera>();
     }
 
     // Update is called once per frame

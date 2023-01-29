@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerInteraction : MonoBehaviour
 {
@@ -26,16 +27,22 @@ public class PlayerInteraction : MonoBehaviour
     [Header("Call other Scripts")]
     //[SerializeField] private PlayerLife life;
     [SerializeField] private Weapon weapon;
-    [SerializeField] private PlayerCamera playerCam;
+    //[SerializeField] private PlayerCamera playerCam;
     [SerializeField] private Inventary invePills;
 
     public Animator door;
+    public Image aim;
+
+    [Header("Not Shoot")]
+    [SerializeField] private float distance2;
+    [SerializeField] private RaycastHit hit2;
     
 
     private void Update()
     {        
         Detected();
         Press();
+        NotShoot();
         //GrabObject();
     }
 
@@ -102,18 +109,42 @@ public class PlayerInteraction : MonoBehaviour
             {
                 bKey = false;
             }
+
+           
         }
         else
         {            
             bPills = false;
             bHandle=false;      
             bObj= false;
-            bKey= false;
+            bKey= false;          
         }
 
         if (!bPills && !bHandle && !bObj && !bKey)
         {
             texE.SetActive(false);
+        }
+    }
+
+    public void NotShoot()
+    {
+        if (Physics.Raycast(cam.transform.position, cam.forward, out hit2, distance2))
+        {
+            if (hit2.transform.CompareTag("NotShoot"))
+            {
+                weapon.canShoot = false;
+                aim.color = Color.red;
+            }
+            else if (!hit2.transform.CompareTag("NotShoot"))
+            {
+                weapon.canShoot = true;
+                aim.color = Color.white;
+            }
+        }
+        else
+        {
+            weapon.canShoot = true;
+            aim.color = Color.white;
         }
     }
 
@@ -184,6 +215,9 @@ public class PlayerInteraction : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawRay(cam.position, cam.forward * distance);           
+        Gizmos.DrawRay(cam.position, cam.forward * distance);
+
+        Gizmos.color = Color.blue;
+        Gizmos.DrawRay(cam.position, cam.forward * distance2);
     }
 }
