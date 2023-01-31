@@ -30,7 +30,7 @@ public class PlayerFPSt : MonoBehaviour
 
     [SerializeField] private float speedNormal;
     [SerializeField] private float speedMax, speed, speedLess;
-    [SerializeField] private bool run, shift, crounch;
+    [SerializeField] private bool run, shift, crounch, bEnergy;
     
 
     [Header("Energy")]
@@ -96,8 +96,49 @@ public class PlayerFPSt : MonoBehaviour
         player.Move(velocity * Time.deltaTime);*/
 
         Move();
-        Running();
-        LessSpeed();
+        //Running();
+        Speed();
+        UpdateEnergy();
+        ReductionEnergy();
+    }
+
+    public void UpdateEnergy()
+    {
+        energyBar.fillAmount = energy / energyMax;
+    }
+
+    public void ReductionEnergy()
+    {
+        if (run && shift && energy > 0)
+        {
+            time += Time.deltaTime;
+
+            if (time > maxTime)
+            {
+                StopCoroutine("Next");
+                time = 0;
+                energy -= 1;
+            }
+        }
+        else if (!run || !shift)
+        {
+            if (energy < energyMax)
+            {
+                StartCoroutine("Next");
+                if (timeRege > maxRege)
+                {
+                    timeRege = 0;
+                    energy += 1;
+                }
+            }
+
+        }
+    }
+
+    public IEnumerator Next()
+    {
+        yield return new WaitForSeconds(3);
+        timeRege += Time.deltaTime;
     }
 
     public void Move()
@@ -160,33 +201,41 @@ public class PlayerFPSt : MonoBehaviour
 
         player.Move(velocity * Time.deltaTime);
     }
+        
 
-    public void Running()
+    public void Speed()
     {
-        // Cambia a velocidad de correr
-        if (Input.GetKeyDown(KeyCode.LeftShift) && energy >= 0)
+        if (Input.GetKeyDown(KeyCode.LeftShift) && bEnergy)
         {
-            speed = speedMax;
-            shift = true;
+            speed = speedMax;            
         }
-        else if (Input.GetKeyUp(KeyCode.LeftShift) || energy <= 0)
-        {
-            speed = speedNormal;
-            shift = false;
-        }
-    }
-
-    public void LessSpeed()
-    {
-        if (Input.GetKeyDown(KeyCode.LeftControl) || crouch.crouch)
+        else if (crouch.crouch)
         {
             speed = speedLess;
             crounch = true;
         }
-        else if (Input.GetKeyUp(KeyCode.LeftControl) || !crouch.crouch)
+        else if(!shift && !crouch.crouch || !bEnergy)
         {
             speed = speedNormal;
             crounch = false;
+        }
+
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            shift = true;
+        }
+        else if (Input.GetKeyUp(KeyCode.LeftShift))
+        {
+            shift = false;
+        }
+
+        if(energy>=2)
+        {
+            bEnergy = true;
+        }
+        if (energy <= 4)
+        {
+            bEnergy= false;
         }
     }
 
