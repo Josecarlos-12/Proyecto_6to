@@ -42,6 +42,8 @@ public class PlayerFPSt : MonoBehaviour
     [Header("Colliders")]
     public GameObject[] coll;
 
+    public PlayerCrouch crouch;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -176,12 +178,12 @@ public class PlayerFPSt : MonoBehaviour
 
     public void LessSpeed()
     {
-        if (Input.GetKeyDown(KeyCode.LeftControl))
+        if (Input.GetKeyDown(KeyCode.LeftControl) || crouch.crouch)
         {
             speed = speedLess;
             crounch = true;
         }
-        else if (Input.GetKeyUp(KeyCode.LeftControl))
+        else if (Input.GetKeyUp(KeyCode.LeftControl) || !crouch.crouch)
         {
             speed = speedNormal;
             crounch = false;
