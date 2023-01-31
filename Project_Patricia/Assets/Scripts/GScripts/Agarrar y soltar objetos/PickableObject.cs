@@ -27,6 +27,11 @@ public class PickableObject : MonoBehaviour
             other.GetComponentInParent<PickUpObject>().ObjectToPickUp = this.gameObject;
             Rotate();
         }
+
+        if (other.tag == "PlayerInteractionZone")
+        {
+
+        }
     }
 
     private void OnTriggerExit(Collider other)
@@ -34,6 +39,11 @@ public class PickableObject : MonoBehaviour
         if (other.tag == "PlayerInteractionZone")
         {
             other.GetComponentInParent<PickUpObject>().ObjectToPickUp = null;
+        }
+
+        if (other.tag == "Desk")
+        {
+
         }
     }
 
