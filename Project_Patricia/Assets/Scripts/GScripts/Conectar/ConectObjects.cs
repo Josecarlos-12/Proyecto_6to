@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class ConectObjects : MonoBehaviour
 {
-    public GameObject object1;
-    public GameObject object2;
+    public GameObject connectedObject;
+    public bool isConnected = false;
+    public float breakForce = Mathf.Infinity;
+
+    private FixedJoint joint;
 
     // Start is called before the first frame update
     void Start()
@@ -21,10 +24,22 @@ public class ConectObjects : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject == object2)
+        if (collision.gameObject == connectedObject)
         {
-            ConfigurableJoint joint = object1.AddComponent<ConfigurableJoint>();
-            joint.connectedBody = object2.GetComponent<Rigidbody>();
+            isConnected = true;
+            joint = gameObject.AddComponent<FixedJoint>();
+            joint.connectedBody = connectedObject.GetComponent<Rigidbody>();
+            joint.breakForce = breakForce;
+        }
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject == connectedObject && isConnected && joint != null)
+        {
+            isConnected = false;
+            //Destroy(joint);
+            joint = null;
         }
     }
 }
