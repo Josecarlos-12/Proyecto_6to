@@ -1,159 +1,109 @@
-%YAML 1.1
-%TAG !u! tag:unity3d.com,2011:
---- !u!1107 &-7312791618763241207
-AnimatorStateMachine:
-  serializedVersion: 6
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: Base Layer
-  m_ChildStates:
-  - serializedVersion: 1
-    m_State: {fileID: 4978779342811418807}
-    m_Position: {x: 270, y: 110, z: 0}
-  - serializedVersion: 1
-    m_State: {fileID: 2154971862191080767}
-    m_Position: {x: 270, y: 250, z: 0}
-  m_ChildStateMachines: []
-  m_AnyStateTransitions: []
-  m_EntryTransitions: []
-  m_StateMachineTransitions: {}
-  m_StateMachineBehaviours: []
-  m_AnyStatePosition: {x: 50, y: 20, z: 0}
-  m_EntryPosition: {x: 50, y: 120, z: 0}
-  m_ExitPosition: {x: 800, y: 120, z: 0}
-  m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
-  m_DefaultState: {fileID: 4978779342811418807}
---- !u!91 &9100000
-AnimatorController:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: Bullets
-  serializedVersion: 5
-  m_AnimatorParameters:
-  - m_Name: Exit
-    m_Type: 4
-    m_DefaultFloat: 0
-    m_DefaultInt: 0
-    m_DefaultBool: 0
-    m_Controller: {fileID: 0}
-  m_AnimatorLayers:
-  - serializedVersion: 5
-    m_Name: Base Layer
-    m_StateMachine: {fileID: -7312791618763241207}
-    m_Mask: {fileID: 0}
-    m_Motions: []
-    m_Behaviours: []
-    m_BlendingMode: 0
-    m_SyncedLayerIndex: -1
-    m_DefaultWeight: 0
-    m_IKPass: 0
-    m_SyncedLayerAffectsTiming: 0
-    m_Controller: {fileID: 9100000}
---- !u!1102 &2154971862191080767
-AnimatorState:
-  serializedVersion: 6
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: Exit
-  m_Speed: 1
-  m_CycleOffset: 0
-  m_Transitions:
-  - {fileID: 8187011624551839173}
-  m_StateMachineBehaviours: []
-  m_Position: {x: 50, y: 50, z: 0}
-  m_IKOnFeet: 0
-  m_WriteDefaultValues: 1
-  m_Mirror: 0
-  m_SpeedParameterActive: 0
-  m_MirrorParameterActive: 0
-  m_CycleOffsetParameterActive: 0
-  m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 497ce47c5c8d70d4d8d27c351195aa11, type: 2}
-  m_Tag: 
-  m_SpeedParameter: 
-  m_MirrorParameter: 
-  m_CycleOffsetParameter: 
-  m_TimeParameter: 
---- !u!1102 &4978779342811418807
-AnimatorState:
-  serializedVersion: 6
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: Into
-  m_Speed: 1
-  m_CycleOffset: 0
-  m_Transitions:
-  - {fileID: 8852371528441638140}
-  m_StateMachineBehaviours: []
-  m_Position: {x: 50, y: 50, z: 0}
-  m_IKOnFeet: 0
-  m_WriteDefaultValues: 1
-  m_Mirror: 0
-  m_SpeedParameterActive: 0
-  m_MirrorParameterActive: 0
-  m_CycleOffsetParameterActive: 0
-  m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: e65aca2d9bd9cbd4c9ac800c1bb28b89, type: 2}
-  m_Tag: 
-  m_SpeedParameter: 
-  m_MirrorParameter: 
-  m_CycleOffsetParameter: 
-  m_TimeParameter: 
---- !u!1101 &8187011624551839173
-AnimatorStateTransition:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 
-  m_Conditions:
-  - m_ConditionMode: 2
-    m_ConditionEvent: Exit
-    m_EventTreshold: 0
-  m_DstStateMachine: {fileID: 0}
-  m_DstState: {fileID: 4978779342811418807}
-  m_Solo: 0
-  m_Mute: 0
-  m_IsExit: 0
-  serializedVersion: 3
-  m_TransitionDuration: 0
-  m_TransitionOffset: 0
-  m_ExitTime: 0.5
-  m_HasExitTime: 0
-  m_HasFixedDuration: 0
-  m_InterruptionSource: 0
-  m_OrderedInterruption: 1
-  m_CanTransitionToSelf: 1
---- !u!1101 &8852371528441638140
-AnimatorStateTransition:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 
-  m_Conditions:
-  - m_ConditionMode: 1
-    m_ConditionEvent: Exit
-    m_EventTreshold: 0
-  m_DstStateMachine: {fileID: 0}
-  m_DstState: {fileID: 2154971862191080767}
-  m_Solo: 0
-  m_Mute: 0
-  m_IsExit: 0
-  serializedVersion: 3
-  m_TransitionDuration: 0.25
-  m_TransitionOffset: 0
-  m_ExitTime: 0.5
-  m_HasExitTime: 0
-  m_HasFixedDuration: 0
-  m_InterruptionSource: 0
-  m_OrderedInterruption: 1
-  m_CanTransitionToSelf: 1
+ABLEND_ON) && !defined(EFFECT_BUMP) && !defined(INSTANCING_ON) && !defined(PROCEDURAL_INSTANCING_ON) && !defined(SHADOWS_SHADOWMASK) && !defined(_ALPHAMODULATE_ON) && !defined(_ALPHAPREMULTIPLY_ON) && !defined(_ALPHATEST_ON) && !defined(_EMISSION) && !defined(_FADING_ON) && !defined(_METALLICGLOSSMAP) && !defined(_NORMALMAP) && !defined(_REQUIRE_UV2)
+// Surface shader code generated based on:
+// vertex modifier: 'vert'
+// writes to per-pixel normal: no
+// writes to emission: YES
+// writes to occlusion: no
+// needs world space reflection vector: no
+// needs world space normal vector: no
+// needs screen space position: no
+// needs world space position: no
+// needs view direction: no
+// needs world space view direction: no
+// needs world space position for lighting: YES
+// needs world space view direction for lighting: YES
+// needs world space view direction for lightmaps: no
+// needs vertex color: YES
+// needs VFACE: no
+// needs SV_IsFrontFace: no
+// passes tangent-to-world matrix to pixel shader: no
+// reads from normal: YES
+// 0 texcoords actually used
+#include "UnityCG.cginc"
+//Shader does not support lightmap thus we always want to fallback to SH.
+#undef UNITY_SHOULD_SAMPLE_SH
+#define UNITY_SHOULD_SAMPLE_SH (!defined(UNITY_PASS_FORWARDADD) && !defined(UNITY_PASS_PREPASSBASE) && !defined(UNITY_PASS_SHADOWCASTER) && !defined(UNITY_PASS_META))
+#include "Lighting.cginc"
+#include "UnityPBSLighting.cginc"
+
+#define INTERNAL_DATA
+#define WorldReflectionVector(data,normal) data.worldRefl
+#define WorldNormalVector(data,normal) normal
+
+// Original surface shader snippet:
+#line 142 ""
+#ifdef DUMMY_PREPROCESSOR_TO_WORK_AROUND_HLSL_COMPILER_LINE_HANDLING
+#endif
+/* UNITY: Original start of shader */
+        //vertInstancingSetup writes to global, not allowed with DXC
+        //#pragma never_use_dxc
+        //#pragma surface surf Standard nolightmap nometa noforwardadd keepalpha vertex:vert
+        //#pragma multi_compile __ SOFTPARTICLES_ON
+        //#pragma multi_compile __ SHADOWS_SHADOWMASK
+        //#pragma multi_compile_instancing
+        //#pragma instancing_options procedural:vertInstancingSetup
+        //#pragma target 3.0
+
+        //#pragma shader_feature_local_fragment _ _ALPHATEST_ON _ALPHABLEND_ON _ALPHAPREMULTIPLY_ON _ALPHAMODULATE_ON
+        //#pragma shader_feature_local_fragment _METALLICGLOSSMAP
+        //#pragma shader_feature_local _NORMALMAP
+        //#pragma shader_feature_fragment _EMISSION
+        //#pragma shader_feature_local _FADING_ON
+        //#pragma shader_feature_local _REQUIRE_UV2
+        //#pragma shader_feature_local EFFECT_BUMP
+
+        #include "UnityStandardParticles.cginc"
+        
+
+// vertex-to-fragment interpolation data
+struct v2f_surf {
+  UNITY_POSITION(pos);
+  float3 worldNormal : TEXCOORD0;
+  float3 worldPos : TEXCOORD1;
+  fixed4 color : COLOR0;
+  float2 custompack0 : TEXCOORD2; // texcoord
+  float4 custompack1 : TEXCOORD3; // projectedPosition
+#ifndef DIRLIGHTMAP_OFF
+  float3 viewDir : TEXCOORD4;
+#endif
+  float4 lmap : TEXCOORD5;
+#ifndef LIGHTMAP_ON
+  #if UNITY_SHOULD_SAMPLE_SH && !UNITY_SAMPLE_FULL_SH_PER_PIXEL
+    half3 sh : TEXCOORD6; // SH
+  #endif
+#else
+  #ifdef DIRLIGHTMAP_OFF
+    float4 lmapFadePos : TEXCOORD6;
+  #endif
+#endif
+  UNITY_VERTEX_INPUT_INSTANCE_ID
+  UNITY_VERTEX_OUTPUT_STEREO
+};
+
+// vertex shader
+v2f_surf vert_surf (appdata_particles v) {
+  UNITY_SETUP_INSTANCE_ID(v);
+  v2f_surf o;
+  UNITY_INITIALIZE_OUTPUT(v2f_surf,o);
+  UNITY_TRANSFER_INSTANCE_ID(v,o);
+  UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO(o);
+  Input customInputData;
+  vert (v, customInputData);
+  o.custompack0.xy = customInputData.texcoord;
+  o.custompack1.xyzw = customInputData.projectedPosition;
+  o.pos = UnityObjectToClipPos(v.vertex);
+  float3 worldPos = mul(unity_ObjectToWorld, v.vertex).xyz;
+  float3 worldNormal = UnityObjectToWorldNormal(v.normal);
+  o.worldPos.xyz = worldPos;
+  o.worldNormal = worldNormal;
+  float3 viewDirForLight = UnityWorldSpaceViewDir(worldPos);
+  #ifndef DIRLIGHTMAP_OFF
+  o.viewDir = viewDirForLight;
+  #endif
+  o.color = v.color;
+  o.lmap.zw = 0;
+#ifdef LIGHTMAP_ON
+  o.lmap.xy = half2(0.0, 0.0) * unity_LightmapST.xy + unity_LightmapST.zw;
+  #ifdef DIRLIGHTMAP_OFF
+    o.lmapFadePos.xyz = (mul(unity_ObjectToWorld, v.vertex).xyz - unity_ShadowFadeCenterAndType.xyz) * unity_ShadowFadeCenterAndType.w;
+    o.lmapFadePos.w = (-UnityObjectToViewPos(v.vertex).z) * (1.0 - unity
