@@ -26,7 +26,7 @@ public class PlayerHealth : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if ( sanity <= 0 )
+        /*if ( sanity <= 0 )
         {
             //player.GetComponent<PlayerMS>().enabled = false;
             Cursor.visible = true;
@@ -36,7 +36,7 @@ public class PlayerHealth : MonoBehaviour
         if ( sanity > 100 )
         {
             sanity = 100;
-        }
+        }*/
         if ( bjumpScare )
         {
             timer += Time.deltaTime;
@@ -56,6 +56,23 @@ public class PlayerHealth : MonoBehaviour
             Debug.Log("AAAAAAA me asuste");
             jumpScare.SetActive(true);
             bjumpScare = true;
+        }
+    }
+
+    public void RecieveDamage(int recieveDamage)
+    {
+        sanity -= recieveDamage;
+        if ( sanity <= 0 )
+        {
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
+            inv.SetActive(false);
+            Destroy(gameObject);
+            Debug.Log("Mike murio");
+        }
+        if ( sanity > 100 )
+        {
+            sanity = 100;
         }
     }
 }
