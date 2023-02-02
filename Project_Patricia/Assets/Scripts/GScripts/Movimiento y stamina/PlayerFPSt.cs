@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 using static UnityEngine.EventSystems.EventTrigger;
@@ -156,7 +157,7 @@ public class PlayerFPSt : MonoBehaviour
 
         if(x!=0 || z!=0)
         {
-            player.Move(move * speed * Time.deltaTime);
+            player.Move(move.normalized * speed * Time.deltaTime);
             run = true;
         }
         else
