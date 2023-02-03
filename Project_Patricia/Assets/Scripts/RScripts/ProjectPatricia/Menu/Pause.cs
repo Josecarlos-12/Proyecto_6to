@@ -8,7 +8,6 @@ public class Pause : MonoBehaviour
     public bool isPaused=false;
     public GameObject pauseMenuUI;
     public AudioSource pauseSound;
-    public Weapon weapon;
 
     void Update()
     {
@@ -16,8 +15,6 @@ public class Pause : MonoBehaviour
         {
             if(isPaused)
             {
-                weapon.canShoot = false;
-                weapon.inventary.rifle = true;
                 pauseSound.Play();
                 ResumeGame();
                 Cursor.lockState = CursorLockMode.Locked;
@@ -25,8 +22,6 @@ public class Pause : MonoBehaviour
             }
             else
             {
-                weapon.canShoot = true;
-                weapon.inventary.rifle = false;
                 pauseSound.Play();
                 PauseGame();
                 Cursor.lockState = CursorLockMode.None;
