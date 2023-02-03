@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class EmilioDmg : MonoBehaviour
@@ -11,7 +12,10 @@ public class EmilioDmg : MonoBehaviour
     {
         if ( other.CompareTag("Player") )
         {
-            other.GetComponent<PlayerHealth>().RecieveDamage(doDamage);
+            //if (other.GetComponent<PlayerHealth>().death == false)
+            {
+                //other.GetComponent<PlayerHealth>().RecieveDamage(doDamage);
+            }            
             Debug.Log("Te estas haciendo daño");
         }
     }

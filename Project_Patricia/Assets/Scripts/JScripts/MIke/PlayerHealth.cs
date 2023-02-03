@@ -16,6 +16,7 @@ public class PlayerHealth : MonoBehaviour
     
     public float timer;
     public float maxTimer;
+    public bool death;
 
     // Start is called before the first frame update
     void Start()
@@ -56,6 +57,7 @@ public class PlayerHealth : MonoBehaviour
             Debug.Log("AAAAAAA me asuste");
             jumpScare.SetActive(true);
             bjumpScare = true;
+            RecieveDamage(25);
         }
     }
 
@@ -66,9 +68,10 @@ public class PlayerHealth : MonoBehaviour
         {
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
-            inv.SetActive(false);
-            Destroy(gameObject);
+            inv.SetActive(false);            
             Debug.Log("Mike murio");
+            death= true;
+            Destroy(gameObject);
         }
         if ( sanity > 100 )
         {
