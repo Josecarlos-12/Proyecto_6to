@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class PlayerHealth : MonoBehaviour
     public GameObject player;
 
     public float sanity = 100f;
+    public float sanityMax = 125f;
 
     public GameObject jumpScare;
 
@@ -17,11 +19,19 @@ public class PlayerHealth : MonoBehaviour
     public float timer;
     public float maxTimer;
     public bool death;
+    public float transparence;
+    public Image dmg;
 
     // Start is called before the first frame update
     void Start()
     {
         //cam = GetComponent<PlayerCamera>();
+    }
+
+    private void FixedUpdate()
+    {
+        float valuealpha = transparence / sanity * (sanity - sanityMax);
+        dmg.color= new Color(1,1,1,valuealpha);
     }
 
     // Update is called once per frame
@@ -77,5 +87,17 @@ public class PlayerHealth : MonoBehaviour
         {
             sanity = 100;
         }
+        if (sanity >=125)
+        {
+            //Se muere patas arriba
+            Debug.Log("Me mori por drogadicto");
+            Destroy(gameObject);
+        }
+        if (sanity >= 101) 
+        {
+            Debug.Log("que se empiece a blurrear la pantalla");
+            Debug.Log("Recibir daño por seg");
+        }
     }
+
 }
