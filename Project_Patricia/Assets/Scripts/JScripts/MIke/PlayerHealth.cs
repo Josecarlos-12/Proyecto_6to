@@ -30,7 +30,7 @@ public class PlayerHealth : MonoBehaviour
 
     private void FixedUpdate()
     {
-        float valuealpha = transparence / sanity * (sanity - sanityMax);
+        float valuealpha = transparence;
         dmg.color= new Color(1,1,1,valuealpha);
     }
 
@@ -58,6 +58,8 @@ public class PlayerHealth : MonoBehaviour
                 timer = 0;
             }
         }
+
+        PanelDmg();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -86,18 +88,23 @@ public class PlayerHealth : MonoBehaviour
         if ( sanity > 100 )
         {
             sanity = 100;
-        }
-        if (sanity >=125)
+        }      
+    }
+
+    public void PanelDmg()
+    {
+        if (sanity > 125)
         {
             //Se muere patas arriba
             Debug.Log("Me mori por drogadicto");
             Destroy(gameObject);
         }
-        if (sanity >= 101) 
+        if (sanity > 101)
         {
+            sanity++;
+            transparence = transparence + 0.001f;
             Debug.Log("que se empiece a blurrear la pantalla");
             Debug.Log("Recibir daño por seg");
         }
     }
-
 }
