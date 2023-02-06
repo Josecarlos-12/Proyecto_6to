@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.HighDefinition;
 using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
@@ -22,10 +24,16 @@ public class PlayerHealth : MonoBehaviour
     public float transparence;
     public Image dmg;
 
+    public Volume volume;
+    public Bloom bloom;
+    public bool blm;
+
     // Start is called before the first frame update
     void Start()
     {
         //cam = GetComponent<PlayerCamera>();
+        volume.profile.TryGet(out Bloom bl);
+        bloom = bl;
     }
 
     private void FixedUpdate()
@@ -95,7 +103,7 @@ public class PlayerHealth : MonoBehaviour
     {
         if (sanity > 125)
         {
-            //Se muere patas arriba
+            //Muerte por sobredosis
             Debug.Log("Me mori por drogadicto");
             Destroy(gameObject);
         }
@@ -105,6 +113,13 @@ public class PlayerHealth : MonoBehaviour
             transparence = transparence + 0.001f;
             Debug.Log("que se empiece a blurrear la pantalla");
             Debug.Log("Recibir daño por seg");
+        }
+
+        if(sanity > 50)
+        {
+            //Efecto de sueño
+            bloom.intensity.value += 0.1f;
+            Debug.Log("Tengo mucho sueño");
         }
     }
 }
