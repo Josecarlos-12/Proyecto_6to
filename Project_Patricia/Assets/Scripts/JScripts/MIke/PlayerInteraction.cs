@@ -11,7 +11,7 @@ public class PlayerInteraction : MonoBehaviour
     [SerializeField] private Transform objUi;
     [SerializeField] private RaycastHit hit;
     [SerializeField] private float distance;
-    private LayerMask bdoor;
+    [SerializeField] private LayerMask layer;
     public bool bDoor, bHandle, bLife, bPills, bObj, inHand, bKey;
 
     [Header("Press")]

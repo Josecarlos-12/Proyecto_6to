@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 593.70435, g: 629.52637, b: 944.83984, a: 1}
+  m_IndirectSpecularColor: {r: 593.70044, g: 629.52246, b: 944.8301, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2516,6 +2516,9 @@ MonoBehaviour:
   cam: {fileID: 330225064}
   objUi: {fileID: 0}
   distance: 5
+  layer:
+    serializedVersion: 2
+    m_Bits: 256
   bDoor: 0
   bHandle: 0
   bLife: 0
@@ -2534,7 +2537,7 @@ MonoBehaviour:
   invePills: {fileID: 330225070}
   door: {fileID: 0}
   aim: {fileID: 310339668}
-  distance2: 15
+  distance2: 7.96
 --- !u!114 &330225072
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2558,6 +2561,12 @@ MonoBehaviour:
   - DoorCode: 0
     Obteind: 0
   permitido: 0
+  OpenPopUp: 112
+  CanCamera: {fileID: 0}
+  ObjRotation: []
+  act: 0
+  PalancaInteract: 111
+  Parts: []
 --- !u!1 &367312105
 GameObject:
   m_ObjectHideFlags: 0
@@ -3183,7 +3192,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 398339018}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 72, y: 0.92, z: 27.2}
+  m_LocalPosition: {x: 9.46, y: 0.92, z: 24.22}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3237,6 +3246,7 @@ MonoBehaviour:
   bjumpScare: 0
   timer: 0
   maxTimer: 2
+  death: 0
 --- !u!95 &398339026
 Animator:
   serializedVersion: 5
@@ -3285,7 +3295,7 @@ GameObject:
   - component: {fileID: 426945914}
   - component: {fileID: 426945913}
   - component: {fileID: 426945912}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Pills (2)
   m_TagString: Pills
   m_Icon: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
@@ -3779,7 +3789,7 @@ GameObject:
   - component: {fileID: 491234609}
   - component: {fileID: 491234608}
   - component: {fileID: 491234607}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Pills (1)
   m_TagString: Pills
   m_Icon: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
@@ -5305,7 +5315,7 @@ GameObject:
   m_Component:
   - component: {fileID: 698989425}
   - component: {fileID: 698989426}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: InteractionZone
   m_TagString: PlayerInteractionZone
   m_Icon: {fileID: 0}
@@ -5319,14 +5329,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 698989424}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.18, z: 0.874}
+  m_LocalRotation: {x: 0.7071418, y: -0, z: -0, w: 0.7070718}
+  m_LocalPosition: {x: 0, y: 0.31, z: 0.87}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 398339023}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!65 &698989426
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5336,7 +5346,7 @@ BoxCollider:
   m_GameObject: {fileID: 698989424}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 0.6, y: 1, z: 0.6}
   m_Center: {x: 0, y: 0, z: 0}
@@ -5564,7 +5574,7 @@ GameObject:
   - component: {fileID: 756391310}
   - component: {fileID: 756391309}
   - component: {fileID: 756391308}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Handle
   m_TagString: Handle
   m_Icon: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
@@ -6398,7 +6408,6 @@ MonoBehaviour:
   isPaused: 0
   pauseMenuUI: {fileID: 855693787}
   pauseSound: {fileID: 134001339}
-  weapon: {fileID: 330225069}
 --- !u!1 &891273121
 GameObject:
   m_ObjectHideFlags: 0
@@ -9295,9 +9304,9 @@ GameObject:
   - component: {fileID: 1134162562}
   - component: {fileID: 1134162561}
   - component: {fileID: 1134162560}
-  - component: {fileID: 1134162559}
   - component: {fileID: 1134162558}
-  m_Layer: 0
+  - component: {fileID: 1134162563}
+  m_Layer: 8
   m_Name: Obj (2)
   m_TagString: NotShoot
   m_Icon: {fileID: 0}
@@ -9326,29 +9335,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1134162556}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 65652e4243103d94fa04f3510ca75472, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   rbd: {fileID: 0}
   force: 15
---- !u!54 &1134162559
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1134162556}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!64 &1134162560
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -9413,6 +9406,22 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1134162556}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!54 &1134162563
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1134162556}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0
 --- !u!1 &1141105305 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1308044741546231634, guid: 877dbd767f2f7c14d8c6996b0e01e36c,
@@ -9650,7 +9659,7 @@ GameObject:
   - component: {fileID: 1171013030}
   - component: {fileID: 1171013029}
   - component: {fileID: 1171013033}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Pills
   m_TagString: Pills
   m_Icon: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
@@ -10211,7 +10220,7 @@ GameObject:
   - component: {fileID: 1236048850}
   - component: {fileID: 1236048849}
   - component: {fileID: 1236048848}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Key
   m_TagString: Key
   m_Icon: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
@@ -14668,7 +14677,8 @@ GameObject:
   - component: {fileID: 1783959985}
   - component: {fileID: 1783959984}
   - component: {fileID: 1783959983}
-  m_Layer: 0
+  - component: {fileID: 1783959986}
+  m_Layer: 7
   m_Name: DeRadius
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14753,6 +14763,22 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1783959981}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!54 &1783959986
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1783959981}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &1789872489
 GameObject:
   m_ObjectHideFlags: 0
@@ -16247,7 +16273,8 @@ GameObject:
   - component: {fileID: 1985704451}
   - component: {fileID: 1985704450}
   - component: {fileID: 1985704449}
-  m_Layer: 0
+  - component: {fileID: 1985704452}
+  m_Layer: 7
   m_Name: DeEyes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16262,7 +16289,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1985704447}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.0044999123, z: 2.1569004}
+  m_LocalPosition: {x: 0, y: -0.32, z: 2.1569004}
   m_LocalScale: {x: 1, y: 0.4817529, z: 3.7737699}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -16332,6 +16359,22 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1985704447}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!54 &1985704452
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1985704447}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &1997007588
 GameObject:
   m_ObjectHideFlags: 0
