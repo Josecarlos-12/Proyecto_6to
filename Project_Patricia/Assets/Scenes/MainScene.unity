@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 593.70044, g: 629.52246, b: 944.8301, a: 1}
+  m_IndirectSpecularColor: {r: 593.7024, g: 629.5449, b: 944.8457, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1586,12 +1586,6 @@ MonoBehaviour:
   m_PointlightHDType: 0
   m_SpotLightShape: 0
   m_AreaLightShape: 0
---- !u!1 &192456600 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8306919546461431636, guid: 877dbd767f2f7c14d8c6996b0e01e36c,
-    type: 3}
-  m_PrefabInstance: {fileID: 8306919546383335628}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &204020604
 GameObject:
   m_ObjectHideFlags: 0
@@ -2501,6 +2495,7 @@ MonoBehaviour:
   image: {fileID: 105083323}
   pills: 0
   count: {fileID: 891273122}
+  sanity: {fileID: 398339025}
 --- !u!114 &330225071
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3297,7 +3292,6 @@ GameObject:
   - component: {fileID: 426945915}
   - component: {fileID: 426945914}
   - component: {fileID: 426945913}
-  - component: {fileID: 426945912}
   m_Layer: 8
   m_Name: Pills (2)
   m_TagString: Pills
@@ -3305,20 +3299,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &426945912
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 426945911}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 51e5a7318fc020449b1edd1fa677c45b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  addSanity: 25
-  player: {fileID: 192456600}
 --- !u!136 &426945913
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -3791,7 +3771,6 @@ GameObject:
   - component: {fileID: 491234610}
   - component: {fileID: 491234609}
   - component: {fileID: 491234608}
-  - component: {fileID: 491234607}
   m_Layer: 8
   m_Name: Pills (1)
   m_TagString: Pills
@@ -3799,20 +3778,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &491234607
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 491234606}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 51e5a7318fc020449b1edd1fa677c45b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  addSanity: 25
-  player: {fileID: 192456600}
 --- !u!136 &491234608
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -9738,7 +9703,6 @@ GameObject:
   - component: {fileID: 1171013031}
   - component: {fileID: 1171013030}
   - component: {fileID: 1171013029}
-  - component: {fileID: 1171013033}
   m_Layer: 8
   m_Name: Pills
   m_TagString: Pills
@@ -9825,20 +9789,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1171013033
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1171013028}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 51e5a7318fc020449b1edd1fa677c45b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  addSanity: 25
-  player: {fileID: 192456600}
 --- !u!1 &1188141036
 GameObject:
   m_ObjectHideFlags: 0

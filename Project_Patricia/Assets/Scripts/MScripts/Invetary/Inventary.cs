@@ -12,6 +12,9 @@ public class Inventary : MonoBehaviour
     public int pills;
     public TextMeshProUGUI count;
 
+    [Header("Call Other Script")]
+    [SerializeField] private PlayerHealth sanity;
+
     void Start()
     {
         rifle= true;
@@ -74,6 +77,17 @@ public class Inventary : MonoBehaviour
             {
                 image.sprite = null;
             }
+        }
+
+        Pills();
+    }
+
+    public void Pills()
+    {
+        if(bPills && pills > 0 && Input.GetMouseButtonDown(0))
+        {
+            pills--;
+            sanity.sanity += 5;
         }
     }
 }

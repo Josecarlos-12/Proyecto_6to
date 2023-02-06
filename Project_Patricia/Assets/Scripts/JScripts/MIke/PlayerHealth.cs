@@ -101,7 +101,7 @@ public class PlayerHealth : MonoBehaviour
         }
         if (sanity > 101)
         {
-            sanity++;
+            sanity += 0.1f;
             transparence = transparence + 0.001f;
             Debug.Log("que se empiece a blurrear la pantalla");
             Debug.Log("Recibir daño por seg");
