@@ -23,6 +23,9 @@ public class Weapon : MonoBehaviour
     [Header("Call Other Script")]
     public PlayerInteraction obj;
     public Inventary inventary;
+    public Pause pause;
+    public NotesUI notes;
+    public PlayerInteraction inte;
 
     private void Start()
     {
@@ -119,7 +122,7 @@ public class Weapon : MonoBehaviour
 
     public void Shoot()
     {
-        if (!save && Input.GetMouseButtonDown(0) && canShoot && !obj.inHand && inventary.rifle)
+        if (!save && Input.GetMouseButtonDown(0) && canShoot && !obj.inHand && inventary.rifle && pause.shoot && notes.shoot && inte.shoot)
         {
             weapon.SetActive(true);
             aim.SetActive(true);
@@ -128,7 +131,7 @@ public class Weapon : MonoBehaviour
             save = true;
         }
 
-        if (canShoot && save)
+        if (canShoot && save && pause.shoot && notes.shoot && inte.shoot)
         {          
             if (Input.GetMouseButtonDown(0) && Time.time > initialShoot && clicks > 0 && !obj.inHand && inventary.rifle)
             {                                                  

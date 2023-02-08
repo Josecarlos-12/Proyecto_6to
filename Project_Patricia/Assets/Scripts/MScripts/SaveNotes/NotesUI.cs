@@ -12,6 +12,12 @@ public class NotesUI : MonoBehaviour
     public string save;
     public int noteCount;
     public Weapon weapon;
+    public bool shoot;
+
+    private void Start()
+    {
+        shoot = true;
+    }
 
     private void Update()
     {
@@ -30,7 +36,7 @@ public class NotesUI : MonoBehaviour
                 Cursor.visible = true;
                 Time.timeScale = 0;
                 note.SetActive(true);
-                weapon.canShoot = false;
+                shoot = false;
             }
             if(!bNote)
             {
@@ -38,7 +44,7 @@ public class NotesUI : MonoBehaviour
                 Cursor.visible = false;
                 Time.timeScale = 1;
                 note.SetActive(false);
-                weapon.canShoot = true;
+                shoot = true;
             }
             
         }

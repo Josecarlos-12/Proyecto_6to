@@ -8,6 +8,12 @@ public class Pause : MonoBehaviour
     public bool isPaused=false;
     public GameObject pauseMenuUI;
     public AudioSource pauseSound;
+    public bool shoot;
+
+    private void Start()
+    {
+        shoot = true;
+    }
 
     void Update()
     {
@@ -18,7 +24,7 @@ public class Pause : MonoBehaviour
                 pauseSound.Play();
                 ResumeGame();
                 Cursor.lockState = CursorLockMode.Locked;
-                
+                shoot = true;
             }
             else
             {
@@ -26,6 +32,7 @@ public class Pause : MonoBehaviour
                 PauseGame();
                 Cursor.lockState = CursorLockMode.None;
                 Cursor.visible = true;
+                shoot= false;
             }
         }
     }

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3274844033831191770}
   - component: {fileID: 7379588270588004481}
   m_Layer: 0
-  m_Name: Small
+  m_Name: Small1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -74,7 +74,7 @@ GameObject:
   - component: {fileID: 1354145328096973975}
   - component: {fileID: 5579177721430146111}
   m_Layer: 0
-  m_Name: Big
+  m_Name: Big1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -675,6 +675,9 @@ MonoBehaviour:
   cam: {fileID: 8306919546038437855}
   objUi: {fileID: 8306919545444767528}
   distance: 5
+  layer:
+    serializedVersion: 2
+    m_Bits: 0
   bDoor: 0
   bHandle: 0
   bLife: 0
@@ -682,6 +685,7 @@ MonoBehaviour:
   bObj: 0
   inHand: 0
   bKey: 0
+  shoot: 0
   texE: {fileID: 0}
   gameLife: {fileID: 0}
   gameHandle: {fileID: 0}
@@ -690,9 +694,10 @@ MonoBehaviour:
   gameObj: {fileID: 0}
   transGame: {fileID: 0}
   weapon: {fileID: 8306919546038437851}
-  playerCam: {fileID: 8306919546038437849}
   invePills: {fileID: 8306919546038437844}
   door: {fileID: 0}
+  aim: {fileID: 0}
+  distance2: 0
 --- !u!114 &8306919546038437851
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -724,6 +729,9 @@ MonoBehaviour:
   clickMax: 3
   obj: {fileID: 0}
   inventary: {fileID: 8306919546038437844}
+  pause: {fileID: 0}
+  notes: {fileID: 0}
+  inte: {fileID: 0}
 --- !u!114 &8306919546038437844
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -746,6 +754,7 @@ MonoBehaviour:
   image: {fileID: 0}
   pills: 0
   count: {fileID: 0}
+  sanity: {fileID: 0}
 --- !u!1 &8306919546349603808
 GameObject:
   m_ObjectHideFlags: 0
@@ -948,6 +957,7 @@ MonoBehaviour:
   rb: {fileID: 0}
   run: 0
   shift: 0
+  crounch: 0
   energy: 10
   energyMax: 10
   energyBar: {fileID: 0}
@@ -979,11 +989,18 @@ MonoBehaviour:
   inv: {fileID: 0}
   player: {fileID: 8306919546461431636}
   sanity: 100
+  sanityMax: 125
   jumpScare: {fileID: 0}
   cam: {fileID: 0}
   bjumpScare: 0
   timer: 0
   maxTimer: 0
+  death: 0
+  transparence: 0
+  dmg: {fileID: 0}
+  volume: {fileID: 0}
+  bloom: {fileID: 0}
+  blm: 0
 --- !u!114 &8306919546461431660
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1004,6 +1021,7 @@ MonoBehaviour:
   save: 
   noteCount: 0
   weapon: {fileID: 8306919546038437851}
+  shoot: 0
 --- !u!1 &8306919546520585884
 GameObject:
   m_ObjectHideFlags: 0
@@ -1171,7 +1189,7 @@ GameObject:
   - component: {fileID: 2223431027146869964}
   - component: {fileID: 8766256236173537016}
   m_Layer: 0
-  m_Name: Mediun
+  m_Name: Mediun1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
