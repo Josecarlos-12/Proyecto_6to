@@ -115,10 +115,15 @@ public class PlayerHealth : MonoBehaviour
             Debug.Log("Recibir daño por seg");
         }
 
-        if(sanity > 50)
+        if(sanity <= 50)
         {
             //Efecto de sueño
-            bloom.intensity.value += 0.1f;
+            if (bloom.intensity.value <= 0.8f)
+            {
+                bloom.intensity.value += 0.01f;
+            }
+            
+
             Debug.Log("Tengo mucho sueño");
         }
     }

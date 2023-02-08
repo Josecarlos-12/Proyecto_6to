@@ -165,7 +165,7 @@ public class PlayerFPSt : MonoBehaviour
             run = false;
         }
 
-        if (run && shift)
+        if (run && shift && bEnergy)
         {
             coll[0].SetActive(true);
             coll[1].SetActive(true);
@@ -234,7 +234,7 @@ public class PlayerFPSt : MonoBehaviour
         {
             bEnergy = true;
         }
-        if (energy <= 4)
+        if (energy <= 1)
         {
             bEnergy= false;
         }

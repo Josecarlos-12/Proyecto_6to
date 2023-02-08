@@ -12,7 +12,7 @@ public class PlayerInteraction : MonoBehaviour
     [SerializeField] private RaycastHit hit;
     [SerializeField] private float distance;
     [SerializeField] private LayerMask layer;
-    public bool bDoor, bHandle, bLife, bPills, bObj, inHand, bKey;
+    public bool bDoor, bHandle, bLife, bPills, bObj, inHand, bKey, shoot;
 
     [Header("Press")]
     [SerializeField] private GameObject texE;
@@ -36,7 +36,11 @@ public class PlayerInteraction : MonoBehaviour
     [Header("Not Shoot")]
     [SerializeField] private float distance2;
     [SerializeField] private RaycastHit hit2;
-    
+
+    private void Start()
+    {
+        shoot = true;
+    }
 
     private void Update()
     {        
@@ -132,18 +136,18 @@ public class PlayerInteraction : MonoBehaviour
         {
             if (hit2.transform.CompareTag("NotShoot"))
             {
-                weapon.canShoot = false;
+                shoot = false;
                 aim.color = Color.red;
             }
             else if (!hit2.transform.CompareTag("NotShoot"))
             {
-                weapon.canShoot = true;
+                shoot = true;
                 aim.color = Color.white;
             }
         }
         else
         {
-            weapon.canShoot = true;
+            shoot = true;
             aim.color = Color.white;
         }
     }

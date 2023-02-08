@@ -81,7 +81,7 @@ public class Enemy : MonoBehaviour
 
     public IEnumerator FalseFollow()
     {
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(5);
         detected = false;
         agent.speed = 3.5f;
         agent.acceleration = 8;
