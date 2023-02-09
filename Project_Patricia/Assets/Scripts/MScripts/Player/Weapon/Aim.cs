@@ -6,6 +6,11 @@ public class Aim : MonoBehaviour
 {
     [SerializeField] private Camera cam;
     [SerializeField] private Weapon weapon;
+    [SerializeField] private bool mouse;
+
+    [Header("Call Other Script")]
+    [SerializeField] private Pause pause;
+    [SerializeField] private NotesUI notes;
     private void Start()
     {
         cam = Camera.main;
@@ -18,11 +23,29 @@ public class Aim : MonoBehaviour
 
     public void AimWeapon()
     {
-        if (Input.GetMouseButtonDown(1) && weapon.save)
+        if (Input.GetMouseButtonDown(1))
         {
-            cam.fieldOfView = 45;
+            mouse = true;
         }
-        else if (Input.GetMouseButtonUp(1) || !weapon.save) 
+        else if (Input.GetMouseButtonUp(1))
+        {
+            mouse = false;
+        }
+
+
+        if (pause.shoot && notes.shoot)
+        {
+            if (mouse && weapon.save)
+            {
+                cam.fieldOfView = 45;
+            }
+            
+        }
+        if (!mouse || !weapon.save)
+        {
+            cam.fieldOfView = 60;
+        }
+        if(mouse && !weapon.save)
         {
             cam.fieldOfView = 60;
         }

@@ -10,6 +10,8 @@ public class Pause : MonoBehaviour
     public AudioSource pauseSound;
     public bool shoot;
 
+    [SerializeField] private NotesUI note;
+
     private void Start()
     {
         shoot = true;
@@ -17,7 +19,7 @@ public class Pause : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(PauseButton))
+        if (Input.GetKeyDown(PauseButton) && !note.bNote)
         {
             if(isPaused)
             {

@@ -66,6 +66,7 @@ public class Enemy : MonoBehaviour
         }*/
         if(small.small || mediun.mediun || big.big)
         {
+            //transform.LookAt(player.transform.position);
             agent.destination = player.transform.position;
             detected = true;
             agent.speed = 10;
