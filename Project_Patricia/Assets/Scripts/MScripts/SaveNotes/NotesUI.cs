@@ -14,6 +14,8 @@ public class NotesUI : MonoBehaviour
     public Weapon weapon;
     public bool shoot;
 
+    [SerializeField] private Pause pause;
+
     private void Start()
     {
         shoot = true;
@@ -26,7 +28,7 @@ public class NotesUI : MonoBehaviour
 
     public void Note()
     {
-        if(Input.GetKeyDown(KeyCode.L))
+        if(Input.GetKeyDown(KeyCode.L) && !pause.isPaused)
         {
             bNote = !bNote;
 

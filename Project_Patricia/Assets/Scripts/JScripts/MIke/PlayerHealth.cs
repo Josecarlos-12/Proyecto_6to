@@ -68,6 +68,7 @@ public class PlayerHealth : MonoBehaviour
         }
 
         PanelDmg();
+        Damage();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -78,6 +79,24 @@ public class PlayerHealth : MonoBehaviour
             jumpScare.SetActive(true);
             bjumpScare = true;
             RecieveDamage(25);
+        }
+        if(other.gameObject.name == "PunchBoss")
+        {
+            sanity -= 10;
+            print("Pego boss");
+        }
+    }
+
+    public void Damage()
+    {
+        if (sanity <= 0)
+        {
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
+            inv.SetActive(false);
+            Debug.Log("Mike murio");
+            death = true;
+            Destroy(gameObject);
         }
     }
 
