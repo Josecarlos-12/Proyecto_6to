@@ -15,6 +15,11 @@ public class NotesUI : MonoBehaviour
     public bool shoot;
 
     [SerializeField] private Pause pause;
+    [SerializeField] private NoteInteraction work;
+    [SerializeField] private int counWork;
+    public int check;
+    [SerializeField] private GameObject[] lines; 
+    [SerializeField] private GameObject linesContainer; 
 
     private void Start()
     {
@@ -24,6 +29,13 @@ public class NotesUI : MonoBehaviour
     private void Update()
     {
         Note();
+        
+                
+        if(Input.GetKeyDown(KeyCode.B))
+        {
+            check++;
+        }
+        CheckList();
     }
 
     public void Note()
@@ -39,6 +51,7 @@ public class NotesUI : MonoBehaviour
                 Time.timeScale = 0;
                 note.SetActive(true);
                 shoot = false;
+               
             }
             if(!bNote)
             {
@@ -47,8 +60,7 @@ public class NotesUI : MonoBehaviour
                 Time.timeScale = 1;
                 note.SetActive(false);
                 shoot = true;
-            }
-            
+            }                       
         }
 
         if(sNote.Count == 0)
@@ -60,6 +72,49 @@ public class NotesUI : MonoBehaviour
         text.text= sNote[noteCount];
         }
 
+    }
+
+    public void CheckList()
+    {
+        counWork = work.workInt - 1;
+
+        if (noteCount == counWork)
+        {
+            linesContainer.SetActive(true);
+
+            if (check == 1)
+            {
+                lines[0].SetActive(true);
+            }
+            if (check == 2)
+            {
+                lines[1].SetActive(true);
+            }
+            if (check == 3)
+            {
+                lines[2].SetActive(true);
+            }
+            if (check == 4)
+            {
+                lines[3].SetActive(true);
+            }
+            if (check == 5)
+            {
+                lines[4].SetActive(true);
+            }
+            if (check == 6)
+            {
+                lines[5].SetActive(true);
+            }
+            if (check == 7)
+            {
+                lines[6].SetActive(true);
+            }
+        }
+        else
+        {
+            linesContainer.SetActive(false);
+        }
     }
 
     public void Next()

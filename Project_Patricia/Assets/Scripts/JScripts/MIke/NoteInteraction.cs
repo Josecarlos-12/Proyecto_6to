@@ -19,19 +19,20 @@ public class NoteInteraction : MonoBehaviour
     public string noteText;
     public TextMeshProUGUI text;
     public BoxCollider col;
+    public int workInt;
 
     [Header("Press")]
     [SerializeField] private GameObject texE;
 
     public NotesUI noteList;
 
-    // Start is called before the first frame update
-    void Start( )
+   public enum Check
     {
-
+        normal, work
     }
 
-    // Update is called once per frame
+    public Check check;
+
     void Update( )
     {
         Press();
@@ -39,36 +40,46 @@ public class NoteInteraction : MonoBehaviour
 
     public void Press( )
     {
-        if ( into && Input.GetKeyDown(KeyCode.E)) 
+        if (into && Input.GetKeyDown(KeyCode.E))
         {
             count++;
             col.enabled = false;
         }
 
-        if ( count == 1 )
+        if (count == 1)
         {
             Time.timeScale = 0;
             imageNote.sprite = image;
             note.SetActive(true);
             text.text = noteText;
         }
-        if ( count == 2 )
+        if (count == 2)
         {
             traduction.SetActive(true);
         }
-        if ( count == 3 )
+        if (count == 3)
         {
             traduction.SetActive(false);
         }
-        if ( count == 4 )
+        if (count == 4)
         {
             noteList.sNote.Add(noteList.save);
             Time.timeScale = 1;
             note.SetActive(false);
             texE.SetActive(false);
-            Destroy(gameObject);
+            switch (check)
+            {
+                case Check.normal:
+                    print("no work");
+                    break;
+                case Check.work:
+                    print(noteList.sNote.Count);
+                    workInt = noteList.sNote.Count;
+                    break;
+            }
+            Destroy(gameObject);           
             //count = 0;
-        }
+        }             
     }
     private void OnTriggerEnter(Collider other)
     {

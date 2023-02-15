@@ -8,6 +8,8 @@ public class PickableObject : MonoBehaviour
 
     public float rotation = 50;
 
+    public bool trahs;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -24,8 +26,11 @@ public class PickableObject : MonoBehaviour
     {
         if(other.tag == "PlayerInteractionZone")
         {
-            other.GetComponentInParent<PickUpObject>().ObjectToPickUp = this.gameObject;
-            Rotate();
+            if(!trahs)
+            {
+                other.GetComponentInParent<PickUpObject>().ObjectToPickUp = this.gameObject;
+                Rotate();
+            }            
         }
 
         if (other.tag == "PlayerInteractionZone")
@@ -38,7 +43,11 @@ public class PickableObject : MonoBehaviour
     {
         if (other.tag == "PlayerInteractionZone")
         {
-            other.GetComponentInParent<PickUpObject>().ObjectToPickUp = null;
+            if (!trahs)
+            {
+                other.GetComponentInParent<PickUpObject>().ObjectToPickUp = null;
+            }
+                
         }
 
         if (other.tag == "Desk")

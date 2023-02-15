@@ -2,10 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.UIElements;
-using static UnityEditor.Experimental.AssetDatabaseExperimental.AssetDatabaseCounters;
 
-public class Boss : MonoBehaviour
+public class MoveBoss : MonoBehaviour
 {
     [SerializeField] private GameObject player;
     [SerializeField] private NavMeshAgent agent;
@@ -28,14 +26,12 @@ public class Boss : MonoBehaviour
     [SerializeField] private Transform[] groupC;
     [SerializeField] private Transform[] groupD;
     [SerializeField] private int destPoint = 0;
-    [SerializeField] private int intGroup, count, count1, count2, count3, iA , sphere;
+    [SerializeField] private int intGroup, count, count1, count2, count3, iA, sphere;
     [SerializeField] private int randon;
 
-    // Start is called before the first frame update
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-        anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -43,17 +39,18 @@ public class Boss : MonoBehaviour
     {
         Transparent();
         Move();
+
         if (agent.remainingDistance < 1 && !detected)
         {
-            if(intGroup== 0)
+            if (intGroup == 0)
             {
                 GroupA();
             }
-            if(intGroup== 1)
+            if (intGroup == 1)
             {
                 GroupB();
-            }   
-            if(intGroup== 2)
+            }
+            if (intGroup == 2)
             {
                 GroupC();
             }
@@ -69,31 +66,15 @@ public class Boss : MonoBehaviour
             checkSphere = true;
             agent.destination = player.transform.position;
 
-            if(randon<3)
-            randon++;
+            if (randon < 3)
+                randon++;
 
             if (randon == 1)
             {
                 intGroup = Random.Range(0, 3);
             }
-            sphere = 0;
-        }
-        else
-        {
-            if(sphere<3)
-            sphere++;
 
-            if (sphere == 1)
-            {
-                StartCoroutine("CheckSphereFalse");
-            }            
         }
-    }
-
-    public IEnumerator CheckSphereFalse()
-    {
-        yield return new WaitForSeconds(2);
-        checkSphere = false;
     }
 
     public void Transparent()
@@ -104,111 +85,6 @@ public class Boss : MonoBehaviour
         }
         myColor.a = myAlpha;
         boss.material.color = myColor;
-    }
-
-    public void GroupA()
-    {
-        if (iA < 3 && !a)
-        {
-            a= true;
-            agent.destination = groupA[destPoint].position;
-            
-            
-            if(count<3)
-            count++;
-
-            if (count == 1)
-            {
-                StartCoroutine(CA());
-            }
-        }        
-    }
-
-    public IEnumerator CA()
-    {
-        yield return new WaitForSeconds(8);
-        count= 0;
-        a= false;
-        destPoint = (destPoint + 1) % groupA.Length;
-        iA++;
-    }
-
-    public void GroupB()
-    {
-        if (iA < 3 && !a)
-        {
-            a= true;
-            agent.destination = groupB[destPoint].position;
-
-            if (count1 < 3)
-                count1++;
-
-            if (count1 == 1)
-            {
-                StartCoroutine(CB());
-            }
-        }
-    }
-
-    public IEnumerator CB()
-    {
-        yield return new WaitForSeconds(8);
-        count1 = 0;
-        a = false; 
-        destPoint = (destPoint + 1) % groupB.Length;
-        iA++;
-    }
-
-    public void GroupC()
-    {
-        if (iA < 3 && !a)
-        {
-            a= true;
-            agent.destination = groupC[destPoint].position;
-
-            if (count2 < 3)
-                count2++;
-
-            if (count2 == 1)
-            {
-                StartCoroutine(CC());
-            }
-        }
-    }
-    public IEnumerator CC()
-    {
-        yield return new WaitForSeconds(8);
-        count2 = 0;
-        a = false;
-        destPoint = (destPoint + 1) % groupC.Length;
-        iA++;
-    }
-
-
-    public void GroupD()
-    {
-        if (iA < 3 && !a)
-        {
-            a= true;
-            agent.destination = groupD[destPoint].position;
-
-            if (count3 < 3)
-                count3++;
-
-            if (count3 == 1)
-            {
-                StartCoroutine(CD());
-            }
-        }
-    }
-
-    public IEnumerator CD()
-    {
-        yield return new WaitForSeconds(8);
-        count3 = 0;
-        a = true;
-        destPoint = (destPoint + 1) % groupD.Length;
-        iA++;
     }
 
     public void Move()
@@ -224,7 +100,7 @@ public class Boss : MonoBehaviour
             }
             else
             {
-                detected= false;
+                detected = false;
                 agent.stoppingDistance = 0;
             }
 
@@ -242,13 +118,122 @@ public class Boss : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
+    public IEnumerator CheckSphereFalse()
     {
-        if (collision.gameObject.CompareTag("Player"))
+        yield return new WaitForSeconds(2);
+        checkSphere = false;
+    }
+
+    public void GroupA()
+    {       
+        if(iA < 3)
         {
+            if (count < 3)
+                count++;
+
+            if (count == 1)
+            {
+                StartCoroutine(CA());
+            }
+        }
+                      
+    }
+
+    public IEnumerator CA()
+    {
+        yield return new WaitForSeconds(6);
+        destPoint = (destPoint + 1) % groupA.Length;
+        agent.destination = groupA[destPoint].position;
+        iA++;
+        yield return new WaitForSeconds(3);
+        count = 0;
+    }
+
+    public void GroupB()
+    {
+        if (iA < 3)
+        {           
+            if (count1 < 3)
+                count1++;
+
+            if (count1 == 1)
+            {
+                StartCoroutine(CB());
+            }
+        }
+    }
+
+    public IEnumerator CB()
+    {
+        yield return new WaitForSeconds(6);        
+        destPoint = (destPoint + 1) % groupB.Length;
+        agent.destination = groupB[destPoint].position;
+        iA++;
+        yield return new WaitForSeconds(3);
+        count1 = 0;
+    }
+
+    public void GroupC()
+    {
+        if (iA < 3)
+        {
+            if (count2 < 3)
+                count2++;
+
+            if (count2 == 1)
+            {
+                StartCoroutine(CC());
+            }
+        }
+    }
+    public IEnumerator CC()
+    {
+        yield return new WaitForSeconds(6);        
+        destPoint = (destPoint + 1) % groupC.Length;
+        agent.destination = groupC[destPoint].position;
+        iA++;
+        yield return new WaitForSeconds(3);
+        count2 = 0;
+    }
+
+
+    public void GroupD()
+    {
+        if (iA < 3)
+        {
+            if (count3 < 3)
+                count3++;
+
+            if (count3 == 1)
+            {
+                StartCoroutine(CD());
+            }
+        }
+    }
+
+    public IEnumerator CD()
+    {
+        yield return new WaitForSeconds(6);        
+        destPoint = (destPoint + 1) % groupD.Length;
+        agent.destination = groupD[destPoint].position;
+        iA++;
+        yield return new WaitForSeconds(3);
+        count3 = 0;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            print("Playsada");
             iA = 0;
             destPoint = 0;
         }
+    }
+
+    private void OnCollisionStay(Collision collision)
+    {
+        
     }
 
     private void OnDrawGizmos()
