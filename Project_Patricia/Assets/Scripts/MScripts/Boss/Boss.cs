@@ -10,7 +10,8 @@ public class Boss : MonoBehaviour
     [SerializeField] private GameObject player;
     [SerializeField] private NavMeshAgent agent;
     [SerializeField] private Animator anim;
-    [SerializeField] private bool bDamage;
+    [SerializeField] private bool bDamage, detected, checkSphere;
+    [SerializeField] private bool a, b, c, d;
 
     [Header("Distancias")]
     [SerializeField] private float size;
@@ -27,7 +28,7 @@ public class Boss : MonoBehaviour
     [SerializeField] private Transform[] groupC;
     [SerializeField] private Transform[] groupD;
     [SerializeField] private int destPoint = 0;
-    [SerializeField] private int intGroup, count, count1, count2, count3, iA;
+    [SerializeField] private int intGroup, count, count1, count2, count3, iA , sphere;
     [SerializeField] private int randon;
 
     // Start is called before the first frame update
@@ -41,8 +42,8 @@ public class Boss : MonoBehaviour
     void Update()
     {
         Transparent();
-        //Move();
-        if (agent.remainingDistance < 1)
+        Move();
+        if (agent.remainingDistance < 1 && !detected)
         {
             if(intGroup== 0)
             {
@@ -65,6 +66,7 @@ public class Boss : MonoBehaviour
         }
         if (iA > 2)
         {
+            checkSphere = true;
             agent.destination = player.transform.position;
 
             if(randon<3)
@@ -74,7 +76,24 @@ public class Boss : MonoBehaviour
             {
                 intGroup = Random.Range(0, 3);
             }
+            sphere = 0;
         }
+        else
+        {
+            if(sphere<3)
+            sphere++;
+
+            if (sphere == 1)
+            {
+                StartCoroutine("CheckSphereFalse");
+            }            
+        }
+    }
+
+    public IEnumerator CheckSphereFalse()
+    {
+        yield return new WaitForSeconds(2);
+        checkSphere = false;
     }
 
     public void Transparent()
@@ -89,9 +108,11 @@ public class Boss : MonoBehaviour
 
     public void GroupA()
     {
-        if (iA < 3)
+        if (iA < 3 && !a)
         {
+            a= true;
             agent.destination = groupA[destPoint].position;
+            
             
             if(count<3)
             count++;
@@ -107,14 +128,16 @@ public class Boss : MonoBehaviour
     {
         yield return new WaitForSeconds(8);
         count= 0;
+        a= false;
         destPoint = (destPoint + 1) % groupA.Length;
         iA++;
     }
 
     public void GroupB()
     {
-        if (iA < 3)
+        if (iA < 3 && !a)
         {
+            a= true;
             agent.destination = groupB[destPoint].position;
 
             if (count1 < 3)
@@ -131,14 +154,16 @@ public class Boss : MonoBehaviour
     {
         yield return new WaitForSeconds(8);
         count1 = 0;
+        a = false; 
         destPoint = (destPoint + 1) % groupB.Length;
         iA++;
     }
 
     public void GroupC()
     {
-        if (iA < 3)
+        if (iA < 3 && !a)
         {
+            a= true;
             agent.destination = groupC[destPoint].position;
 
             if (count2 < 3)
@@ -154,6 +179,7 @@ public class Boss : MonoBehaviour
     {
         yield return new WaitForSeconds(8);
         count2 = 0;
+        a = false;
         destPoint = (destPoint + 1) % groupC.Length;
         iA++;
     }
@@ -161,8 +187,9 @@ public class Boss : MonoBehaviour
 
     public void GroupD()
     {
-        if (iA < 3)
+        if (iA < 3 && !a)
         {
+            a= true;
             agent.destination = groupD[destPoint].position;
 
             if (count3 < 3)
@@ -179,19 +206,26 @@ public class Boss : MonoBehaviour
     {
         yield return new WaitForSeconds(8);
         count3 = 0;
+        a = true;
         destPoint = (destPoint + 1) % groupD.Length;
         iA++;
     }
 
     public void Move()
     {
-        if (player != null)
+        if (player != null && !checkSphere)
         {
             if (Vector3.Distance(transform.position, player.transform.position) < size && !bDamage)
             {
                 transform.LookAt(player.transform.position);
                 agent.destination = player.transform.position;
                 agent.stoppingDistance = 2;
+                detected = true;
+            }
+            else
+            {
+                detected= false;
+                agent.stoppingDistance = 0;
             }
 
             if (Vector3.Distance(transform.position, player.transform.position) < punch)
