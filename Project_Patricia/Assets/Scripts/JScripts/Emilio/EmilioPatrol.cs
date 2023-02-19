@@ -14,9 +14,9 @@ public class EmilioPatrol : MonoBehaviour
     [SerializeField] private bool detected, colition;
 
     [Header("Call Other Script")]
-    [SerializeField] private DetectedPlayer small;
-    [SerializeField] private DetectedPlayer mediun;
-    [SerializeField] private DetectedPlayer big;
+    [SerializeField] private DetectedPlay2 small;
+    [SerializeField] private DetectedPlay2 mediun;
+    [SerializeField] private DetectedPlay2 big;
 
     void Start()
     {
@@ -27,12 +27,15 @@ public class EmilioPatrol : MonoBehaviour
 
     void Update()
     {
-
-        if (agent.remainingDistance < distancePoint && !detected && !colition)
+        if(player!= null)
         {
-            GoToNextPoint();
+            if (agent.remainingDistance < distancePoint && !detected && !colition)
+            {
+                GoToNextPoint();
+            }
+            Detected();
         }
-        Detected();
+
     }
 
     public void GoToNextPoint()
