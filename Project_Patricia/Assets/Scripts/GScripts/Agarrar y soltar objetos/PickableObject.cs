@@ -29,7 +29,7 @@ public class PickableObject : MonoBehaviour
             if(!trahs)
             {
                 other.GetComponentInParent<PickUpObject>().ObjectToPickUp = this.gameObject;
-                Rotate();
+                //Rotate();
             }            
         }
 

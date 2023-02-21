@@ -4,35 +4,43 @@ using UnityEngine;
 
 public class DumpsterInteraction : MonoBehaviour
 {
-    public bool into, open;
+    public bool open;
     [SerializeField] Animator anim;
     [SerializeField] PickableObject pick, pick2;
     [SerializeField] TrashOn trashOne, trashTwo;
     public NotesUI note;
+    [SerializeField] private int count;
+    public enum Work
+    {
+        tras, shopping
+    }
+    public Work word;
+
+    private void Start()
+    {
+        open = true;
+    }
 
     void Update()
     {
         if(trashOne.into && trashTwo.into)
         {
-            note.check = 1;
-            anim.SetBool("Open", true);
-        }
-    }
+            if(count<3)
+            count++;
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.CompareTag("Player"))
-        {
-            into = true;
-        }
-    }
-
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.gameObject.CompareTag("Player"))
-        {
-            into = false;
+            if (count == 1)
+            {
+                switch (word)
+                {
+                    case Work.tras:
+                        note.check = 1;
+                        anim.SetBool("Open", true);
+                        break;
+                    case Work.shopping:
+                        note.check = 2;
+                        break;
+                }
+            }                      
         }
     }
 }

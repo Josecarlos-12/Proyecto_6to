@@ -6,12 +6,12 @@ public class TrashOn : MonoBehaviour
 {
     [SerializeField] private PickableObject pick;
     [SerializeField] private Transform position;
-    [SerializeField] private DumpsterInteraction dum;
     [SerializeField] private Collider col;
     [SerializeField] private Rigidbody rbd;
     [SerializeField] private bool touch;
     public bool into;
-
+    [SerializeField] public Transform objectGarbage;
+    [SerializeField] private float size;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,39 +21,25 @@ public class TrashOn : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(touch)
+
+        if(Vector3.Distance(transform.position, objectGarbage.position) < size)
         {
-            if (pick.isPickable && dum.open)
+            if (pick.isPickable)
             {
                 col.enabled = false;
                 transform.position = position.position;
                 transform.rotation = position.rotation;
-                pick.isPickable= false;
+                pick.isPickable = false;
                 rbd.useGravity = false;
                 rbd.isKinematic = true;
                 into = true;
             }
-        }  
-    }
-
-
-    private void OnCollisionStay(Collision collision)
-    {
-        if (collision.gameObject.name == "Throw")
-        {
-            touch = true;
         }
     }
 
-    private void OnCollisionExit(Collision collision)
+    private void OnDrawGizmos()
     {
-        if (collision.gameObject.name == "Throw")
-        {
-            touch= false;
-            if (!pick.isPickable)
-            {
-
-            }
-        }
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, size);
     }
 }

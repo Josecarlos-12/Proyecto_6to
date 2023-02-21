@@ -82,31 +82,31 @@ public class NotesUI : MonoBehaviour
         {
             linesContainer.SetActive(true);
 
-            if (check == 1)
+            if (check >= 1)
             {
                 lines[0].SetActive(true);
             }
-            if (check == 2)
+            if (check >= 2)
             {
                 lines[1].SetActive(true);
             }
-            if (check == 3)
+            if (check >= 3)
             {
                 lines[2].SetActive(true);
             }
-            if (check == 4)
+            if (check >= 4)
             {
                 lines[3].SetActive(true);
             }
-            if (check == 5)
+            if (check >= 5)
             {
                 lines[4].SetActive(true);
             }
-            if (check == 6)
+            if (check >= 6)
             {
                 lines[5].SetActive(true);
             }
-            if (check == 7)
+            if (check >= 7)
             {
                 lines[6].SetActive(true);
             }
