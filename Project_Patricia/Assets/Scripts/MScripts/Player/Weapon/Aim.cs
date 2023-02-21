@@ -11,6 +11,7 @@ public class Aim : MonoBehaviour
     [Header("Call Other Script")]
     [SerializeField] private Pause pause;
     [SerializeField] private NotesUI notes;
+    [SerializeField] private Inventary inve;
     private void Start()
     {
         cam = Camera.main;
@@ -41,13 +42,19 @@ public class Aim : MonoBehaviour
             }
             
         }
-        if (!mouse || !weapon.save)
+        if (!mouse || !weapon.save || !inve.rifle)
         {
             cam.fieldOfView = 60;
         }
         if(mouse && !weapon.save)
         {
             cam.fieldOfView = 60;
+        }
+
+        if (!inve.rifle)
+        {
+            mouse = false;
+            weapon.save= false;
         }
     }
 }

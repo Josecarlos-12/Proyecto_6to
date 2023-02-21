@@ -8,6 +8,7 @@ public class PlayerCrouch : MonoBehaviour
     [SerializeField] private Head head;
     [SerializeField] private bool press;
     public bool crouch;
+    public bool crouchCan;
 
     // Start is called before the first frame update
     void Start()
@@ -23,24 +24,27 @@ public class PlayerCrouch : MonoBehaviour
 
     public void Crouch()
     {
-        if (Input.GetKeyDown(KeyCode.LeftControl))
+        if(crouchCan)
         {
-            press = true;
-        }
-        else if (Input.GetKeyUp(KeyCode.LeftControl))
-        {
-            press = false;
-        }
+            if (Input.GetKeyDown(KeyCode.LeftControl))
+            {
+                press = true;
+            }
+            else if (Input.GetKeyUp(KeyCode.LeftControl))
+            {
+                press = false;
+            }
 
-        if (press || head.head)
-        {
-            crouch= true;
-            anim.SetBool("Crouch", true);
-        }
-        else if (!press && !head.head)
-        {
-            crouch= false;
-            anim.SetBool("Crouch", false);
-        }
+            if (press || head.head)
+            {
+                crouch = true;
+                anim.SetBool("Crouch", true);
+            }
+            else if (!press && !head.head)
+            {
+                crouch = false;
+                anim.SetBool("Crouch", false);
+            }
+        }        
     }
 }

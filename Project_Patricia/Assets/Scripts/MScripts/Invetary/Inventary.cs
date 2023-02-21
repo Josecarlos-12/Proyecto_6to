@@ -14,11 +14,12 @@ public class Inventary : MonoBehaviour
 
     [Header("Call Other Script")]
     [SerializeField] private PlayerHealth sanity;
+    [SerializeField] private Rifle rRifle;
 
     void Start()
     {
         rifle= true;
-        image.sprite = sRifle;
+        //image.sprite = sRifle;
         count.text = string.Empty;
     }
 
@@ -27,12 +28,25 @@ public class Inventary : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            count.text = string.Empty;
-            rifle= true;
-            image.sprite = sRifle;
-            Debug.Log("Rifle");
+            rifle = true;
             bPills = false;
-            bKeyComfi= false;
+            bKeyComfi = false;
+        }
+        if(rifle)
+        {
+            if (rRifle.canRifle)
+            {
+                count.text = string.Empty;               
+                image.sprite = sRifle;
+                Debug.Log("Rifle");                
+            }
+            else if (!rRifle.canRifle)
+            {
+                count.text = string.Empty;
+                image.sprite = null;
+                bPills = false;
+                bKeyComfi = false;
+            }
         }
 
         
@@ -42,7 +56,6 @@ public class Inventary : MonoBehaviour
             bPills = true;
             bKeyComfi= false;
         }
-
         if(bPills)
         {
             if (pills > 0)

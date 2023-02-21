@@ -8,7 +8,7 @@ using static UnityEngine.EventSystems.EventTrigger;
 public class Weapon : MonoBehaviour
 {
     [Header("Weapon")]
-    public bool canShoot, save, shoot;
+    public bool canShoot, save, shoot, shootTwo;
     [SerializeField] private float initialShoot, timeShoot, saveTime, saveTimeMax;
     public GameObject bullet, weapon, aim;
     [SerializeField] private Transform initialBullet;
@@ -35,12 +35,14 @@ public class Weapon : MonoBehaviour
     }
 
     private void Update()
-    {        
-
-        BulletContainer();
-        SaveWeapon();
-        Shoot();
-        Reloaded();
+    {
+        if (shootTwo)
+        {
+            BulletContainer();
+            SaveWeapon();
+            Shoot();
+            Reloaded();
+        }        
     }
 
     public void BulletContainer()

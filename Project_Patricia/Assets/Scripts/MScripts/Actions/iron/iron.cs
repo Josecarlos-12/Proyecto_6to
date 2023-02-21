@@ -18,6 +18,8 @@ public class iron : MonoBehaviour
     [SerializeField] private Volume volume;
     [SerializeField] private MotionBlur motionBlur;
     [SerializeField] private ChromaticAberration cAberration;
+    public PlayerCrouch crouch;
+    public PlayerFPSt run;
 
     public enum Check
     {
@@ -94,11 +96,9 @@ public class iron : MonoBehaviour
             {
                 motionBlur.active = true;
                 cAberration.active = true;
+                run.canRun= false;
+                crouch.crouchCan = false;
             }
-        }
-        if (cF)
-        {
-           //motionBlur.intensity.SetValue(new MinFloatParameter(1, 11, true));
         }
     }
 

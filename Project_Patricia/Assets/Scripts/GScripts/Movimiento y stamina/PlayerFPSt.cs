@@ -45,6 +45,7 @@ public class PlayerFPSt : MonoBehaviour
 
     public PlayerCrouch crouch;
 
+    public bool canRun;
     // Start is called before the first frame update
     void Start()
     {
@@ -110,7 +111,7 @@ public class PlayerFPSt : MonoBehaviour
 
     public void ReductionEnergy()
     {
-        if (run && shift && energy > 0)
+        if (run && shift && energy > 0 && canRun)
         {
             time += Time.deltaTime;
 
@@ -206,7 +207,7 @@ public class PlayerFPSt : MonoBehaviour
 
     public void Speed()
     {
-        if (Input.GetKeyDown(KeyCode.LeftShift) && bEnergy)
+        if (Input.GetKeyDown(KeyCode.LeftShift) && bEnergy && canRun)
         {
             speed = speedMax;            
         }
