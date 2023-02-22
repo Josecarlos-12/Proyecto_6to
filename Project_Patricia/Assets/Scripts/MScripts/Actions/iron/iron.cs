@@ -10,16 +10,11 @@ public class iron : MonoBehaviour
 {
     [SerializeField] private bool into;
     [SerializeField] private bool cF;
-    [SerializeField] private int count, cFour;
+    [SerializeField] private int count;
     [SerializeField] private GameObject cam, prota, panel, textE, wornClothes, cleanClothes;
     public NotesUI note;
 
-    [Header("Volume")]
-    [SerializeField] private Volume volume;
-    [SerializeField] private MotionBlur motionBlur;
-    [SerializeField] private ChromaticAberration cAberration;
-    public PlayerCrouch crouch;
-    public PlayerFPSt run;
+ 
 
     public enum Check
     {
@@ -29,26 +24,13 @@ public class iron : MonoBehaviour
 
     private void Start()
     {
-
-        switch (check)
-        {
-            case Check.three:
-
-                break;
-            case Check.four:
-                volume.profile.TryGet(out MotionBlur mBlur);
-                motionBlur = mBlur;
-
-                volume.profile.TryGet(out ChromaticAberration cromatic);
-                cAberration = cromatic;
-                break;
-        }       
+                   
     }
 
     private void Update()
     {
         Iron();
-        CheckFour();
+       
     }
 
     public void Iron()
@@ -83,25 +65,7 @@ public class iron : MonoBehaviour
                 cF = true;
                 break;
         }
-    }
-
-    public void CheckFour()
-    {
-        if(note.check == 4)
-        {
-            if(cFour<3)
-            cFour++;
-
-            if(cFour== 1)
-            {
-                motionBlur.active = true;
-                cAberration.active = true;
-                run.canRun= false;
-                crouch.crouchCan = false;
-            }
-        }
-    }
-
+    }  
 
     private void OnTriggerEnter(Collider other)
     {

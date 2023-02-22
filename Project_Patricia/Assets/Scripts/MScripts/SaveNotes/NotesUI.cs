@@ -20,6 +20,7 @@ public class NotesUI : MonoBehaviour
     public int check;
     [SerializeField] private GameObject[] lines; 
     [SerializeField] private GameObject linesContainer; 
+    public bool one, two, three, four, five, six, seven;
 
     private void Start()
     {
@@ -30,11 +31,6 @@ public class NotesUI : MonoBehaviour
     {
         Note();
         
-                
-        if(Input.GetKeyDown(KeyCode.B))
-        {
-            check++;
-        }
         CheckList();
     }
 
@@ -82,32 +78,39 @@ public class NotesUI : MonoBehaviour
         {
             linesContainer.SetActive(true);
 
-            if (check >= 1)
+            if (check == 1)
             {
+                one = true;
                 lines[0].SetActive(true);
             }
-            if (check >= 2)
+            if (check == 2)
             {
+                two = true;
                 lines[1].SetActive(true);
             }
-            if (check >= 3)
+            if (check == 3)
             {
+                three=true;
                 lines[2].SetActive(true);
             }
-            if (check >= 4)
+            if (check == 4)
             {
+                four=true;
                 lines[3].SetActive(true);
             }
-            if (check >= 5)
+            if (check == 5)
             {
+                five=true;
                 lines[4].SetActive(true);
             }
-            if (check >= 6)
+            if (check == 6)
             {
+                six=true;
                 lines[5].SetActive(true);
             }
-            if (check >= 7)
+            if (check == 7)
             {
+                seven=true;
                 lines[6].SetActive(true);
             }
         }
