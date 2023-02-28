@@ -8,7 +8,8 @@ public class NotesUI : MonoBehaviour
     public GameObject note;
     public TextMeshProUGUI text;
     public bool bNote, intoNote;
-    public List<string> sNote= new List<string>();
+    [TextArea(4, 4)]
+    public List<string> sNote = new List<string>();
     public string save;
     public int noteCount;
     public Weapon weapon;
@@ -18,13 +19,33 @@ public class NotesUI : MonoBehaviour
     [SerializeField] private NoteInteraction work;
     [SerializeField] private int counWork;
     public int check;
-    [SerializeField] private GameObject[] lines; 
-    [SerializeField] private GameObject linesContainer; 
+    [SerializeField] private GameObject[] lines;
+    [SerializeField] private GameObject linesContainer;
     public bool one, two, three, four, five, six, seven;
+
+    public enum WorkStar
+    {
+        None, WorkNumber
+    }
+    public WorkStar workS;
 
     private void Start()
     {
         shoot = true;
+
+        switch (workS)
+        {
+            case WorkStar.None:
+            break; 
+            case WorkStar.WorkNumber:
+                work.workInt = 1;
+                lines[0].SetActive(true);
+                lines[1].SetActive(true);
+                lines[2].SetActive(true);
+                lines[3].SetActive(true);
+                break;
+        }
+        
     }
 
     private void Update()

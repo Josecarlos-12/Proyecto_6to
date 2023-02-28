@@ -18,7 +18,7 @@ public class iron : MonoBehaviour
 
     public enum Check
     {
-        three, four
+        three, four, nine
     }
     public Check check;
 
@@ -60,9 +60,12 @@ public class iron : MonoBehaviour
             case Check.three:
                 note.check = 3;
                 break;
-                case Check.four:
-                note.check = 4;
-                cF = true;
+            case Check.four:
+            note.check = 4;
+            cF = true;
+            break;
+            case Check.nine:
+                note.check = 9;
                 break;
         }
     }  

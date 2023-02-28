@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Cupboard : MonoBehaviour
 {
-    [SerializeField] private GameObject deer, prota;
+    [SerializeField] private GameObject deer, prota, can, panel;
     [SerializeField] private bool bDeer, bProta;
     [SerializeField] private float sizeDeer, sizeProta;
     [SerializeField] private Animator anim;
@@ -12,7 +13,7 @@ public class Cupboard : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -24,10 +25,21 @@ public class Cupboard : MonoBehaviour
 
     public void Animation()
     {
-        if(bDeer && bProta) 
+        if (bDeer && bProta)
         {
             anim.SetBool("On", true);
+            StartCoroutine("Close");
         }
+    }
+
+    public IEnumerator Close()
+    {
+        yield return new WaitForSeconds(0.3f);
+        panel.SetActive(true);
+        prota.SetActive(false);
+        can.SetActive(true);
+        yield return new WaitForSeconds(2f);
+        SceneManager.LoadScene("Nivel 1");
     }
 
     public void Distance()

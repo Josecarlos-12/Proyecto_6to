@@ -12,7 +12,7 @@ public class DumpsterInteraction : MonoBehaviour
     [SerializeField] private int count;
     public enum Work
     {
-        tras, shopping
+        tras, shopping, firewood
     }
     public Work word;
 
@@ -39,6 +39,9 @@ public class DumpsterInteraction : MonoBehaviour
                     case Work.shopping:
                         note.check = 2;
                         break;
+                    case Work.firewood:
+                        note.check = 8;
+                    break;
                 }
             }                      
         }
