@@ -28,6 +28,8 @@ public class PlayerHealth : MonoBehaviour
     public Bloom bloom;
     public bool blm;
 
+    public AudioSource healthSound;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -114,6 +116,7 @@ public class PlayerHealth : MonoBehaviour
         }
         if ( sanity > 100 )
         {
+            healthSound.Stop();
             sanity = 100;
         }      
     }
@@ -128,6 +131,7 @@ public class PlayerHealth : MonoBehaviour
         }
         if (sanity > 101)
         {
+            healthSound.Play();
             sanity += 0.1f;
             transparence = transparence + 0.001f;
             Debug.Log("que se empiece a blurrear la pantalla");
@@ -136,6 +140,7 @@ public class PlayerHealth : MonoBehaviour
 
         if(sanity <= 50)
         {
+            healthSound.Play();
             //Efecto de sueño
             if (bloom.intensity.value <= 0.8f)
             {

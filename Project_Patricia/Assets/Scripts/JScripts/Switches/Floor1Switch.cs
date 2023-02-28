@@ -9,6 +9,7 @@ public class Floor1Switch : MonoBehaviour
     public GameObject text;
     public bool into;
     public bool on;
+    public AudioSource switchSound;
 
     // Start is called before the first frame update
     void Start()
@@ -25,6 +26,7 @@ public class Floor1Switch : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E)&&into)
         {
+            switchSound.Play();
             on = !on;
             if (on)
             {
