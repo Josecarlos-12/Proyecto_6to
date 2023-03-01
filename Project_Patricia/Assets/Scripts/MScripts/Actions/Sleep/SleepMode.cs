@@ -37,18 +37,24 @@ public class SleepMode : MonoBehaviour
 
     public void CheckFour()
     {
-        if (note.one && note.two && note.three && note.four)
+        if (note.one && note.two && note.three && note.four && note.eight && note.nine)
         {
             if (cFour < 3)
                 cFour++;
 
             if (cFour == 1)
             {
-                motionBlur.active = true;
-                cAberration.active = true;
-                run.canRun = false;
-                crouch.crouchCan = false;
+                ModeDreams();
             }
         }
     }
+
+    public void ModeDreams()
+    {
+        motionBlur.active = true;
+        cAberration.active = true;
+        run.canRun = false;
+        crouch.crouchCan = false;
+    }
+
 }

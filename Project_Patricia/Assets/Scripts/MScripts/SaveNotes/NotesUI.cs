@@ -21,7 +21,7 @@ public class NotesUI : MonoBehaviour
     public int check;
     [SerializeField] private GameObject[] lines;
     [SerializeField] private GameObject linesContainer;
-    public bool one, two, three, four, five, six, seven;
+    public bool one, two, three, four, five, six, seven, eight, nine;
 
     public enum WorkStar
     {
@@ -133,6 +133,16 @@ public class NotesUI : MonoBehaviour
             {
                 seven=true;
                 lines[6].SetActive(true);
+            }
+            if (check == 8)
+            {
+                eight = true;
+                lines[7].SetActive(true);
+            }
+            if (check == 9)
+            {
+                nine = true;
+                lines[8].SetActive(true);
             }
         }
         else
