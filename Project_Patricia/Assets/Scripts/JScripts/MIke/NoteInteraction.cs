@@ -20,6 +20,7 @@ public class NoteInteraction : MonoBehaviour
     public TextMeshProUGUI text;
     public BoxCollider col;
     public int workInt;
+    public AudioSource pageSound;
 
     [Header("Press")]
     [SerializeField] private GameObject texE;
@@ -42,6 +43,7 @@ public class NoteInteraction : MonoBehaviour
     {
         if (into && Input.GetKeyDown(KeyCode.E))
         {
+            pageSound.Play();
             count++;
             col.enabled = false;
         }

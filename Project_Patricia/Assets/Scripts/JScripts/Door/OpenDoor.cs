@@ -9,6 +9,8 @@ public class OpenDoor : MonoBehaviour
     public bool open;
     public GameObject text;
     public Animator anim;
+    public AudioSource openDoor;
+    public AudioSource closeDoor;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,10 +25,12 @@ public class OpenDoor : MonoBehaviour
             open = !open;
             if (open)
             {
+                openDoor.Play();
                 anim.SetBool("open", true);
             }
             else
             {
+                closeDoor.Play();
                 anim.SetBool("open", false);
             }
         }
