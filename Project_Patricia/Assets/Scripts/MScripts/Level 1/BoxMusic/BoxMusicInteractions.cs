@@ -14,7 +14,11 @@ public class BoxMusicInteractions : MonoBehaviour
     [SerializeField] private AudioSource audi;
     [SerializeField] private int cDream;
     [SerializeField] private SleepMode sleep;
+    [SerializeField] private Inventary inve;
+    [SerializeField] private GameObject pills;
 
+    [SerializeField] private AudioSource alarm;
+    [SerializeField] private int alarmCount;
 
     public enum Work
     {
@@ -29,6 +33,8 @@ public class BoxMusicInteractions : MonoBehaviour
 
     void Update()
     {
+        LessMusic();
+
         if (trashOne.into)
         {
             if (count < 3)
@@ -57,6 +63,26 @@ public class BoxMusicInteractions : MonoBehaviour
         }
     }
 
+    public void LessMusic()
+    {
+        if (inve.pillsTakes == 3)
+        {
+            inve.boxMusic.volume -= 0.003f;
+            if (inve.boxMusic.volume == 0)
+            {
+                inve.boxMusic.Pause();
+
+                if (alarmCount < 3)
+                alarmCount++;
+
+                if(alarmCount == 1)
+                {
+                    alarm.Play();
+                }
+            }
+        }
+    }
+
     public void Dream()
     {
         if(cDream<3)
@@ -72,5 +98,7 @@ public class BoxMusicInteractions : MonoBehaviour
     {
         yield return new WaitForSeconds(3);
         sleep.ModeDreams();
+        pills.SetActive(true);
+
     }
 }

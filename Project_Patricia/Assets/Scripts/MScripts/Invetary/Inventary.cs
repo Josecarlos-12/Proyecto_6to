@@ -9,12 +9,21 @@ public class Inventary : MonoBehaviour
     public bool rifle, bPills, bKEy, bKeyComfi;
     public Sprite sRifle, sKey, sPill;
     public Image image;
-    public int pills;
+    public int pills, pillsTakes;
     public TextMeshProUGUI count;
+    [SerializeField] private GameObject cam, prota, panel;
+    [SerializeField] private bool one;
+    public AudioSource boxMusic;
 
     [Header("Call Other Script")]
     [SerializeField] private PlayerHealth sanity;
     [SerializeField] private Rifle rRifle;
+
+    public enum Dream
+    {
+        none, sleep
+    }
+    public Dream dream;
 
     void Start()
     {
@@ -101,6 +110,23 @@ public class Inventary : MonoBehaviour
         {
             pills--;
             sanity.sanity += 5;
+
+            switch (dream)
+            {
+                case Dream.none: break;
+                    case Dream.sleep:
+                    pillsTakes++;
+
+                    if (pillsTakes == 3)
+                    {
+                        if (one)
+                            return;
+                        prota.SetActive(false);
+                        panel.SetActive(true);
+                        cam.SetActive(true);
+                    }
+                    break;
+            }
         }
     }
 }
