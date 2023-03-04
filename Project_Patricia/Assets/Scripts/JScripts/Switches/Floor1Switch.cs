@@ -10,6 +10,7 @@ public class Floor1Switch : MonoBehaviour
     public bool into;
     public bool on;
     public AudioSource switchSound;
+    public Animator anim;
 
     // Start is called before the first frame update
     void Start()
@@ -30,17 +31,20 @@ public class Floor1Switch : MonoBehaviour
             on = !on;
             if (on)
             {
+                anim.SetBool("SwitchO", true);
                 for (int i = 0; i < Lights.Length; i++)
                 {
                     Lights[i].gameObject.SetActive(false);
                 }
+                
             }
             else
             {
+                anim.SetBool("SwitchO", false);
                 for (int i = 0; i < Lights.Length; i++)
                 {
                     Lights[i].gameObject.SetActive(true);
-                }
+                } 
             }
             
         }

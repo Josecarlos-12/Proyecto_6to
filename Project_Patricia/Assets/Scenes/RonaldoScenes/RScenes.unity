@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 262.38354, g: 325.1084, b: 430.30957, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -133,7 +133,7 @@ GameObject:
   m_Component:
   - component: {fileID: 514534527}
   m_Layer: 0
-  m_Name: Pared
+  m_Name: Door
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -303,6 +303,12 @@ MonoBehaviour:
   - DoorCode: 1
     Obteind: 0
   permitido: 0
+  OpenPopUp: 112
+  CanCamera: {fileID: 0}
+  ObjRotation: []
+  act: 0
+  PalancaInteract: 111
+  Parts: []
 --- !u!54 &926951748
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -492,7 +498,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1178381029}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: -6.9849176e-10, y: -0.00000005960463, z: 0.0043945443, w: 0.99999034}
   m_LocalPosition: {x: 0, y: 0, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -500,7 +506,7 @@ Transform:
   - {fileID: 1971797620}
   m_Father: {fileID: 514534527}
   m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0.504}
 --- !u!114 &1178381031
 MonoBehaviour:
   m_ObjectHideFlags: 0
