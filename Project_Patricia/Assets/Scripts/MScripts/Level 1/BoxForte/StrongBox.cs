@@ -6,10 +6,11 @@ using UnityEngine.UI;
 public class StrongBox : MonoBehaviour
 {
     [SerializeField] private Collider col;
-    [SerializeField] private GameObject text;
+    [SerializeField] private GameObject text, note;
     [SerializeField] private Text pasword;
     [SerializeField] private bool into;
     [SerializeField] private Animator anim;
+    public bool pass;
 
     // Start is called before the first frame update
     void Start()
@@ -20,8 +21,10 @@ public class StrongBox : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(into && Input.GetKeyDown(KeyCode.E))
+        if(into && Input.GetKeyDown(KeyCode.E) && note==null)
         {
+            into = false;
+            pass = true;
             pasword.text = "2604";
             text.SetActive(false);
             col.enabled = false;
@@ -33,8 +36,11 @@ public class StrongBox : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            text.SetActive(true);
-            into = true;
+            if(note==null)
+            {
+                text.SetActive(true);
+                into = true;
+            }            
         }
     }
 

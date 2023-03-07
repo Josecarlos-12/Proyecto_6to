@@ -2,30 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Rifle : MonoBehaviour
+public class AlarmOff : MonoBehaviour
 {
+    [SerializeField] private AudioSource alarm;
     [SerializeField] private bool into;
-    public bool canRifle;
+    [SerializeField] private BoxMusicInteractions box;
     [SerializeField] private GameObject text;
     [SerializeField] private Collider col;
-    [SerializeField] private Weapon weapon;
-    [SerializeField] private Inventary inve;
 
-    private void Update()
-    {
-        InpuRifle();
-    }
 
-    public void InpuRifle()
+
+    void Update()
     {
-        if (into && Input.GetKeyDown(KeyCode.E))
+        if(into && Input.GetKeyDown(KeyCode.E) && box.bAlarm==true)
         {
-            inve.rifle= true;
+            into = false;
+            col.enabled = false;
+            alarm.Pause();
             col.enabled= false;
             text.SetActive(false);
-            canRifle = true;
-            weapon.shootTwo= true;
-            gameObject.SetActive(false);
         }
     }
 
@@ -33,8 +28,11 @@ public class Rifle : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            text.SetActive(true);
-            into = true;
+            if (box.bAlarm == true)
+            {
+                into = true;
+                text.SetActive(true);
+            }
         }
     }
 
@@ -42,8 +40,8 @@ public class Rifle : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
+            into = false;
             text.SetActive(false);
-            into = true;
         }
     }
 }

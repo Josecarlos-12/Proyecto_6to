@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class BoxMusicInteractions : MonoBehaviour
@@ -19,6 +20,12 @@ public class BoxMusicInteractions : MonoBehaviour
 
     [SerializeField] private AudioSource alarm;
     [SerializeField] private int alarmCount;
+    [SerializeField] private GameObject prota, cam, panel;
+
+    [SerializeField] private GameObject lanter;
+    [SerializeField] private Animator animDoor;
+    [SerializeField] private GameObject pass;
+    public bool bAlarm;
 
     public enum Work
     {
@@ -77,10 +84,30 @@ public class BoxMusicInteractions : MonoBehaviour
 
                 if(alarmCount == 1)
                 {
+                    bAlarm = true;
                     alarm.Play();
+                    lanter.SetActive(true);
+                    pass.SetActive(false);
+                    animDoor.SetBool("Close", false);
+
+                    StartCoroutine("NoSleep");
+
+                    sleep.motionBlur.active = false;
+                    sleep.cAberration.active = false;
+                    sleep.run.canRun = true;
+                    sleep.crouch.crouchCan = true;
                 }
             }
         }
+    }
+
+
+    public IEnumerator NoSleep()
+    {
+        yield return new WaitForSeconds(2);
+        prota.SetActive(true);
+        cam.SetActive(false);
+        panel.SetActive(false);
     }
 
     public void Dream()
@@ -99,6 +126,5 @@ public class BoxMusicInteractions : MonoBehaviour
         yield return new WaitForSeconds(3);
         sleep.ModeDreams();
         pills.SetActive(true);
-
     }
 }

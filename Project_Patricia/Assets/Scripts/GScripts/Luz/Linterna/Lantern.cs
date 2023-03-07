@@ -13,6 +13,9 @@ public class Lantern : MonoBehaviour
     public float comVelocity;
     public float recVelocity;
 
+    public float time, maxTime; 
+    public float timeMore, maxTimeMore;
+
 
     [Header("Interfaz")]
     public Image batteryBar;
@@ -43,25 +46,45 @@ public class Lantern : MonoBehaviour
 
         if (lightLantern.enabled == true)
         {
-            actualEnergy -= Time.deltaTime * comVelocity;
-            lightLantern.intensity = Mathf.Lerp(0.5f, 4000f, actualEnergy / maxEnergy);
+            StopCoroutine("LessEnergy");
+
+            time = time + Time.deltaTime;
+
+            if (time > maxTime)
+            {
+                time = 0;
+                actualEnergy -= 25;
+            }
 
             if (actualEnergy <= 0)
             {
                 actualEnergy = 0;
-                lightLantern.enabled = false;
+                lightLantern.enabled = false;                
             }
         }
         else
         {
-            actualEnergy += Time.deltaTime * recVelocity;
+            StartCoroutine("LessEnergy");
+        }
+    }
 
-            if(actualEnergy > maxEnergy)
+    public IEnumerator LessEnergy()
+    {
+        yield return new WaitForSeconds(2);
+
+        if(actualEnergy<maxEnergy)
+        {
+            timeMore += Time.deltaTime;
+            if (timeMore > maxTimeMore)
+            {
+                timeMore = 0;
+                actualEnergy += 25;
+            }
+
+            if (actualEnergy > maxEnergy)
             {
                 actualEnergy = maxEnergy;
             }
         }
-
-        batteryBar.fillAmount = actualEnergy / maxEnergy;
     }
 }

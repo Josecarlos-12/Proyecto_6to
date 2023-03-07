@@ -43,7 +43,7 @@ public class NoteInteraction : MonoBehaviour
     {
         if (into && Input.GetKeyDown(KeyCode.E))
         {
-            pageSound.Play();
+            //pageSound.Play();
             count++;
             col.enabled = false;
         }

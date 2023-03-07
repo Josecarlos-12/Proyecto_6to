@@ -2,30 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Rifle : MonoBehaviour
+public class LanterGrab : MonoBehaviour
 {
+    [SerializeField] private GameObject text, lanter;
     [SerializeField] private bool into;
-    public bool canRifle;
-    [SerializeField] private GameObject text;
     [SerializeField] private Collider col;
-    [SerializeField] private Weapon weapon;
-    [SerializeField] private Inventary inve;
 
     private void Update()
     {
-        InpuRifle();
+        Press();
     }
 
-    public void InpuRifle()
+    public void Press()
     {
         if (into && Input.GetKeyDown(KeyCode.E))
         {
-            inve.rifle= true;
-            col.enabled= false;
+            lanter.SetActive(true);
+            col.enabled = false;
             text.SetActive(false);
-            canRifle = true;
-            weapon.shootTwo= true;
-            gameObject.SetActive(false);
+            Destroy(gameObject);
         }
     }
 
@@ -34,7 +29,7 @@ public class Rifle : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             text.SetActive(true);
-            into = true;
+            into= true;
         }
     }
 
@@ -43,7 +38,7 @@ public class Rifle : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             text.SetActive(false);
-            into = true;
+            into = false;
         }
     }
 }

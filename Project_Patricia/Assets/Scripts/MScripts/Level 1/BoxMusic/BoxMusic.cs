@@ -9,12 +9,15 @@ public class BoxMusic : MonoBehaviour
     [SerializeField] private GameObject text, texMes, objSing;
     [SerializeField] private TextMeshProUGUI textMeshPro;
     [SerializeField] private bool into;
+    [SerializeField] private StrongBox pass;
+    [SerializeField] private PickableObject pick;
 
 
     void Update()
     {
-        if (into && Input.GetKeyDown(KeyCode.E))
+        if (into && Input.GetKeyDown(KeyCode.E) && pass.pass==true)
         {
+            pick.isPickable= true;
             text.SetActive(false);
             objSing.SetActive(true);
             into = false;
@@ -35,8 +38,11 @@ public class BoxMusic : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            text.SetActive(true);
-            into = true;
+            if (pass.pass == true)
+            {
+                text.SetActive(true);
+                into = true;
+            }
         }
     }
 
