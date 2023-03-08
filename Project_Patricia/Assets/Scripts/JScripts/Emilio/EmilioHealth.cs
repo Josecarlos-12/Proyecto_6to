@@ -22,12 +22,11 @@ public class EmilioHealth : MonoBehaviour
         }
     }
 
-    /*private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
-        if ( other.CompareTag("Player") )
+        if ( other.CompareTag("BulletPlayer") )
         {
-            other.GetComponent<PlayerHealth>().RecieveDamage(doDamage);
-
+            Destroy(gameObject);
         }
-    }*/
+    }
 }

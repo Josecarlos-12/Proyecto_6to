@@ -12,7 +12,7 @@ public class SleepMode : MonoBehaviour
     public NotesUI note;
 
     [Header("Volume")]
-    [SerializeField] private Volume volume;
+    public Volume volume;
     public MotionBlur motionBlur;
     public ChromaticAberration cAberration;
     public PlayerCrouch crouch;
@@ -55,6 +55,15 @@ public class SleepMode : MonoBehaviour
         cAberration.active = true;
         run.canRun = false;
         crouch.crouchCan = false;
+        print("ModoSueño"); 
+    }
+
+    public void OffDreams()
+    {
+        motionBlur.active = false;
+        cAberration.active = false;
+        run.canRun = true;
+        crouch.crouchCan = true;
     }
 
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class LanterGrab : MonoBehaviour
 {
-    [SerializeField] private GameObject text, lanter;
+    [SerializeField] private GameObject text, lanter, childMove;
     [SerializeField] private bool into;
     [SerializeField] private Collider col;
 
@@ -17,6 +17,7 @@ public class LanterGrab : MonoBehaviour
     {
         if (into && Input.GetKeyDown(KeyCode.E))
         {
+            childMove.SetActive(true);
             lanter.SetActive(true);
             col.enabled = false;
             text.SetActive(false);

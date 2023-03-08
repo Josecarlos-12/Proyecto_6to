@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.HighDefinition;
@@ -30,7 +31,12 @@ public class PlayerHealth : MonoBehaviour
 
     public AudioSource healthSound;
 
-    // Start is called before the first frame update
+    [Header("SphereCast")]    
+    public float size;
+    public int count = 0;
+    [SerializeField] private SleepMode sleep;
+    RaycastHit hit;
+
     void Start()
     {
         //cam = GetComponent<PlayerCamera>();
@@ -44,7 +50,7 @@ public class PlayerHealth : MonoBehaviour
         dmg.color= new Color(1,1,1,valuealpha);
     }
 
-    // Update is called once per frame
+
     void Update()
     {
         /*if ( sanity <= 0 )
@@ -71,22 +77,57 @@ public class PlayerHealth : MonoBehaviour
 
         PanelDmg();
         Damage();
+        SphereCast();
+    }
+
+    public void SphereCast()
+    {
+        Collider[] coll = Physics.OverlapSphere(transform.position, size);
+
+        foreach(Collider collider in coll)
+        {
+            if (collider.CompareTag("Emilio"))
+            {
+
+                if (count < 3)
+                    count++;
+
+                if (count == 1)
+                {
+                    Scream();
+                    sleep.ModeDreams();
+                    StartCoroutine("OffDreams");
+                }
+            }
+        }
+    }
+    public IEnumerator OffDreams()
+    {
+        yield return new WaitForSeconds(1.5f);
+        sleep.OffDreams();
+        yield return new WaitForSeconds(2);
+        count = 0;
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if ( other.gameObject.CompareTag("Emilio") )
         {
-            Debug.Log("AAAAAAA me asuste");
-            jumpScare.SetActive(true);
-            bjumpScare = true;
-            RecieveDamage(25);
+            //Scream();
         }
         if(other.gameObject.name == "PunchBoss")
         {
             sanity -= 10;
             print("Pego boss");
         }
+    }
+
+    public void Scream()
+    {
+        Debug.Log("AAAAAAA me asuste");
+        jumpScare.SetActive(true);
+        bjumpScare = true;
+        RecieveDamage(25);
     }
 
     public void Damage()
@@ -140,7 +181,7 @@ public class PlayerHealth : MonoBehaviour
 
         if(sanity <= 50)
         {
-            healthSound.Play();
+            //healthSound.Play();
             //Efecto de sueño
             if (bloom.intensity.value <= 0.8f)
             {
@@ -150,5 +191,11 @@ public class PlayerHealth : MonoBehaviour
 
             Debug.Log("Tengo mucho sueño");
         }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, size);
     }
 }
