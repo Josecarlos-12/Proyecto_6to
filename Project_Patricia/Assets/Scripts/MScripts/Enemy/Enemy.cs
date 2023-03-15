@@ -13,6 +13,9 @@ public class Enemy : MonoBehaviour
     private GameObject player;
     [SerializeField] private bool detected, colition;
 
+    [Header("Life")]
+    [SerializeField] private float life = 100;
+
     [Header("Call Other Script")]
     [SerializeField] private DetectedPlayer small;
     [SerializeField] private DetectedPlayer mediun;
@@ -111,6 +114,10 @@ public class Enemy : MonoBehaviour
         {            
             colition = true;
             StartCoroutine(Col());
+        }
+        if (other.gameObject.CompareTag("BulletPlayer"))
+        {
+            life -= 10;
         }
     }
 

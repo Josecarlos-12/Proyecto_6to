@@ -29,7 +29,7 @@ public class BoxMusicInteractions : MonoBehaviour
 
     public enum Work
     {
-        tras, shopping, firewood, boxMusic
+        tras, shopping, firewood, boxMusic, chart
     }
     public Work word;
 
@@ -64,6 +64,8 @@ public class BoxMusicInteractions : MonoBehaviour
                         case Work.boxMusic:
                         audi.Play();
                         Dream();
+                        break;
+                    case Work.chart:
                         break;
                 }
             }

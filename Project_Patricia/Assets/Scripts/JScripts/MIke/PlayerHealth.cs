@@ -29,7 +29,7 @@ public class PlayerHealth : MonoBehaviour
     public Bloom bloom;
     public bool blm;
 
-    public AudioSource healthSound;
+    public AudioSource healthSound, childScrean;
 
     [Header("SphereCast")]    
     public float size;
@@ -77,49 +77,36 @@ public class PlayerHealth : MonoBehaviour
 
         PanelDmg();
         Damage();
-        SphereCast();
     }
 
-    public void SphereCast()
+    private void OnTriggerStay(Collider other)
     {
-        Collider[] coll = Physics.OverlapSphere(transform.position, size);
-
-        foreach(Collider collider in coll)
+        if ( other.gameObject.CompareTag("Emilio") )
         {
-            if (collider.CompareTag("Emilio"))
+            if (count < 3)
+                count++;
+
+            if (count == 1)
             {
-
-                if (count < 3)
-                    count++;
-
-                if (count == 1)
-                {
-                    Scream();
-                    sleep.ModeDreams();
-                    StartCoroutine("OffDreams");
-                }
+                Scream();
+                sleep.ModeDreams();
+                StartCoroutine("OffDreams");
+                childScrean.Play();
             }
         }
+        if(other.gameObject.name == "PunchBoss")
+        {
+            //sanity -= 10;
+            print("Pego boss");
+        }
     }
+
     public IEnumerator OffDreams()
     {
         yield return new WaitForSeconds(1.5f);
         sleep.OffDreams();
         yield return new WaitForSeconds(2);
         count = 0;
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if ( other.gameObject.CompareTag("Emilio") )
-        {
-            //Scream();
-        }
-        if(other.gameObject.name == "PunchBoss")
-        {
-            sanity -= 10;
-            print("Pego boss");
-        }
     }
 
     public void Scream()
@@ -139,7 +126,7 @@ public class PlayerHealth : MonoBehaviour
             inv.SetActive(false);
             Debug.Log("Mike murio");
             death = true;
-            Destroy(gameObject);
+            Destroy(player);
         }
     }
 
@@ -153,7 +140,7 @@ public class PlayerHealth : MonoBehaviour
             inv.SetActive(false);            
             Debug.Log("Mike murio");
             death= true;
-            Destroy(gameObject);
+            Destroy(player);
         }
         if ( sanity > 100 )
         {
@@ -168,7 +155,7 @@ public class PlayerHealth : MonoBehaviour
         {
             //Muerte por sobredosis
             Debug.Log("Me mori por drogadicto");
-            Destroy(gameObject);
+            Destroy(player);
         }
         if (sanity > 101)
         {

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 2159.3174, g: 2263.6582, b: 3287.2812, a: 1}
+  m_IndirectSpecularColor: {r: 2159.579, g: 2263.3633, b: 3286.4258, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1992,7 +1992,14 @@ MonoBehaviour:
   - {fileID: 1603069388}
   - {fileID: 2048830353}
   - {fileID: 2072567180}
+  emilioVarTransform: []
+  emilioVar: {fileID: 0}
   prefab: {fileID: 3051057357327460262, guid: 8cf9516d42559b04086d216b5617304b, type: 3}
+  emilion: 0
+  emiOne: {fileID: 0}
+  point: {fileID: 0}
+  rifle: {fileID: 0}
+  one: 0
 --- !u!1 &404481238
 GameObject:
   m_ObjectHideFlags: 0
@@ -4544,6 +4551,7 @@ GameObject:
   - component: {fileID: 662060367}
   - component: {fileID: 662060372}
   - component: {fileID: 662060374}
+  - component: {fileID: 662060376}
   m_Layer: 0
   m_Name: Boos
   m_TagString: Untagged
@@ -4696,6 +4704,8 @@ MonoBehaviour:
   b: 0
   c: 0
   d: 0
+  countPosProta: 0
+  posProta: {x: 0, y: 0, z: 0}
   size: 6
   punch: 1.95
   boss: {fileID: 662060369}
@@ -4742,6 +4752,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!136 &662060376
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 662060365}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 1.17
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &677351465
 GameObject:
   m_ObjectHideFlags: 0
@@ -8651,6 +8675,7 @@ MonoBehaviour:
   canShoot: 1
   save: 0
   shoot: 0
+  shootTwo: 0
   initialShoot: 0
   timeShoot: 2
   saveTime: 0
@@ -8696,6 +8721,7 @@ MonoBehaviour:
   inHand: 0
   bKey: 0
   shoot: 0
+  bCapsule: 0
   texE: {fileID: 431178376}
   gameLife: {fileID: 0}
   gameHandle: {fileID: 0}
@@ -8729,8 +8755,16 @@ MonoBehaviour:
   sPill: {fileID: 21300000, guid: 277b139b22a3dfa47a24873f888d015e, type: 3}
   image: {fileID: 1693022644}
   pills: 0
+  pillsTakes: 0
   count: {fileID: 1978260793}
+  cam: {fileID: 0}
+  prota: {fileID: 0}
+  panel: {fileID: 0}
+  one: 0
+  boxMusic: {fileID: 0}
   sanity: {fileID: 1492935222}
+  rRifle: {fileID: 0}
+  dream: 0
 --- !u!20 &1386315672
 Camera:
   m_ObjectHideFlags: 0
@@ -8968,6 +9002,7 @@ MonoBehaviour:
   mouse: 0
   pause: {fileID: 708258594}
   notes: {fileID: 1492935223}
+  inve: {fileID: 0}
 --- !u!1 &1387680739
 GameObject:
   m_ObjectHideFlags: 0
@@ -9405,6 +9440,7 @@ MonoBehaviour:
   head: {fileID: 951389061}
   press: 0
   crouch: 0
+  crouchCan: 0
 --- !u!95 &1492935221
 Animator:
   serializedVersion: 5
@@ -9452,6 +9488,11 @@ MonoBehaviour:
   volume: {fileID: 432432460}
   bloom: {fileID: 0}
   blm: 0
+  healthSound: {fileID: 0}
+  childScrean: {fileID: 0}
+  size: 0
+  count: 0
+  sleep: {fileID: 0}
 --- !u!114 &1492935223
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9474,6 +9515,21 @@ MonoBehaviour:
   weapon: {fileID: 0}
   shoot: 0
   pause: {fileID: 708258594}
+  work: {fileID: 0}
+  counWork: 0
+  check: 0
+  lines: []
+  linesContainer: {fileID: 0}
+  one: 0
+  two: 0
+  three: 0
+  four: 0
+  five: 0
+  six: 0
+  seven: 0
+  eight: 0
+  nine: 0
+  workS: 0
 --- !u!114 &1492935224
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9528,6 +9584,7 @@ MonoBehaviour:
   - {fileID: 1667483674}
   - {fileID: 1464415760}
   crouch: {fileID: 1492935220}
+  canRun: 0
 --- !u!143 &1492935226
 CharacterController:
   m_ObjectHideFlags: 0

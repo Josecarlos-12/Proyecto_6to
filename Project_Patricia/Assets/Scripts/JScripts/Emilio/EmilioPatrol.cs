@@ -15,6 +15,7 @@ public class EmilioPatrol : MonoBehaviour
     [SerializeField] private bool detected, colition;
     public int count = 0;
     public AudioSource childScream;
+    public AudioClip childClip;
     [SerializeField] private float size = 2.5f;
 
     [Header("Call Other Script")]
@@ -39,7 +40,6 @@ public class EmilioPatrol : MonoBehaviour
             }
             Detected();
         }
-
         Scream();
     }
 
@@ -53,7 +53,7 @@ public class EmilioPatrol : MonoBehaviour
 
             if (count == 1)
             {
-                childScream.Play();
+                //childScream.Play();
                 StartCoroutine("Sillent");
             }
         }

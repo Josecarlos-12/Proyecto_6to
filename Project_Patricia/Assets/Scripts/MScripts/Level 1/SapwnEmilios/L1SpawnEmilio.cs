@@ -12,6 +12,9 @@ public class L1SpawnEmilio : MonoBehaviour
     public float time, maxTime;
     public GameObject[] tags;
     public GameObject offSpawn, offSpawn2;
+    [Header("Chart")]
+    [SerializeField] private GameObject chartWall;
+    [SerializeField] private GameObject chartDowm;
 
     [Header("Call Other Script")]
     [SerializeField] private OffSpawn off1;
@@ -70,6 +73,8 @@ public class L1SpawnEmilio : MonoBehaviour
         if (off1.into || off2.into)
         {
             count = 2;
+            chartWall.SetActive(false);
+            chartDowm.SetActive(true);
             if (off1 != null)
             {
                 Destroy(off1.gameObject);

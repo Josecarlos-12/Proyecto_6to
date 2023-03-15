@@ -7,9 +7,10 @@ public class ChildCry : MonoBehaviour
 {
     private NavMeshAgent agent;
     private GameObject player;
-    [SerializeField] private AudioSource cry, childScream;
+    public AudioSource cry, childScream;
+    public AudioClip screamClip;
     [SerializeField] private float size = 2.5f;
-    private int count = 0;
+    public int count = 0;
     [SerializeField] private PlayerHealth health;
     [SerializeField] private bool follow;
     public int scream;
@@ -50,7 +51,7 @@ public class ChildCry : MonoBehaviour
             if (count == 1)
             {
                 cry.Stop();
-                childScream.Play();
+                //childScream.Play();
                 StartCoroutine("Sillent");
             }
         }

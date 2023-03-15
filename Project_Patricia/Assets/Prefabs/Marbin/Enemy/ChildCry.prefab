@@ -144,7 +144,7 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4070139041003031872}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 0.5
   m_Height: 2
@@ -164,7 +164,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cry: {fileID: 4070139041003031878}
   childScream: {fileID: 4070139041003031883}
+  screamClip: {fileID: 8300000, guid: c581acce3122a67459ec414d99f1a1f3, type: 3}
   size: 12
+  count: 0
   health: {fileID: 0}
   follow: 0
   scream: 0
@@ -395,6 +397,7 @@ GameObject:
   - component: {fileID: 4070139041597673926}
   - component: {fileID: 4070139041597673927}
   - component: {fileID: 4070139041597673924}
+  - component: {fileID: 7673757938080715424}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -480,3 +483,17 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!136 &7673757938080715424
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4070139041597673922}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.84
+  m_Height: 4.3
+  m_Direction: 1
+  m_Center: {x: -0.03, y: -0.88, z: -1.17}

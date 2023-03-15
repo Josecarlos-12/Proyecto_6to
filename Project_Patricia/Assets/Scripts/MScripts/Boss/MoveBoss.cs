@@ -10,6 +10,8 @@ public class MoveBoss : MonoBehaviour
     [SerializeField] private Animator anim;
     [SerializeField] private bool bDamage, detected, checkSphere;
     [SerializeField] private bool a, b, c, d;
+    [SerializeField] private int countPosProta;
+    [SerializeField] private Vector3 posProta;
 
     [Header("Distancias")]
     [SerializeField] private float size;
@@ -64,8 +66,7 @@ public class MoveBoss : MonoBehaviour
         if (iA > 2)
         {
             checkSphere = true;
-            agent.destination = player.transform.position;
-
+            
             if (randon < 3)
                 randon++;
 
@@ -74,6 +75,29 @@ public class MoveBoss : MonoBehaviour
                 intGroup = Random.Range(0, 3);
             }
 
+            // Guardar Posicion
+
+            if(countPosProta<3)
+            countPosProta++;
+
+            if (countPosProta == 1)
+            {
+                transform.LookAt(posProta);
+                agent.speed = 30;
+                posProta = player.transform.position;
+                print(player.transform.position.x);
+            }
+
+            
+            agent.destination = posProta;
+        }
+
+        if (Vector3.Distance(transform.position, posProta) < 3)
+        {
+            agent.speed = 9;
+            countPosProta= 0;
+            iA = 0;
+            destPoint = 0;
         }
     }
 
@@ -141,7 +165,7 @@ public class MoveBoss : MonoBehaviour
 
     public IEnumerator CA()
     {
-        yield return new WaitForSeconds(6);
+        yield return new WaitForSeconds(2);
         destPoint = (destPoint + 1) % groupA.Length;
         agent.destination = groupA[destPoint].position;
         iA++;
@@ -165,7 +189,7 @@ public class MoveBoss : MonoBehaviour
 
     public IEnumerator CB()
     {
-        yield return new WaitForSeconds(6);        
+        yield return new WaitForSeconds(2);        
         destPoint = (destPoint + 1) % groupB.Length;
         agent.destination = groupB[destPoint].position;
         iA++;
@@ -188,7 +212,7 @@ public class MoveBoss : MonoBehaviour
     }
     public IEnumerator CC()
     {
-        yield return new WaitForSeconds(6);        
+        yield return new WaitForSeconds(2);        
         destPoint = (destPoint + 1) % groupC.Length;
         agent.destination = groupC[destPoint].position;
         iA++;
@@ -213,7 +237,7 @@ public class MoveBoss : MonoBehaviour
 
     public IEnumerator CD()
     {
-        yield return new WaitForSeconds(6);        
+        yield return new WaitForSeconds(2);        
         destPoint = (destPoint + 1) % groupD.Length;
         agent.destination = groupD[destPoint].position;
         iA++;
@@ -226,8 +250,7 @@ public class MoveBoss : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             print("Playsada");
-            iA = 0;
-            destPoint = 0;
+           
         }
     }
 

@@ -12,7 +12,7 @@ public class PlayerInteraction : MonoBehaviour
     [SerializeField] private RaycastHit hit;
     [SerializeField] private float distance;
     [SerializeField] private LayerMask layer;
-    public bool bDoor, bHandle, bLife, bPills, bObj, inHand, bKey, shoot;
+    public bool bDoor, bHandle, bLife, bPills, bObj, inHand, bKey, shoot, bCapsule;
 
     [Header("Press")]
     [SerializeField] private GameObject texE;
@@ -121,7 +121,8 @@ public class PlayerInteraction : MonoBehaviour
             bPills = false;
             bHandle=false;      
             bObj= false;
-            bKey= false;          
+            bKey= false;   
+            
         }
 
         if (!bPills && !bHandle && !bObj && !bKey)
@@ -144,11 +145,21 @@ public class PlayerInteraction : MonoBehaviour
                 shoot = true;
                 aim.color = Color.white;
             }
+
+            if (hit2.transform.CompareTag("Capsu"))
+            {
+                bCapsule = true;
+            }
+            else if (!hit2.transform.CompareTag("Capsu"))
+            {
+                bCapsule = false;
+            }
         }
         else
         {
             shoot = true;
             aim.color = Color.white;
+            bCapsule = false;
         }
     }
 

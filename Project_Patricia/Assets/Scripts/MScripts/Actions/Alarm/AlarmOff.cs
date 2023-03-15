@@ -19,6 +19,7 @@ public class AlarmOff : MonoBehaviour
             into = false;
             col.enabled = false;
             alarm.Pause();
+            alarm.enabled = false;
             col.enabled= false;
             text.SetActive(false);
         }
