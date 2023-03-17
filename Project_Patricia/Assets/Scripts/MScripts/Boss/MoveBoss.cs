@@ -12,6 +12,9 @@ public class MoveBoss : MonoBehaviour
     [SerializeField] private bool a, b, c, d;
     [SerializeField] private int countPosProta;
     [SerializeField] private Vector3 posProta;
+    [SerializeField] private bool bullet;
+    [SerializeField] private float life = 101;
+    [SerializeField] private bool buOne;
 
     [Header("Distancias")]
     [SerializeField] private float size;
@@ -31,82 +34,182 @@ public class MoveBoss : MonoBehaviour
     [SerializeField] private int intGroup, count, count1, count2, count3, iA, sphere;
     [SerializeField] private int randon;
 
+    [Header("Teleport")]
+    [SerializeField] private GameObject[] PosWay;
+    [SerializeField] private int tCount;
+    [SerializeField] private int rePos;
+    [SerializeField] private GameObject tPosWay;
+    [SerializeField] private bool tp;
+    
+
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
     }
 
-    // Update is called once per frame
+
+    private void OnEnable()
+    {
+        
+        
+
+    }
+
+    private void OnDisable()
+    {
+        tCount = 0;
+        rePos= 0;
+        myAlpha = 1;
+        tp = true;
+    }
+
+
     void Update()
     {
-        Transparent();
-        Move();
-
-        if (agent.remainingDistance < 1 && !detected)
+        if (!buOne && life >= 71)
         {
-            if (intGroup == 0)
+            if (tp && life >= 71)
             {
-                GroupA();
-            }
-            if (intGroup == 1)
-            {
-                GroupB();
-            }
-            if (intGroup == 2)
-            {
-                GroupC();
-            }
-            if (intGroup == 3)
-            {
-                GroupD();
+                tp = false;
+                tPosWay = PosWay[Random.Range(0, PosWay.Length)];
+                transform.position = tPosWay.transform.position;
+                transform.rotation = PosWay[Random.Range(0, PosWay.Length)].transform.rotation;
             }
 
-            randon = 0;
-        }
-        if (iA > 2)
-        {
-            checkSphere = true;
-            
-            if (randon < 3)
-                randon++;
+            if (tCount < 3)
+                tCount++;
 
-            if (randon == 1)
+            if (tCount == 1)
             {
-                intGroup = Random.Range(0, 3);
-            }
-
-            // Guardar Posicion
-
-            if(countPosProta<3)
-            countPosProta++;
-
-            if (countPosProta == 1)
-            {
+                posProta = player.transform.position;
                 transform.LookAt(posProta);
                 agent.speed = 30;
-                posProta = player.transform.position;
-                print(player.transform.position.x);
+                agent.destination = posProta;
             }
 
-            
-            agent.destination = posProta;
+            if (Vector3.Distance(transform.position, posProta) < 2)
+            {
+                rePos = 1;
+            }
+
+            if (rePos == 1)
+            {
+                agent.destination = tPosWay.transform.position;
+            }
+
+            if (Vector3.Distance(transform.position, tPosWay.transform.position) < 2)
+            {
+                if(myAlpha>= 0)
+                {
+                    myAlpha -= 0.01f;
+                }
+                
+            }
+
+            if (myAlpha <= 0 && life >= 71)
+            {
+                gameObject.SetActive(false);
+            }
         }
 
-        if (Vector3.Distance(transform.position, posProta) < 3)
+        
+
+        Life();
+        Transparent();
+        AttackOneTwo();
+    }
+
+    public void AttackOneTwo()
+    {
+        if (!bullet)
         {
-            agent.speed = 9;
-            countPosProta= 0;
-            iA = 0;
-            destPoint = 0;
+            if(life<=60)
+            Move();
+
+            if (agent.remainingDistance < 1 && !detected && life <= 71)
+            {
+                if (intGroup == 0)
+                {
+                    GroupA();
+                }
+                if (intGroup == 1)
+                {
+                    GroupB();
+                }
+                if (intGroup == 2)
+                {
+                    GroupC();
+                }
+                if (intGroup == 3)
+                {
+                    GroupD();
+                }
+
+                randon = 0;
+                myAlpha = 1;
+            }
+            if (iA > 2)
+            {
+                checkSphere = true;
+
+                if (randon < 3)
+                    randon++;
+
+                if (randon == 1)
+                {
+                    intGroup = Random.Range(0, 3);
+                }
+
+                // Guardar Posicion
+
+                if (life >= 31)
+                {
+                    print("Life es mayo a 31");
+
+                    if (countPosProta < 3)
+                        countPosProta++;
+
+                    if (countPosProta == 1)
+                    {
+                        transform.LookAt(posProta);
+                        agent.speed = 30;
+                        posProta = player.transform.position;
+                    }
+
+
+                    agent.destination = posProta;
+                }
+
+                if (life <= 31)
+                {
+                    print("Life es menor a 31");
+                    myAlpha = 0;
+                    transform.LookAt(player.transform.position);
+                    agent.speed = 30;
+                    agent.destination = player.transform.position;
+                }
+            }
+
+            if (Vector3.Distance(transform.position, posProta) < 3 && life >= 31)
+            {
+                agent.speed = 9;
+                countPosProta = 0;
+                iA = 0;
+                destPoint = 0;
+            }
+        }
+    }
+
+    public void Life()
+    {
+        if(life<=0)
+        {
+            Destroy(gameObject);
         }
     }
 
     public void Transparent()
     {
-        if (Input.GetKeyDown(KeyCode.K))
-        {
-            myAlpha -= 0.05f;
-        }
         myColor.a = myAlpha;
         boss.material.color = myColor;
     }
@@ -249,9 +352,57 @@ public class MoveBoss : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            print("Playsada");
-           
+            if(life <= 31)
+            {
+                agent.speed = 9;
+                countPosProta = 0;
+                iA = 0;
+                destPoint = 0;
+            }
         }
+    }
+
+    public void TouchTriBoss()
+    {
+
+        if (life <= 71)
+        {
+            life -= 10;
+
+            iA = 0;
+            agent.speed = 0;
+            countPosProta = 0;
+            destPoint = 0;
+            bullet = true;
+            print("AnimacionTrue");
+            StartCoroutine(BulletFalse());
+        }
+
+        if (life >= 71)
+        {
+            life -= 10;
+            buOne= true;
+            agent.speed = 0;
+            print("AnimacionTrue");
+            StartCoroutine(BuFalse());
+        }
+        
+    }
+
+    public IEnumerator BuFalse()
+    {
+        yield return new WaitForSeconds(3);
+        buOne = false;
+        agent.speed = 30;
+        print("AnimacionFalse");
+    }
+
+    public IEnumerator BulletFalse()
+    {
+        yield return new WaitForSeconds(3);
+        bullet = false;
+        agent.speed = 9;
+        print("AnimacionFalse");
     }
 
     private void OnCollisionStay(Collision collision)
