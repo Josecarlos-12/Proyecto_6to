@@ -10,18 +10,21 @@ public class ActiveBoss : MonoBehaviour
 
     private void Update()
     {
-        if(active && !boss.activeInHierarchy)
+        if(boss!= null)
         {
-            time += Time.deltaTime;
-
-            if(time >= maxTime)
+            if (active && !boss.activeInHierarchy)
             {
-                boss.SetActive(true);
+                time += Time.deltaTime;
+
+                if (time >= maxTime)
+                {
+                    boss.SetActive(true);
+                }
             }
-        }
-        if(boss.activeInHierarchy)
-        {
-            time = 0;
+            if (boss.activeInHierarchy)
+            {
+                time = 0;
+            }
         }
     }
 }

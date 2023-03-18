@@ -29,13 +29,17 @@ public class PlayerHealth : MonoBehaviour
     public Bloom bloom;
     public bool blm;
 
-    public AudioSource healthSound, childScrean;
+    public AudioSource healthSound, childScrean, bossAudio;
 
     [Header("SphereCast")]    
     public float size;
     public int count = 0;
+    public int bossTouch = 0;
     [SerializeField] private SleepMode sleep;
     RaycastHit hit;
+
+    [Header("Call Other Script")]
+    [SerializeField] private MoveBoss moveBoss;
 
     void Start()
     {
@@ -99,6 +103,34 @@ public class PlayerHealth : MonoBehaviour
             //sanity -= 10;
             print("Pego boss");
         }
+        if (other.gameObject.name == "BoosCon")
+        {
+            if (moveBoss.lifeLess)
+            {
+                if (bossTouch < 3)
+                    bossTouch++;
+
+                if (bossTouch == 1)
+                {
+                    bossAudio.Play();
+                    sanity -= 10;
+                    sleep.ModeDreams();
+                    StartCoroutine("OffDreams");
+                }
+            }
+            else
+            {
+                if (bossTouch < 3)
+                    bossTouch++;
+
+                if (bossTouch == 1)
+                {
+                    sanity -= 10;
+                    sleep.ModeDreams();
+                    StartCoroutine("OffDreams");
+                }
+            }
+        }
     }
 
     public IEnumerator OffDreams()
@@ -107,6 +139,7 @@ public class PlayerHealth : MonoBehaviour
         sleep.OffDreams();
         yield return new WaitForSeconds(2);
         count = 0;
+        bossTouch= 0;
     }
 
     public void Scream()
@@ -114,7 +147,7 @@ public class PlayerHealth : MonoBehaviour
         Debug.Log("AAAAAAA me asuste");
         jumpScare.SetActive(true);
         bjumpScare = true;
-        RecieveDamage(25);
+        RecieveDamage(10);
     }
 
     public void Damage()

@@ -15,6 +15,9 @@ public class MoveBoss : MonoBehaviour
     [SerializeField] private bool bullet;
     [SerializeField] private float life = 101;
     [SerializeField] private bool buOne;
+    [SerializeField] private GameObject containerBoss;
+    public bool lifeLess, death;
+    [SerializeField] private GameObject boxInta;
 
     [Header("Distancias")]
     [SerializeField] private float size;
@@ -39,7 +42,13 @@ public class MoveBoss : MonoBehaviour
     [SerializeField] private int tCount;
     [SerializeField] private int rePos;
     [SerializeField] private GameObject tPosWay;
+    [SerializeField] private Vector3 returPos;
     [SerializeField] private bool tp;
+
+    [Header("Final")]
+    [SerializeField] private GameObject cam;
+    [SerializeField] private GameObject prota, pos;
+    [SerializeField] private int countFinal;
     
 
     void Start()
@@ -66,57 +75,69 @@ public class MoveBoss : MonoBehaviour
 
     void Update()
     {
-        if (!buOne && life >= 71)
+        Life();
+
+        if (!death)
         {
-            if (tp && life >= 71)
+            if (life <= 31)
             {
-                tp = false;
-                tPosWay = PosWay[Random.Range(0, PosWay.Length)];
-                transform.position = tPosWay.transform.position;
-                transform.rotation = PosWay[Random.Range(0, PosWay.Length)].transform.rotation;
+                lifeLess = true;
             }
 
-            if (tCount < 3)
-                tCount++;
-
-            if (tCount == 1)
+            if (!buOne && life >= 71)
             {
-                posProta = player.transform.position;
-                transform.LookAt(posProta);
-                agent.speed = 30;
-                agent.destination = posProta;
-            }
-
-            if (Vector3.Distance(transform.position, posProta) < 2)
-            {
-                rePos = 1;
-            }
-
-            if (rePos == 1)
-            {
-                agent.destination = tPosWay.transform.position;
-            }
-
-            if (Vector3.Distance(transform.position, tPosWay.transform.position) < 2)
-            {
-                if(myAlpha>= 0)
+                if (tp && life >= 71)
                 {
-                    myAlpha -= 0.01f;
+                    tp = false;
+                    tPosWay = PosWay[Random.Range(0, PosWay.Length)];
+
+                    transform.position = tPosWay.transform.position;
+                    transform.rotation = PosWay[Random.Range(0, PosWay.Length)].transform.rotation;
                 }
-                
+
+                if (tCount < 3)
+                    tCount++;
+
+                if (tCount == 1)
+                {
+                    returPos = tPosWay.transform.position;
+
+                    posProta = player.transform.position;
+                    transform.LookAt(posProta);
+                    agent.speed = 30;
+                    agent.destination = posProta;
+                }
+
+                if (Vector3.Distance(transform.position, posProta) < 2)
+                {
+                    rePos = 1;
+                }
+
+                if (rePos == 1)
+                {
+                    agent.destination = returPos;
+                }
+
+                if (Vector3.Distance(transform.position, returPos) < 2)
+                {
+                    if (myAlpha >= 0)
+                    {
+                        myAlpha -= 0.01f;
+                    }
+
+                }
+
+                if (myAlpha <= 0 && life >= 71)
+                {
+                    gameObject.SetActive(false);
+                }
             }
 
-            if (myAlpha <= 0 && life >= 71)
-            {
-                gameObject.SetActive(false);
-            }
+            Transparent();
+            AttackOneTwo();
         }
 
-        
-
-        Life();
-        Transparent();
-        AttackOneTwo();
+       
     }
 
     public void AttackOneTwo()
@@ -126,7 +147,7 @@ public class MoveBoss : MonoBehaviour
             if(life<=60)
             Move();
 
-            if (agent.remainingDistance < 1 && !detected && life <= 71)
+            if ( !detected && life <= 71)
             {
                 if (intGroup == 0)
                 {
@@ -202,10 +223,34 @@ public class MoveBoss : MonoBehaviour
 
     public void Life()
     {
-        if(life<=0)
+        if(life<=1)
         {
-            Destroy(gameObject);
+            if(countFinal<3)
+            countFinal++;
+
+            if (countFinal == 1)
+            {
+                death = true;
+                agent.speed = 0;
+                myAlpha = 1;
+                anim.SetBool("Final", true);
+                prota.SetActive(false);
+                cam.SetActive(true);
+                prota.transform.position = pos.transform.position;
+                prota.transform.rotation = pos.transform.rotation;
+            }
+           
         }
+    }
+
+    public IEnumerator ActiveProta()
+    {
+        prota.SetActive(true);
+        cam.SetActive(false);
+        GameObject intas = Instantiate(boxInta);
+        intas.transform.position = transform.position;
+        yield return new WaitForSeconds(1);
+        Destroy(containerBoss);
     }
 
     public void Transparent()
