@@ -37,13 +37,19 @@ public class PlayerInteraction : MonoBehaviour
     [SerializeField] private float distance2;
     [SerializeField] private RaycastHit hit2;
 
+    [Header("Key")]
+    [SerializeField] private GameObject keyUI;
+    [SerializeField] private float time, maxTime;
+    [SerializeField] private bool active;
+
     private void Start()
     {
         shoot = true;
     }
 
     private void Update()
-    {        
+    {
+        Key();
         Detected();
         Press();
         NotShoot();
@@ -211,11 +217,30 @@ public class PlayerInteraction : MonoBehaviour
 
         if (bKey && Input.GetKeyDown(KeyCode.E))
         {
+            active = true;
             invePills.bKEy = true;
             Destroy(gameKeys);
             bKey = false;
-            texE.SetActive(false);
+            texE.SetActive(false);            
         }
+    }
+
+    public void Key()
+    {
+
+        if(active)
+        {
+            keyUI.SetActive(true);
+
+            time += Time.deltaTime;
+            if (time >= maxTime)
+            {
+                time = 0;
+                active= false;
+                keyUI.SetActive(false);
+            }
+        }
+        
     }
 
     public void GrabObject()

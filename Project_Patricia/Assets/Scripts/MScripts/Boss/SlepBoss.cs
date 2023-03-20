@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SlepBoss : MonoBehaviour
 {
-    [SerializeField] private GameObject boss;
+    [SerializeField] private GameObject boss, doorFinal;
     [SerializeField] private SleepMode sleep;
     [SerializeField] private int count;
     [SerializeField] private float time, maxTime;
@@ -20,6 +20,8 @@ public class SlepBoss : MonoBehaviour
     {
         if (boss == null)
         {
+            Destroy(doorFinal);
+
             if(count<3)
             count++;
 

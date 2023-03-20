@@ -130,6 +130,7 @@ public class MoveBoss : MonoBehaviour
                 if (myAlpha <= 0 && life >= 71)
                 {
                     gameObject.SetActive(false);
+                    
                 }
             }
 
@@ -147,7 +148,7 @@ public class MoveBoss : MonoBehaviour
             if(life<=60)
             Move();
 
-            if ( !detected && life <= 71)
+            if ( !detected && life <= 71 && agent.remainingDistance<1)
             {
                 if (intGroup == 0)
                 {
@@ -225,7 +226,8 @@ public class MoveBoss : MonoBehaviour
     {
         if(life<=1)
         {
-            if(countFinal<3)
+            agent.speed = 0;
+            if (countFinal<3)
             countFinal++;
 
             if (countFinal == 1)
@@ -249,6 +251,7 @@ public class MoveBoss : MonoBehaviour
         cam.SetActive(false);
         GameObject intas = Instantiate(boxInta);
         intas.transform.position = transform.position;
+        intas.SetActive(true);
         yield return new WaitForSeconds(1);
         Destroy(containerBoss);
     }
@@ -446,7 +449,7 @@ public class MoveBoss : MonoBehaviour
     {
         yield return new WaitForSeconds(3);
         bullet = false;
-        agent.speed = 9;
+        agent.speed = 30;
         print("AnimacionFalse");
     }
 
