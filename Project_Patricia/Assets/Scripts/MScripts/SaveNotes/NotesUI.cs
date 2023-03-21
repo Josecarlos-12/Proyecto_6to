@@ -43,6 +43,8 @@ public class NotesUI : MonoBehaviour
                 lines[1].SetActive(true);
                 lines[2].SetActive(true);
                 lines[3].SetActive(true);
+                lines[7].SetActive(true);
+                lines[8].SetActive(true);
                 break;
         }
         
