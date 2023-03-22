@@ -23,14 +23,14 @@ public class Pause : MonoBehaviour
         {
             if(isPaused)
             {
-                pauseSound.Play();
+                //pauseSound.Play();
                 ResumeGame();
                 Cursor.lockState = CursorLockMode.Locked;
                 shoot = true;
             }
             else
             {
-                pauseSound.Play();
+                //pauseSound.Play();
                 PauseGame();
                 Cursor.lockState = CursorLockMode.None;
                 Cursor.visible = true;
