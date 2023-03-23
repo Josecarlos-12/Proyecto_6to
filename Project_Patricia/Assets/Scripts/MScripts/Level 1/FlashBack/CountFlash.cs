@@ -5,6 +5,7 @@ using UnityEngine;
 public class CountFlash : MonoBehaviour
 {
     public GrabFlashBack[] grab;
+    [SerializeField] private AudioSource ringtone;
 
     private void Update()
     {
@@ -22,10 +23,24 @@ public class CountFlash : MonoBehaviour
                 contador++;
                 if (contador == grab.Length)
                 {
-                 Debug.Log("Todo es Verdadero");
+                    int count = 0;
+                    if(count<3)
+                    {
+                        count++;
+                    }
 
+                    if (count == 1)
+                    {
+                        StartCoroutine("Ring");
+                    }
                 }
              }
         }
+    }
+
+    public IEnumerator Ring()
+    {
+        yield return new WaitForSeconds(10);
+        ringtone.Play();
     }
 }
