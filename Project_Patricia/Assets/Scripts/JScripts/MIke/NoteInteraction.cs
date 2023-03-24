@@ -29,7 +29,7 @@ public class NoteInteraction : MonoBehaviour
 
    public enum Check
     {
-        normal, work
+        normal, work, dialogue
     }
 
     public Check check;
@@ -78,6 +78,9 @@ public class NoteInteraction : MonoBehaviour
                     print(noteList.sNote.Count);
                     workInt = noteList.sNote.Count;
                     break;
+                case Check.dialogue:
+                    print("Mike habla");
+                        break;
             }
             Destroy(gameObject);           
             //count = 0;
