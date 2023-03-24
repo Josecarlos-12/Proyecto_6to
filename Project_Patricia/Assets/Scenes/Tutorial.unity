@@ -19676,6 +19676,7 @@ GameObject:
   - component: {fileID: 913381177}
   - component: {fileID: 913381176}
   - component: {fileID: 913381175}
+  - component: {fileID: 913381181}
   m_Layer: 0
   m_Name: Note
   m_TagString: Note
@@ -19730,6 +19731,7 @@ MonoBehaviour:
   col: {fileID: 913381176}
   workInt: 0
   pageSound: {fileID: 0}
+  noteNote: {fileID: 913381181}
   texE: {fileID: 1403533520}
   noteList: {fileID: 1301812979}
   check: 1
@@ -19825,6 +19827,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+--- !u!114 &913381181
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 913381174}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b11b0f41cd0c14449272107547b8b2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textMeshPro: {fileID: 43341493}
+  textContainer: {fileID: 43341491}
 --- !u!1 &917589545
 GameObject:
   m_ObjectHideFlags: 0

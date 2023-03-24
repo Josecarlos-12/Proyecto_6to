@@ -21,6 +21,7 @@ public class NoteInteraction : MonoBehaviour
     public BoxCollider col;
     public int workInt;
     public AudioSource pageSound;
+    public DialogueNote noteNote;
 
     [Header("Press")]
     [SerializeField] private GameObject texE;
@@ -50,6 +51,15 @@ public class NoteInteraction : MonoBehaviour
 
         if (count == 1)
         {
+            switch (check)
+            {
+                case Check.normal:
+                    
+                    break;
+                case Check.work:
+                    noteNote.Dialogue();
+                    break;
+            }
             Time.timeScale = 0;
             imageNote.sprite = image;
             note.SetActive(true);
@@ -75,12 +85,10 @@ public class NoteInteraction : MonoBehaviour
                     print("no work");
                     break;
                 case Check.work:
+                    
                     print(noteList.sNote.Count);
                     workInt = noteList.sNote.Count;
                     break;
-                case Check.dialogue:
-                    print("Mike habla");
-                        break;
             }
             Destroy(gameObject);           
             //count = 0;
