@@ -6,6 +6,8 @@ public class CountFlash : MonoBehaviour
 {
     public GrabFlashBack[] grab;
     [SerializeField] private AudioSource ringtone;
+    [SerializeField] private int count;
+    public bool ring;
 
     private void Update()
     {
@@ -23,7 +25,6 @@ public class CountFlash : MonoBehaviour
                 contador++;
                 if (contador == grab.Length)
                 {
-                    int count = 0;
                     if(count<3)
                     {
                         count++;
@@ -31,6 +32,7 @@ public class CountFlash : MonoBehaviour
 
                     if (count == 1)
                     {
+                        print("Count1");
                         StartCoroutine("Ring");
                     }
                 }
@@ -42,5 +44,7 @@ public class CountFlash : MonoBehaviour
     {
         yield return new WaitForSeconds(10);
         ringtone.Play();
+        ring= true;
+        print("Play");
     }
 }
