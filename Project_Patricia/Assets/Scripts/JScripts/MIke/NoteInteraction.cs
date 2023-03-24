@@ -10,7 +10,7 @@ using UnityEngine.UI;
 public class NoteInteraction : MonoBehaviour
 {
     public bool into;
-    public int count = 0;
+    public int count = 0, cNote;
     public Sprite image;
     public Image imageNote;
     public GameObject note;
@@ -51,19 +51,29 @@ public class NoteInteraction : MonoBehaviour
 
         if (count == 1)
         {
+            print("Dialogo star");
             switch (check)
             {
                 case Check.normal:
                     
                     break;
                 case Check.work:
-                    noteNote.Dialogue();
+
+                    if(cNote<3)
+                        cNote++;
+
+                    if(cNote == 1)
+                    {
+                        StartCoroutine(noteNote.Dialogue());
+                    }
+                   
                     break;
             }
             Time.timeScale = 0;
             imageNote.sprite = image;
             note.SetActive(true);
             text.text = noteText;
+            texE.SetActive(false);
         }
         if (count == 2)
         {
@@ -78,7 +88,7 @@ public class NoteInteraction : MonoBehaviour
             noteList.sNote.Add(noteList.save);
             Time.timeScale = 1;
             note.SetActive(false);
-            texE.SetActive(false);
+            
             switch (check)
             {
                 case Check.normal:
