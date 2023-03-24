@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.7812254, g: 0.6502897, b: 0.37956914, a: 1}
+  m_IndirectSpecularColor: {r: 0.7159629, g: 0.59009546, b: 0.32989544, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1372,6 +1372,90 @@ Transform:
   m_Father: {fileID: 1301812984}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &58316705
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 58316708}
+  - component: {fileID: 58316707}
+  - component: {fileID: 58316706}
+  - component: {fileID: 58316709}
+  m_Layer: 0
+  m_Name: Door
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!95 &58316706
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 58316705}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 867dbb26f61800e43a16d775a07103a7, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+--- !u!65 &58316707
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 58316705}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 7.73, y: 1, z: 5.04}
+  m_Center: {x: -1.89, y: 1.69, z: 0}
+--- !u!4 &58316708
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 58316705}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 131.25137, y: 21.76494, z: -102.421265}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 793462130}
+  m_Father: {fileID: 0}
+  m_RootOrder: 67
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &58316709
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 58316705}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f68763a6ba60ed439411335cc4c4b28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  anim: {fileID: 58316706}
+  into: 0
+  op: 0
+  clo: 0
 --- !u!1 &63119053
 GameObject:
   m_ObjectHideFlags: 0
@@ -6331,6 +6415,25 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -457621019542299477, guid: fec149fd0408b714883f54363d3746ec, type: 3}
+--- !u!1 &204242794 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -3606532256259062484, guid: cc017537dc00f584d977e1943694c166,
+    type: 3}
+  m_PrefabInstance: {fileID: 1865131939}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &204242798
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 204242794}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 62.5, y: 959.27704, z: 600.92676}
+  m_Center: {x: 19.89394, y: 479.63852, z: -300.4651}
 --- !u!1 &207831149
 GameObject:
   m_ObjectHideFlags: 0
@@ -16427,7 +16530,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inv: {fileID: 2142671065}
   player: {fileID: 1301812975}
-  sanity: 100
+  sanity: 97
   sanityMax: 125
   jumpScare: {fileID: 140894512}
   cam: {fileID: 0}
@@ -20385,6 +20488,12 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!4 &793462130 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: cc017537dc00f584d977e1943694c166,
+    type: 3}
+  m_PrefabInstance: {fileID: 1865131939}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &798236887
 GameObject:
   m_ObjectHideFlags: 0
@@ -22290,14 +22399,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 845212200}
-  m_LocalRotation: {x: -0, y: -0.70710677, z: -0, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 0.41181946, y: 0, z: 0}
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1311903544}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!65 &845212202
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -45848,27 +45957,27 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 58316708}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: cc017537dc00f584d977e1943694c166,
         type: 3}
       propertyPath: m_RootOrder
-      value: 67
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cc017537dc00f584d977e1943694c166,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 131.25137
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cc017537dc00f584d977e1943694c166,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 21.76494
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cc017537dc00f584d977e1943694c166,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -102.421265
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cc017537dc00f584d977e1943694c166,
         type: 3}
