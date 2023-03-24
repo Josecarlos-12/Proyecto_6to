@@ -109,7 +109,8 @@ public class Inventary : MonoBehaviour
         if(bPills && pills > 0 && Input.GetMouseButtonDown(0))
         {
             pills--;
-            sanity.sanity += 5;
+            //Mas sanidad
+            sanity.sanity += 1;
 
             switch (dream)
             {
