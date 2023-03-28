@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 2161.755, g: 2265.664, b: 3288.7969, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -359,7 +359,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!136 &364855243
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -472,7 +472,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!135 &373299816
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -631,7 +631,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &523738690
 Transform:
   m_ObjectHideFlags: 0
@@ -1251,7 +1251,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1823688464}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b529878a6b4d2be44bf3bdf65b616f02, type: 3}
   m_Name: 
@@ -1259,6 +1259,9 @@ MonoBehaviour:
   cam: {fileID: 1823688467}
   objUi: {fileID: 0}
   distance: 10
+  layer:
+    serializedVersion: 2
+    m_Bits: 0
   bDoor: 0
   bHandle: 0
   bLife: 0
@@ -1266,6 +1269,8 @@ MonoBehaviour:
   bObj: 0
   inHand: 0
   bKey: 0
+  shoot: 0
+  bCapsule: 0
   texE: {fileID: 1852512624}
   gameLife: {fileID: 0}
   gameHandle: {fileID: 0}
@@ -1274,9 +1279,14 @@ MonoBehaviour:
   gameObj: {fileID: 0}
   transGame: {fileID: 0}
   weapon: {fileID: 0}
-  playerCam: {fileID: 0}
   invePills: {fileID: 0}
   door: {fileID: 0}
+  aim: {fileID: 0}
+  distance2: 0
+  keyUI: {fileID: 0}
+  time: 0
+  maxTime: 0
+  active: 0
 --- !u!114 &1823688470
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1284,7 +1294,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1823688464}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 67ceafbc76d7ca44ea3da580396d4ac7, type: 3}
   m_Name: 
@@ -1298,7 +1308,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1823688464}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 68831090ce004b548b1c90183fe8f58c, type: 3}
   m_Name: 
@@ -1306,11 +1316,26 @@ MonoBehaviour:
   inv: {fileID: 523738689}
   player: {fileID: 1823688464}
   sanity: 100
+  sanityMax: 125
   jumpScare: {fileID: 0}
   cam: {fileID: 0}
   bjumpScare: 0
   timer: 0
   maxTimer: 0
+  death: 0
+  transparence: 0
+  dmg: {fileID: 0}
+  volume: {fileID: 0}
+  bloom: {fileID: 0}
+  blm: 0
+  healthSound: {fileID: 0}
+  childScrean: {fileID: 0}
+  bossAudio: {fileID: 0}
+  size: 0
+  count: 0
+  bossTouch: 0
+  sleep: {fileID: 0}
+  moveBoss: {fileID: 0}
 --- !u!1 &1852512624
 GameObject:
   m_ObjectHideFlags: 0
@@ -1466,7 +1491,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1874061288
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1481,6 +1506,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   into: 0
   count: 0
+  cNote: 0
   image: {fileID: 21300000, guid: 8ebaca4e8a3214742a9412ca7ff9660b, type: 3}
   imageNote: {fileID: 1444345756}
   note: {fileID: 1444345753}
@@ -1488,8 +1514,12 @@ MonoBehaviour:
   noteText: aaaaaaaaaaaaaaaaaaaaaaaaaaa
   text: {fileID: 1460912360}
   col: {fileID: 0}
+  workInt: 0
+  pageSound: {fileID: 0}
+  noteNote: {fileID: 0}
   texE: {fileID: 2018450614}
   noteList: {fileID: 0}
+  check: 0
 --- !u!65 &1874061289
 BoxCollider:
   m_ObjectHideFlags: 0
