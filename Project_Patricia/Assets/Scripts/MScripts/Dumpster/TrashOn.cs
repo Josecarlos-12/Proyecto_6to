@@ -12,13 +12,12 @@ public class TrashOn : MonoBehaviour
     public bool into;
     [SerializeField] public Transform objectGarbage;
     [SerializeField] private float size;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
+    [SerializeField] private GameObject player;
+    [SerializeField] private float sizePlayer = 7;
+    public int countPlayer;
+
+
     void Update()
     {
 
@@ -34,6 +33,17 @@ public class TrashOn : MonoBehaviour
                 rbd.isKinematic = true;
                 into = true;
             }
+        }
+
+        DetectedPlayer();
+    }
+
+    public void DetectedPlayer()
+    {
+        if (Vector3.Distance(transform.position, player.transform.position) < sizePlayer)
+        {
+            if(countPlayer<3)
+            countPlayer ++;
         }
     }
 

@@ -7,14 +7,17 @@ public class CorutinaInitial : MonoBehaviour
 {
 
     [SerializeField] private float[] time;
-    [SerializeField] private string[] text;
+    [SerializeField, TextArea(4,4)] private string[] text;
     [SerializeField] private TextMeshProUGUI textMeshPro;
-    [SerializeField] private GameObject textContainer;
+    [SerializeField] private GameObject textContainer, panelTuto;
     [SerializeField] private GameObject cam, prota;
+    [SerializeField] private bool press;
 
 
-    IEnumerator Start()
+    public IEnumerator Start()
     {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
         yield return new WaitForSeconds(time[0]);
         textMeshPro.text = text[0];
         yield return new WaitForSeconds(time[1]);
@@ -37,8 +40,46 @@ public class CorutinaInitial : MonoBehaviour
         textMeshPro.text = text[9];
         yield return new WaitForSeconds(time[10]);
         textMeshPro.text = text[10];
-        prota.SetActive(true);
+        yield return new WaitForSeconds(time[11]);
+        textMeshPro.text = text[11];
+        yield return new WaitForSeconds(time[12]);
+        textMeshPro.text = text[12];
+        yield return new WaitForSeconds(time[13]);
+        textMeshPro.text = text[13];
+        panelTuto.SetActive(true);
+        Time.timeScale = 0;
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
         textContainer.SetActive(false);
-        Destroy(cam);        
+        press = true;
+    }
+
+    private void Update()
+    {
+        Omi();
+    }
+
+    public void Omi()
+    {
+        if (Input.GetKeyDown(KeyCode.Return) && !press) 
+        {
+            StopCoroutine("Start");
+            press = true;
+            panelTuto.SetActive(true);
+            Time.timeScale = 0;
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+            textContainer.SetActive(false);
+        }
+    }
+
+    public void ButtonPlay()
+    {
+        Time.timeScale = 1;
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+        Destroy(cam);
+        prota.SetActive(true);
+        panelTuto.SetActive(false);
     }
 }

@@ -10,10 +10,9 @@ public class DialogueNote : MonoBehaviour
 
     public IEnumerator Dialogue()
     {
-        print("Dialogo");
         textContainer.SetActive(true);
         textMeshPro.text = "A ver que tenemos...";
-        yield return new WaitForSecondsRealtime(3);
+        yield return new WaitForSecondsRealtime(2);
         textContainer.SetActive(false);
     }
 }
