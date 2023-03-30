@@ -62,7 +62,7 @@ public class CorutinaInitial : MonoBehaviour
 
     public void Omi()
     {
-        if (Input.GetKeyDown(KeyCode.Return) && !press) 
+        if (Input.GetKeyDown(KeyCode.F12) && !press) 
         {
             StopCoroutine("Start");
             press = true;

@@ -13,7 +13,7 @@ public class CameraLook : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Confined;
         Cursor.lockState = CursorLockMode.Locked;
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(0);
         moveCamera = true;
     }
 

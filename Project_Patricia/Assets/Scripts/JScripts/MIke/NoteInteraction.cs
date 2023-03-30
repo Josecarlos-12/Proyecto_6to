@@ -59,13 +59,7 @@ public class NoteInteraction : MonoBehaviour
                     break;
                 case Check.work:
 
-                    if(cNote<3)
-                        cNote++;
-
-                    if(cNote == 1)
-                    {
-                        StartCoroutine(noteNote.Dialogue());
-                    }
+                    noteNote.Dialogue();
                    
                     break;
             }

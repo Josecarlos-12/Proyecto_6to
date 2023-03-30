@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
@@ -18,6 +19,9 @@ public class SleepMode : MonoBehaviour
     public PlayerCrouch crouch;
     public PlayerFPSt run;
 
+    [Header("Dialogue")]
+    [SerializeField] private TextMeshProUGUI textMeshPro;
+    [SerializeField] private GameObject textContainer;
 
     // Start is called before the first frame update
     void Start()
@@ -45,8 +49,17 @@ public class SleepMode : MonoBehaviour
             if (cFour == 1)
             {
                 ModeDreams();
+                StartCoroutine("NextDia");
             }
         }
+    }
+
+    public IEnumerator NextDia()
+    {
+        textContainer.SetActive(true);
+        textMeshPro.text = "Oohhmm qué cansado me siento, creo que descanzaré unos minutos.";
+        yield return new WaitForSecondsRealtime(2);
+        textContainer.SetActive(false);
     }
 
     public void ModeDreams()
