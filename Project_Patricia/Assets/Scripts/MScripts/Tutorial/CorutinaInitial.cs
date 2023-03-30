@@ -46,6 +46,7 @@ public class CorutinaInitial : MonoBehaviour
         textMeshPro.text = text[12];
         yield return new WaitForSeconds(time[13]);
         textMeshPro.text = text[13];
+        yield return new WaitForSeconds(time[14]);
         panelTuto.SetActive(true);
         Time.timeScale = 0;
         Cursor.lockState = CursorLockMode.None;

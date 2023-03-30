@@ -33,5 +33,6 @@ public class GrabOne : MonoBehaviour
         Time.timeScale = 1;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        Destroy(gameObject);
     }
 }
