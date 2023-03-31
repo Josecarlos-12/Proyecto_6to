@@ -27,6 +27,10 @@ public class BoxMusicInteractions : MonoBehaviour
     [SerializeField] private GameObject pass;
     public bool bAlarm;
 
+    [SerializeField] private GameObject panelAccept;
+    [SerializeField] private int i;
+    [SerializeField] private bool accept;
+
     public enum Work
     {
         tras, shopping, firewood, boxMusic, chart
@@ -41,6 +45,8 @@ public class BoxMusicInteractions : MonoBehaviour
     void Update()
     {
         LessMusic();
+
+        OnAlarm();
 
         if (trashOne.into)
         {
@@ -76,16 +82,42 @@ public class BoxMusicInteractions : MonoBehaviour
     {
         if (inve.pillsTakes == 3)
         {
+            if(i<3)
+            i++;
+
+            if (i == 1)
+            {
+                panelAccept.SetActive(true);
+                Cursor.lockState= CursorLockMode.None;
+                Cursor.visible= true;
+            }
+            
+        }
+    }
+
+    public void PanelAccept()
+    {
+        accept = true;
+        panelAccept.SetActive(false);
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+    }
+
+    public void OnAlarm()
+    {
+        if (accept)
+        {
             inve.boxMusic.volume -= 0.003f;
             if (inve.boxMusic.volume == 0)
             {
                 inve.boxMusic.Pause();
 
                 if (alarmCount < 3)
-                alarmCount++;
+                    alarmCount++;
 
-                if(alarmCount == 1)
+                if (alarmCount == 1)
                 {
+                    print("Se desperto");
                     bAlarm = true;
                     alarm.Play();
                     lanter.SetActive(true);
@@ -102,7 +134,6 @@ public class BoxMusicInteractions : MonoBehaviour
             }
         }
     }
-
 
     public IEnumerator NoSleep()
     {

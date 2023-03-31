@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.78169036, g: 0.6503494, b: 0.37959307, a: 1}
+  m_IndirectSpecularColor: {r: 0.78169346, g: 0.6504191, b: 0.37960166, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -24149,6 +24149,8 @@ MonoBehaviour:
   animDoor: {fileID: 1304833296}
   pass: {fileID: 835526796}
   bAlarm: 0
+  panelAccept: {fileID: 246101247}
+  accept: 0
   word: 3
 --- !u!82 &870959273
 AudioSource:
@@ -38908,7 +38910,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1499980939}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 870959272}
+        m_TargetAssemblyTypeName: BoxMusicInteractions, Assembly-CSharp
+        m_MethodName: PanelAccept
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1499980939
 MonoBehaviour:
   m_ObjectHideFlags: 0
