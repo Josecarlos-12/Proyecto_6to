@@ -9,6 +9,9 @@ public class CameraLook : MonoBehaviour
     public Transform playerBody;
     float xRotation = 0;
 
+    public Sensibility sen;
+
+
     private IEnumerator Start()
     {
         Cursor.lockState = CursorLockMode.Confined;
@@ -22,6 +25,8 @@ public class CameraLook : MonoBehaviour
     {
         if (moveCamera)
         {
+            mouseSensitivity = sen.sensibility.value * 40;
+
             float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
 
             float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;

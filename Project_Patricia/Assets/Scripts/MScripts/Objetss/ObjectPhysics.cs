@@ -16,7 +16,8 @@ public class ObjectPhysics : MonoBehaviour
     {
         if (other.gameObject.CompareTag("BulletPlayer"))
         {
-            rbd.AddForce(new Vector3(other.gameObject.transform.position.x - transform.position.x, other.gameObject.transform.position.y - transform.position.y, other.gameObject.transform.position.z - transform.position.z).normalized * force, ForceMode.Impulse);            
+            //rbd.AddForce(new Vector3(other.gameObject.transform.position.x - transform.position.x, other.gameObject.transform.position.y - transform.position.y, other.gameObject.transform.position.z - transform.position.z).normalized * force, ForceMode.Impulse);            
+            rbd.AddForce(new Vector3( transform.position.x - other.gameObject.transform.position.x , transform.position.z - transform.position.y - other.gameObject.transform.position.y, other.gameObject.transform.position.z).normalized * force, ForceMode.Impulse);            
         }
     }
 }
