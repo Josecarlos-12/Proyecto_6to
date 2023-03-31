@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Rendering.HighDefinition;
 
@@ -11,6 +12,8 @@ public class Cushions : MonoBehaviour
     [SerializeField] private NotesUI note;
     [SerializeField] private int count;
     [SerializeField] private SleepMode sleep;
+
+    [SerializeField] private GameObject textDialogue;
 
     private void Update()
     {
@@ -53,8 +56,11 @@ public class Cushions : MonoBehaviour
         prota.transform.position=posProta.transform.position;
         prota.transform.rotation = posProta.transform.rotation;
         prota.SetActive(true);
-
-       
+        yield return new WaitForSeconds(0.8f);
+        textDialogue.SetActive(true);
+        textDialogue.GetComponent<TextMeshProUGUI>().text = "Oooohhmm ¿Qué? ¿Qué hora es? debo cerrar el estudio.";
+        yield return new WaitForSeconds(3f);
+        textDialogue.SetActive(false);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -66,7 +72,6 @@ public class Cushions : MonoBehaviour
                 into = true;
                 text.SetActive(true);
             }
-               
         }
     }
 

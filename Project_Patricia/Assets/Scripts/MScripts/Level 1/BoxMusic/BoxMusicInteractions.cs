@@ -46,7 +46,6 @@ public class BoxMusicInteractions : MonoBehaviour
     {
         LessMusic();
 
-        OnAlarm();
 
         if (trashOne.into)
         {
@@ -82,31 +81,6 @@ public class BoxMusicInteractions : MonoBehaviour
     {
         if (inve.pillsTakes == 3)
         {
-            if(i<3)
-            i++;
-
-            if (i == 1)
-            {
-                panelAccept.SetActive(true);
-                Cursor.lockState= CursorLockMode.None;
-                Cursor.visible= true;
-            }
-            
-        }
-    }
-
-    public void PanelAccept()
-    {
-        accept = true;
-        panelAccept.SetActive(false);
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
-    }
-
-    public void OnAlarm()
-    {
-        if (accept)
-        {
             inve.boxMusic.volume -= 0.003f;
             if (inve.boxMusic.volume == 0)
             {
@@ -133,7 +107,7 @@ public class BoxMusicInteractions : MonoBehaviour
                 }
             }
         }
-    }
+    }  
 
     public IEnumerator NoSleep()
     {

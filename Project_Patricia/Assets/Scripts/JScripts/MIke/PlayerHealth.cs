@@ -79,8 +79,8 @@ public class PlayerHealth : MonoBehaviour
             }
         }
 
-        PanelDmg();
-        Damage();
+       // PanelDmg();
+        //Damage();
     }
 
     private void OnTriggerStay(Collider other)
@@ -182,36 +182,7 @@ public class PlayerHealth : MonoBehaviour
         }      
     }
 
-    public void PanelDmg()
-    {
-        if (sanity > 125)
-        {
-            //Muerte por sobredosis
-            Debug.Log("Me mori por drogadicto");
-            Destroy(player);
-        }
-        if (sanity > 101)
-        {
-           //healthSound.Play();
-            sanity += 0.1f;
-            transparence = transparence + 0.001f;
-            Debug.Log("que se empiece a blurrear la pantalla");
-            Debug.Log("Recibir daño por seg");
-        }
-
-        if(sanity <= 50)
-        {
-            //healthSound.Play();
-            //Efecto de sueño
-            if (bloom.intensity.value <= 0.8f)
-            {
-                bloom.intensity.value += 0.01f;
-            }
-            
-
-            Debug.Log("Tengo mucho sueño");
-        }
-    }
+    
 
     private void OnDrawGizmos()
     {
