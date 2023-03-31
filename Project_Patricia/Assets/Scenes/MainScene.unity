@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.83204937, g: 0.8751435, b: 0.8781638, a: 1}
+  m_IndirectSpecularColor: {r: 0.82889223, g: 0.87219477, b: 0.8753905, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2738,9 +2738,16 @@ MonoBehaviour:
   sPill: {fileID: 21300000, guid: 277b139b22a3dfa47a24873f888d015e, type: 3}
   image: {fileID: 105083323}
   pills: 0
+  pillsTakes: 0
   count: {fileID: 891273122}
+  cam: {fileID: 0}
+  prota: {fileID: 0}
+  panel: {fileID: 0}
+  one: 0
+  boxMusic: {fileID: 0}
   sanity: {fileID: 398339025}
   rRifle: {fileID: 0}
+  dream: 0
 --- !u!114 &330225071
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2767,6 +2774,7 @@ MonoBehaviour:
   inHand: 0
   bKey: 0
   shoot: 0
+  bCapsule: 0
   texE: {fileID: 662018886}
   gameLife: {fileID: 0}
   gameHandle: {fileID: 0}
@@ -2779,6 +2787,10 @@ MonoBehaviour:
   door: {fileID: 0}
   aim: {fileID: 310339668}
   distance2: 7.96
+  keyUI: {fileID: 0}
+  time: 0
+  maxTime: 0
+  active: 0
 --- !u!114 &330225072
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3587,7 +3599,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 398339018}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 12.27, y: 1.62, z: 43.38}
+  m_LocalPosition: {x: 12.27, y: 1.62, z: -24.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3628,6 +3640,16 @@ MonoBehaviour:
   check: 0
   lines: []
   linesContainer: {fileID: 0}
+  one: 0
+  two: 0
+  three: 0
+  four: 0
+  five: 0
+  six: 0
+  seven: 0
+  eight: 0
+  nine: 0
+  workS: 0
 --- !u!114 &398339025
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3655,6 +3677,14 @@ MonoBehaviour:
   volume: {fileID: 432432460}
   bloom: {fileID: 0}
   blm: 0
+  healthSound: {fileID: 0}
+  childScrean: {fileID: 0}
+  bossAudio: {fileID: 0}
+  size: 0
+  count: 0
+  bossTouch: 0
+  sleep: {fileID: 0}
+  moveBoss: {fileID: 0}
 --- !u!95 &398339026
 Animator:
   serializedVersion: 5
@@ -8308,6 +8338,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   into: 0
   count: 0
+  cNote: 0
   image: {fileID: 21300000, guid: 8ebaca4e8a3214742a9412ca7ff9660b, type: 3}
   imageNote: {fileID: 1372019897}
   note: {fileID: 1372019895}
@@ -8316,6 +8347,8 @@ MonoBehaviour:
   text: {fileID: 121661454}
   col: {fileID: 1005757081}
   workInt: 0
+  pageSound: {fileID: 0}
+  noteNote: {fileID: 0}
   texE: {fileID: 1595082756}
   noteList: {fileID: 398339024}
   check: 0
@@ -11281,6 +11314,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   deer: {fileID: 1055940578}
   prota: {fileID: 398339018}
+  can: {fileID: 0}
+  panel: {fileID: 0}
   bDeer: 0
   bProta: 0
   sizeDeer: 4.71
@@ -16869,7 +16904,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 2
+  m_Lightmapping: 1
   m_LightShadowCasterMode: 2
   m_AreaSize: {x: 0.5, y: 0.5}
   m_BounceIntensity: 1
@@ -18438,6 +18473,7 @@ MonoBehaviour:
   radius: 4
   detected: 0
   colition: 0
+  life: 100
   small: {fileID: 1222552856}
   mediun: {fileID: 1694167474}
   big: {fileID: 1454789108}
@@ -18815,6 +18851,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   into: 0
   count: 0
+  cNote: 0
   image: {fileID: 21300000, guid: 8ebaca4e8a3214742a9412ca7ff9660b, type: 3}
   imageNote: {fileID: 1372019897}
   note: {fileID: 1372019895}
@@ -18823,6 +18860,8 @@ MonoBehaviour:
   text: {fileID: 121661454}
   col: {fileID: 2079536054}
   workInt: 0
+  pageSound: {fileID: 0}
+  noteNote: {fileID: 0}
   texE: {fileID: 1595082756}
   noteList: {fileID: 398339024}
   check: 0
@@ -19050,6 +19089,10 @@ MonoBehaviour:
     type: 3}
   prefab: {fileID: 3051057357327460262, guid: 8cf9516d42559b04086d216b5617304b, type: 3}
   emilion: 0
+  emiOne: {fileID: 0}
+  point: {fileID: 0}
+  rifle: {fileID: 0}
+  one: 0
 --- !u!1 &2133461499
 GameObject:
   m_ObjectHideFlags: 0

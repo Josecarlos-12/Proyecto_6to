@@ -125,6 +125,7 @@ public class Inventary : MonoBehaviour
                         prota.SetActive(false);
                         panel.SetActive(true);
                         cam.SetActive(true);
+                        print("Desperto");
                     }
                     break;
             }
