@@ -30,7 +30,7 @@ public class GrabRifleColl : MonoBehaviour
     {
         yield return new WaitForSeconds(8);
         door.SetBool("Open", false);
-        yield return new WaitForSeconds(9);
+        yield return new WaitForSeconds(56);
         prota.SetActive(true);
         cam.SetActive(false);
     }
