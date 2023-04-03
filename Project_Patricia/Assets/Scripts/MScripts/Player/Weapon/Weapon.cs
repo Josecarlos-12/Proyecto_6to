@@ -26,6 +26,7 @@ public class Weapon : MonoBehaviour
     public Pause pause;
     public NotesUI notes;
     public PlayerInteraction inte;
+    public PlayerHealth health;
 
     private void Start()
     {
@@ -138,7 +139,8 @@ public class Weapon : MonoBehaviour
             if (Input.GetMouseButtonDown(0) && Time.time > initialShoot && clicks > 0 && !obj.inHand && inventary.rifle)
             {                                                  
                 animBullet.SetBool("Exit", false);
-                Instantiate(bullet, initialBullet.transform.position, initialBullet.transform.rotation);                    
+                Instantiate(bullet, initialBullet.transform.position, initialBullet.transform.rotation);
+                health.sanity -= 4;
                 initialShoot = Time.time + timeShoot;
                 shoot = true;
                 clicks -= 1;
