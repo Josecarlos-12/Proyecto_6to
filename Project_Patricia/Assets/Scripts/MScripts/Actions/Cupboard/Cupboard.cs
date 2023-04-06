@@ -27,7 +27,7 @@ public class Cupboard : MonoBehaviour
     {
         if (bDeer && bProta)
         {
-            anim.SetBool("On", true);
+            anim.SetBool("On", false);
             StartCoroutine("Close");
         }
     }

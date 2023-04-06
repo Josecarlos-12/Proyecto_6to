@@ -18,7 +18,7 @@ public class DetectedRotate : MonoBehaviour
     private void Update()
     {
 
-        if (mediun)
+        if (mediun || big)
         {
             r = true;
         }
@@ -34,7 +34,6 @@ public class DetectedRotate : MonoBehaviour
                 mediun= false;
             }
         }
-       
   }
 
     private void OnTriggerEnter(Collider other)

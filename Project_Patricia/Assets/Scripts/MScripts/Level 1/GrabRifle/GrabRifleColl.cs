@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class GrabRifleColl : MonoBehaviour
 {
-    public GameObject cam, prota;
+    public GameObject cam, prota, capsuleBlack, positon;
     [SerializeField] private Animator door;
     [SerializeField] private int count;
+    [SerializeField] private Animator doorBoss;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -21,6 +22,10 @@ public class GrabRifleColl : MonoBehaviour
                 prota.SetActive(false);
                 cam.SetActive(true);
                 StartCoroutine("Finish");
+                capsuleBlack.SetActive(true);
+                doorBoss.SetBool("On", true);
+                prota.transform.position= new Vector3(positon.transform.position.x, 4.212376f, positon.transform.position.z);
+                prota.transform.rotation= positon.transform.rotation;
             }
         }
     }
