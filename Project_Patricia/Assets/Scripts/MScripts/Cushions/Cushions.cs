@@ -42,7 +42,7 @@ public class Cushions : MonoBehaviour
     {
         yield return new WaitForSeconds(0.5f);
         panel.SetActive(true);
-        objeDreams.SetActive(true);
+        //objeDreams.SetActive(true);
         yield return new WaitForSeconds(2f);
         sleep.motionBlur.active = false;
         sleep.cAberration.active = false;
@@ -58,7 +58,7 @@ public class Cushions : MonoBehaviour
         prota.SetActive(true);
         yield return new WaitForSeconds(0.8f);
         textDialogue.SetActive(true);
-        textDialogue.GetComponent<TextMeshProUGUI>().text = "Oooohhmm ¿Qué? ¿Qué hora es? debo cerrar el estudio.";
+        textDialogue.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: Oooohhmm ¿Qué? ¿Qué hora es? debo cerrar el estudio.";
         yield return new WaitForSeconds(3f);
         textDialogue.SetActive(false);
     }

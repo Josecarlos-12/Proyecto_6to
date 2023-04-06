@@ -25,7 +25,7 @@ public class DialogueNote : MonoBehaviour
     public IEnumerator NextDia()
     {
         textContainer.SetActive(true);
-        textMeshPro.text = "A ver que tenemos...";
+        textMeshPro.text = "Mike Schmith: A ver que tenemos...";
         yield return new WaitForSecondsRealtime(2);
         into = false;
         textContainer.SetActive(false);
