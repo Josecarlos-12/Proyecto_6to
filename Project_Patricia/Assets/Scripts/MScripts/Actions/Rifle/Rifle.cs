@@ -7,10 +7,11 @@ public class Rifle : MonoBehaviour
 {
     [SerializeField] private bool into;
     public bool canRifle;
-    [SerializeField] private GameObject text;
+    [SerializeField] private GameObject text, capsuleBlack;
     [SerializeField] private Collider col;
     [SerializeField] private Weapon weapon;
     [SerializeField] private Inventary inve;
+    [SerializeField] private Animator door;
 
     private void Update()
     {
@@ -21,6 +22,7 @@ public class Rifle : MonoBehaviour
     {
         if (into && Input.GetKeyDown(KeyCode.E))
         {
+            capsuleBlack.SetActive(true);
             inve.rifle= true;
             col.enabled= false;
             text.SetActive(false);
@@ -36,6 +38,7 @@ public class Rifle : MonoBehaviour
         {
             text.SetActive(true);
             into = true;
+            door.SetBool("On",false);            
         }
     }
 
