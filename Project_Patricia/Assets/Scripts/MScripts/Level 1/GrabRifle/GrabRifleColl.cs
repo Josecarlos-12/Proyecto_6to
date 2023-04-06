@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GrabRifleColl : MonoBehaviour
 {
-    [SerializeField] private GameObject cam, prota;
+    public GameObject cam, prota;
     [SerializeField] private Animator door;
     [SerializeField] private int count;
 
@@ -29,9 +29,6 @@ public class GrabRifleColl : MonoBehaviour
     public IEnumerator Finish()
     {
         yield return new WaitForSeconds(8);
-        door.SetBool("Open", false);
-        yield return new WaitForSeconds(56);
-        prota.SetActive(true);
-        cam.SetActive(false);
+        door.SetBool("Open", false);       
     }
 }
