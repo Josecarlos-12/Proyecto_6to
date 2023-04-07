@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
 
 public class DetectedRotate : MonoBehaviour
 {
     public bool r;
-    public bool player ,big, mediun;
+    public bool player ,big, mediun, desBig;
     public FollowOppositeDirection follow;
     public GameObject me, bi;
 
@@ -17,12 +18,20 @@ public class DetectedRotate : MonoBehaviour
 
     private void Update()
     {
+        if (big)
+        {
+            desBig = true;
+        }
+        else
+        {
+            desBig = false;
+        }
 
-        if (mediun || big)
+        if (mediun)
         {
             r = true;
         }
-        else if(!mediun)
+        else
         {
             r = false;
         }
@@ -34,7 +43,15 @@ public class DetectedRotate : MonoBehaviour
                 mediun= false;
             }
         }
-  }
+
+        if (bi != null)
+        {
+            if (!bi.activeInHierarchy)
+            {
+                big = false;
+            }
+        }
+    }
 
     private void OnTriggerEnter(Collider other)
     {

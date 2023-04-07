@@ -5,31 +5,32 @@ using UnityEngine;
 public class RotateLeft : MonoBehaviour
 {
     public bool l;
-    public bool player, big, mediun;
+    public bool player, big, mediun, desBig;
     public FollowOppositeDirection follow;
     public GameObject me, bi;
 
 
     private void Update()
     {
-        if (bi != null)
+        if (big)
         {
-            if (!bi.activeInHierarchy)
-            {
-                big = false;
-            }
-
+            desBig= true;
+        }
+        else
+        {
+            desBig= false;
         }
 
-       
-        if (mediun || big)
+
+        if (mediun)
         {
             l = true;
         }
-        else if (!mediun && !big)
+        else
         {
-           // l = false;
+            l = false;
         }
+
 
         if (me != null)
         {
@@ -40,6 +41,13 @@ public class RotateLeft : MonoBehaviour
 
         }
 
+        if (bi != null)
+        {
+            if (!bi.activeInHierarchy)
+            {
+                big = false;
+            }
+        }
     }
 
     private void OnTriggerEnter(Collider other)

@@ -34,7 +34,7 @@ public class FollowOppositeDirection : MonoBehaviour
      }*/
 
     public Transform player;
-    public float rotationSpeed = 5f,size;
+    public float rotationSpeed = 5f;
 
     private Vector3 previousPosition;
 
@@ -42,34 +42,19 @@ public class FollowOppositeDirection : MonoBehaviour
     public RotateLeft rotateL;
     public int iR, iL;
 
-    void Start()
-    {
-        previousPosition = transform.position;
-    }
+    public GameObject enemy;
+   
+     
 
-    void Update()
+    public void Rotate()
     {
         if (rotateR.r)
         {
-
-                transform.Rotate(0f, rotationSpeed * -Time.deltaTime, 0f);
-
-
+            transform.Rotate(0f, rotationSpeed * -Time.deltaTime, 0f);
         }
-        if(rotateL.l)
+        if (rotateL.l)
         {
-
-                transform.Rotate(0f, rotationSpeed * Time.deltaTime, 0f);
-
-         
-            
+            transform.Rotate(0f, rotationSpeed * Time.deltaTime, 0f);
         }
-    }
-
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(transform.position, size);
-    }
-
+    }  
 }
