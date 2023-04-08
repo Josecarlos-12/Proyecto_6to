@@ -55,12 +55,12 @@ public class NoteInteraction : MonoBehaviour
             switch (check)
             {
                 case Check.normal:
-                    
                     break;
                 case Check.work:
-
                     noteNote.Dialogue();
-                   
+                    break;
+                case Check.dialogue:
+                    noteNote.Dialogue();
                     break;
             }
             Time.timeScale = 0;
