@@ -19,6 +19,11 @@ public class Inventary : MonoBehaviour
     [SerializeField] private PlayerHealth sanity;
     [SerializeField] private Rifle rRifle;
 
+    [Header("Dialogue")]
+    [SerializeField] private GameObject text;
+    [SerializeField] private GameObject eventPills, eventSleep, eventLaders;
+    public bool complete;
+
     public enum Dream
     {
         none, sleep
@@ -122,12 +127,32 @@ public class Inventary : MonoBehaviour
                     {
                         if (one)
                             return;
-                        prota.SetActive(false);
-                        panel.SetActive(true);
-                        cam.SetActive(true);
+                        StartCoroutine("DialogueSleep");
                     }
                     break;
             }
         }
+    }
+
+    public IEnumerator DialogueSleep()
+    {
+        yield return new WaitForSeconds(0);
+        text.SetActive(true);
+        text.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: Oohhh...";
+        yield return new WaitForSeconds(2);
+        text.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: Creo que me siento mejor...";
+        yield return new WaitForSeconds(1);
+        text.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: Hmm no... no cerré...";
+        yield return new WaitForSeconds(1);
+        text.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: el... estudio";
+        yield return new WaitForSeconds(2);
+        complete= true;
+        eventPills.SetActive(true);
+        eventSleep.SetActive(true);
+        eventLaders.SetActive(true);
+        text.SetActive(false);
+        prota.SetActive(false);
+        panel.SetActive(true);
+        cam.SetActive(true);
     }
 }

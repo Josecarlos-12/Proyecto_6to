@@ -47,6 +47,7 @@ public class BoxMusic : MonoBehaviour
         yield return new WaitForSeconds(1);
         texMes.SetActive(false);
         accept = true;
+        into = true;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -54,8 +55,7 @@ public class BoxMusic : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             if (pass.pass == true)
-            {
-                into = true;              
+            {                        
                 
                 if (count<3)
                 count++;
