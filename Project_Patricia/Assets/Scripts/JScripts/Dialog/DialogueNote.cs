@@ -7,7 +7,7 @@ public class DialogueNote : MonoBehaviour
 { 
     [SerializeField] private TextMeshProUGUI textMeshPro;
     [SerializeField] private GameObject textContainer;
-    [SerializeField] private bool into;
+    [SerializeField] private bool into, grabNote;
     [SerializeField] private string text;
 
     private void Update()
@@ -28,6 +28,7 @@ public class DialogueNote : MonoBehaviour
         textContainer.SetActive(true);
         textMeshPro.text = text;
         yield return new WaitForSecondsRealtime(2);
+        grabNote=true;
         into = false;
         textContainer.SetActive(false);
     }

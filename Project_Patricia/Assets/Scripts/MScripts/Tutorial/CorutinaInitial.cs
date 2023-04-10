@@ -12,6 +12,7 @@ public class CorutinaInitial : MonoBehaviour
     [SerializeField] private GameObject textContainer, panelTuto;
     [SerializeField] private GameObject cam, prota;
     [SerializeField] private bool press;
+    [SerializeField] private TasksUI task;
 
 
     public IEnumerator Start()
@@ -82,5 +83,6 @@ public class CorutinaInitial : MonoBehaviour
         Destroy(cam);
         prota.SetActive(true);
         panelTuto.SetActive(false);
+        task.go = true;
     }
 }

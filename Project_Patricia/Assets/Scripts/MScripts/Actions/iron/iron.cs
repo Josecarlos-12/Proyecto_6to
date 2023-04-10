@@ -13,8 +13,8 @@ public class iron : MonoBehaviour
     [SerializeField] private int count;
     [SerializeField] private GameObject cam, prota, panel, textE, wornClothes, cleanClothes;
     public NotesUI note;
+    [SerializeField] private NoteInteraction noteGrab;
 
- 
 
     public enum Check
     {
@@ -35,7 +35,7 @@ public class iron : MonoBehaviour
 
     public void Iron()
     {
-        if(into  && Input.GetKeyDown(KeyCode.E) && count ==0)
+        if(into  && Input.GetKeyDown(KeyCode.E) && count ==0 && noteGrab.grabNote)
         {
             count++;
             prota.SetActive(false);
@@ -74,11 +74,15 @@ public class iron : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            into = true;
-            if (count == 0)
+            if (noteGrab.grabNote == true)
             {
-                textE.SetActive(true);
-            }            
+                into = true;
+                if (count == 0)
+                {
+                    textE.SetActive(true);
+                }
+            }
+                        
         }
     }
 

@@ -22,13 +22,17 @@ public class NoteInteraction : MonoBehaviour
     public int workInt;
     public AudioSource pageSound;
     public DialogueNote noteNote;
+    public bool grabNote;
 
     [Header("Press")]
     [SerializeField] private GameObject texE;
 
     public NotesUI noteList;
 
-   public enum Check
+    [Header("TasksUI")]
+    [SerializeField] private TasksUI task;
+
+    public enum Check
     {
         normal, work, dialogue
     }
@@ -89,9 +93,10 @@ public class NoteInteraction : MonoBehaviour
                     print("no work");
                     break;
                 case Check.work:
-                    
+                    task.taskCount = 2;
                     print(noteList.sNote.Count);
                     workInt = noteList.sNote.Count;
+                    grabNote = true;
                     break;
             }
             Destroy(gameObject);           
