@@ -30,7 +30,7 @@ public class PickUpObject : MonoBehaviour
                 PickedObject.transform.position = interactionZone.position;
                 PickedObject.GetComponent<Rigidbody>().useGravity = false;
                 PickedObject.GetComponent<Rigidbody>().isKinematic = true;
-                
+
             }
 
             if (Input.GetKey(KeyCode.LeftArrow))
@@ -66,7 +66,6 @@ public class PickUpObject : MonoBehaviour
                 PickedObject.GetComponent<Rigidbody>().useGravity = true;
                 PickedObject.GetComponent<Rigidbody>().isKinematic = false;
                 PickedObject = null;
-
             }
         }
 

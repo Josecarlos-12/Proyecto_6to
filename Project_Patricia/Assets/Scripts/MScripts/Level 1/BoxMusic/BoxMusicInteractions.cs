@@ -20,7 +20,7 @@ public class BoxMusicInteractions : MonoBehaviour
 
     [SerializeField] private AudioSource alarm;
     [SerializeField] private int alarmCount;
-    [SerializeField] private GameObject prota, cam, panel;
+    [SerializeField] private GameObject prota, cam, panel,posEventPills;
 
     [SerializeField] private GameObject lanter;
     [SerializeField] private Animator animDoor;
@@ -30,6 +30,9 @@ public class BoxMusicInteractions : MonoBehaviour
     [SerializeField] private GameObject panelAccept;
     [SerializeField] private int i;
     [SerializeField] private bool accept;
+
+    [Header("Dialogue")]
+    [SerializeField] private GameObject text;
 
     public enum Work
     {
@@ -79,7 +82,7 @@ public class BoxMusicInteractions : MonoBehaviour
 
     public void LessMusic()
     {
-        if (inve.pillsTakes == 3)
+        if (inve.pillsTakes == 3 && inve.complete)
         {
             inve.boxMusic.volume -= 0.003f;
             if (inve.boxMusic.volume == 0)
@@ -91,7 +94,6 @@ public class BoxMusicInteractions : MonoBehaviour
 
                 if (alarmCount == 1)
                 {
-                    print("Se desperto");
                     bAlarm = true;
                     alarm.Play();
                     lanter.SetActive(true);
@@ -112,6 +114,8 @@ public class BoxMusicInteractions : MonoBehaviour
     public IEnumerator NoSleep()
     {
         yield return new WaitForSeconds(2);
+        prota.transform.position = posEventPills.transform.position;
+        prota.transform.rotation = posEventPills.transform.rotation;
         prota.SetActive(true);
         cam.SetActive(false);
         panel.SetActive(false);
@@ -133,5 +137,15 @@ public class BoxMusicInteractions : MonoBehaviour
         yield return new WaitForSeconds(3);
         sleep.ModeDreams();
         pills.SetActive(true);
+        //Texto cuando suena la caja y empieza el modo sueño.
+        yield return new WaitForSeconds(1);
+        text.SetActive(true);
+        text.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: Ohh... Mi cabeza me explota...";
+        yield return new WaitForSeconds(2);
+        text.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: necesito mis pastillas...";
+        yield return new WaitForSeconds(2);
+        text.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: Están en mi habitación";
+        yield return new WaitForSeconds(2);
+        text.SetActive(false);
     }
 }

@@ -8,13 +8,19 @@ public class BoxMusic : MonoBehaviour
     [SerializeField] private Collider col;
     [SerializeField] private GameObject text, texMes, objSing;
     [SerializeField] private TextMeshProUGUI textMeshPro;
-    [SerializeField] private bool into;
+    [SerializeField] private bool into, accept;
     [SerializeField] private StrongBox pass;
     [SerializeField] private PickableObject pick;
+    [SerializeField] private int count;
 
 
     void Update()
     {
+        if (into && accept)
+        {
+            text.SetActive(true);
+        }
+
         if (into && Input.GetKeyDown(KeyCode.E) && pass.pass==true)
         {
             pick.isPickable= true;
@@ -22,16 +28,26 @@ public class BoxMusic : MonoBehaviour
             objSing.SetActive(true);
             into = false;
             col.enabled = false;
-            StartCoroutine("Dialogue");
+            StartCoroutine("Interaction");
         }
+    }
+
+    public IEnumerator Interaction()
+    {
+        texMes.SetActive(true);
+        textMeshPro.text = "Mike Schmith: Hmmm qué raro... ¿Qué es lo que estará fallando?";
+        yield return new WaitForSeconds(2);
+        texMes.SetActive(false);
     }
 
     public IEnumerator Dialogue()
     {
         texMes.SetActive(true);   
-        textMeshPro.text = "Texto sa";
+        textMeshPro.text = "Mike Schmith: Ahora esto.";
         yield return new WaitForSeconds(1);
         texMes.SetActive(false);
+        accept = true;
+        into = true;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -39,9 +55,15 @@ public class BoxMusic : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             if (pass.pass == true)
-            {
-                text.SetActive(true);
-                into = true;
+            {                        
+                
+                if (count<3)
+                count++;
+
+                if (count == 1)
+                {
+                    StartCoroutine("Dialogue");
+                }
             }
         }
     }
