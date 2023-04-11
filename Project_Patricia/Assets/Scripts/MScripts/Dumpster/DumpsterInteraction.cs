@@ -10,9 +10,11 @@ public class DumpsterInteraction : MonoBehaviour
     [SerializeField] TrashOn trashOne, trashTwo;
     public NotesUI note;
     [SerializeField] private int count;
+    public AudioSource closeAudio;
+    public AudioClip dumpster;
     public enum Work
     {
-        tras, shopping, firewood
+        trash, shopping, firewood
     }
     public Work word;
 
@@ -32,9 +34,10 @@ public class DumpsterInteraction : MonoBehaviour
             {
                 switch (word)
                 {
-                    case Work.tras:
+                    case Work.trash:
                         note.check = 1;
                         anim.SetBool("Open", true);
+                        closeAudio.PlayOneShot(dumpster);
                         break;
                     case Work.shopping:
                         note.check = 2;
