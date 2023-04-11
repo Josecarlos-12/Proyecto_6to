@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class AlarmOff : MonoBehaviour
@@ -9,6 +10,7 @@ public class AlarmOff : MonoBehaviour
     [SerializeField] private BoxMusicInteractions box;
     [SerializeField] private GameObject text;
     [SerializeField] private Collider col;
+    [SerializeField] private GameObject textMesh;
 
 
 
@@ -22,7 +24,20 @@ public class AlarmOff : MonoBehaviour
             alarm.enabled = false;
             col.enabled= false;
             text.SetActive(false);
+
+            StartCoroutine("Dilogue");
         }
+    }
+
+    public IEnumerator Dilogue()
+    {
+        yield return new WaitForSeconds(5);
+        textMesh.SetActive(true);
+        textMesh.GetComponent<TextMeshProUGUI>().text = "Charlie Schmith: ¿Papá?";
+        yield return new WaitForSeconds(2);
+        textMesh.GetComponent<TextMeshProUGUI>().text = "Charlie Schmith: ¡Papá!";
+        yield return new WaitForSeconds(2);
+        textMesh.SetActive(false);
     }
 
     private void OnTriggerEnter(Collider other)

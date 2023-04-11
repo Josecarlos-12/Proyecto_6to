@@ -8,7 +8,7 @@ public class BoxMusic : MonoBehaviour
     [SerializeField] private Collider col;
     [SerializeField] private GameObject text, texMes, objSing;
     [SerializeField] private TextMeshProUGUI textMeshPro;
-    [SerializeField] private bool into, accept;
+    [SerializeField] private bool into, intoTrue, accept;
     [SerializeField] private StrongBox pass;
     [SerializeField] private PickableObject pick;
     [SerializeField] private int count;
@@ -47,7 +47,7 @@ public class BoxMusic : MonoBehaviour
         yield return new WaitForSeconds(1);
         texMes.SetActive(false);
         accept = true;
-        into = true;
+        intoTrue = true;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -65,6 +65,22 @@ public class BoxMusic : MonoBehaviour
                     StartCoroutine("Dialogue");
                 }
             }
+
+            
+        }
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+           
+            if (intoTrue)
+            {
+                into = true;
+            }
+
+
         }
     }
 
