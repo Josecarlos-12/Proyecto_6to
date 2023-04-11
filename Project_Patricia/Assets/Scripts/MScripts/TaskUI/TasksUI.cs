@@ -39,6 +39,7 @@ public class TasksUI : MonoBehaviour
             {
                 go = false;
                 count= 0;
+                text.SetActive(false);
                 StopCoroutine("TaskUIOff");
             }
             
