@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class LanterGrab : MonoBehaviour
@@ -7,6 +8,7 @@ public class LanterGrab : MonoBehaviour
     [SerializeField] private GameObject text, lanter, childMove;
     [SerializeField] private bool into;
     [SerializeField] private Collider col;
+    [SerializeField] private GameObject dialogueText;
 
     private void Update()
     {
@@ -21,8 +23,19 @@ public class LanterGrab : MonoBehaviour
             lanter.SetActive(true);
             col.enabled = false;
             text.SetActive(false);
-            Destroy(gameObject);
+            Destroy(transform.GetChild(0).gameObject);
+            StartCoroutine("Dialogue");
         }
+    }
+
+    public IEnumerator Dialogue()
+    {
+        yield return new WaitForSeconds(5);
+        dialogueText.SetActive(true);
+        dialogueText.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: ¡Charlie! Regresa! ¡Es peligroso que estes fuera!";
+        yield return new WaitForSeconds(4);
+        dialogueText.SetActive(false);
+        Destroy(gameObject);
     }
 
     private void OnTriggerEnter(Collider other)

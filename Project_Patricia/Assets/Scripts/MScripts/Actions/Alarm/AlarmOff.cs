@@ -25,17 +25,21 @@ public class AlarmOff : MonoBehaviour
             col.enabled= false;
             text.SetActive(false);
 
-            StartCoroutine("Dilogue");
+            StartCoroutine("Dialogue");
         }
     }
 
-    public IEnumerator Dilogue()
+    public IEnumerator Dialogue()
     {
         yield return new WaitForSeconds(5);
         textMesh.SetActive(true);
         textMesh.GetComponent<TextMeshProUGUI>().text = "Charlie Schmith: ¿Papá?";
         yield return new WaitForSeconds(2);
         textMesh.GetComponent<TextMeshProUGUI>().text = "Charlie Schmith: ¡Papá!";
+        yield return new WaitForSeconds(2);
+        textMesh.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: ¿Charlie?";
+        yield return new WaitForSeconds(2);
+        textMesh.GetComponent<TextMeshProUGUI>().text = "Charlie Schmith: !Papá!, no creerás lo que encontré, ¡Ven, sígueme!";
         yield return new WaitForSeconds(2);
         textMesh.SetActive(false);
     }
