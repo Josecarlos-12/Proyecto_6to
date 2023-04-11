@@ -50,10 +50,23 @@ public class iron : MonoBehaviour
 
     public IEnumerator Next()
     {
+        //Aqui poner Sonidos
+        switch (check)
+        {
+            case Check.three:
+                //Planchar
+                break;
+            case Check.four:
+                audioSource.PlayOneShot(audioClip);
+                break;
+            case Check.nine:
+                //Cubitos amarillos
+                break;
+        }
         yield return new WaitForSeconds(1);
         Destroy(wornClothes);
         cleanClothes.SetActive(true);
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(4);
         prota.SetActive(true);
         panel.SetActive(false);
         cam.SetActive(false);
@@ -63,7 +76,8 @@ public class iron : MonoBehaviour
                 note.check = 3;
                 break;
             case Check.four:
-            note.check = 4;
+                
+                note.check = 4;
             cF = true;
             break;
             case Check.nine:
@@ -75,8 +89,7 @@ public class iron : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
-        {
-            audioSource.PlayOneShot(audioClip);
+        {            
             if (noteGrab.grabNote == true)
             {
                 into = true;
