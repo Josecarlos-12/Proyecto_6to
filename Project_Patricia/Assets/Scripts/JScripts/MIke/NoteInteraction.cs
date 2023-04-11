@@ -23,6 +23,7 @@ public class NoteInteraction : MonoBehaviour
     public AudioSource pageSound;
     public DialogueNote noteNote;
     public bool grabNote;
+    public int add = 0;
 
     [Header("Press")]
     [SerializeField] private GameObject texE;
@@ -72,18 +73,27 @@ public class NoteInteraction : MonoBehaviour
             note.SetActive(true);
             text.text = noteText;
             texE.SetActive(false);
+            
         }
         if (count == 2)
         {
-            traduction.SetActive(true);
+            traduction.SetActive(true);            
+
+            if(add<3)
+            add++;
+
+            if(add== 1)
+            {
+                noteList.sNote.Add(noteList.save);
+            }
+            
         }
         if (count == 3)
         {
             traduction.SetActive(false);
         }
         if (count == 4)
-        {
-            noteList.sNote.Add(noteList.save);
+        {            
             Time.timeScale = 1;
             note.SetActive(false);
             
