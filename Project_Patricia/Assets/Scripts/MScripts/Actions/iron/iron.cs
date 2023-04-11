@@ -14,7 +14,9 @@ public class iron : MonoBehaviour
     [SerializeField] private GameObject cam, prota, panel, textE, wornClothes, cleanClothes;
     public NotesUI note;
     [SerializeField] private NoteInteraction noteGrab;
-
+    
+    public AudioSource audioSource;
+    public AudioClip audioClip;
 
     public enum Check
     {
@@ -74,6 +76,7 @@ public class iron : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
+            audioSource.PlayOneShot(audioClip);
             if (noteGrab.grabNote == true)
             {
                 into = true;
