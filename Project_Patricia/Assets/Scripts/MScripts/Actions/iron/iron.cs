@@ -54,7 +54,7 @@ public class iron : MonoBehaviour
         switch (check)
         {
             case Check.three:
-                //Planchar
+                audioSource.PlayOneShot(audioClip);
                 break;
             case Check.four:
                 audioSource.PlayOneShot(audioClip);
