@@ -9,6 +9,13 @@ public class EnemyMoveRotate : MonoBehaviour
     [SerializeField] private float detectionFollow;
     public GameObject player, posInitial;
     public bool touchEyes;
+    [SerializeField] FollowOppositeDirection follow;
+
+    public enum State
+    {
+        rotate, follow
+    }
+    public State state;
 
     void Start()
     {
@@ -16,10 +23,18 @@ public class EnemyMoveRotate : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
     }
 
-    // Update is called once per frame
+
     void Update()
     {
-        Follow();
+        switch (state)
+        {
+            case State.rotate:
+                follow.Rotate();
+                break;
+            case State.follow:
+                Follow();
+                break;
+        }
     }
 
     public void Follow()

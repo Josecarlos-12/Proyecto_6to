@@ -32,7 +32,7 @@ public class SanityLevel : MonoBehaviour
 
             BloomChange(-4f);
 
-            if (health.bloom.intensity.value <= 0.07)
+            if (health.bloom.intensity.value <= 0.6)
             {
                 health.bloom.active = false;
             }
