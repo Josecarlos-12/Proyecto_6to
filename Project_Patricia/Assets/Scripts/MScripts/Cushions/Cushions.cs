@@ -22,7 +22,7 @@ public class Cushions : MonoBehaviour
 
     public void Down()
     {
-        if(note.one && note.two && note.three && note.four && note.eight && note.nine && Input.GetKeyDown(KeyCode.E))
+        if(note.one && note.two && note.three && note.four && note.eight && note.nine && Input.GetKeyDown(KeyCode.E) && into)
         {  
             count++;
 

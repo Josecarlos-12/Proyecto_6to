@@ -42,6 +42,8 @@ public class PlayerInteraction : MonoBehaviour
     [SerializeField] private float time, maxTime;
     [SerializeField] private bool active;
 
+    public LayerMask detected;
+
     private void Start()
     {
         shoot = true;
@@ -59,7 +61,7 @@ public class PlayerInteraction : MonoBehaviour
     public void Detected()
     {
         //Raycast con tag no detecta si hay algun objeto al frente de tu objetivo
-        if (Physics.Raycast(cam.transform.position, cam.forward, out hit, distance))
+        if (Physics.Raycast(cam.transform.position, cam.forward, out hit, distance, detected))
         {
             if (hit.transform.CompareTag("Door"))
             {
