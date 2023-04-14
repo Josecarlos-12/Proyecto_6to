@@ -11,11 +11,50 @@ public class Rifle : MonoBehaviour
     [SerializeField] private Collider col;
     [SerializeField] private Weapon weapon;
     [SerializeField] private Inventary inve;
-    
+
+    [Header("Dialogue")]
+    [SerializeField] private GameObject dialogue;
+    [SerializeField] private EnemyShed run;
+    public bool star;
+    public int count;
 
     private void Update()
     {
-        InpuRifle();
+       if(star)
+        {            
+            if (count < 3)
+            {
+                count++;
+            }
+
+            if (count == 1)
+            {
+                StartCoroutine("DialogueFinal");
+            }
+        }
+    }
+
+    public IEnumerator DialogueFinal()
+    {
+        yield return new WaitForSeconds(0.6f);
+        dialogue.SetActive(true);
+        dialogue.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: ¡Hey! ¿Quién eres tú? ¡¿Qué haces en mi propiedad?!";
+        yield return new WaitForSeconds(3f);
+        dialogue.SetActive(false);
+        run.run = true;        
+        yield return new WaitForSeconds(1f);
+        dialogue.SetActive(true);
+        dialogue.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: ¡Hey hablo enserio, vuelve aquí!";
+        yield return new WaitForSeconds(2f);
+        dialogue.SetActive(false);
+        yield return new WaitForSeconds(4f);
+        dialogue.SetActive(true);
+        dialogue.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: Se está moviendo por entre los arbustos...";
+        yield return new WaitForSeconds(2f);
+        dialogue.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: Esta es mi oportunidad, tengo que evitar que me escuche";
+        yield return new WaitForSeconds(4f);
+        dialogue.SetActive(false);
+        this.gameObject.GetComponent<Rifle>().enabled = false;
     }
 
     public void InpuRifle()

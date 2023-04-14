@@ -149,6 +149,7 @@ public class PlayerFPSt : MonoBehaviour
         if (isGrounded && velocity.y < 0)
         {
             velocity.y = -2f;
+            print("isgrounded");
         }
 
         float x = Input.GetAxisRaw("Horizontal");
