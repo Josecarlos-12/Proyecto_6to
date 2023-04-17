@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class EventChild : MonoBehaviour
 {
+    [SerializeField] private Collider coll;
     [SerializeField] private GameObject eventGame;
     [SerializeField] private GameObject active;
     [SerializeField] private GameObject dialogue;
@@ -42,20 +43,16 @@ public class EventChild : MonoBehaviour
                     Destroy(this.gameObject);
                     break;
                 case EnumAction.three:
-                    count++;
-
-                    if (count == 0)
-                    {
-                        StartCoroutine("Dialogue");
-                    }
+                    coll.enabled = false;
+                    StartCoroutine("Dialogue");
                     break;
                 case EnumAction.four:
-                    count++;
-
-                    if (count == 0)
-                    {
-                        StartCoroutine("DialogueSound");
-                    }
+                    coll.enabled = false;
+                    StartCoroutine("DialogueTwo");
+                    break;
+                case EnumAction.five:
+                    coll.enabled = false;
+                    StartCoroutine("DialogueSound");
                     break;
             }
         }
@@ -85,8 +82,7 @@ public class EventChild : MonoBehaviour
     }
 
     public IEnumerator DialogueSound()
-    {
-        active.SetActive(true);
+    {        
         dialogue.SetActive(true);
         dialogue.GetComponent<TextMeshProUGUI>().text = textTwo[0];
         yield return new WaitForSeconds(timeTwo[0]);
@@ -97,6 +93,7 @@ public class EventChild : MonoBehaviour
         dialogue.GetComponent<TextMeshProUGUI>().text = textTwo[1];
         yield return new WaitForSeconds(timeTwo[2]);
         dialogue.SetActive(false);
+        active.SetActive(true);
         Destroy(this.gameObject);
     }
 }
