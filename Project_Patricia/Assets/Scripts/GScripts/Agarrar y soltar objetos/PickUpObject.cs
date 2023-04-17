@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class PickUpObject : MonoBehaviour
@@ -11,10 +12,17 @@ public class PickUpObject : MonoBehaviour
     [SerializeField] private Vector3 rotation;
     [SerializeField] private float speed;
 
+    [SerializeField] private CharacterController player;
+    public Vector3 newCenter;
+    public float newRadius;
+    public float timer;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        //newRadius=player.radius;
+        //newCenter = player.center;
+        //Debug.Log(player.center);
     }
 
     // Update is called once per frame
@@ -30,7 +38,9 @@ public class PickUpObject : MonoBehaviour
                 PickedObject.transform.position = interactionZone.position;
                 PickedObject.GetComponent<Rigidbody>().useGravity = false;
                 PickedObject.GetComponent<Rigidbody>().isKinematic = true;
-
+                //newCenter = new Vector3(0,0,0.2f);
+                newRadius = 0.7f;
+                timer = 0;
             }
 
             if (Input.GetKey(KeyCode.LeftArrow))
@@ -66,10 +76,20 @@ public class PickUpObject : MonoBehaviour
                 PickedObject.GetComponent<Rigidbody>().useGravity = true;
                 PickedObject.GetComponent<Rigidbody>().isKinematic = false;
                 PickedObject = null;
+                newCenter = new Vector3(0,0,0);
+                newRadius = 0.5f;
+                timer = 0;
             }
         }
 
         transform.Rotate(rotation * speed * Time.deltaTime);
+    }
+
+    private void LateUpdate()
+    {
+        //player.radius = Mathf.Lerp(player.radius, newRadius, timer);
+        //7player.center = Vector3.Lerp(player.center, newCenter, timer);
+        //timer += Time.deltaTime;
     }
 
 }

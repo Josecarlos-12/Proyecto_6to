@@ -63,6 +63,7 @@ public class PlayerInteraction : MonoBehaviour
         //Raycast con tag no detecta si hay algun objeto al frente de tu objetivo
         if (Physics.Raycast(cam.transform.position, cam.forward, out hit, distance, detected))
         {
+            Debug.Log(hit.transform.gameObject.name);
             if (hit.transform.CompareTag("Door"))
             {
                 texE.SetActive(true);

@@ -20,7 +20,8 @@ public class Rifle : MonoBehaviour
 
     private void Update()
     {
-       if(star)
+        InpuRifle();
+       if (star)
         {            
             if (count < 3)
             {

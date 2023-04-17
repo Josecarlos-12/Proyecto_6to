@@ -11,6 +11,7 @@ public class AlarmOff : MonoBehaviour
     [SerializeField] private GameObject text;
     [SerializeField] private Collider col;
     [SerializeField] private GameObject textMesh;
+    [SerializeField] private GameObject[] coliders;
 
 
 
@@ -26,6 +27,11 @@ public class AlarmOff : MonoBehaviour
             text.SetActive(false);
 
             StartCoroutine("Dialogue");
+
+            for (int i = 0; i < coliders.Length; i++)
+            {
+                coliders[i].SetActive(true);
+            }
         }
     }
 

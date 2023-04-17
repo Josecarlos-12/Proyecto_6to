@@ -23,7 +23,7 @@ public class ChildMove : MonoBehaviour
 
     void Update()
     {
-        if (agent.remainingDistance < 1 && countMax<=9)
+        if (agent.remainingDistance < 1 && countMax<=6)
         {
             GoToNextPoint();
 
@@ -36,7 +36,7 @@ public class ChildMove : MonoBehaviour
                 StartCoroutine(Next());
             }
         }
-        if (agent.remainingDistance < 1 && countMax >= 9)
+        if (agent.remainingDistance < 1 && countMax >= 6)
         {
             if (countT < 3)
                 countT++;
