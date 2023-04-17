@@ -11,6 +11,7 @@ public class DialogueDorr : MonoBehaviour
 
     [Header("Call Other Script")]
     [SerializeField] private GrabRifleColl fin;
+    public Rifle rifle;
 
     public IEnumerator Dialogue()
     {
@@ -45,5 +46,10 @@ public class DialogueDorr : MonoBehaviour
     {
         fin.prota.SetActive(true);
         fin.cam.SetActive(false);
+    }
+
+    public void DialogueTrue()
+    {
+        rifle.star = true;
     }
 }

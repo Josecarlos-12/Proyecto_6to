@@ -9,12 +9,22 @@ public class DialogueNote : MonoBehaviour
     [SerializeField] private GameObject textContainer;
     [SerializeField] private bool into, grabNote;
     [SerializeField] private string text;
+    [SerializeField] private int count;
 
     private void Update()
     {
         if ( into)
         {
-            StartCoroutine("NextDia");
+            if (count < 3)
+            {
+                count++;
+            }
+
+            if (count == 1)
+            {
+                StartCoroutine("NextDia");
+            }
+            
         }
     }
 

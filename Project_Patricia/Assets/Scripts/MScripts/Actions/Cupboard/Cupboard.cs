@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class Cupboard : MonoBehaviour
 {
     [SerializeField] private GameObject deer, prota, can, panel;
+    [SerializeField] private GameObject nextChapter;
     [SerializeField] private bool bDeer, bProta;
     [SerializeField] private float sizeDeer, sizeProta;
     [SerializeField] private Animator anim;
@@ -39,6 +40,8 @@ public class Cupboard : MonoBehaviour
         prota.SetActive(false);
         can.SetActive(true);
         yield return new WaitForSeconds(2f);
+        nextChapter.SetActive(true);
+        yield return new WaitForSeconds(1f);
         SceneManager.LoadScene("Nivel 1");
     }
 

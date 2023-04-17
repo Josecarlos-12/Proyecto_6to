@@ -14,6 +14,9 @@ public class Cushions : MonoBehaviour
     [SerializeField] private SleepMode sleep;
 
     [SerializeField] private GameObject textDialogue;
+    [SerializeField] private WakingUpMode wakingUp;
+
+
 
     private void Update()
     {
@@ -22,7 +25,7 @@ public class Cushions : MonoBehaviour
 
     public void Down()
     {
-        if(note.one && note.two && note.three && note.four && note.eight && note.nine && Input.GetKeyDown(KeyCode.E))
+        if(note.one && note.two && note.three && note.four && note.eight && note.nine && Input.GetKeyDown(KeyCode.E) && into)
         {  
             count++;
 
@@ -43,20 +46,21 @@ public class Cushions : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         panel.SetActive(true);
         //objeDreams.SetActive(true);
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(2f);        
         sleep.motionBlur.active = false;
         sleep.cAberration.active = false;
         sleep.run.canRun = true;
         sleep.crouch.crouchCan = true;
         panel.SetActive(false);
         cam.GetComponent<Animator>().SetBool("Up", true);
-        yield return new WaitForSeconds(1f);
+        wakingUp.WakingOn();
+        yield return new WaitForSeconds(1f);       
         rifle.SetActive(true);
         cam.SetActive(false); 
         prota.transform.position=posProta.transform.position;
         prota.transform.rotation = posProta.transform.rotation;
-        prota.SetActive(true);
-        yield return new WaitForSeconds(0.8f);
+        prota.SetActive(true);        
+        yield return new WaitForSeconds(0.8f);       
         textDialogue.SetActive(true);
         textDialogue.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: Oooohhmm ¿Qué? ¿Qué hora es? debo cerrar el estudio.";
         yield return new WaitForSeconds(3f);
