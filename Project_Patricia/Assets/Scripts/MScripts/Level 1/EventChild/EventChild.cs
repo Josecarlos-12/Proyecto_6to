@@ -19,7 +19,7 @@ public class EventChild : MonoBehaviour
 
     public enum EnumAction
     {
-        one, two,three, four, five
+        one, two,three, four, five,rifle
     }
     public EnumAction action;
 
@@ -94,6 +94,15 @@ public class EventChild : MonoBehaviour
         yield return new WaitForSeconds(timeTwo[2]);
         dialogue.SetActive(false);
         active.SetActive(true);
+        Destroy(this.gameObject);
+    }
+
+    public IEnumerator RifleEvent()
+    {
+        dialogue.SetActive(true);
+        dialogue.GetComponent<TextMeshProUGUI>().text = textTwo[0];
+        yield return new WaitForSeconds(timeTwo[0]);
+        dialogue.SetActive(false);
         Destroy(this.gameObject);
     }
 }
