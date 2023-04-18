@@ -19,7 +19,7 @@ public class LanterGrab : MonoBehaviour
     {
         if (into && Input.GetKeyDown(KeyCode.E))
         {
-            childMove.SetActive(true);
+            //childMove.SetActive(true);
             lanter.SetActive(true);
             col.enabled = false;
             text.SetActive(false);
@@ -30,10 +30,9 @@ public class LanterGrab : MonoBehaviour
 
     public IEnumerator Dialogue()
     {
-        yield return new WaitForSeconds(5);
         dialogueText.SetActive(true);
         dialogueText.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: ¡Charlie! Regresa! ¡Es peligroso que estes fuera!";
-        yield return new WaitForSeconds(4);
+        yield return new WaitForSeconds(3);
         dialogueText.SetActive(false);
         Destroy(gameObject);
     }

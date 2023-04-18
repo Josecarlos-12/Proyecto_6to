@@ -17,9 +17,14 @@ public class EventChild : MonoBehaviour
     [SerializeField] private float[] timeTwo;
     [SerializeField] private AudioSource rifleSound;
 
+    [Header("Shadow Charlie")]
+    [SerializeField] private GameObject point;
+    [SerializeField] private GameObject charlie, cam, prota, panel;
+    [SerializeField] private Animator shadowAnim;
+
     public enum EnumAction
     {
-        one, two,three, four, five
+        one, two,three, four, five,rifle
     }
     public EnumAction action;
 
@@ -53,6 +58,10 @@ public class EventChild : MonoBehaviour
                 case EnumAction.five:
                     coll.enabled = false;
                     StartCoroutine("DialogueSound");
+                    break;
+                case EnumAction.rifle:
+                    coll.enabled = false;
+                    StartCoroutine("RifleEvent");
                     break;
             }
         }
@@ -95,5 +104,30 @@ public class EventChild : MonoBehaviour
         dialogue.SetActive(false);
         active.SetActive(true);
         Destroy(this.gameObject);
+    }
+
+    public IEnumerator RifleEvent()
+    {
+        dialogue.SetActive(true);
+        dialogue.GetComponent<TextMeshProUGUI>().text = textTwo[0];
+        yield return new WaitForSeconds(timeTwo[0]);
+        dialogue.SetActive(false);
+        yield return new WaitForSeconds(timeTwo[1]);
+        charlie.SetActive(true);
+        charlie.transform.position = point.transform.position;
+        charlie.transform.rotation= point.transform.rotation;
+        yield return new WaitForSeconds(timeTwo[2]);
+        dialogue.SetActive(true);
+        dialogue.GetComponent<TextMeshProUGUI>().text = textTwo[1];
+        yield return new WaitForSeconds(timeTwo[3]);
+        dialogue.SetActive(false);
+        yield return new WaitForSeconds(timeTwo[4]);        
+        panel.SetActive(true);
+        prota.SetActive(false);
+        cam.SetActive(true);
+        yield return new WaitForSeconds(timeTwo[5]);      
+        shadowAnim.enabled= true;
+        panel.SetActive(false);
+       // Destroy(this.gameObject);
     }
 }
