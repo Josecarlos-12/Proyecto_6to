@@ -101,6 +101,7 @@ public class EventWPV2 : MonoBehaviour
         chart.SetActive(false);
         chartFall.SetActive(true);
         sleep.ModeDreams();
+        chartSound.Play();
         yield return new WaitForSeconds(2);
         sleep.OffDreams();
         Destroy(gameObject);
@@ -111,17 +112,18 @@ public class EventWPV2 : MonoBehaviour
         player.SetActive(false);
         cam.SetActive(true);
         anim.SetBool("Chart", true);
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(3);
+        player.SetActive(true);
+        cam.SetActive(false);
+        capsule.SetActive(true);
+        yield return new WaitForSeconds(1);
         walk.SetActive(true);
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(1);
         text.SetActive(true);
         text.GetComponent<TextMeshProUGUI>().text = "Charlie Schmith: ¡Papaaaaaaa! ¡Ayudameeeeeee!";
         yield return new WaitForSeconds(2);
         text.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: ¡Charlie! ¡Ya voy!";
-        yield return new WaitForSeconds(2);
-        player.SetActive(true);
-        cam.SetActive(false);
-        capsule.SetActive(true);
+        yield return new WaitForSeconds(2);       
         text.SetActive(false);
         
     }

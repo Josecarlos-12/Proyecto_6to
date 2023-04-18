@@ -6,7 +6,7 @@ using UnityEngine;
 public class GrabRifleSounds : MonoBehaviour
 {
     public bool grab, into;
-    [SerializeField] private GameObject text, pressE, wayPoint;
+    [SerializeField] private GameObject text, pressE, wayPoint, charlie;
     [SerializeField] private Collider col;
     [SerializeField] private AudioSource[] audioRifle;
     [SerializeField] private MeshRenderer mesh;
@@ -27,7 +27,7 @@ public class GrabRifleSounds : MonoBehaviour
             into = false;
             col.enabled = false;
             StartCoroutine("Dialogue");
-
+            Destroy(charlie);
             for (int i = 0; i < audioRifle.Length; i++)
             {
                 Destroy(audioRifle[i]);
