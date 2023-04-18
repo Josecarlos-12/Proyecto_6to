@@ -57,7 +57,7 @@ public class SleepMode : MonoBehaviour
     public IEnumerator NextDia()
     {
         textContainer.SetActive(true);
-        textMeshPro.text = "Oohhmm qué cansado me siento, creo que descanzaré unos minutos.";
+        textMeshPro.text = "Mike Schmith: Oohhmm qué cansado me siento, creo que descanzaré unos minutos.";
         yield return new WaitForSecondsRealtime(2);
         textContainer.SetActive(false);
     }

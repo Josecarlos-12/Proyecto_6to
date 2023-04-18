@@ -37,15 +37,14 @@ public class AlarmOff : MonoBehaviour
 
     public IEnumerator Dialogue()
     {
-        yield return new WaitForSeconds(5);
         textMesh.SetActive(true);
         textMesh.GetComponent<TextMeshProUGUI>().text = "Charlie Schmith: ¿Papá?";
-        yield return new WaitForSeconds(2);
-        textMesh.GetComponent<TextMeshProUGUI>().text = "Charlie Schmith: ¡Papá!";
         yield return new WaitForSeconds(2);
         textMesh.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: ¿Charlie?";
         yield return new WaitForSeconds(2);
         textMesh.GetComponent<TextMeshProUGUI>().text = "Charlie Schmith: !Papá!, no creerás lo que encontré, ¡Ven, sígueme!";
+        yield return new WaitForSeconds(2);
+        textMesh.GetComponent<TextMeshProUGUI>().text = "Charlie Schmith: No me gusta esto";
         yield return new WaitForSeconds(2);
         textMesh.SetActive(false);
     }
