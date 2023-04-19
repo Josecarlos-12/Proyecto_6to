@@ -7,7 +7,8 @@ public class AnimKeyEvent : MonoBehaviour
 {
     [SerializeField] private GameObject text;
     [SerializeField] private AudioSource[] sound;
-    [SerializeField] private GameObject cam, prota;
+    [SerializeField] private GameObject cam, prota, shadow, boss;
+    [SerializeField] private ActiveBoss active;
 
     public IEnumerator DialogueOne()
     {
@@ -27,6 +28,9 @@ public class AnimKeyEvent : MonoBehaviour
         text.SetActive(true);
         text.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: Te lo advertí";
         yield return new WaitForSeconds(2);
+        active.active = true;
+        Destroy(shadow);
+        boss.SetActive(true);
         text.SetActive(false);
         cam.SetActive(false);
         prota.SetActive(true);

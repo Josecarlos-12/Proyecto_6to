@@ -104,7 +104,7 @@ public class MoveBoss : MonoBehaviour
 
                     posProta = player.transform.position;
                     transform.LookAt(posProta);
-                    agent.speed = 30;
+                    agent.speed = 50;
                     agent.destination = posProta;
                 }
 
@@ -194,7 +194,7 @@ public class MoveBoss : MonoBehaviour
                     if (countPosProta == 1)
                     {
                         transform.LookAt(posProta);
-                        agent.speed = 30;
+                        agent.speed = 50;
                         posProta = player.transform.position;
                     }
 
@@ -207,14 +207,14 @@ public class MoveBoss : MonoBehaviour
                     print("Life es menor a 31");
                     myAlpha = 0;
                     transform.LookAt(player.transform.position);
-                    agent.speed = 30;
+                    agent.speed = 50;
                     agent.destination = player.transform.position;
                 }
             }
 
             if (Vector3.Distance(transform.position, posProta) < 3 && life >= 31)
             {
-                agent.speed = 9;
+                agent.speed = 30;
                 countPosProta = 0;
                 iA = 0;
                 destPoint = 0;
@@ -320,7 +320,7 @@ public class MoveBoss : MonoBehaviour
         destPoint = (destPoint + 1) % groupA.Length;
         agent.destination = groupA[destPoint].position;
         iA++;
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(0);
         count = 0;
     }
 
@@ -344,7 +344,7 @@ public class MoveBoss : MonoBehaviour
         destPoint = (destPoint + 1) % groupB.Length;
         agent.destination = groupB[destPoint].position;
         iA++;
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(0);
         count1 = 0;
     }
 
@@ -367,7 +367,7 @@ public class MoveBoss : MonoBehaviour
         destPoint = (destPoint + 1) % groupC.Length;
         agent.destination = groupC[destPoint].position;
         iA++;
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(0);
         count2 = 0;
     }
 
@@ -392,7 +392,7 @@ public class MoveBoss : MonoBehaviour
         destPoint = (destPoint + 1) % groupD.Length;
         agent.destination = groupD[destPoint].position;
         iA++;
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(0);
         count3 = 0;
     }
 
@@ -402,7 +402,7 @@ public class MoveBoss : MonoBehaviour
         {
             if(life <= 31)
             {
-                agent.speed = 9;
+                agent.speed = 30;
                 countPosProta = 0;
                 iA = 0;
                 destPoint = 0;
@@ -441,7 +441,7 @@ public class MoveBoss : MonoBehaviour
     {
         yield return new WaitForSeconds(3);
         buOne = false;
-        agent.speed = 30;
+        agent.speed = 50;
         print("AnimacionFalse");
     }
 
@@ -449,7 +449,7 @@ public class MoveBoss : MonoBehaviour
     {
         yield return new WaitForSeconds(3);
         bullet = false;
-        agent.speed = 30;
+        agent.speed = 50;
         print("AnimacionFalse");
     }
 

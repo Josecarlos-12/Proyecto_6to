@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.HighDefinition;
 
 public class CorutinaInitial : MonoBehaviour
 {
@@ -18,10 +20,33 @@ public class CorutinaInitial : MonoBehaviour
     [SerializeField] private AudioSource audioCatelyn;
     [SerializeField] private AudioClip[] clip;
 
+    [SerializeField, Header("Call Other Scritp")] private SleepMode sleep;
+
+    [Header("Volume")]
+    public Volume volume;
+    public Bloom bloom;
+    public MotionBlur motionBlur;
+    public ChromaticAberration cAberration;
+
     public IEnumerator Start()
     {
+        volume.profile.TryGet(out MotionBlur mBlur);
+        motionBlur = mBlur;
+
+        volume.profile.TryGet(out ChromaticAberration cromatic);
+        cAberration = cromatic;
+
+        volume.profile.TryGet(out Bloom bLoom);
+        bloom = bLoom;
+
+        motionBlur.active = true;
+        cAberration.active = true;
+        bloom.active = true;
+        bloom.intensity.value= 0.4f;
+
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+
         yield return new WaitForSeconds(time[0]);
         audioCatelyn.clip = clip[0];
         audioCatelyn.Play();
@@ -35,6 +60,12 @@ public class CorutinaInitial : MonoBehaviour
         yield return new WaitForSeconds(time[4]);
         audioMike.clip = clip[1];
         audioMike.Play();
+
+        bloom.intensity.value = 0.4f;
+        motionBlur.active = false;
+        cAberration.active = false;
+        bloom.active = false;
+
         textMeshPro.text = text[4];
         yield return new WaitForSeconds(time[5]);
         audioCatelyn.clip = clip[2];

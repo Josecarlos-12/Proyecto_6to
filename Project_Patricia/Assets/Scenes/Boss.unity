@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 2158.2812, g: 2260.504, b: 3278.4102, a: 1}
+  m_IndirectSpecularColor: {r: 1417.3303, g: 1075.8284, b: 879.49347, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -8494,7 +8494,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1250852284
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8792,7 +8792,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1492935228}
-  speed: 5
+  rotationSpeed: 5
+  rotateR: {fileID: 0}
+  rotateL: {fileID: 0}
+  iR: 0
+  iL: 0
+  enemy: {fileID: 0}
 --- !u!136 &1336409451
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -9376,6 +9381,9 @@ MonoBehaviour:
   time: 0
   maxTime: 3
   active: 0
+  detected:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!114 &1386315671
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9406,6 +9414,11 @@ MonoBehaviour:
   boxMusic: {fileID: 0}
   sanity: {fileID: 1492935222}
   rRifle: {fileID: 0}
+  text: {fileID: 0}
+  eventPills: {fileID: 0}
+  eventSleep: {fileID: 0}
+  eventLaders: {fileID: 0}
+  complete: 0
   dream: 0
 --- !u!20 &1386315672
 Camera:
@@ -10268,6 +10281,10 @@ MonoBehaviour:
   interactionZone: {fileID: 114746965}
   rotation: {x: 0, y: 0, z: 0}
   speed: 0
+  player: {fileID: 0}
+  newCenter: {x: 0, y: 0, z: 0}
+  newRadius: 0
+  timer: 0
 --- !u!4 &1492935228
 Transform:
   m_ObjectHideFlags: 0
@@ -10407,6 +10424,8 @@ MonoBehaviour:
   run: {fileID: 1492935225}
   textMeshPro: {fileID: 0}
   textContainer: {fileID: 0}
+  audioMike: {fileID: 0}
+  clip: []
 --- !u!1 &1497568472
 GameObject:
   m_ObjectHideFlags: 0
