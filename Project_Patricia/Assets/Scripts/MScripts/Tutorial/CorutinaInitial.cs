@@ -15,6 +15,7 @@ public class CorutinaInitial : MonoBehaviour
     [SerializeField] private TasksUI task;
 
     [SerializeField] private AudioSource audioMike;
+    [SerializeField] private AudioSource audioCatelyn;
     [SerializeField] private AudioClip[] clip;
 
     public IEnumerator Start()
@@ -22,6 +23,8 @@ public class CorutinaInitial : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         yield return new WaitForSeconds(time[0]);
+        audioCatelyn.clip = clip[0];
+        audioCatelyn.Play();
         textMeshPro.text = text[0];
         yield return new WaitForSeconds(time[1]);
         textMeshPro.text = text[1];
@@ -30,35 +33,43 @@ public class CorutinaInitial : MonoBehaviour
         yield return new WaitForSeconds(time[3]);
         textMeshPro.text = text[3];
         yield return new WaitForSeconds(time[4]);
-        audioMike.clip = clip[0];
+        audioMike.clip = clip[1];
         audioMike.Play();
         textMeshPro.text = text[4];
         yield return new WaitForSeconds(time[5]);
+        audioCatelyn.clip = clip[2];
+        audioCatelyn.Play();
         textMeshPro.text = text[5];
         yield return new WaitForSeconds(time[6]);
-        audioMike.clip = clip[1];
+        audioMike.clip = clip[3];
         audioMike.Play();
         textMeshPro.text = text[6];
         yield return new WaitForSeconds(time[7]);
+        audioCatelyn.clip = clip[4];
+        audioCatelyn.Play();
         textMeshPro.text = text[7];
         yield return new WaitForSeconds(time[8]);
-        audioMike.clip = clip[2];
+        audioMike.clip = clip[5];
         audioMike.Play();
         textMeshPro.text = text[8];
         yield return new WaitForSeconds(time[9]);
+        audioCatelyn.clip = clip[6];
+        audioCatelyn.Play();
         textMeshPro.text = text[9];
         yield return new WaitForSeconds(time[10]);
-        audioMike.clip = clip[3];
+        audioMike.clip = clip[7];
         audioMike.Play();
         textMeshPro.text = text[10];
         yield return new WaitForSeconds(time[11]);
+        audioCatelyn.clip = clip[8];
+        audioCatelyn.Play();
         textMeshPro.text = text[11];
         yield return new WaitForSeconds(time[12]);
-        audioMike.clip = clip[4];
+        audioMike.clip = clip[9];
         audioMike.Play();
         textMeshPro.text = text[12];
         yield return new WaitForSeconds(time[13]);
-        audioMike.clip = clip[5];
+        audioMike.clip = clip[10];
         audioMike.Play();
         textMeshPro.text = text[13];
         yield return new WaitForSeconds(time[14]);
