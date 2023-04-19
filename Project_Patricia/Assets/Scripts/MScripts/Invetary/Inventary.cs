@@ -17,7 +17,7 @@ public class Inventary : MonoBehaviour
 
     [Header("Call Other Script")]
     [SerializeField] private PlayerHealth sanity;
-    [SerializeField] private Rifle rRifle;
+    [SerializeField] private EventKeyShadow rRifle;
 
     [Header("Dialogue")]
     [SerializeField] private GameObject text;
@@ -48,19 +48,23 @@ public class Inventary : MonoBehaviour
         }
         if(rifle)
         {
-            if (rRifle.canRifle)
+            if (rRifle != null)
             {
-                count.text = string.Empty;               
-                image.sprite = sRifle;
-                Debug.Log("Rifle");                
+                if (rRifle.canRifle)
+                {
+                    count.text = string.Empty;
+                    image.sprite = sRifle;
+                    Debug.Log("Rifle");
+                }
+                else if (!rRifle.canRifle)
+                {
+                    count.text = string.Empty;
+                    image.sprite = null;
+                    bPills = false;
+                    bKeyComfi = false;
+                }
             }
-            else if (!rRifle.canRifle)
-            {
-                count.text = string.Empty;
-                image.sprite = null;
-                bPills = false;
-                bKeyComfi = false;
-            }
+           
         }
 
         

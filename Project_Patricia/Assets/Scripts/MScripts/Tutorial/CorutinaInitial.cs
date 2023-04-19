@@ -14,6 +14,8 @@ public class CorutinaInitial : MonoBehaviour
     [SerializeField] private bool press;
     [SerializeField] private TasksUI task;
 
+    [SerializeField] private AudioSource audioMike;
+    [SerializeField] private AudioClip[] clip;
 
     public IEnumerator Start()
     {
@@ -28,14 +30,19 @@ public class CorutinaInitial : MonoBehaviour
         yield return new WaitForSeconds(time[3]);
         textMeshPro.text = text[3];
         yield return new WaitForSeconds(time[4]);
+        audioMike.Play();
         textMeshPro.text = text[4];
         yield return new WaitForSeconds(time[5]);
         textMeshPro.text = text[5];
         yield return new WaitForSeconds(time[6]);
+        audioMike.clip = clip[0];
+        audioMike.Play();
         textMeshPro.text = text[6];
         yield return new WaitForSeconds(time[7]);
         textMeshPro.text = text[7];
         yield return new WaitForSeconds(time[8]);
+        audioMike.clip = clip[1];
+        audioMike.Play();
         textMeshPro.text = text[8];
         yield return new WaitForSeconds(time[9]);
         textMeshPro.text = text[9];
