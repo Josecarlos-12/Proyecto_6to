@@ -4,6 +4,7 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.HighDefinition;
 
@@ -22,6 +23,9 @@ public class SleepMode : MonoBehaviour
     [Header("Dialogue")]
     [SerializeField] private TextMeshProUGUI textMeshPro;
     [SerializeField] private GameObject textContainer;
+    [SerializeField] private AudioSource audioMike;
+    [SerializeField] private AudioClip[] clip;
+
 
     // Start is called before the first frame update
     void Start()
@@ -58,7 +62,9 @@ public class SleepMode : MonoBehaviour
     {
         textContainer.SetActive(true);
         textMeshPro.text = "Mike Schmith: Oohhmm qué cansado me siento, creo que descanzaré unos minutos.";
-        yield return new WaitForSecondsRealtime(2);
+        yield return new WaitForSecondsRealtime(6);
+        audioMike.clip = clip[0];
+        audioMike.Play();
         textContainer.SetActive(false);
     }
 

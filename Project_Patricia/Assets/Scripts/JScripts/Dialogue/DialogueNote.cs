@@ -11,6 +11,9 @@ public class DialogueNote : MonoBehaviour
     [SerializeField] private string text;
     [SerializeField] private int count;
 
+    [SerializeField] private AudioSource audioMike;
+    [SerializeField] private AudioClip[] clip;
+
     private void Update()
     {
         if ( into)
@@ -38,7 +41,9 @@ public class DialogueNote : MonoBehaviour
         textContainer.SetActive(true);
         textMeshPro.text = text;
         yield return new WaitForSecondsRealtime(2);
-        grabNote=true;
+        audioMike.clip = clip[0];
+        audioMike.Play();
+        grabNote =true;
         into = false;
         textContainer.SetActive(false);
     }

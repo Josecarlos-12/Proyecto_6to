@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class Rifle : MonoBehaviour
 {
@@ -15,6 +16,9 @@ public class Rifle : MonoBehaviour
     [Header("Dialogue")]
     [SerializeField] private GameObject dialogue;
     [SerializeField] private EnemyShed run;
+    [SerializeField] private AudioSource audioMike;
+    [SerializeField] private AudioClip[] clip;
+
     public bool star;
     public int count;
 
@@ -40,20 +44,28 @@ public class Rifle : MonoBehaviour
         yield return new WaitForSeconds(0.6f);
         dialogue.SetActive(true);
         dialogue.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: ¡Hey! ¿Quién eres tú? ¡¿Qué haces en mi propiedad?!";
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(4f);
+        audioMike.clip = clip[0];
+        audioMike.Play();
         dialogue.SetActive(false);
         run.run = true;        
         yield return new WaitForSeconds(1f);
         dialogue.SetActive(true);
         dialogue.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: ¡Hey hablo enserio, vuelve aquí!";
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(3f);
+        audioMike.clip = clip[1];
+        audioMike.Play();
         dialogue.SetActive(false);
         yield return new WaitForSeconds(4f);
         dialogue.SetActive(true);
-        dialogue.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: Se está moviendo por entre los arbustos...";
+        dialogue.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: Se está moviendo entre los arbustos...";
         yield return new WaitForSeconds(2f);
+        audioMike.clip = clip[2];
+        audioMike.Play();
         dialogue.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: Esta es mi oportunidad, tengo que evitar que me escuche";
-        yield return new WaitForSeconds(4f);
+        yield return new WaitForSeconds(3f);
+        audioMike.clip = clip[3];
+        audioMike.Play();
         dialogue.SetActive(false);
         this.gameObject.GetComponent<Rifle>().enabled = false;
     }
