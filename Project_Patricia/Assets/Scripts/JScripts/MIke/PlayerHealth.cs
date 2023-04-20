@@ -103,7 +103,7 @@ public class PlayerHealth : MonoBehaviour
             //sanity -= 10;
             print("Pego boss");
         }
-        if (other.gameObject.name == "BoosCon")
+        if (other.gameObject.name == "BossCon")
         {
             if (moveBoss.lifeLess)
             {

@@ -90,7 +90,7 @@ public class Inventary : MonoBehaviour
         }
 
 
-        /* if (Input.GetKeyDown(KeyCode.Alpha3))
+         if (Input.GetKeyDown(KeyCode.Alpha3))
         {
             bKeyComfi = true;
             rifle = false;
@@ -108,7 +108,7 @@ public class Inventary : MonoBehaviour
             {
                 image.sprite = null;
             }
-        }*/
+        }
 
         Pills();
     }

@@ -61,7 +61,7 @@ public class CorutinaInitial : MonoBehaviour
         audioMike.clip = clip[1];
         audioMike.Play();
 
-        bloom.intensity.value = 0.4f;
+        bloom.intensity.value = 0f;
         motionBlur.active = false;
         cAberration.active = false;
         bloom.active = false;
@@ -121,7 +121,13 @@ public class CorutinaInitial : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.F12) && !press) 
         {
+            audioMike.Stop();
+            audioCatelyn.Stop();
             StopCoroutine("Start");
+            bloom.intensity.value = 0f;
+            motionBlur.active = false;
+            cAberration.active = false;
+            bloom.active = false;
             press = true;
             panelTuto.SetActive(true);
             Time.timeScale = 0;

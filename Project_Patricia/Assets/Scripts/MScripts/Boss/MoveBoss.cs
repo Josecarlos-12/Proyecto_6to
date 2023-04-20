@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -15,16 +16,17 @@ public class MoveBoss : MonoBehaviour
     [SerializeField] private bool bullet;
     [SerializeField] private float life = 101;
     [SerializeField] private bool buOne;
-    [SerializeField] private GameObject containerBoss;
+    [SerializeField] private GameObject containerBoss, character;
     public bool lifeLess, death;
     [SerializeField] private GameObject boxInta;
 
     [Header("Distancias")]
     [SerializeField] private float size;
     [SerializeField] private float punch;
+    [SerializeField] private float punchBoss;
 
     [Header("trasparencia")]
-    [SerializeField] private MeshRenderer boss;
+    [SerializeField] private Material boss;
     [SerializeField] private Color myColor;
     [SerializeField, Range(0, 1)] private float myAlpha;
 
@@ -49,7 +51,14 @@ public class MoveBoss : MonoBehaviour
     [SerializeField] private GameObject cam;
     [SerializeField] private GameObject prota, pos;
     [SerializeField] private int countFinal;
-    
+
+    [Header("Animation Boss")]
+    [SerializeField] private Animator animBoss;
+
+    public float time, maxTime;
+    public bool change;
+
+    [SerializeField] private GameObject text;
 
     void Start()
     {
@@ -106,6 +115,8 @@ public class MoveBoss : MonoBehaviour
                     transform.LookAt(posProta);
                     agent.speed = 50;
                     agent.destination = posProta;
+
+                    animBoss.SetBool("Run", true);
                 }
 
                 if (Vector3.Distance(transform.position, posProta) < 2)
@@ -136,10 +147,26 @@ public class MoveBoss : MonoBehaviour
 
             Transparent();
             AttackOneTwo();
+            AttackPunch();
         }
 
        
     }
+
+    public void AttackPunch()
+    {
+        if (Vector3.Distance(transform.position, player.transform.position) < punchBoss)
+        {
+            print("SacoArma");
+            animBoss.SetBool("Punch", true);
+        }
+        else if (Vector3.Distance(transform.position, player.transform.position) > punchBoss)
+        {
+            animBoss.SetBool("Punch", false);
+        }
+    }
+
+   
 
     public void AttackOneTwo()
     {
@@ -196,6 +223,8 @@ public class MoveBoss : MonoBehaviour
                         transform.LookAt(posProta);
                         agent.speed = 50;
                         posProta = player.transform.position;
+
+                        animBoss.SetBool("Run", true);
                     }
 
 
@@ -209,6 +238,7 @@ public class MoveBoss : MonoBehaviour
                     transform.LookAt(player.transform.position);
                     agent.speed = 50;
                     agent.destination = player.transform.position;
+                    animBoss.SetBool("Run", true);                    
                 }
             }
 
@@ -218,6 +248,8 @@ public class MoveBoss : MonoBehaviour
                 countPosProta = 0;
                 iA = 0;
                 destPoint = 0;
+
+                animBoss.SetBool("Run", true);
             }
         }
     }
@@ -250,16 +282,38 @@ public class MoveBoss : MonoBehaviour
         prota.SetActive(true);
         cam.SetActive(false);
         GameObject intas = Instantiate(boxInta);
-        intas.transform.position = transform.position;
-        intas.SetActive(true);
-        yield return new WaitForSeconds(1);
+        intas.transform.position = new Vector3(transform.position.x, transform.position.y , transform.position.z);
+        intas.SetActive(true); 
+        Destroy(character);
+        text.SetActive(true);
+        text.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: Tengo que...";
+        yield return new WaitForSeconds(2);
+        text.SetActive(false);
         Destroy(containerBoss);
     }
 
     public void Transparent()
     {
         myColor.a = myAlpha;
-        boss.material.color = myColor;
+        boss.color = myColor;
+
+        if (change)
+        {
+            time += Time.deltaTime;
+
+            if (time >= maxTime)
+            {
+                time = 0;
+                myAlpha -= 0.2f;
+            }
+        }
+
+       
+    }
+
+    public void ReduceTra()
+    {
+        change = true; ;
     }
 
     public void Move()
@@ -281,6 +335,7 @@ public class MoveBoss : MonoBehaviour
 
             if (Vector3.Distance(transform.position, player.transform.position) < punch)
             {
+                print("Algo");
                 transform.LookAt(player.transform.position);
                 anim.SetBool("Punch", true);
                 bDamage = true;
@@ -406,6 +461,8 @@ public class MoveBoss : MonoBehaviour
                 countPosProta = 0;
                 iA = 0;
                 destPoint = 0;
+
+                animBoss.SetBool("Run", true);
             }
         }
     }
@@ -424,6 +481,9 @@ public class MoveBoss : MonoBehaviour
             bullet = true;
             print("AnimacionTrue");
             StartCoroutine(BulletFalse());
+
+            animBoss.SetBool("Run", false);
+            animBoss.SetBool("Hit", true);
         }
 
         if (life >= 71)
@@ -433,6 +493,9 @@ public class MoveBoss : MonoBehaviour
             agent.speed = 0;
             print("AnimacionTrue");
             StartCoroutine(BuFalse());
+
+            animBoss.SetBool("Run", false);
+            animBoss.SetBool("Hit", true);
         }
         
     }
@@ -442,6 +505,9 @@ public class MoveBoss : MonoBehaviour
         yield return new WaitForSeconds(3);
         buOne = false;
         agent.speed = 50;
+
+        animBoss.SetBool("Run", true);
+        animBoss.SetBool("Hit", false);
         print("AnimacionFalse");
     }
 
@@ -450,6 +516,9 @@ public class MoveBoss : MonoBehaviour
         yield return new WaitForSeconds(3);
         bullet = false;
         agent.speed = 50;
+
+        animBoss.SetBool("Run", true);
+        animBoss.SetBool("Hit", false);
         print("AnimacionFalse");
     }
 

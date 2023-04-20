@@ -16,6 +16,12 @@ public class DetectedRotate : MonoBehaviour
     }
     public Hands hands;
 
+    private void Start()
+    {
+        me = GameObject.FindWithTag("Mediun");
+        bi = GameObject.FindWithTag("Big");
+    }
+
     private void Update()
     {
         if (big)
