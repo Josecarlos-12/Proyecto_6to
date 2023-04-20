@@ -21,6 +21,9 @@ public class EventChild : MonoBehaviour
     [SerializeField] private GameObject point;
     [SerializeField] private GameObject charlie, cam, prota, panel;
     [SerializeField] private Animator shadowAnim;
+    
+    [SerializeField] private AudioSource audioMike;
+    [SerializeField] private AudioClip[] clip;
 
     public enum EnumAction
     {

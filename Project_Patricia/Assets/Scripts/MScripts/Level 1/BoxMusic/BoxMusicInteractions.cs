@@ -33,6 +33,8 @@ public class BoxMusicInteractions : MonoBehaviour
 
     [Header("Dialogue")]
     [SerializeField] private GameObject text;
+    [SerializeField] private AudioSource audioMike;
+    [SerializeField] private AudioClip[] clip;
 
     public enum Work
     {
@@ -141,9 +143,11 @@ public class BoxMusicInteractions : MonoBehaviour
         yield return new WaitForSeconds(1);
         text.SetActive(true);
         text.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: Ohh... Mi cabeza me explota...";
-        yield return new WaitForSeconds(2);
+        audioMike.clip = clip[0];
+        audioMike.Play();
+        yield return new WaitForSeconds(3);
         text.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: necesito mis pastillas...";
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(3);
         text.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: Están en mi habitación";
         yield return new WaitForSeconds(2);
         text.SetActive(false);

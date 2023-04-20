@@ -10,6 +10,9 @@ public class StartLevelOne : MonoBehaviour
     [SerializeField] private PanelInitial init;
     [SerializeField] private int count;
 
+    [SerializeField] private AudioSource audioMike;
+    [SerializeField] private AudioClip[] clip;
+
     IEnumerator Start()
     {
         yield return new WaitForSeconds(4.10f);
@@ -38,7 +41,9 @@ public class StartLevelOne : MonoBehaviour
     {
         text.SetActive(true);
         text.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: ¿Qué, qué fue eso? Ooohhmm mi cabeza...¿A qué hora me dormí? Ohh, es tardísimoTengo que colocar la alarma.";
-        yield return new WaitForSeconds(2f);
+        audioMike.clip = clip[0];
+        audioMike.Play();
+        yield return new WaitForSeconds(13f);
         text.SetActive(false);
     }
 }
