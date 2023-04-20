@@ -6272,6 +6272,8 @@ MonoBehaviour:
   sleep: {fileID: 294055413}
   textDialogue: {fileID: 712710494}
   wakingUp: {fileID: 0}
+  audioMike: {fileID: 0}
+  clip: []
 --- !u!65 &270240350
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7136,6 +7138,8 @@ MonoBehaviour:
   run: {fileID: 294055414}
   textMeshPro: {fileID: 712710496}
   textContainer: {fileID: 712710494}
+  audioMike: {fileID: 0}
+  clip: []
 --- !u!114 &294055414
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8551,7 +8555,7 @@ MeshRenderer:
   m_RenderingLayerMask: 257
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 73c176f402d2c2f4d929aa5da7585d17, type: 2}
+  - {fileID: -876546973899608171, guid: 57076884c143cd94d8f4af978582aa2e, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -8589,7 +8593,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 411389660}
   m_LocalRotation: {x: 0.6831372, y: -0.18254766, z: 0.1825476, w: 0.6831372}
-  m_LocalPosition: {x: 44.78, y: -24.76, z: -58.66}
+  m_LocalPosition: {x: 44.78, y: -24.67, z: -58.66}
   m_LocalScale: {x: 1.0271003, y: 0.7725943, z: 1.0154891}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -9117,7 +9121,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 4ea4e8913b3d63b40afb0fe7df0bbbaa,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -17.81
+      value: -17.74
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4ea4e8913b3d63b40afb0fe7df0bbbaa,
         type: 3}
@@ -16219,6 +16223,8 @@ MonoBehaviour:
   inve: {fileID: 993734480}
   dialogue: {fileID: 712710494}
   run: {fileID: 0}
+  audioMike: {fileID: 0}
+  clip: []
   star: 0
   count: 0
 --- !u!65 &748665827
@@ -19646,7 +19652,7 @@ MeshRenderer:
   m_RenderingLayerMask: 257
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 73c176f402d2c2f4d929aa5da7585d17, type: 2}
+  - {fileID: -876546973899608171, guid: 57076884c143cd94d8f4af978582aa2e, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -19684,7 +19690,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 853135025}
   m_LocalRotation: {x: 0.6831372, y: -0.18254766, z: 0.1825476, w: 0.6831372}
-  m_LocalPosition: {x: 44.05, y: -24.76, z: -57.76}
+  m_LocalPosition: {x: 44.05, y: -24.67, z: -57.76}
   m_LocalScale: {x: 1.0271003, y: 0.7725943, z: 1.0154891}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -23187,7 +23193,7 @@ MeshRenderer:
   m_RenderingLayerMask: 257
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 73c176f402d2c2f4d929aa5da7585d17, type: 2}
+  - {fileID: -876546973899608171, guid: 57076884c143cd94d8f4af978582aa2e, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -23225,7 +23231,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 999795940}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 45.219997, y: -24.76, z: -59.289997}
+  m_LocalPosition: {x: 45.219997, y: -24.67, z: -59.289997}
   m_LocalScale: {x: 1.2991804, y: 1.1186643, z: 1.4703596}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -25701,7 +25707,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: dece588ef9db56349a3d3ec1054fcce0,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -18.03
+      value: -17.920002
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: dece588ef9db56349a3d3ec1054fcce0,
         type: 3}
@@ -31133,7 +31139,13 @@ MonoBehaviour:
   press: 0
   task: {fileID: 498174650}
   audioMike: {fileID: 0}
+  audioCatelyn: {fileID: 0}
   clip: []
+  sleep: {fileID: 0}
+  volume: {fileID: 0}
+  bloom: {fileID: 0}
+  motionBlur: {fileID: 0}
+  cAberration: {fileID: 0}
 --- !u!114 &1329624314
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31376,6 +31388,8 @@ MonoBehaviour:
   dialogue: {fileID: 712710494}
   fin: {fileID: 1808765619}
   rifle: {fileID: 748665826}
+  audioMike: {fileID: 0}
+  clip: []
 --- !u!95 &1332324549
 Animator:
   serializedVersion: 5
@@ -33691,6 +33705,8 @@ MonoBehaviour:
   grabNote: 0
   text: 'Mike Schmith: A ver que tenemos...'
   count: 0
+  audioMike: {fileID: 0}
+  clip: []
 --- !u!4 &1436510038
 Transform:
   m_ObjectHideFlags: 0

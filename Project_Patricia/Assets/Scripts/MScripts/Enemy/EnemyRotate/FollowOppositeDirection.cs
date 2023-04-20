@@ -33,7 +33,6 @@ public class FollowOppositeDirection : MonoBehaviour
          Gizmos.DrawWireSphere(transform.position, size);
      }*/
 
-    public Transform player;
     public float rotationSpeed = 5f;
 
     private Vector3 previousPosition;

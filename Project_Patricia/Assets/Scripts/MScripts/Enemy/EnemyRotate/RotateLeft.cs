@@ -9,6 +9,11 @@ public class RotateLeft : MonoBehaviour
     public FollowOppositeDirection follow;
     public GameObject me, bi;
 
+    private void Start()
+    {
+        me = GameObject.FindWithTag("Mediun");
+        bi = GameObject.FindWithTag("Big");
+    }
 
     private void Update()
     {
