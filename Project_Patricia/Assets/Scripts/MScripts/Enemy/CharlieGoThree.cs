@@ -19,6 +19,9 @@ public class CharlieGoThree : MonoBehaviour
     [SerializeField] private GameObject cam;
     [SerializeField] private GameObject prota;
 
+    [SerializeField] private AudioSource audioMike;
+    [SerializeField] private AudioClip[] clip;
+
 
     void Start()
     {
@@ -68,10 +71,16 @@ public class CharlieGoThree : MonoBehaviour
     {
         text.SetActive(true);
         text.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: ¡T- Tú no eres Charlie!";
+        audioMike.clip = clip[0];
+        audioMike.Play();
         yield return new WaitForSeconds(3);
         text.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: ¡Charlie!";
+        audioMike.clip = clip[0];
+        audioMike.Play();
         yield return new WaitForSeconds(2);
         text.GetComponent<TextMeshProUGUI>().text = "Mike Schmith:  ¡¿Dónde estás?!";
+        audioMike.clip = clip[0];
+        audioMike.Play();
         yield return new WaitForSeconds(3);
         cam.SetActive(true);
         prota.SetActive(false);

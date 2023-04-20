@@ -10,7 +10,8 @@ public class KeyGrab : MonoBehaviour
     [SerializeField] Inventary inve;
     [SerializeField] Collider col;
 
-
+    [SerializeField] private AudioSource audioMike;
+    [SerializeField] private AudioClip[] clip;
     void Update()
     {
         if(into && Input.GetKeyDown(KeyCode.E))
@@ -27,7 +28,9 @@ public class KeyGrab : MonoBehaviour
     public IEnumerator Dialogue()
     {
         dialogue.SetActive(true);
-        dialogue.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: Charlie...";
+        dialogue.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: Charlie?...";
+        audioMike.clip = clip[0];
+        audioMike.Play();
         yield return new WaitForSeconds(2);
         dialogue.SetActive(false);
     }

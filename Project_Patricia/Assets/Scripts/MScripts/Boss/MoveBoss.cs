@@ -55,6 +55,9 @@ public class MoveBoss : MonoBehaviour
     [Header("Animation Boss")]
     [SerializeField] private Animator animBoss;
 
+    [SerializeField] private AudioSource audioMike;
+    [SerializeField] private AudioClip[] clip;
+
     public float time, maxTime;
     public bool change;
 
@@ -287,6 +290,8 @@ public class MoveBoss : MonoBehaviour
         Destroy(character);
         text.SetActive(true);
         text.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: Tengo que...";
+        audioMike.clip = clip[0];
+        audioMike.Play();
         yield return new WaitForSeconds(2);
         text.SetActive(false);
         Destroy(containerBoss);

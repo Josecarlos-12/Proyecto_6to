@@ -16,6 +16,8 @@ public class GrabRifleSounds : MonoBehaviour
 
     [SerializeField, Header("Call Other Script")] private Weapon weapon;
     [SerializeField] private Inventary inve;
+    [SerializeField] private AudioSource audioMike;
+    [SerializeField] private AudioClip[] clip;
 
     void Update()
     {
@@ -43,6 +45,8 @@ public class GrabRifleSounds : MonoBehaviour
     {
         text.SetActive(true);
         text.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: Te encontraré...";
+        audioMike.clip = clip[0];
+        audioMike.Play();
         yield return new WaitForSeconds(2);
         shadowBattle.SetActive(true);
         text.SetActive(false);

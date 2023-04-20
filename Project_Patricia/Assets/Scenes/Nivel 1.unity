@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 30.590439, g: 16.201519, b: 7.7611756, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2604,6 +2604,10 @@ MonoBehaviour:
   pass: {fileID: 211749735}
   pick: {fileID: 1260321829}
   count: 0
+  audioMike: {fileID: 951485992}
+  clip:
+  - {fileID: 8300000, guid: 877043be2ad1e9a41bd89e3860b0dc0e, type: 3}
+  - {fileID: 8300000, guid: be7fa8e57917b4f4ca3f8fd42535c34d, type: 3}
 --- !u!65 &89400767
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4221,6 +4225,7 @@ Transform:
   - {fileID: 1057301289}
   - {fileID: 2031114780}
   - {fileID: 1032690324}
+  - {fileID: 951485991}
   m_Father: {fileID: 0}
   m_RootOrder: 48
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -6688,6 +6693,8 @@ MonoBehaviour:
   cam: {fileID: 0}
   player: {fileID: 0}
   sleep: {fileID: 0}
+  audioMike: {fileID: 0}
+  clip: []
   type: 0
 --- !u!1 &164987790
 GameObject:
@@ -12144,6 +12151,8 @@ MonoBehaviour:
   prota: {fileID: 1301812975}
   panel: {fileID: 757203818}
   shadowAnim: {fileID: 1109966922}
+  audioMike: {fileID: 0}
+  clip: []
   action: 5
 --- !u!1 &357809025
 GameObject:
@@ -14499,6 +14508,8 @@ MonoBehaviour:
   cam: {fileID: 0}
   player: {fileID: 0}
   sleep: {fileID: 0}
+  audioMike: {fileID: 0}
+  clip: []
   type: 1
 --- !u!136 &421050273
 CapsuleCollider:
@@ -17594,6 +17605,8 @@ MonoBehaviour:
   pos: {fileID: 1990830025}
   countFinal: 0
   animBoss: {fileID: 155625669}
+  audioMike: {fileID: 951485992}
+  clip: []
   time: 0
   maxTime: 2
   change: 0
@@ -20068,6 +20081,8 @@ MonoBehaviour:
   prota: {fileID: 0}
   panel: {fileID: 0}
   shadowAnim: {fileID: 0}
+  audioMike: {fileID: 0}
+  clip: []
   action: 2
 --- !u!65 &567023611
 BoxCollider:
@@ -29790,6 +29805,8 @@ MonoBehaviour:
   pos: {fileID: 284850152}
   countFinal: 0
   animBoss: {fileID: 0}
+  audioMike: {fileID: 0}
+  clip: []
   time: 0
   maxTime: 0
   change: 0
@@ -32325,6 +32342,9 @@ MonoBehaviour:
   i: 0
   accept: 0
   text: {fileID: 43341491}
+  audioMike: {fileID: 951485992}
+  clip:
+  - {fileID: 8300000, guid: 807fd480174402b4d86285c2033912fd, type: 3}
   word: 3
 --- !u!82 &870959273
 AudioSource:
@@ -34503,6 +34523,134 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 950068748}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &951485990
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 951485991}
+  - component: {fileID: 951485992}
+  m_Layer: 0
+  m_Name: MikeDialogue
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &951485991
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 951485990}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 121910075}
+  m_RootOrder: 18
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &951485992
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 951485990}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!136 &952348514
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -35603,6 +35751,8 @@ MonoBehaviour:
   prota: {fileID: 0}
   panel: {fileID: 0}
   shadowAnim: {fileID: 0}
+  audioMike: {fileID: 0}
+  clip: []
   action: 1
 --- !u!1 &981640868
 GameObject:
@@ -42130,6 +42280,8 @@ MonoBehaviour:
   prota: {fileID: 0}
   panel: {fileID: 0}
   shadowAnim: {fileID: 0}
+  audioMike: {fileID: 0}
+  clip: []
   action: 4
 --- !u!65 &1191560919
 BoxCollider:
@@ -42889,6 +43041,8 @@ MonoBehaviour:
   prota: {fileID: 0}
   panel: {fileID: 0}
   shadowAnim: {fileID: 0}
+  audioMike: {fileID: 0}
+  clip: []
   action: 0
 --- !u!1 &1217104656
 GameObject:
@@ -43628,6 +43782,8 @@ MonoBehaviour:
   cam: {fileID: 0}
   player: {fileID: 0}
   sleep: {fileID: 1301812985}
+  audioMike: {fileID: 0}
+  clip: []
   type: 2
 --- !u!1 &1251709083
 GameObject:
@@ -45833,6 +45989,8 @@ MonoBehaviour:
   cam: {fileID: 0}
   player: {fileID: 0}
   sleep: {fileID: 1301812985}
+  audioMike: {fileID: 0}
+  clip: []
   type: 2
 --- !u!136 &1327743920
 CapsuleCollider:
@@ -50892,6 +51050,9 @@ MonoBehaviour:
   text: {fileID: 43341491}
   init: {fileID: 487727614}
   count: 0
+  audioMike: {fileID: 951485992}
+  clip:
+  - {fileID: 8300000, guid: c79e030a99c4dd94e8a3f7cfde635b92, type: 3}
 --- !u!1 &1445174063 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -508274692362489477, guid: 977840426d4e6454fb2e5859e827c432,
@@ -52379,6 +52540,8 @@ MonoBehaviour:
   prota: {fileID: 0}
   panel: {fileID: 0}
   shadowAnim: {fileID: 0}
+  audioMike: {fileID: 0}
+  clip: []
   action: 2
 --- !u!65 &1486474954
 BoxCollider:
@@ -56189,6 +56352,8 @@ MonoBehaviour:
   prota: {fileID: 0}
   panel: {fileID: 0}
   shadowAnim: {fileID: 0}
+  audioMike: {fileID: 0}
+  clip: []
   action: 3
 --- !u!65 &1563409724
 BoxCollider:
@@ -57142,6 +57307,8 @@ MonoBehaviour:
   cam: {fileID: 2136745700}
   player: {fileID: 1301812975}
   sleep: {fileID: 1301812985}
+  audioMike: {fileID: 0}
+  clip: []
   type: 3
 --- !u!1 &1592900794
 GameObject:
@@ -62023,6 +62190,8 @@ MonoBehaviour:
   prota: {fileID: 0}
   panel: {fileID: 0}
   shadowAnim: {fileID: 0}
+  audioMike: {fileID: 0}
+  clip: []
   action: 3
 --- !u!65 &1667192607
 BoxCollider:
@@ -62098,6 +62267,8 @@ MonoBehaviour:
   prota: {fileID: 0}
   panel: {fileID: 0}
   shadowAnim: {fileID: 0}
+  audioMike: {fileID: 0}
+  clip: []
   action: 2
 --- !u!65 &1667451386
 BoxCollider:
@@ -66879,6 +67050,9 @@ MonoBehaviour:
   into: 0
   inve: {fileID: 109796669}
   col: {fileID: 1804819876}
+  audioMike: {fileID: 951485992}
+  clip:
+  - {fileID: 8300000, guid: 874ea5a7ba0368040999a62625aff2fe, type: 3}
 --- !u!136 &1805149455
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -69985,7 +70159,7 @@ GameObject:
   - component: {fileID: 1924927208}
   - component: {fileID: 1924927209}
   m_Layer: 0
-  m_Name: SapwnEmilio
+  m_Name: SpawnEmilio
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -71500,6 +71674,8 @@ MonoBehaviour:
   text: {fileID: 43341491}
   cam: {fileID: 574364916}
   prota: {fileID: 1301812975}
+  audioMike: {fileID: 0}
+  clip: []
 --- !u!195 &1959170106
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -73554,6 +73730,8 @@ MonoBehaviour:
   prota: {fileID: 0}
   panel: {fileID: 0}
   shadowAnim: {fileID: 0}
+  audioMike: {fileID: 0}
+  clip: []
   action: 2
 --- !u!1 &2031114779
 GameObject:
@@ -74161,6 +74339,8 @@ MonoBehaviour:
   shadowBattle: {fileID: 440920889}
   weapon: {fileID: 109796670}
   inve: {fileID: 109796669}
+  audioMike: {fileID: 0}
+  clip: []
 --- !u!1 &2041399601
 GameObject:
   m_ObjectHideFlags: 0

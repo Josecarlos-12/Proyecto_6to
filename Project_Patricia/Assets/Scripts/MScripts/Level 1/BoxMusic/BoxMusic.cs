@@ -13,6 +13,8 @@ public class BoxMusic : MonoBehaviour
     [SerializeField] private PickableObject pick;
     [SerializeField] private int count;
 
+    [SerializeField] private AudioSource audioMike;
+    [SerializeField] private AudioClip[] clip;
 
     void Update()
     {
@@ -36,7 +38,9 @@ public class BoxMusic : MonoBehaviour
     {
         texMes.SetActive(true);
         textMeshPro.text = "Mike Schmith: Hmmm qué raro... ¿Qué es lo que estará fallando?";
-        yield return new WaitForSeconds(2);
+        audioMike.clip = clip[1];
+        audioMike.Play();
+        yield return new WaitForSeconds(3);
         texMes.SetActive(false);
     }
 
@@ -44,6 +48,8 @@ public class BoxMusic : MonoBehaviour
     {
         texMes.SetActive(true);   
         textMeshPro.text = "Mike Schmith: Ahora esto.";
+        audioMike.clip = clip[0];
+        audioMike.Play();
         yield return new WaitForSeconds(1);
         texMes.SetActive(false);
         accept = true;
