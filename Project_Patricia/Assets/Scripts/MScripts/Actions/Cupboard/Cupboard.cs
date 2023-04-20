@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class Cupboard : MonoBehaviour
 {
     [SerializeField] private GameObject deer, prota, can, panel;
-    [SerializeField] private GameObject nextChapter;
+    [SerializeField] private GameObject nextChapter, text;
     [SerializeField] private bool bDeer, bProta;
     [SerializeField] private float sizeDeer, sizeProta;
     [SerializeField] private Animator anim;
@@ -28,13 +29,18 @@ public class Cupboard : MonoBehaviour
     {
         if (bDeer && bProta)
         {
-            anim.SetBool("On", false);
+            
             StartCoroutine("Close");
         }
     }
 
     public IEnumerator Close()
     {
+        text.SetActive(true);
+        text.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: ¡Ya te tengo!";
+        yield return new WaitForSeconds(3f);
+        text.SetActive(false);
+        anim.SetBool("On", false);
         yield return new WaitForSeconds(0.3f);
         panel.SetActive(true);
         prota.SetActive(false);

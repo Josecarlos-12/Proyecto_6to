@@ -40,9 +40,9 @@ public class DialogueNote : MonoBehaviour
     {
         textContainer.SetActive(true);
         textMeshPro.text = text;
-        yield return new WaitForSecondsRealtime(2);
         audioMike.clip = clip[0];
         audioMike.Play();
+        yield return new WaitForSecondsRealtime(2);       
         grabNote =true;
         into = false;
         textContainer.SetActive(false);

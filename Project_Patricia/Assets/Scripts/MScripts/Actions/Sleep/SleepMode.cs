@@ -61,9 +61,9 @@ public class SleepMode : MonoBehaviour
     {
         textContainer.SetActive(true);
         textMeshPro.text = "Mike Schmith: Oohhmm qué cansado me siento, creo que descanzaré unos minutos.";
-        yield return new WaitForSecondsRealtime(6);
         audioMike.clip = clip[0];
         audioMike.Play();
+        yield return new WaitForSecondsRealtime(6);        
         textContainer.SetActive(false);
     }
 

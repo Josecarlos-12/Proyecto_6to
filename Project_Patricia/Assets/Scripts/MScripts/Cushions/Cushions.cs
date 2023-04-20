@@ -65,9 +65,9 @@ public class Cushions : MonoBehaviour
         yield return new WaitForSeconds(0.8f);       
         textDialogue.SetActive(true);
         textDialogue.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: Oooohhmm ¿Qué? ¿Qué hora es? debo cerrar el estudio.";
-        yield return new WaitForSeconds(9f);
         audioMike.clip = clip[0];
         audioMike.Play();
+        yield return new WaitForSeconds(9f);        
         textDialogue.SetActive(false);
     }
 
