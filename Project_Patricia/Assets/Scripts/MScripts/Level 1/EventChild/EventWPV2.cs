@@ -17,7 +17,7 @@ public class EventWPV2 : MonoBehaviour
     [Header("Call Other Script")]
     [SerializeField] private SleepMode sleep;
 
-    [SerializeField] private AudioSource audioMike;
+    [SerializeField] private AudioSource audioMike, audi;
     [SerializeField] private AudioClip[] clip;
 
     private void Start()
@@ -82,7 +82,7 @@ public class EventWPV2 : MonoBehaviour
         active.SetActive(true);
         audioMike.clip = clip[0];
         audioMike.Play();
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(5);
         text.SetActive(false);
         Destroy(gameObject);
     }
@@ -91,9 +91,9 @@ public class EventWPV2 : MonoBehaviour
     {
         text.SetActive(true);
         text.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: Tengo que volver";
-        audioMike.clip = clip[1];
+        audioMike.clip = clip[0];
         audioMike.Play();
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(4);
         box.SetActive(true);
         boxOne.SetActive(true);
         text.SetActive(false);
@@ -128,14 +128,13 @@ public class EventWPV2 : MonoBehaviour
         yield return new WaitForSeconds(1);
         text.SetActive(true);
         text.GetComponent<TextMeshProUGUI>().text = "Charlie Schmith: ¡Papaaaaaaa! ¡Ayudameeeeeee!";
-        audioMike.clip = clip[2];
+        audioMike.clip = clip[0];
         audioMike.Play();
         yield return new WaitForSeconds(2);
         text.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: ¡Charlie! ¡Ya voy!";
-        audioMike.clip = clip[3];
-        audioMike.Play();
+        audi.clip = clip[1];
+        audi.Play();
         yield return new WaitForSeconds(2);       
         text.SetActive(false);
-        
     }
 }

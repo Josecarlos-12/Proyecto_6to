@@ -24,7 +24,7 @@ public class Bullet : MonoBehaviour
 
         rb = GetComponent<Rigidbody>();
         rb.AddForce(transform.forward * speed * Time.deltaTime, ForceMode.Impulse);
-        Destroy(gameObject, 4);
+        Destroy(gameObject, 8);
     }
 
     private void Update()
@@ -59,7 +59,7 @@ public class Bullet : MonoBehaviour
          if(other.CompareTag("Emilio") ) 
         {
             //other.GetComponent<EmilioHealth>().TakeDamage(damageAmount);
-            Destroy(this.gameObject);
+           // Destroy(this.gameObject);
         }
     }
 }

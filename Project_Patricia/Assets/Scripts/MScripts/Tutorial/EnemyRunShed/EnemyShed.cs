@@ -6,11 +6,11 @@ using UnityEngine.AI;
 
 public class EnemyShed : MonoBehaviour
 {
-    private NavMeshAgent agent;
+    public NavMeshAgent agent;
     [SerializeField] private GameObject destination, text;
     public bool run, run2;
-    [SerializeField] int touch;
-    public bool accept;
+    [SerializeField] int intTouch;
+    public bool accept, touch;
 
     void Start()
     {
@@ -20,22 +20,36 @@ public class EnemyShed : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (run) 
+        {
+            agent.enabled = true; 
+            agent.destination = destination.transform.position;
+        }
+
         if (run2)
         {
             agent.destination = destination.transform.position;
         }          
-    }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if(other.gameObject.name== "DeEyes" && accept)
+        if(touch)
         {
-            touch++;
+            if(intTouch<3)
+            intTouch++;
 
-            if (touch == 0)
+            if (intTouch == 1)
             {
                 StartCoroutine("Dialogue");
             }
+        }
+    }
+
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.gameObject.name == "DeEyes" && accept)
+        {
+            touch = true;
+           
         }
     }
 
@@ -47,5 +61,7 @@ public class EnemyShed : MonoBehaviour
         run2 = true;
         yield return new WaitForSeconds(3);
         text.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: ¡Vuelve aquí, no te dejaré escapar!";
+        yield return new WaitForSeconds(3);
+        text.SetActive(false);
     }
 }

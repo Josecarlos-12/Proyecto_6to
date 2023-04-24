@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class KeyGrab : MonoBehaviour
 {
+    public int numberKey = 0;
     [SerializeField] GameObject text, dialogue, containerKey;
     [SerializeField] bool into;
     [SerializeField] Inventary inve;
@@ -16,6 +17,7 @@ public class KeyGrab : MonoBehaviour
     {
         if(into && Input.GetKeyDown(KeyCode.E))
         {
+            numberKey = 1;
             into= false;
             inve.bKEy = true;
             text.SetActive(false);

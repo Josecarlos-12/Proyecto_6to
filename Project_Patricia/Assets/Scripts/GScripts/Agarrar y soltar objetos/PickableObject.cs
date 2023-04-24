@@ -29,7 +29,7 @@ public class PickableObject : MonoBehaviour
     {
         if(other.tag == "PlayerInteractionZone")
         {
-            audioSource.PlayOneShot(audioClip);
+            //audioSource.PlayOneShot(audioClip);
             if(!trahs)
             {
                 other.GetComponentInParent<PickUpObject>().ObjectToPickUp = this.gameObject;

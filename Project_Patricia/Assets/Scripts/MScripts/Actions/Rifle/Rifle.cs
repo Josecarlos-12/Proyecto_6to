@@ -49,13 +49,13 @@ public class Rifle : MonoBehaviour
     public IEnumerator DialogueFinal()
     {
         yield return new WaitForSeconds(0.6f);
+        run.run = true;
         audioMike.clip = clip[0];
         audioMike.Play();
         dialogue.SetActive(true);
         dialogue.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: ¡Hey! ¿Quién eres tú? ¡¿Qué haces en mi propiedad?!";
-        yield return new WaitForSeconds(4f);        
-        dialogue.SetActive(false);
-        run.run = true;        
+        yield return new WaitForSeconds(3f);        
+        dialogue.SetActive(false);            
         yield return new WaitForSeconds(1f);
         dialogue.SetActive(true);
         dialogue.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: ¡Hey hablo enserio, vuelve aquí!";
@@ -63,7 +63,7 @@ public class Rifle : MonoBehaviour
         audioMike.Play();
         yield return new WaitForSeconds(3f);        
         dialogue.SetActive(false);
-        yield return new WaitForSeconds(4f);
+        yield return new WaitForSeconds(1f);
         dialogue.SetActive(true);
         dialogue.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: Se está moviendo entre los arbustos...";
         audioMike.clip = clip[2];
@@ -72,20 +72,22 @@ public class Rifle : MonoBehaviour
         dialogue.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: Esta es mi oportunidad, tengo que evitar que me escuche";
         audioMike.clip = clip[3];
         audioMike.Play();
-        yield return new WaitForSeconds(3f);       
+        yield return new WaitForSeconds(3f);
+        dialogue.SetActive(false);
+        yield return new WaitForSeconds(2f);
+        run.agent.enabled = false;
+        run.run = false;        
         panel.SetActive(true);
         Time.timeScale = 0;
         Cursor.visible= true;
         Cursor.lockState= CursorLockMode.None;
 
-        shadow.transform.position = point.transform.position;
-
-        dialogue.SetActive(false);
+        shadow.transform.position = point.transform.position;        
         this.gameObject.GetComponent<Rifle>().enabled = false;
     }
 
     public void AcceptButton()
-    {
+    {        
         enemy.accept = true;
         coll.SetActive(true);
         crTuto.active= true;

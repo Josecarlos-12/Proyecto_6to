@@ -73,6 +73,9 @@ public class EventChild : MonoBehaviour
 
     public IEnumerator Dialogue()
     {
+        audioMike.clip = clip[0];
+        audioMike.Play();
+
         active.SetActive(true);
         dialogue.SetActive(true);
         dialogue.GetComponent<TextMeshProUGUI>().text = text;
@@ -85,8 +88,16 @@ public class EventChild : MonoBehaviour
     {
         active.SetActive(true);
         dialogue.SetActive(true);
+
+        audioMike.clip = clip[0];
+        audioMike.Play();
+
         dialogue.GetComponent<TextMeshProUGUI>().text = textTwo[0];
         yield return new WaitForSeconds(timeTwo[0]);
+
+        audioMike.clip = clip[1];
+        audioMike.Play();
+
         dialogue.GetComponent<TextMeshProUGUI>().text = textTwo[1];
         yield return new WaitForSeconds(timeTwo[1]);
         dialogue.SetActive(false);
@@ -94,13 +105,21 @@ public class EventChild : MonoBehaviour
     }
 
     public IEnumerator DialogueSound()
-    {        
+    {
+        audioMike.clip = clip[0];
+        audioMike.Play();
+
+
         dialogue.SetActive(true);
         dialogue.GetComponent<TextMeshProUGUI>().text = textTwo[0];
         yield return new WaitForSeconds(timeTwo[0]);
         dialogue.SetActive(false);
         rifleSound.Play();
         yield return new WaitForSeconds(timeTwo[1]);
+        audioMike.clip = clip[1];
+        audioMike.Play();
+
+
         dialogue.SetActive(true);
         dialogue.GetComponent<TextMeshProUGUI>().text = textTwo[1];
         yield return new WaitForSeconds(timeTwo[2]);

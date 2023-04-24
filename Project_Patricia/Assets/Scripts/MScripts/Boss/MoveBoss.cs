@@ -282,20 +282,24 @@ public class MoveBoss : MonoBehaviour
 
     public IEnumerator ActiveProta()
     {
+        
         prota.SetActive(true);
         cam.SetActive(false);
-        GameObject intas = Instantiate(boxInta);
-        intas.transform.position = new Vector3(transform.position.x, transform.position.y , transform.position.z);
-        intas.SetActive(true); 
+        boxInta.transform.position = transform.position;
+        boxInta.SetActive(true);
+
         Destroy(character);
+        
         text.SetActive(true);
         text.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: Tengo que...";
-        audioMike.clip = clip[0];
-        audioMike.Play();
-        yield return new WaitForSeconds(2);
+        //audioMike.clip = clip[0];
+        //audioMike.Play();        
+        yield return new WaitForSeconds(1);
         text.SetActive(false);
-        Destroy(containerBoss);
+        Destroy(containerBoss);                
     }
+
+    
 
     public void Transparent()
     {
@@ -460,7 +464,7 @@ public class MoveBoss : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            if(life <= 31)
+            if(life <= 31 && !death)
             {
                 agent.speed = 30;
                 countPosProta = 0;

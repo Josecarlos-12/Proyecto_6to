@@ -11,6 +11,7 @@ public class Cupboard : MonoBehaviour
     [SerializeField] private bool bDeer, bProta;
     [SerializeField] private float sizeDeer, sizeProta;
     [SerializeField] private Animator anim;
+    [SerializeField] private int count;
 
     // Start is called before the first frame update
     void Start()
@@ -29,8 +30,14 @@ public class Cupboard : MonoBehaviour
     {
         if (bDeer && bProta)
         {
+            if(count < 3)
+            count++;
+
+            if (count == 1)
+            {
+                StartCoroutine("Close");
+            }
             
-            StartCoroutine("Close");
         }
     }
 

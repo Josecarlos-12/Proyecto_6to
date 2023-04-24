@@ -43,8 +43,9 @@ public class NotesUI : MonoBehaviour
                 lines[1].SetActive(true);
                 lines[2].SetActive(true);
                 lines[3].SetActive(true);
-                lines[7].SetActive(true);
-                lines[8].SetActive(true);
+                lines[4].SetActive(true);
+                lines[5].SetActive(true);
+                lines[6].SetActive(true);
                 break;
         }
         
@@ -59,7 +60,7 @@ public class NotesUI : MonoBehaviour
 
     public void Note()
     {
-        if(Input.GetKeyDown(KeyCode.L) && !pause.isPaused)
+        if(Input.GetKeyDown(KeyCode.N) && !pause.isPaused)
         {
             bNote = !bNote;
 
@@ -139,7 +140,7 @@ public class NotesUI : MonoBehaviour
             if (check == 8)
             {
                 eight = true;
-                lines[7].SetActive(true);
+                lines[6].SetActive(true);
             }
             if (check == 9)
             {

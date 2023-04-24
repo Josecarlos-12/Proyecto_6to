@@ -13,7 +13,8 @@ public class AlarmOff : MonoBehaviour
     [SerializeField] private GameObject textMesh;
     [SerializeField] private GameObject[] coliders;
 
-
+    [SerializeField] private AudioSource audiCha, audioMike;
+    [SerializeField] private AudioClip[] clip;
 
     void Update()
     {
@@ -37,14 +38,26 @@ public class AlarmOff : MonoBehaviour
 
     public IEnumerator Dialogue()
     {
+        audiCha.clip = clip[0];
+        audiCha.Play();
+
         textMesh.SetActive(true);
         textMesh.GetComponent<TextMeshProUGUI>().text = "Charlie Schmith: ¿Papá?";
         yield return new WaitForSeconds(2);
+        audioMike.clip = clip[1];
+        audioMike.Play();
+
         textMesh.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: ¿Charlie?";
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(5);
+        audiCha.clip = clip[2];
+        audiCha.Play();
+
         textMesh.GetComponent<TextMeshProUGUI>().text = "Charlie Schmith: !Papá!, no creerás lo que encontré, ¡Ven, sígueme!";
-        yield return new WaitForSeconds(2);
-        textMesh.GetComponent<TextMeshProUGUI>().text = "Charlie Schmith: No me gusta esto";
+        yield return new WaitForSeconds(6);
+        audioMike.clip = clip[3];
+        audioMike.Play();
+
+        textMesh.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: No me gusta esto";
         yield return new WaitForSeconds(2);
         textMesh.SetActive(false);
     }

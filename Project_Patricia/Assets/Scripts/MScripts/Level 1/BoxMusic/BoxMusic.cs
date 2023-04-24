@@ -40,7 +40,11 @@ public class BoxMusic : MonoBehaviour
         textMeshPro.text = "Mike Schmith: Hmmm qué raro... ¿Qué es lo que estará fallando?";
         audioMike.clip = clip[1];
         audioMike.Play();
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(5);
+        audioMike.clip = clip[2];
+        audioMike.Play();
+        textMeshPro.text = "Mike Schmith: Hmmm hay piezas que fallan, iré a ver si tengo en mi estudio algo que pueda servirme.";
+        yield return new WaitForSeconds(5);
         texMes.SetActive(false);
     }
 

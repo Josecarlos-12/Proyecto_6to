@@ -12,7 +12,7 @@ public class CrouchTutorial : MonoBehaviour
 
     void Update()
     {
-        if (crouch.crouch)
+        if (crouch.crouch && active)
         {
 
             if(count<3)
@@ -34,9 +34,11 @@ public class CrouchTutorial : MonoBehaviour
     {
         text.SetActive(true);
         text.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: Shh...";
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(1.5f);
         text.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: Silencio";
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(1.5f);
         text.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: Despacio..";
+        yield return new WaitForSeconds(1.5f);
+        text.SetActive(false);
     }
 }

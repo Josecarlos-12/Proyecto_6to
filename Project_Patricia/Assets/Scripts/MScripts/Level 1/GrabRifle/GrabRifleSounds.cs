@@ -47,7 +47,7 @@ public class GrabRifleSounds : MonoBehaviour
         text.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: Te encontraré...";
         audioMike.clip = clip[0];
         audioMike.Play();
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(5);
         shadowBattle.SetActive(true);
         text.SetActive(false);
         Destroy(gameObject);
