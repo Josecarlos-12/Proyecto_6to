@@ -11,6 +11,7 @@ public class StrongBox : MonoBehaviour
     [SerializeField] private bool into;
     [SerializeField] private Animator anim;
     public bool pass;
+    [SerializeField] NotesUI noteUI;
 
     // Start is called before the first frame update
     void Start()
@@ -29,6 +30,7 @@ public class StrongBox : MonoBehaviour
             text.SetActive(false);
             col.enabled = false;
             anim.SetBool("Close", true);
+            noteUI.check = 7;
         }
     }
 

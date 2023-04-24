@@ -2,15 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class NotesUI : MonoBehaviour
 {
     public GameObject note;
     public TextMeshProUGUI text;
+    public Image imageNote;
     public bool bNote, intoNote;
-    [TextArea(4, 4)]
-    public List<string> sNote = new List<string>();
-    public string save;
+    public List<Sprite> sNote = new List<Sprite>();
+    public Sprite save;
     public int noteCount;
     public Weapon weapon;
     public bool shoot;
@@ -45,7 +46,6 @@ public class NotesUI : MonoBehaviour
                 lines[3].SetActive(true);
                 lines[4].SetActive(true);
                 lines[5].SetActive(true);
-                lines[6].SetActive(true);
                 break;
         }
         
@@ -85,11 +85,11 @@ public class NotesUI : MonoBehaviour
 
         if(sNote.Count == 0)
         {
-            text.text= string.Empty;
+            //imageNote.sprite= null;
         }
         else if (sNote.Count !=0) 
         {
-        text.text= sNote[noteCount];
+        imageNote.sprite = sNote[noteCount];
         }
 
     }
@@ -175,7 +175,7 @@ public class NotesUI : MonoBehaviour
         if (other.gameObject.CompareTag("Note"))
         {
             intoNote = true;
-            save = other.GetComponent<NoteInteraction>().noteText;
+            save = other.GetComponent<NoteInteraction>().image;
         }
     }
 
