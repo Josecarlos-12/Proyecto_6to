@@ -46,7 +46,7 @@ public class PlayerFPSt : MonoBehaviour
     public PlayerCrouch crouch;
 
     public bool canRun;
-    // Start is called before the first frame update
+    public bool canWalk;
     void Start()
     {
         /*currentStamina = maxStamina;
@@ -157,10 +157,17 @@ public class PlayerFPSt : MonoBehaviour
 
         Vector3 move = transform.right * x + transform.forward * z;
 
-        if(x!=0 || z!=0)
+        if (canWalk)
         {
-            player.Move(move.normalized * speed * Time.deltaTime);
-            run = true;
+            if (x != 0 || z != 0)
+            {
+                player.Move(move.normalized * speed * Time.deltaTime);
+                run = true;
+            }
+            else
+            {
+                run = false;
+            }
         }
         else
         {

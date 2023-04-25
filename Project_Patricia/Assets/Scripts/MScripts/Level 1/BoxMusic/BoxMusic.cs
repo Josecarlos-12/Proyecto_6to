@@ -15,6 +15,7 @@ public class BoxMusic : MonoBehaviour
 
     [SerializeField] private AudioSource audioMike;
     [SerializeField] private AudioClip[] clip;
+    [SerializeField] private Animator animBox;
 
     void Update()
     {
@@ -36,6 +37,7 @@ public class BoxMusic : MonoBehaviour
 
     public IEnumerator Interaction()
     {
+        animBox.SetBool("Open", true);
         texMes.SetActive(true);
         textMeshPro.text = "Mike Schmith: Hmmm qué raro... ¿Qué es lo que estará fallando?";
         audioMike.clip = clip[1];

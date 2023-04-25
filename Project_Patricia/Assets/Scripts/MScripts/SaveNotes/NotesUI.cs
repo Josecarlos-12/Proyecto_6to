@@ -22,13 +22,18 @@ public class NotesUI : MonoBehaviour
     public int check;
     [SerializeField] private GameObject[] lines;
     [SerializeField] private GameObject linesContainer;
-    public bool one, two, three, four, five, six, seven, eight, nine;
+    public bool one, two, three, four, five, six, seven, eight, nine;   
 
     public enum WorkStar
     {
         None, WorkNumber
     }
     public WorkStar workS;
+
+    [Header("Call Other Script")]
+    [SerializeField] PlayerFPSt player;
+    [SerializeField] PlayerCrouch crouch;
+    [SerializeField] CameraLook cam;
 
     private void Start()
     {
@@ -53,9 +58,9 @@ public class NotesUI : MonoBehaviour
 
     private void Update()
     {
-        Note();
-        
+        Note();        
         CheckList();
+        InputMouse();
     }
 
     public void Note()
@@ -66,18 +71,17 @@ public class NotesUI : MonoBehaviour
 
             if (bNote)
             {
-                Cursor.lockState = CursorLockMode.None;
-                Cursor.visible = true;
-                Time.timeScale = 0;
+                cam.moveCamera = false;
+                player.canWalk= false;
+                crouch.crouchCan = false;
                 note.SetActive(true);
-                shoot = false;
-               
+                shoot = false;               
             }
             if(!bNote)
             {
-                Cursor.lockState = CursorLockMode.Locked;
-                Cursor.visible = false;
-                Time.timeScale = 1;
+                cam.moveCamera = true;
+                player.canWalk = true;
+                crouch.crouchCan = true;
                 note.SetActive(false);
                 shoot = true;
             }                       
@@ -154,19 +158,21 @@ public class NotesUI : MonoBehaviour
         }
     }
 
-    public void Next()
+    public void InputMouse()
     {
-        if (noteCount < sNote.Count-1)
+        if(Input.GetAxisRaw("Mouse ScrollWheel") > 0 && !shoot)
         {
-            noteCount ++;
-        }        
-    }
-
-    public void Back()
-    {
-        if (noteCount > 0)
+            if (noteCount < sNote.Count - 1)
+            {
+                noteCount++;
+            }
+        }
+        else if (Input.GetAxisRaw("Mouse ScrollWheel") < 0 && !shoot)
         {
-            noteCount--;
+            if (noteCount > 0)
+            {
+                noteCount--;
+            }
         }
     }
 

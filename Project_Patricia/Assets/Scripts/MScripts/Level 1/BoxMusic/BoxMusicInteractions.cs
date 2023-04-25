@@ -12,7 +12,7 @@ public class BoxMusicInteractions : MonoBehaviour
     [SerializeField] TrashOn trashOne;
     public NotesUI note;
     [SerializeField] private int count;
-    [SerializeField] private AudioSource audi;
+    public AudioSource audi;
     [SerializeField] private int cDream;
     [SerializeField] private SleepMode sleep;
     [SerializeField] private Inventary inve;
@@ -20,7 +20,7 @@ public class BoxMusicInteractions : MonoBehaviour
 
     [SerializeField] private AudioSource alarm;
     [SerializeField] private int alarmCount;
-    [SerializeField] private GameObject prota, cam, panel,posEventPills;
+    [SerializeField] private GameObject prota, cam, panel, posEventPills;
 
     [SerializeField] private GameObject lanter;
     [SerializeField] private Animator animDoor;
@@ -35,6 +35,11 @@ public class BoxMusicInteractions : MonoBehaviour
     [SerializeField] private GameObject text;
     [SerializeField] private AudioSource audioMike;
     [SerializeField] private AudioClip[] clip;
+
+    [Header("AnimatonBox")]
+    [SerializeField] Animator animBox;
+    [SerializeField] int intBox;
+    [SerializeField] Collider boxInteration;
 
     public enum Work
     {
@@ -71,9 +76,10 @@ public class BoxMusicInteractions : MonoBehaviour
                     case Work.firewood:
                         note.check = 8;
                         break;
-                        case Work.boxMusic:
-                        audi.Play();
-                        Dream();
+                    case Work.boxMusic:
+                        AnimBox();
+                        //audi.Play();
+                        //Dream();
                         break;
                     case Work.chart:
                         break;
@@ -81,6 +87,32 @@ public class BoxMusicInteractions : MonoBehaviour
             }
         }
     }
+
+    public void AnimBox()
+    { 
+        if(intBox<3)
+        intBox++;
+
+        if(intBox == 1)
+        {
+            animBox.SetBool("Open", false);
+            StartCoroutine("AnimBoxDialogue");
+        }
+    }
+
+    public IEnumerator AnimBoxDialogue()
+    {
+        audioMike.clip = clip[1];
+        audioMike.Play();
+        text.SetActive(true);
+        text.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: Listo, debería funcionar";
+        yield return new WaitForSeconds(3);
+        text.SetActive(false);
+        boxInteration.enabled= true;
+    }
+
+
+
 
     public void LessMusic()
     {
