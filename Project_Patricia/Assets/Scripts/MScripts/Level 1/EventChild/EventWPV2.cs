@@ -106,6 +106,7 @@ public class EventWPV2 : MonoBehaviour
         box.GetComponent<Collider>().enabled = false;
         boxOne.GetComponent<Collider>().enabled = false;
         chart.SetActive(false);
+        active.SetActive(true);
         chartFall.SetActive(true);
         sleep.ModeDreams();
         chartSound.Play();
@@ -116,14 +117,14 @@ public class EventWPV2 : MonoBehaviour
 
     public IEnumerator Chart()
     {
-        player.SetActive(false);
-        cam.SetActive(true);
-        anim.SetBool("Chart", true);
-        yield return new WaitForSeconds(3);
-        player.SetActive(true);
-        cam.SetActive(false);
-        capsule.SetActive(true);
-        yield return new WaitForSeconds(1);
+        //player.SetActive(false);
+        //cam.SetActive(true);
+        //anim.SetBool("Chart", true);
+        //yield return new WaitForSeconds(3);
+        //player.SetActive(true);
+        //cam.SetActive(false);
+        //
+        //yield return new WaitForSeconds(1);
         walk.SetActive(true);
         yield return new WaitForSeconds(1);
         text.SetActive(true);
@@ -131,6 +132,7 @@ public class EventWPV2 : MonoBehaviour
         audioMike.clip = clip[0];
         audioMike.Play();
         yield return new WaitForSeconds(2);
+        capsule.SetActive(true);
         text.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: ¡Charlie! ¡Ya voy!";
         audi.clip = clip[1];
         audi.Play();

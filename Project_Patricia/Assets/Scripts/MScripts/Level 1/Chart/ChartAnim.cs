@@ -7,12 +7,7 @@ public class ChartAnim : MonoBehaviour
     [SerializeField] private Animator anim;
     public bool into, activeCap;
     [SerializeField] private Collider col;
-    [SerializeField] private GameObject text, prota, camaraAnim, cap;
-
-    [Header("Walk Sound")]
-    [SerializeField] private GameObject soundObject;
-    [SerializeField] private AudioSource walkSound;
-    [SerializeField] private AudioClip doorClip;
+    [SerializeField] private GameObject text, prota, camaraAnim;
 
     void Update()
     {
@@ -35,18 +30,11 @@ public class ChartAnim : MonoBehaviour
 
     public IEnumerator ActiveProta()
     {
-        yield return new WaitForSeconds(1.45f);
+        prota.SetActive(false);
+        camaraAnim.SetActive(true);
+        yield return new WaitForSeconds(4f);
         prota.SetActive(true);
         camaraAnim.SetActive(false);
-        soundObject.SetActive(true);
-        yield return new WaitForSeconds(7f);
-        walkSound.Pause();
-        yield return new WaitForSeconds(0.3f);
-        walkSound.clip= doorClip;
-        walkSound.loop = false;
-        walkSound.Play();
-        cap.SetActive(true);
-        activeCap = true;
     }
 
     private void OnTriggerEnter(Collider other)
