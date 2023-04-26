@@ -3189,8 +3189,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canShoot: 1
   save: 0
-  shoot: 0
-  shootTwo: 0
+  shoot: 1
+  shootTwo: 1
   initialShoot: 0
   timeShoot: 2
   saveTime: 0
@@ -18680,78 +18680,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c2514ecfa7b827458e5455a4f4e454e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  agent: {fileID: 495392636}
-  anim: {fileID: 495392635}
-  bDamage: 0
-  detected: 0
-  checkSphere: 0
-  a: 0
-  b: 0
-  c: 0
-  d: 0
-  countPosProta: 0
-  posProta: {x: 0, y: 0, z: 0}
-  bullet: 0
-  life: 101
-  buOne: 0
-  containerBoss: {fileID: 495392632}
-  character: {fileID: 28737765}
-  lifeLess: 0
-  death: 0
-  boxInta: {fileID: 1804819869}
-  size: 6
-  punch: 2
-  punchBoss: 10
-  boss: {fileID: 2100000, guid: 356bc59ef4e51fe4bb85665b8becf348, type: 2}
-  myColor: {r: 0, g: 0, b: 0, a: 0}
-  myAlpha: 1
-  groupA:
-  - {fileID: 177286425}
-  - {fileID: 1217104657}
-  - {fileID: 2041399602}
-  groupB:
-  - {fileID: 1299047492}
-  - {fileID: 1524828015}
-  - {fileID: 1010936527}
-  groupC:
-  - {fileID: 364132384}
-  - {fileID: 412213521}
-  - {fileID: 1890770631}
-  groupD:
-  - {fileID: 1098716204}
-  - {fileID: 1367054976}
-  - {fileID: 966404667}
-  destPoint: 0
-  intGroup: 0
-  count: 0
-  count1: 0
-  count2: 0
-  count3: 0
-  iA: 0
-  sphere: 0
-  randon: 0
-  PosWay:
-  - {fileID: 697946346}
-  - {fileID: 1734193040}
-  - {fileID: 518720745}
-  - {fileID: 1157914954}
-  tCount: 0
-  rePos: 0
-  tPosWay: {fileID: 0}
-  returPos: {x: 0, y: 0, z: 0}
-  tp: 1
-  cam: {fileID: 1329439880}
-  prota: {fileID: 1301812975}
-  pos: {fileID: 1990830025}
-  countFinal: 0
-  animBoss: {fileID: 155625669}
-  audioMike: {fileID: 951485992}
-  clip: []
-  time: 0
-  maxTime: 2
-  change: 0
-  text: {fileID: 43341491}
 --- !u!95 &495392635
 Animator:
   serializedVersion: 5
@@ -18917,14 +18845,14 @@ MonoBehaviour:
   time: 0
   maxTime: 1
   change: 0
-  cam: {fileID: 0}
-  prota: {fileID: 0}
-  pos: {fileID: 0}
+  cam: {fileID: 1329439880}
+  prota: {fileID: 1301812975}
+  pos: {fileID: 1990830025}
   countFinal: 0
-  boxInta: {fileID: 0}
-  containerBoss: {fileID: 0}
-  character: {fileID: 0}
-  text: {fileID: 0}
+  boxInta: {fileID: 1804819869}
+  containerBoss: {fileID: 495392632}
+  character: {fileID: 28737765}
+  text: {fileID: 43341491}
   points:
   - {fileID: 177286424}
   - {fileID: 1217104656}
@@ -18933,12 +18861,30 @@ MonoBehaviour:
   - {fileID: 1524828014}
   - {fileID: 1010936526}
   - {fileID: 364132383}
+  pointsSeventy:
+  - {fileID: 177286424}
+  - {fileID: 1524828014}
+  - {fileID: 1010936526}
+  - {fileID: 2041399601}
+  - {fileID: 1217104656}
+  pointsFourty:
+  - {fileID: 1890770630}
+  - {fileID: 364132383}
+  - {fileID: 412213520}
+  pointsTen:
+  - {fileID: 177286424}
   despoint: 0
   tp: 0
   punch: 0
+  damage: 0
   countOne: 0
   playerBack: {fileID: 1157914955}
   anim: {fileID: 155625669}
+  animCam: {fileID: 495392635}
+  bPunch: 0
+  one: 0
+  two: 0
+  three: 0
 --- !u!1001 &496192455
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -31666,78 +31612,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c2514ecfa7b827458e5455a4f4e454e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  agent: {fileID: 811882798}
-  anim: {fileID: 811882797}
-  bDamage: 0
-  detected: 0
-  checkSphere: 0
-  a: 0
-  b: 0
-  c: 0
-  d: 0
-  countPosProta: 0
-  posProta: {x: 0, y: 0, z: 0}
-  bullet: 0
-  life: 101
-  buOne: 0
-  containerBoss: {fileID: 1903556148}
-  character: {fileID: 0}
-  lifeLess: 0
-  death: 0
-  boxInta: {fileID: 839949355}
-  size: 6
-  punch: 1.95
-  punchBoss: 0
-  boss: {fileID: 811882801}
-  myColor: {r: 0.90588236, g: 0.11372549, b: 0.11372549, a: 0}
-  myAlpha: 1
-  groupA:
-  - {fileID: 410509652}
-  - {fileID: 764188360}
-  - {fileID: 536525446}
-  groupB:
-  - {fileID: 1590162395}
-  - {fileID: 1181639690}
-  - {fileID: 1075731287}
-  groupC:
-  - {fileID: 248116922}
-  - {fileID: 1036304033}
-  - {fileID: 1471818142}
-  groupD:
-  - {fileID: 1206988036}
-  - {fileID: 347398465}
-  - {fileID: 974787012}
-  destPoint: 0
-  intGroup: 0
-  count: 0
-  count1: 0
-  count2: 0
-  count3: 0
-  iA: 0
-  sphere: 0
-  randon: 0
-  PosWay:
-  - {fileID: 697946346}
-  - {fileID: 1734193040}
-  - {fileID: 518720745}
-  - {fileID: 1157914954}
-  tCount: 0
-  rePos: 0
-  tPosWay: {fileID: 0}
-  returPos: {x: 0, y: 0, z: 0}
-  tp: 1
-  cam: {fileID: 812931669}
-  prota: {fileID: 1301812975}
-  pos: {fileID: 284850152}
-  countFinal: 0
-  animBoss: {fileID: 0}
-  audioMike: {fileID: 0}
-  clip: []
-  time: 0
-  maxTime: 0
-  change: 0
-  text: {fileID: 0}
 --- !u!95 &811882797
 Animator:
   serializedVersion: 5
