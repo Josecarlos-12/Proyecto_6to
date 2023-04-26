@@ -105,8 +105,6 @@ public class PlayerHealth : MonoBehaviour
         }
         if (other.gameObject.name == "BossCon")
         {
-            if (moveBoss.lifeLess)
-            {
                 if (bossTouch < 3)
                     bossTouch++;
 
@@ -117,19 +115,6 @@ public class PlayerHealth : MonoBehaviour
                     sleep.ModeDreams();
                     StartCoroutine("OffDreams");
                 }
-            }
-            else
-            {
-                if (bossTouch < 3)
-                    bossTouch++;
-
-                if (bossTouch == 1)
-                {
-                    sanity -= 10;
-                    sleep.ModeDreams();
-                    StartCoroutine("OffDreams");
-                }
-            }
         }
     }
 

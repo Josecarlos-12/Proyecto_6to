@@ -6,7 +6,7 @@ using UnityEngine.AI;
 
 public class MoveBoss : MonoBehaviour
 {
-    [SerializeField] private GameObject player;
+   /* [SerializeField] private GameObject player;
     [SerializeField] private NavMeshAgent agent;
     [SerializeField] private Animator anim;
     [SerializeField] private bool bDamage, detected, checkSphere;
@@ -543,5 +543,5 @@ public class MoveBoss : MonoBehaviour
 
         Gizmos.color = Color.blue;
         Gizmos.DrawWireSphere(transform.position, punch);
-    }
+    }*/
 }
