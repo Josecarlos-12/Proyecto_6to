@@ -32,8 +32,8 @@ public class EnemyMoveRotate : MonoBehaviour
     {
         //player = GameObject.FindGameObjectWithTag("Player");
         agent = GetComponent<NavMeshAgent>();
-        player = GameObject.FindWithTag("Player");
-        crouch = GameObject.FindObjectOfType<PlayerCrouch>();
+        //player = GameObject.FindWithTag("Player");
+        //crouch = GameObject.FindObjectOfType<PlayerCrouch>();
     }
 
 
