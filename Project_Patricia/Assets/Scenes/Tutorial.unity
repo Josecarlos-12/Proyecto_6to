@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 18.448215, g: 11.495985, b: 6.780485, a: 1}
+  m_IndirectSpecularColor: {r: 18.449009, g: 11.496717, b: 6.7815037, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -14493,6 +14493,7 @@ GameObject:
   - component: {fileID: 496980295}
   - component: {fileID: 496980294}
   - component: {fileID: 496980296}
+  - component: {fileID: 496980297}
   m_Layer: 5
   m_Name: AnimWASD
   m_TagString: Untagged
@@ -14579,6 +14580,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+--- !u!114 &496980297
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 496980292}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cefec8f6f691184f8c68c2380f76042, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  finish: 0
 --- !u!64 &498127151
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -20813,6 +20827,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   task: {fileID: 320203705}
   panelTuto: {fileID: 772918817}
+  anim: {fileID: 496980296}
+  on: 0
+  animPanel: {fileID: 496980297}
 --- !u!64 &773830794
 MeshCollider:
   m_ObjectHideFlags: 0
