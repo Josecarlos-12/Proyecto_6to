@@ -40,11 +40,14 @@ public class TrashOn : MonoBehaviour
 
     public void DetectedPlayer()
     {
-        if (Vector3.Distance(transform.position, player.transform.position) < sizePlayer)
+        if(player!= null)
         {
-            if(countPlayer<3)
-            countPlayer ++;
-        }
+            if (Vector3.Distance(transform.position, player.transform.position) < sizePlayer)
+            {
+                if (countPlayer < 3)
+                    countPlayer++;
+            }
+        }       
     }
 
     private void OnDrawGizmos()

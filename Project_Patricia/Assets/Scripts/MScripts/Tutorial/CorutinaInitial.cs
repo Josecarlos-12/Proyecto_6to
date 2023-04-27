@@ -105,9 +105,12 @@ public class CorutinaInitial : MonoBehaviour
         textMeshPro.text = text[13];
         yield return new WaitForSeconds(time[14]);
         panelTuto.SetActive(true);
-        Time.timeScale = 0;
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
+        //Time.timeScale = 0;
+        //Cursor.lockState = CursorLockMode.None;
+        //Cursor.visible = true;
+        Destroy(cam);
+        prota.SetActive(true);
+
         textContainer.SetActive(false);
         press = true;
     }
@@ -130,9 +133,11 @@ public class CorutinaInitial : MonoBehaviour
             bloom.active = false;
             press = true;
             panelTuto.SetActive(true);
-            Time.timeScale = 0;
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
+            //Time.timeScale = 0;
+            //Cursor.lockState = CursorLockMode.None;
+            //Cursor.visible = true;
+            Destroy(cam);
+            prota.SetActive(true);
             textContainer.SetActive(false);
         }
     }

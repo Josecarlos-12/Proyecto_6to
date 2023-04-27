@@ -28,7 +28,7 @@ public class AnimKeyEvent : MonoBehaviour
         text.SetActive(true);
         text.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: Te lo advertí";
         yield return new WaitForSeconds(2);
-        active.active = true;
+        active.active2 = true;
         Destroy(shadow);
         boss.SetActive(true);
         text.SetActive(false);

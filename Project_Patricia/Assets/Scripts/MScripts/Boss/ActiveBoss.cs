@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ActiveBoss : MonoBehaviour
 {
-    public bool active;
+    public bool active, active2;
     [SerializeField] public GameObject boss;
     [SerializeField] public float time, maxTime;
 
@@ -12,18 +12,9 @@ public class ActiveBoss : MonoBehaviour
     {
         if(boss!= null)
         {
-            if (active && !boss.activeInHierarchy)
-            {
-                time += Time.deltaTime;
-
-                if (time >= maxTime)
-                {
-                    boss.SetActive(true);
-                }
-            }
-            if (boss.activeInHierarchy)
-            {
-                time = 0;
+            if (active2)
+            {                
+                boss.SetActive(true);
             }
         }
     }

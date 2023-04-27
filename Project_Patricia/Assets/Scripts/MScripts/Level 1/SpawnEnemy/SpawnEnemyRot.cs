@@ -13,12 +13,16 @@ public class SpawnEnemyRot : MonoBehaviour
 
     private void Start()
     {
-        StartCoroutine("ChangeEnemys");
+        for (int i = 0; i < points.Length; i++)
+        {
+            GameObject ene = Instantiate(enemy, points[i].transform.position, points[i].transform.rotation);
+            ene.SetActive(true);
+        }
     }
 
     private void Update()
     {
-        if (go)
+        /*if (go)
         {
             if (change)
             {
@@ -54,7 +58,7 @@ public class SpawnEnemyRot : MonoBehaviour
                 }
             }                
                  
-        }
+        }*/
     }
 
 
