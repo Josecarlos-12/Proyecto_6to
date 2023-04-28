@@ -7,6 +7,7 @@ public class InteracionKeys : MonoBehaviour
     [SerializeField] GameObject interactionE, panel;
     [SerializeField] bool touch;
     [SerializeField] Collider coll, collOther;
+    public bool grabNote;
 
 
     void Start()
@@ -34,6 +35,7 @@ public class InteracionKeys : MonoBehaviour
         Time.timeScale = 1;
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
+        grabNote = true;
     }
 
     private void OnTriggerEnter(Collider other)
