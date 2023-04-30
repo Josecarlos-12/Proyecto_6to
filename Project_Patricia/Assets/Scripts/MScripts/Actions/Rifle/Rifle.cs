@@ -24,13 +24,20 @@ public class Rifle : MonoBehaviour
 
     [Header("Tutorial")]
     [SerializeField] GameObject panel;
-    [SerializeField] private GameObject shadow, point;
+    [SerializeField] private GameObject shadow, point, colliders;
     [SerializeField] private CrouchTutorial crTuto;
     [SerializeField] private GameObject coll;
     [SerializeField] private EnemyShed enemy;
 
+    [Header("Don´t Move CTRL")]
+    [SerializeField] GameObject gameCTRL;
+    [SerializeField] AnimTrue animTrue;
+    [SerializeField] PlayerFPSt player;
+    [SerializeField] private Head head;
+
     private void Update()
     {
+        CTRLButton();
         InpuRifle();
        if (star)
         {            
@@ -82,8 +89,8 @@ public class Rifle : MonoBehaviour
         Cursor.visible= true;
         Cursor.lockState= CursorLockMode.None;
 
-        shadow.transform.position = point.transform.position;        
-        this.gameObject.GetComponent<Rifle>().enabled = false;
+        shadow.transform.position = point.transform.position;
+        colliders.SetActive(true);
     }
 
     public void AcceptButton()
@@ -95,6 +102,30 @@ public class Rifle : MonoBehaviour
         Time.timeScale = 1;
         Cursor.visible= false;
         Cursor.lockState = CursorLockMode.Locked;
+
+        //Hago aparecer el UI CTRL--Detengo movimiento del personaje
+        gameCTRL.SetActive(true);
+        player.canWalk= false;
+    }
+
+    public void CTRLButton()
+    {
+        if(animTrue.init && Input.GetKeyDown(KeyCode.LeftControl))
+        {
+            print("PresionoCTRL");
+            animTrue.init = false;
+            StartCoroutine("CTRLOff");
+            head.head = true;
+            player.canWalk = true;
+            this.gameObject.GetComponent<Rifle>().enabled = false;
+        }
+    }
+
+    public IEnumerator CTRLOff()
+    {
+        yield return new WaitForSeconds(1.35f);
+        gameCTRL.SetActive(false);
+
     }
 
     public void InpuRifle()

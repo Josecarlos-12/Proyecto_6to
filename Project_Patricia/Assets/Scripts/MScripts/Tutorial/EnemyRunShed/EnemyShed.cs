@@ -11,13 +11,15 @@ public class EnemyShed : MonoBehaviour
     public bool run, run2;
     [SerializeField] int intTouch;
     public bool accept, touch;
+    public int count;
+    public Head head;
 
     void Start()
     {
         agent= GetComponent<NavMeshAgent>();
     }
 
-    // Update is called once per frame
+
     void Update()
     {
         if (run) 
@@ -41,17 +43,7 @@ public class EnemyShed : MonoBehaviour
                 StartCoroutine("Dialogue");
             }
         }
-    }
-
-
-    private void OnTriggerStay(Collider other)
-    {
-        if (other.gameObject.name == "DeEyes" && accept)
-        {
-            touch = true;
-           
-        }
-    }
+    }       
 
     public IEnumerator Dialogue()
     {

@@ -4,7 +4,12 @@ using UnityEngine;
 
 public class AnimTrue : MonoBehaviour
 {
-    public bool finish;
+    public bool finish, init;
+
+    public void Crouch()
+    {
+        init = true;
+    }
 
     public void True()
     {

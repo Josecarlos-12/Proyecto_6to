@@ -28,6 +28,9 @@ public class Weapon : MonoBehaviour
     public PlayerInteraction inte;
     public PlayerHealth health;
 
+    [Header("Sound")]
+    [SerializeField] AudioSource shootSound;
+
     private void Start()
     {
         obj=GetComponent<PlayerInteraction>();
@@ -137,7 +140,8 @@ public class Weapon : MonoBehaviour
         if (canShoot && save && pause.shoot && notes.shoot && inte.shoot)
         {          
             if (Input.GetMouseButtonDown(0) && Time.time > initialShoot && clicks > 0 && !obj.inHand && inventary.rifle)
-            {                                                  
+            {                
+                shootSound.Play();
                 animBullet.SetBool("Exit", false);
                 Instantiate(bullet, initialBullet.transform.position, initialBullet.transform.rotation);
                 health.sanity -= 4;

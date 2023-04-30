@@ -8,10 +8,13 @@ public class LanterGrab : MonoBehaviour
     [SerializeField] private GameObject text, lanter, childMove;
     [SerializeField] private bool into;
     [SerializeField] private Collider col;
-    [SerializeField] private GameObject dialogueText;
-
+    [SerializeField] private GameObject dialogueText, tutoLanter;
+    [SerializeField] AnimTrue animLanter;
+    [SerializeField] Animator anim;
+ 
     private void Update()
     {
+        LanterInput();
         Press();
     }
 
@@ -22,6 +25,7 @@ public class LanterGrab : MonoBehaviour
             //childMove.SetActive(true);
             lanter.SetActive(true);
             col.enabled = false;
+            into= false;
             text.SetActive(false);
             Destroy(transform.GetChild(0).gameObject);
             StartCoroutine("Dialogue");
@@ -32,8 +36,27 @@ public class LanterGrab : MonoBehaviour
     {
         dialogueText.SetActive(true);
         dialogueText.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: ¡Charlie! Regresa! ¡Es peligroso que estes fuera!";
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(2);
+        tutoLanter.SetActive(true);
+        yield return new WaitForSeconds(1);
         dialogueText.SetActive(false);
+       
+    }
+
+    public void LanterInput()
+    {
+        if(animLanter.finish && Input.GetKeyDown(KeyCode.F))
+        {
+            animLanter.finish = false;
+            anim.SetBool("Exit", true);
+            StartCoroutine("LanterCorutine");
+        }
+    }
+
+    public IEnumerator LanterCorutine()
+    {
+        yield return new WaitForSeconds(1.30f);
+        tutoLanter.SetActive(false);
         Destroy(gameObject);
     }
 

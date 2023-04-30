@@ -19,6 +19,16 @@ public class GrabRifleSounds : MonoBehaviour
     [SerializeField] private AudioSource audioMike;
     [SerializeField] private AudioClip[] clip;
 
+    [Header("TutoRifle")]
+    [SerializeField] GameObject tutoRifle;
+    [SerializeField] AnimTrue aniRifle;
+    [SerializeField] Animator animationRifle;
+
+    [Header("TutoReloading")]
+    [SerializeField] GameObject tutoReloading;
+    [SerializeField] AnimTrue animReloading;
+    [SerializeField] Animator animatorReloading;
+
     void Update()
     {
         if (grab && into && Input.GetKeyDown(KeyCode.E))
@@ -39,6 +49,9 @@ public class GrabRifleSounds : MonoBehaviour
             }
 
         }
+
+        MouseClick();
+        Reloading();
     }
 
     public IEnumerator Dialogue()
@@ -47,11 +60,50 @@ public class GrabRifleSounds : MonoBehaviour
         text.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: Te encontraré...";
         audioMike.clip = clip[0];
         audioMike.Play();
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(2);
+        tutoRifle.SetActive(true);
+        yield return new WaitForSeconds(3);
         shadowBattle.SetActive(true);
         text.SetActive(false);
+        
+    }
+
+    public void MouseClick()
+    {
+        if(aniRifle.finish && Input.GetMouseButtonDown(0))
+        {
+            aniRifle.finish= false;
+            animationRifle.SetBool("Exit", true);
+            StartCoroutine("PanelRifle");
+        }
+    }
+
+    public IEnumerator PanelRifle()
+    {
+        yield return new WaitForSeconds(1.3f);
+        tutoRifle.SetActive(false);
+        yield return new WaitForSeconds(5f);
+        tutoReloading.SetActive(true);
+        //Destroy(gameObject);
+    }
+
+    public void Reloading()
+    {
+        if(animReloading.finish && Input.GetKeyDown(KeyCode.R))
+        {
+            animReloading.finish = false;
+            animatorReloading.SetBool("Exit", true);
+            StartCoroutine("ReloadingCorutine");
+        }
+    }
+
+    public IEnumerator ReloadingCorutine()
+    {
+        yield return new WaitForSeconds(1.3f);
+        tutoReloading.SetActive(false);
         Destroy(gameObject);
     }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))

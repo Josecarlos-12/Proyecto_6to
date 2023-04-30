@@ -80,7 +80,6 @@ public class Inventary : MonoBehaviour
             {                
                 image.sprite = sPill;
                 count.text = "X" + pills.ToString();
-                Debug.Log("Pastilla");
             }
             if (pills <= 0)
             {

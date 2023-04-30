@@ -6,6 +6,7 @@ public class PlayerCrouch : MonoBehaviour
 {
     private Animator anim;
     [SerializeField] private Head head;
+    [SerializeField] PlayerFPSt player;
     [SerializeField] private bool press;
     public bool crouch;
     public bool crouchCan;
@@ -39,11 +40,13 @@ public class PlayerCrouch : MonoBehaviour
             {
                 crouch = true;
                 anim.SetBool("Crouch", true);
+                player.canRun = false;
             }
             else if (!press && !head.head)
             {
                 crouch = false;
                 anim.SetBool("Crouch", false);
+                player.canRun = true;
             }
         }        
     }
