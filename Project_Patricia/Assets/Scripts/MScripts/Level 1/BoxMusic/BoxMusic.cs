@@ -17,6 +17,8 @@ public class BoxMusic : MonoBehaviour
     [SerializeField] private AudioClip[] clip;
     [SerializeField] private Animator animBox;
 
+    public bool bBox;
+
     void Update()
     {
         if (into && accept)
@@ -26,6 +28,7 @@ public class BoxMusic : MonoBehaviour
 
         if (into && Input.GetKeyDown(KeyCode.E) && pass.pass==true)
         {
+            bBox = true;
             pick.isPickable= true;
             text.SetActive(false);
             objSing.SetActive(true);

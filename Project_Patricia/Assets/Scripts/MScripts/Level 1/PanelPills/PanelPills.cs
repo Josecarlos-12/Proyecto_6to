@@ -8,6 +8,7 @@ public class PanelPills : MonoBehaviour
     [SerializeField] private GameObject panel, tutoPills;
     [SerializeField] private int one;
     [SerializeField] AnimTrue animPill;
+    public bool bPills;
 
     private void Update()
     {
@@ -27,6 +28,7 @@ public class PanelPills : MonoBehaviour
             if (one == 1)
             {
                 tutoPills.SetActive(true);
+                bPills = true;
             }
         }
     }

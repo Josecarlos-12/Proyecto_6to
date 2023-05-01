@@ -13,6 +13,10 @@ public class StrongBox : MonoBehaviour
     public bool pass;
     [SerializeField] NotesUI noteUI;
 
+    [Header("Shiny")]
+    [SerializeField] int count;
+    [SerializeField] Animator animKeyPad;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -30,7 +34,18 @@ public class StrongBox : MonoBehaviour
             text.SetActive(false);
             col.enabled = false;
             anim.SetBool("Close", true);
+            animKeyPad.SetBool("On", false);
             noteUI.check = 7;
+        }
+        if(note==null)
+        {
+            if(count<3)
+            count++;
+
+            if (count == 1)
+            {
+                animKeyPad.SetBool("On", true);
+            }            
         }
     }
 

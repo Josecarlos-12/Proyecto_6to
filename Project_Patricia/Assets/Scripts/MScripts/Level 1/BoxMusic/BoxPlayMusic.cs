@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.AnimatedValues;
 using UnityEngine;
 
 public class BoxPlayMusic : MonoBehaviour
@@ -9,11 +10,13 @@ public class BoxPlayMusic : MonoBehaviour
     [SerializeField] Animator handle;
     [SerializeField] Collider col;
     [SerializeField] BoxMusicInteractions box;
+    public bool animBox;
 
     void Update()
     {
         if(into && Input.GetKeyDown(KeyCode.E))
         {
+            animBox = true;
             box.Dream();
             col.enabled = false;
             text.SetActive(false);
