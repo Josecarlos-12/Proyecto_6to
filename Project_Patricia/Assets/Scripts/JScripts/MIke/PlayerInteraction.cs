@@ -44,6 +44,12 @@ public class PlayerInteraction : MonoBehaviour
 
     public LayerMask detected;
 
+    [Header("Shiny Objects")]
+    [SerializeField] float distance3;
+    [SerializeField] RaycastHit hit3;    
+    [SerializeField] LayerMask shinyLayer;
+    [SerializeField] Animator animShiny;
+
     private void Start()
     {
         shoot = true;
@@ -55,6 +61,7 @@ public class PlayerInteraction : MonoBehaviour
         Detected();
         Press();
         NotShoot();
+        ShinyObject();
         //GrabObject();
     }
 
@@ -172,6 +179,23 @@ public class PlayerInteraction : MonoBehaviour
         }
     }
 
+    public void ShinyObject()
+    {
+        if (Physics.Raycast(cam.transform.position, cam.forward, out hit3, distance3, shinyLayer))
+        {
+            animShiny =  hit3.transform.gameObject.GetComponent<Animator>();
+            animShiny.enabled = true;
+        }
+        else
+        {
+            if (animShiny != null)
+            {
+                animShiny.enabled = false;
+            }
+            
+        }
+    }
+
     public void Press()
     {
         if(bHandle && Input.GetKeyDown(KeyCode.E))
@@ -262,5 +286,8 @@ public class PlayerInteraction : MonoBehaviour
 
         Gizmos.color = Color.blue;
         Gizmos.DrawRay(cam.position, cam.forward * distance2);
+        
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawRay(cam.position, cam.forward * distance3);
     }
 }
