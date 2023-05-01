@@ -7,12 +7,13 @@ public class ShinyObjects : MonoBehaviour
 {
     [SerializeField] private InteracionKeys note;
     [SerializeField] Animator anim;
+    [SerializeField] PickableObject pick;
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("ShinyObjects"))
         {
-            if (note.grabNote)
+            if (note.grabNote && pick.isPickable)
             {
                 anim.SetBool("On", true);
             }                
