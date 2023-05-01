@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
@@ -46,9 +47,12 @@ public class PlayerInteraction : MonoBehaviour
 
     [Header("Shiny Objects")]
     [SerializeField] float distance3;
+    [SerializeField] float radius;
     [SerializeField] RaycastHit hit3;    
     [SerializeField] LayerMask shinyLayer;
-    [SerializeField] Animator animShiny;
+    [SerializeField] Transform animShiny;
+    [SerializeField] Animator anim;
+    public Vector3 boxCastHalfExtents = Vector3.one;
 
     private void Start()
     {
@@ -61,7 +65,6 @@ public class PlayerInteraction : MonoBehaviour
         Detected();
         Press();
         NotShoot();
-        ShinyObject();
         //GrabObject();
     }
 
@@ -180,20 +183,26 @@ public class PlayerInteraction : MonoBehaviour
     }
 
     public void ShinyObject()
-    {
+    {        
+
         if (Physics.Raycast(cam.transform.position, cam.forward, out hit3, distance3, shinyLayer))
-        {
-            animShiny =  hit3.transform.gameObject.GetComponent<Animator>();
-            animShiny.enabled = true;
-        }
-        else
-        {
-            if (animShiny != null)
-            {
-                animShiny.enabled = false;
-            }
-            
-        }
+         {
+             if (hit3.transform.CompareTag("ShinyObjects"))
+             {
+                 print("Toco");
+                 animShiny = hit3.transform.GetChild(0);
+                 anim = animShiny.GetComponent<Animator>();
+                 anim.SetBool("On", true);
+             }
+         }
+         else
+         {
+             if (animShiny != null)
+             {
+                 anim.SetBool("On", false);
+             }
+
+         }
     }
 
     public void Press()
@@ -285,9 +294,7 @@ public class PlayerInteraction : MonoBehaviour
         Gizmos.DrawRay(cam.position, cam.forward * distance);
 
         Gizmos.color = Color.blue;
-        Gizmos.DrawRay(cam.position, cam.forward * distance2);
-        
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawRay(cam.position, cam.forward * distance3);
+        Gizmos.DrawRay(cam.position, cam.forward * distance);
+        //Gizmos.DrawWireSphere(transform.position + (transform.forward.normalized * distance3), radius);
     }
 }
