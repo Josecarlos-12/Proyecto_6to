@@ -2535,8 +2535,8 @@ Light:
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 393.3664
+  m_Color: {r: 0.26900145, g: 0.3988529, b: 0.8773585, a: 1}
+  m_Intensity: 0.5
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -2613,7 +2613,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a68c43fe1f2a47cfa234b5eeaa98012, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Intensity: 393.3664
+  m_Intensity: 0.5
   m_EnableSpotReflector: 0
   m_LuxAtDistance: 1
   m_InnerSpotPercent: 0
@@ -13163,7 +13163,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh75078
+  m_Name: pb_Mesh45558
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -38472,6 +38472,7 @@ MonoBehaviour:
   notes: {fileID: 1710891068}
   inte: {fileID: 1339620632}
   health: {fileID: 915874605}
+  shootSound: {fileID: 0}
 --- !u!114 &1339620632
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -38518,6 +38519,14 @@ MonoBehaviour:
   detected:
     serializedVersion: 2
     m_Bits: 0
+  distance3: 0
+  radius: 0
+  shinyLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  animShiny: {fileID: 0}
+  anim: {fileID: 0}
+  boxCastHalfExtents: {x: 1, y: 1, z: 1}
 --- !u!114 &1339620633
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -47623,7 +47632,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1710891064
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -47675,6 +47684,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   head: {fileID: 275427341}
+  player: {fileID: 0}
   press: 0
   crouch: 0
   crouchCan: 1
@@ -47748,6 +47758,9 @@ MonoBehaviour:
   eight: 0
   nine: 0
   workS: 1
+  player: {fileID: 0}
+  crouch: {fileID: 0}
+  cam: {fileID: 0}
 --- !u!114 &1710891069
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -47803,6 +47816,7 @@ MonoBehaviour:
   - {fileID: 1067450797}
   crouch: {fileID: 1710891066}
   canRun: 1
+  canWalk: 0
 --- !u!143 &1710891071
 CharacterController:
   m_ObjectHideFlags: 0
@@ -50729,7 +50743,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!81 &1823688465
 AudioListener:
   m_ObjectHideFlags: 0
@@ -50788,8 +50802,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1823688464}
-  m_LocalRotation: {x: -0, y: 0.70710576, z: -0, w: 0.7071079}
-  m_LocalPosition: {x: 16.75, y: 1, z: -5.3100004}
+  m_LocalRotation: {x: -0.030878706, y: -0.03034043, z: 0.0009407428, w: -0.9990621}
+  m_LocalPosition: {x: 17.341904, y: 10.93612, z: -137.52483}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -50968,6 +50982,14 @@ MonoBehaviour:
   detected:
     serializedVersion: 2
     m_Bits: 0
+  distance3: 0
+  radius: 0
+  shinyLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  animShiny: {fileID: 0}
+  anim: {fileID: 0}
+  boxCastHalfExtents: {x: 1, y: 1, z: 1}
 --- !u!114 &1823688470
 MonoBehaviour:
   m_ObjectHideFlags: 0
