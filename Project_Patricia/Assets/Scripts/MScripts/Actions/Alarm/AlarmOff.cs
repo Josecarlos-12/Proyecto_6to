@@ -16,10 +16,13 @@ public class AlarmOff : MonoBehaviour
     [SerializeField] private AudioSource audiCha, audioMike;
     [SerializeField] private AudioClip[] clip;
 
+    public bool offAlarm;
+
     void Update()
     {
         if(into && Input.GetKeyDown(KeyCode.E) && box.bAlarm==true)
         {
+            offAlarm= true;
             into = false;
             col.enabled = false;
             alarm.Pause();

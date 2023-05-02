@@ -27,6 +27,7 @@ public class PanelPills : MonoBehaviour
 
             if (one == 1)
             {
+                this.gameObject.transform.GetChild(0).gameObject.SetActive(false);
                 tutoPills.SetActive(true);
                 bPills = true;
             }

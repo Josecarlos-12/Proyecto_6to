@@ -14,9 +14,10 @@ public class ShinyObjects : MonoBehaviour
     [SerializeField] BoxMusic boxMusic;
     [SerializeField] StrongBox strong;
     [SerializeField] PanelPills pPills;
+    [SerializeField] AlarmOff alarm;
     [SerializeField] enum ObjectGames
     {
-        Grab, Interaction, iron, box, pills
+        Grab, Interaction, iron, box, pills, alarm
     }
     [SerializeField] ObjectGames objGames;
 
@@ -68,6 +69,14 @@ public class ShinyObjects : MonoBehaviour
                     this.gameObject.GetComponent<ShinyObjects>().enabled = false;
                 }
                 break;
+            case ObjectGames.alarm:
+                if (alarm.offAlarm)
+                {
+                    col.enabled = false;
+                    anim.SetBool("On", false);
+                    this.gameObject.GetComponent<ShinyObjects>().enabled = false;
+                }
+                break;
         }
 
         
@@ -107,6 +116,12 @@ public class ShinyObjects : MonoBehaviour
                     break;
                 case ObjectGames.pills:
                     if (!pPills.bPills)
+                    {
+                        anim.SetBool("On", true);
+                    }
+                    break;
+                case ObjectGames.alarm:
+                    if (pPills.bPills && !alarm.offAlarm)
                     {
                         anim.SetBool("On", true);
                     }
