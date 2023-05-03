@@ -18,6 +18,7 @@ public class Inventary : MonoBehaviour
     [Header("Call Other Script")]
     [SerializeField] private PlayerHealth sanity;
     [SerializeField] private EventKeyShadow rRifle;
+    [SerializeField] private PanelPills panelPills;
 
     [Header("Dialogue")]
     [SerializeField] private GameObject text;
@@ -114,7 +115,7 @@ public class Inventary : MonoBehaviour
 
     public void Pills()
     {
-        if(bPills && pills > 0 && Input.GetMouseButtonDown(0))
+        if(bPills && pills > 0 && Input.GetMouseButtonDown(0) && !panelPills.bPanel)
         {
             pills--;
             //Mas sanidad

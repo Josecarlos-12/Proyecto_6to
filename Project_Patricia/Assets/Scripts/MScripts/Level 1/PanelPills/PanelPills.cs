@@ -8,7 +8,7 @@ public class PanelPills : MonoBehaviour
     [SerializeField] private GameObject panel, tutoPills;
     [SerializeField] private int one;
     [SerializeField] AnimTrue animPill;
-    public bool bPills;
+    public bool bPills, bPanel;
 
     private void Update()
     {
@@ -44,6 +44,7 @@ public class PanelPills : MonoBehaviour
             Time.timeScale = 1;
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
+            bPanel= true;
         }
     }
 
@@ -53,6 +54,7 @@ public class PanelPills : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         panel.SetActive(false);
+        bPanel= false;
         this.gameObject.GetComponent<PanelPills>().enabled = false;
     }
 }

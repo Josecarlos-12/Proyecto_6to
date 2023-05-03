@@ -10,6 +10,10 @@ public class EventTouch : MonoBehaviour
     [SerializeField] private int count;
     [SerializeField, TextArea(4,4)] private string sText,sText2;
 
+    [Header("Audio")]
+    [SerializeField] private AudioSource audioMike;
+    [SerializeField] private AudioClip clipOne, clipTwo;
+
     public enum typesDialgoue
     {
         one, two, three
@@ -35,6 +39,7 @@ public class EventTouch : MonoBehaviour
                         StartCoroutine("DialogueOne");
                         break; 
                     case typesDialgoue.two:
+                        StopCoroutine("DialogueOne");
                         StartCoroutine("DialogueTwo");
                         break;
                     case typesDialgoue.three:
@@ -50,16 +55,23 @@ public class EventTouch : MonoBehaviour
     {
         text.SetActive(true);
         text.GetComponent<TextMeshProUGUI>().text = sText;
-        yield return new WaitForSeconds(2);
+        audioMike.clip=clipOne;
+        audioMike.Play();
+        yield return new WaitForSeconds(6);
         text.SetActive(false);
         Destroy(gameObject);
     }
 
     public IEnumerator DialogueTwo()
-    {
+    {        
         text.SetActive(true);
         text.GetComponent<TextMeshProUGUI>().text = sText;
-        yield return new WaitForSeconds(2);
+        audioMike.clip = clipOne;
+        audioMike.Play();
+        yield return new WaitForSeconds(3);
+        audioMike.clip = clipTwo;
+        audioMike.Play();
+        text.SetActive(true);
         text.GetComponent<TextMeshProUGUI>().text = sText2;
         yield return new WaitForSeconds(2);
         text.SetActive(false);

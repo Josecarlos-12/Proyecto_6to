@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.0018456262, g: 0.0012821096, b: 0.000881837, a: 1}
+  m_IndirectSpecularColor: {r: 0.0018381069, g: 0.0012757878, b: 0.00087502506, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3305,6 +3305,7 @@ MonoBehaviour:
   boxMusic: {fileID: 870959273}
   sanity: {fileID: 597658476}
   rRifle: {fileID: 733654944}
+  panelPills: {fileID: 483193680}
   text: {fileID: 43341491}
   eventPills: {fileID: 1448460720}
   eventSleep: {fileID: 500597601}
@@ -24512,7 +24513,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &483193679
 Transform:
   m_ObjectHideFlags: 0
@@ -24557,6 +24558,7 @@ MonoBehaviour:
   one: 0
   animPill: {fileID: 206110859}
   bPills: 0
+  bPanel: 0
 --- !u!95 &483193681
 Animator:
   serializedVersion: 5
@@ -25877,6 +25879,9 @@ MonoBehaviour:
   count: 0
   sText: "Mike Schmith: Charlie? Charlie! D\xF3nde est\xE1s?"
   sText2: 'Mike Schmith: Tengo un mal presentimiento'
+  audioMike: {fileID: 951485992}
+  clipOne: {fileID: 8300000, guid: f388cb8b0e0e36c44934dfa2a25983d4, type: 3}
+  clipTwo: {fileID: 8300000, guid: 24aa14d866c382243ae49d8be5dff9d0, type: 3}
   type: 1
 --- !u!65 &500597604
 BoxCollider:
@@ -48829,6 +48834,7 @@ MonoBehaviour:
   m_Script: {fileID: 2110147194}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_Entries: []
 --- !u!4 &1059483912
 Transform:
   m_ObjectHideFlags: 19
@@ -68109,6 +68115,9 @@ MonoBehaviour:
   count: 0
   sText: "Mike Schmith: \xBFQ-qu\xE9? \xBFQu\xE9 pasa? \xBFD\xF3nde? \xA1La alarma!\r"
   sText2: 
+  audioMike: {fileID: 951485992}
+  clipOne: {fileID: 8300000, guid: ccc191bc381769b4986474ce2d85a67d, type: 3}
+  clipTwo: {fileID: 0}
   type: 0
 --- !u!1 &1448964088
 GameObject:
@@ -100647,6 +100656,9 @@ MonoBehaviour:
   count: 0
   sText: 
   sText2: 
+  audioMike: {fileID: 0}
+  clipOne: {fileID: 0}
+  clipTwo: {fileID: 0}
   type: 2
 --- !u!65 &1981524275
 BoxCollider:
