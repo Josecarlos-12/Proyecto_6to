@@ -6,9 +6,13 @@ using UnityEngine;
 public class EventFindCharlie : MonoBehaviour
 {
     [SerializeField] private TasksUILevel2 taskCount;
-    [SerializeField] private Collider coll;
+    [SerializeField] private Collider coll, otherColl;
     [SerializeField] private GameObject text;
+    [SerializeField] private Animator handle;
+    public bool activeDorr;
 
+    [Header("Call Other Script")]
+    [SerializeField] private OpenDoorM openDoor;
 
     void Start()
     {
@@ -27,9 +31,13 @@ public class EventFindCharlie : MonoBehaviour
 
     public IEnumerator Dialogue()
     {
+        openDoor.enabled= false;
+        otherColl.enabled= false;
         text.SetActive(true);
         text.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: Todo está muy tranquilo...";
-        yield return new WaitForSeconds(4);
+        yield return new WaitForSeconds(3);
         text.SetActive(false);
+        handle.SetBool("On", true);
+        activeDorr= true;
     }
 }

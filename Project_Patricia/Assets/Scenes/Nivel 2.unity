@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 368.25, g: 368.25, b: 368.25, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -12422,9 +12422,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 543438040}
-  - component: {fileID: 543438043}
-  - component: {fileID: 543438042}
+  - component: {fileID: 543438044}
   - component: {fileID: 543438041}
+  - component: {fileID: 543438042}
+  - component: {fileID: 543438043}
+  - component: {fileID: 543438045}
   m_Layer: 0
   m_Name: DoorContainer (6)
   m_TagString: Untagged
@@ -12494,10 +12496,45 @@ BoxCollider:
   m_GameObject: {fileID: 543438039}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Size: {x: 3.1039886, y: 1, z: 4.310192}
+  m_Center: {x: -1.4196396, y: 1.69, z: -0.3649044}
+--- !u!65 &543438044
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 543438039}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 6.254471, y: 1, z: 10.591244}
-  m_Center: {x: -2.9948807, y: 1.69, z: 2.7756214}
+  m_Size: {x: 5.3189125, y: 1, z: 5.2625694}
+  m_Center: {x: -2.4954243, y: 1.69, z: 0.111284256}
+--- !u!114 &543438045
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 543438039}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7207715bb13e0e24eac44b4aaa16e0b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  col: {fileID: 543438043}
+  thisColl: {fileID: 543438043}
+  count: 0
+  into: 0
+  text: {fileID: 1838211697}
+  animDoor: {fileID: 543438042}
+  animHandle: {fileID: 1431811355}
+  charlie: {fileID: 657038412}
+  walk: {fileID: 1899665765}
+  crouch: {fileID: 1899665761}
 --- !u!136 &545787593
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -14793,7 +14830,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   taskCount: {fileID: 482236087}
   coll: {fileID: 657038413}
+  otherColl: {fileID: 543438044}
   text: {fileID: 232431364}
+  handle: {fileID: 1431811355}
+  activeDorr: 0
+  openDoor: {fileID: 543438041}
 --- !u!65 &657038413
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -20054,7 +20095,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &802869287
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20350,17 +20391,17 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: cc017537dc00f584d977e1943694c166,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cc017537dc00f584d977e1943694c166,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.70710677
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cc017537dc00f584d977e1943694c166,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cc017537dc00f584d977e1943694c166,
         type: 3}
@@ -20407,11 +20448,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -1535581805955733919, guid: cc017537dc00f584d977e1943694c166,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 4920fef36ce41cc4f834eb97f93596b8, type: 2}
     - target: {fileID: 919132149155446097, guid: cc017537dc00f584d977e1943694c166,
         type: 3}
       propertyPath: m_Name
       value: SingleDoor (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 8032750206264916975, guid: cc017537dc00f584d977e1943694c166,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 4920fef36ce41cc4f834eb97f93596b8, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cc017537dc00f584d977e1943694c166, type: 3}
 --- !u!4 &810276614 stripped
@@ -37262,6 +37313,32 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 6183012519828209086, guid: 977840426d4e6454fb2e5859e827c432, type: 3}
+--- !u!1 &1431811354 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: cc017537dc00f584d977e1943694c166,
+    type: 3}
+  m_PrefabInstance: {fileID: 810276613}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1431811355
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1431811354}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c0340b37450492d469335c8ad8de4cc1, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
 --- !u!1 &1432188653
 GameObject:
   m_ObjectHideFlags: 0
@@ -38969,7 +39046,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1545715198}
   m_LocalRotation: {x: 0, y: 0.7071068, z: -0, w: -0.7071068}
-  m_LocalPosition: {x: -87.49562, y: 0, z: -157.99995}
+  m_LocalPosition: {x: -88.67, y: 0, z: -167.6}
   m_LocalScale: {x: 2.0000992, y: 1, z: 0.49997476}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -39006,7 +39083,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 5, y: 7.641109, z: 11.011902}
+  m_Size: {x: 2.97, y: 7.641109, z: 11.011902}
   m_Center: {x: 0, y: -1.3205538, z: 6.005951}
 --- !u!65 &1545715202
 BoxCollider:
