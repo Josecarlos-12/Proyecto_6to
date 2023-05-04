@@ -35,7 +35,7 @@ public class EventBathroom : MonoBehaviour
     public IEnumerator Dialogue()
     {
         dialogue.SetActive(true);
-        dialogue.GetComponent<TextMeshProUGUI>().text = "Mike: ¿Prendió la ducha? ¿Se va a bañar aquí abajo? Ha de estar muy cansada";
+        dialogue.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: ¿Prendió la ducha? ¿Se va a bañar aquí abajo? Ha de estar muy cansada";
         yield return new WaitForSeconds(5);
         dialogue.SetActive(false);
         active= true;

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class OpenDoorBathroom : MonoBehaviour
@@ -8,9 +9,15 @@ public class OpenDoorBathroom : MonoBehaviour
     [SerializeField] private GameObject text;
     [SerializeField] private AudioSource audioDoor;
     [SerializeField] private AudioClip clip;
-    [SerializeField] private bool into;
-    [SerializeField] private EventBathroom active;
+    [SerializeField] private bool into;    
     [SerializeField] private Collider thisColl;
+    public bool bActive;
+
+    [Header("Call Other Script")]
+    [SerializeField] private EventBathroom active;
+
+    [Header("Dialogue")]
+    [SerializeField] private GameObject dialogue;
 
     private void Update()
     {
@@ -29,6 +36,14 @@ public class OpenDoorBathroom : MonoBehaviour
     {
         yield return new WaitForSeconds(0.4f);
         audioDoor.Play();
+        yield return new WaitForSeconds(1.6f);
+        dialogue.SetActive(true);
+        dialogue.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: Quizá no le fue muy bien es esa reunión";
+        yield return new WaitForSeconds(2f);
+        dialogue.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: Debería ir a la cocina a prepararle algo de comer";
+        yield return new WaitForSeconds(3f);
+        dialogue.SetActive(false);
+        bActive= true;
     }
 
     private void OnTriggerEnter(Collider other)
