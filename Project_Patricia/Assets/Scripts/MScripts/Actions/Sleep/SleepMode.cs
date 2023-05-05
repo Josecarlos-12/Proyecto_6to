@@ -25,6 +25,8 @@ public class SleepMode : MonoBehaviour
     [SerializeField] private AudioSource audioMike;
     [SerializeField] private AudioClip[] clip;
 
+    [Header("Call Other Script")]
+    [SerializeField] private GameObject taskUI;
 
     // Start is called before the first frame update
     void Start()
@@ -51,6 +53,15 @@ public class SleepMode : MonoBehaviour
 
             if (cFour == 1)
             {
+                if(taskUI!= null)
+                {
+                    taskUI.SetActive(true);
+                    taskUI.GetComponent<TasksUI>().go = true;
+                    taskUI.GetComponent<TasksUI>().taskCount = 1;
+                    taskUI.GetComponent<TasksUI>().number = TasksUI.TaskNumber.two;
+                    taskUI.GetComponent<TasksUI>().task = "Go to the sofa near the entrance";
+                }
+                
                 ModeDreams();
                 StartCoroutine("NextDia");
             }

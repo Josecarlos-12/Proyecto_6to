@@ -18,7 +18,9 @@ public class Cushions : MonoBehaviour
     [SerializeField] private AudioSource audioMike;
     [SerializeField] private AudioClip[] clip;
 
-
+    [SerializeField] private GameObject rotDoor;
+    [SerializeField] private Animator animDoor;
+    [SerializeField] private OpenDoorM openDoor;
 
     private void Update()
     {
@@ -33,6 +35,9 @@ public class Cushions : MonoBehaviour
 
             if (count == 1)
             {
+                rotDoor.transform.rotation= Quaternion.Euler(0,180,0);
+                animDoor.enabled= false;
+                openDoor.enabled= false;
                 col.enabled = false;
                 text.SetActive(false);
                 prota.SetActive(false);
