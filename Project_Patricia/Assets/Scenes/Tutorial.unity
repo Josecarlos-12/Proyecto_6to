@@ -5297,7 +5297,7 @@ Animator:
   m_GameObject: {fileID: 173877154}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 867dbb26f61800e43a16d775a07103a7, type: 2}
+  m_Controller: {fileID: 9100000, guid: bff945b611aa92f4fba4c1cb374ac829, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -5318,8 +5318,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 6.254471, y: 1, z: 10.591244}
-  m_Center: {x: -2.9948807, y: 1.69, z: 2.7756214}
+  m_Size: {x: 6.254471, y: 1, z: 10.036575}
+  m_Center: {x: -2.9948807, y: 1.69, z: -2.4485817}
 --- !u!1 &175775322
 GameObject:
   m_ObjectHideFlags: 0
@@ -8072,8 +8072,8 @@ MonoBehaviour:
   cleanClothes: {fileID: 1521257566}
   note: {fileID: 1301812979}
   noteGrab: {fileID: 913381175}
-  audioSource: {fileID: 617032334}
-  audioClip: {fileID: 0}
+  audioSource: {fileID: 1089661126}
+  audioClip: {fileID: 8300000, guid: 48fcc66012c281543907569d9862d4c7, type: 3}
   taskClip: {fileID: 8300000, guid: 3e5d99be5b270b5448fda85c88c41e0a, type: 3}
   check: 2
 --- !u!65 &269985306
@@ -32276,15 +32276,15 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 937956357}
-  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 18.03402, y: 0.6968608, z: 14.595272}
+  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 17.669556, y: 0.7017703, z: 20.650337}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 886583212}
   m_Father: {fileID: 2147057217}
   m_RootOrder: 11
-  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!114 &937956359
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32312,7 +32312,7 @@ Animator:
   m_GameObject: {fileID: 937956357}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 867dbb26f61800e43a16d775a07103a7, type: 2}
+  m_Controller: {fileID: 9100000, guid: bff945b611aa92f4fba4c1cb374ac829, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -32333,8 +32333,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 6.254471, y: 1, z: 10.591244}
-  m_Center: {x: -2.9948807, y: 1.69, z: 2.7756214}
+  m_Size: {x: 6.2544713, y: 1, z: 9.184239}
+  m_Center: {x: -2.9948807, y: 1.69, z: -3.1071744}
 --- !u!136 &940218187
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -37662,6 +37662,134 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -8150466840533910822, guid: 5c4221304d48f6a4b85e1b3a9eb7c37b, type: 3}
+--- !u!1 &1089661124
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1089661125}
+  - component: {fileID: 1089661126}
+  m_Layer: 0
+  m_Name: Disposable Plates
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1089661125
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1089661124}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1116167889}
+  m_RootOrder: 14
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &1089661126
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1089661124}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 48fcc66012c281543907569d9862d4c7, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &1090031729
 GameObject:
   m_ObjectHideFlags: 0
@@ -38477,6 +38605,7 @@ Transform:
   - {fileID: 1666846223}
   - {fileID: 617032333}
   - {fileID: 291316922}
+  - {fileID: 1089661125}
   m_Father: {fileID: 0}
   m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -42273,8 +42402,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Each of the notes you find throughout the game will be saved in a note
-    block. You can toggle between these with the mouse wheel.
+  m_text: "Every note that you will collect along the game, they will be saved in
+    a Note Block.\r\r\r\n\r\nYou can toggle between these with mouse wheel.\r\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -52657,6 +52786,19 @@ MonoBehaviour:
   - {fileID: 366924038}
   - {fileID: 568434692}
   - {fileID: 1594860401}
+  openDoorScript:
+  - {fileID: 1338910635}
+  - {fileID: 126698159}
+  - {fileID: 1687030187}
+  - {fileID: 116686584}
+  - {fileID: 826222221}
+  - {fileID: 173877156}
+  - {fileID: 1003491629}
+  - {fileID: 1483048431}
+  - {fileID: 937956359}
+  - {fileID: 366924037}
+  - {fileID: 568434691}
+  - {fileID: 1594860400}
 --- !u!64 &1446054394
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -61438,7 +61580,7 @@ Animator:
   m_GameObject: {fileID: 1687030185}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 867dbb26f61800e43a16d775a07103a7, type: 2}
+  m_Controller: {fileID: 9100000, guid: bff945b611aa92f4fba4c1cb374ac829, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -61459,8 +61601,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 6.254471, y: 1, z: 10.591244}
-  m_Center: {x: -2.9948807, y: 1.69, z: 2.7756214}
+  m_Size: {x: 6.254471, y: 1, z: 9.480896}
+  m_Center: {x: -2.9948807, y: 1.69, z: -2.161644}
 --- !u!1 &1690857497
 GameObject:
   m_ObjectHideFlags: 0

@@ -85,16 +85,7 @@ public class Cushions : MonoBehaviour
                 cam.SetActive(true);
                 StartCoroutine(Next());
 
-                for (int i = 0; i < doorAll.Length; i++)
-                {
-                    doorAll[i].SetBool("Open", true)
-;               }
-
-                for (int i = 0; i < openDoorScript.Length; i++)
-                {
-                    openDoorScript[i].close=true;
-                    openDoorScript[i].open = false;
-                }
+                
             }
         }
     }
@@ -102,6 +93,17 @@ public class Cushions : MonoBehaviour
     public IEnumerator After()
     {
         yield return new WaitForSeconds(10);
+        for (int i = 0; i < doorAll.Length; i++)
+        {
+            doorAll[i].SetBool("Open", true)
+;
+        }
+
+        for (int i = 0; i < openDoorScript.Length; i++)
+        {
+            openDoorScript[i].enabled = false;
+        }
+
         prota.SetActive(false);
         playerDontMove.transform.position = prota.transform.position;
         playerDontMove.transform.rotation=prota.transform.rotation;
@@ -127,8 +129,7 @@ public class Cushions : MonoBehaviour
         }
         for (int i = 0; i < openDoorScript.Length; i++)
         {
-            openDoorScript[i].close = false;
-            openDoorScript[i].open = true;
+            openDoorScript[i].enabled= true;
         }
         playerDontMove.SetActive(false);
         yield return new WaitForSeconds(0.5f);

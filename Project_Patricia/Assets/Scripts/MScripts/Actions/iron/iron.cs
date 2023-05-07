@@ -61,7 +61,7 @@ public class iron : MonoBehaviour
                 audioSource.PlayOneShot(audioClip);
                 break;
             case Check.nine:
-                //Cubitos amarillos
+                audioSource.PlayOneShot(audioClip);
                 break;
         }
         yield return new WaitForSeconds(1);
