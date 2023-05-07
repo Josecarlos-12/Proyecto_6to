@@ -17,6 +17,7 @@ public class iron : MonoBehaviour
     
     public AudioSource audioSource;
     public AudioClip audioClip;
+    public AudioClip taskClip;
 
     public enum Check
     {
@@ -50,7 +51,7 @@ public class iron : MonoBehaviour
 
     public IEnumerator Next()
     {
-        //Aqui poner Sonidos
+        audioSource.PlayOneShot(taskClip);//Aqui poner Sonidos 
         switch (check)
         {
             case Check.three:
