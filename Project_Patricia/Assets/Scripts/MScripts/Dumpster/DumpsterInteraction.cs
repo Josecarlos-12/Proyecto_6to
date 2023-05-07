@@ -12,6 +12,8 @@ public class DumpsterInteraction : MonoBehaviour
     [SerializeField] private int count;
     public AudioSource closeAudio;
     public AudioClip dumpster;
+    [SerializeField] private AudioSource finish;
+    [SerializeField] private float time;
     public enum Work
     {
         trash, shopping, firewood
@@ -32,6 +34,7 @@ public class DumpsterInteraction : MonoBehaviour
 
             if (count == 1)
             {
+                StartCoroutine("Sound");
                 switch (word)
                 {
                     case Work.trash:
@@ -48,5 +51,11 @@ public class DumpsterInteraction : MonoBehaviour
                 }
             }                      
         }
+    }
+
+    public IEnumerator Sound()
+    {
+        yield return new WaitForSeconds(time);
+        finish.Play();
     }
 }

@@ -51,7 +51,7 @@ public class iron : MonoBehaviour
 
     public IEnumerator Next()
     {
-        audioSource.PlayOneShot(taskClip);//Aqui poner Sonidos 
+        
         switch (check)
         {
             case Check.three:
@@ -67,7 +67,7 @@ public class iron : MonoBehaviour
         yield return new WaitForSeconds(1);
         Destroy(wornClothes);
         cleanClothes.SetActive(true);
-        yield return new WaitForSeconds(4);
+        yield return new WaitForSeconds(4);        
         prota.SetActive(true);
         panel.SetActive(false);
         cam.SetActive(false);
@@ -85,6 +85,8 @@ public class iron : MonoBehaviour
                 note.check = 9;
                 break;
         }
+        yield return new WaitForSeconds(0.5f);
+        audioSource.PlayOneShot(taskClip);//Aqui poner Sonidos 
     }  
 
     private void OnTriggerEnter(Collider other)

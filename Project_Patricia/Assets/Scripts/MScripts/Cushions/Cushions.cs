@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.Rendering.HighDefinition;
 
 public class Cushions : MonoBehaviour
@@ -10,7 +11,7 @@ public class Cushions : MonoBehaviour
     [SerializeField] private Collider col;
     [SerializeField] private GameObject cam, prota, text, panel, objeDreams, posProta, rifle;
     [SerializeField] private NotesUI note;
-    [SerializeField] private int count, count2;
+    [SerializeField] private int count, count2, count3;
     [SerializeField] private SleepMode sleep;
 
     [SerializeField] private GameObject textDialogue;
@@ -22,6 +23,12 @@ public class Cushions : MonoBehaviour
     [SerializeField] private Animator animDoor;
     [SerializeField] private OpenDoorM openDoor;
     [SerializeField] private TasksUI task;
+
+    [Header("Don´t Move")]
+    [SerializeField] private GameObject playerDontMove;
+    [SerializeField] private NavMeshAgent agent;
+    [SerializeField] private Animator[] doorAll;
+    [SerializeField] private OpenDoorM[] openDoorScript;
 
     private void Update()
     {
@@ -43,8 +50,9 @@ public class Cushions : MonoBehaviour
                 col.enabled = false;
                 text.SetActive(false);
                 prota.SetActive(false);
-                cam.SetActive(true);
+                cam.SetActive(true);                
                 StartCoroutine(Next());
+                StopCoroutine("After");
             }
                 
         }
@@ -59,24 +67,70 @@ public class Cushions : MonoBehaviour
                 StartCoroutine("After");
             }                
         }
+
+        if(Vector3.Distance(playerDontMove.transform.position, transform.position) < 10 && playerDontMove.activeInHierarchy)
+        {
+            if(count3<3)
+            count3++;
+
+            if (count3 == 1)
+            {
+                task.taskCount = 2;
+                rotDoor.transform.rotation = Quaternion.Euler(0, 180, 0);
+                animDoor.enabled = false;
+                openDoor.enabled = false;
+                col.enabled = false;
+                text.SetActive(false);
+                prota.SetActive(false);
+                cam.SetActive(true);
+                StartCoroutine(Next());
+
+                for (int i = 0; i < doorAll.Length; i++)
+                {
+                    doorAll[i].SetBool("Open", true)
+;               }
+
+                for (int i = 0; i < openDoorScript.Length; i++)
+                {
+                    openDoorScript[i].close=true;
+                    openDoorScript[i].open = false;
+                }
+            }
+        }
     }
 
     public IEnumerator After()
     {
         yield return new WaitForSeconds(10);
-        task.taskCount = 2;
-        rotDoor.transform.rotation = Quaternion.Euler(0, 180, 0);
-        animDoor.enabled = false;
-        openDoor.enabled = false;
-        col.enabled = false;
-        text.SetActive(false);
         prota.SetActive(false);
-        cam.SetActive(true);
-        StartCoroutine(Next());
+        playerDontMove.transform.position = prota.transform.position;
+        playerDontMove.transform.rotation=prota.transform.rotation;
+        playerDontMove.SetActive(true);
+        agent.destination=this.transform.position;
+        playerDontMove.transform.LookAt(this.transform.position);
+        //task.taskCount = 2;
+        //rotDoor.transform.rotation = Quaternion.Euler(0, 180, 0);
+        //animDoor.enabled = false;
+        //openDoor.enabled = false;
+        //col.enabled = false;
+        //text.SetActive(false);
+        //prota.SetActive(false);
+        //cam.SetActive(true);
+        //StartCoroutine(Next());
     }
 
     public IEnumerator Next()
     {
+        for (int i = 0; i < doorAll.Length; i++)
+        {
+            doorAll[i].SetBool("Open", false);
+        }
+        for (int i = 0; i < openDoorScript.Length; i++)
+        {
+            openDoorScript[i].close = false;
+            openDoorScript[i].open = true;
+        }
+        playerDontMove.SetActive(false);
         yield return new WaitForSeconds(0.5f);
         panel.SetActive(true);
         //objeDreams.SetActive(true);

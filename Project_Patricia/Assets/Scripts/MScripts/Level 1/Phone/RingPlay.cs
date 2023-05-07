@@ -9,12 +9,14 @@ public class RingPlay : MonoBehaviour
     [SerializeField] private GameObject textE, panel, Level2, cam, prota;
     [SerializeField] private bool into;
     [SerializeField] private Collider col;
+    [SerializeField] private AudioSource finishLevel;
 
     // Update is called once per frame
     void Update()
     {
         if (count.ring && into && Input.GetKeyDown(KeyCode.E))
         {
+            finishLevel.Play();
             col.enabled= false;
             into = false;
             textE.SetActive(false);

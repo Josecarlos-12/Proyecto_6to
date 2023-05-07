@@ -5,8 +5,8 @@ using UnityEngine;
 public class OpenDoorM : MonoBehaviour
 {
     [SerializeField] private Animator anim;
-    [SerializeField] private bool into, op;
-    [SerializeField] private bool  open, close;
+    public bool into, op;
+    public bool  open, close;
 
     private void Start()
     {

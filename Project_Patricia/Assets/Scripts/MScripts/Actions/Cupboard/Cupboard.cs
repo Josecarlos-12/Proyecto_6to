@@ -13,6 +13,7 @@ public class Cupboard : MonoBehaviour
     [SerializeField] private Animator anim;
     [SerializeField] private int count;
     [SerializeField] private EnemyShed enemy;
+    [SerializeField] private AudioSource audioFinish;
 
     // Start is called before the first frame update
     void Start()
@@ -54,6 +55,7 @@ public class Cupboard : MonoBehaviour
         prota.SetActive(false);
         can.SetActive(true);
         yield return new WaitForSeconds(2f);
+        audioFinish.Play();
         nextChapter.SetActive(true);
         yield return new WaitForSeconds(1f);
         SceneManager.LoadScene("Nivel 1");
