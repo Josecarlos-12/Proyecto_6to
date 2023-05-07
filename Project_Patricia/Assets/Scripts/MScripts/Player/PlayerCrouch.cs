@@ -40,13 +40,13 @@ public class PlayerCrouch : MonoBehaviour
             {
                 crouch = true;
                 anim.SetBool("Crouch", true);
-                player.canRun = false;
+                //player.canRun = false;
             }
             else if (!press && !head.head)
             {
                 crouch = false;
                 anim.SetBool("Crouch", false);
-                player.canRun = true;
+                //player.canRun = true;
             }
         }        
     }

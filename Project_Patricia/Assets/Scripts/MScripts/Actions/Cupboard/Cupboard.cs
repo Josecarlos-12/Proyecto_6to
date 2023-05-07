@@ -12,6 +12,7 @@ public class Cupboard : MonoBehaviour
     [SerializeField] private float sizeDeer, sizeProta;
     [SerializeField] private Animator anim;
     [SerializeField] private int count;
+    [SerializeField] private EnemyShed enemy;
 
     // Start is called before the first frame update
     void Start()
@@ -63,6 +64,9 @@ public class Cupboard : MonoBehaviour
         if(Vector3.Distance(transform.position, deer.transform.position) < sizeDeer)
         {
             bDeer= true;
+            enemy.run2 = false;
+            enemy.anim.SetBool("Walk", false);
+            enemy.anim.SetBool("Run", false);
         }
         else
         {

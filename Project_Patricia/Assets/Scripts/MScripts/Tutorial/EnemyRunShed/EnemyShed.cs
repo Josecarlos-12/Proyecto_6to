@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.AI;
+using static GrabFlashBack;
 
 public class EnemyShed : MonoBehaviour
 {
@@ -13,6 +14,8 @@ public class EnemyShed : MonoBehaviour
     public bool accept, touch;
     public int count;
     public Head head;
+
+    public Animator anim;
 
     void Start()
     {
@@ -25,12 +28,18 @@ public class EnemyShed : MonoBehaviour
         if (run) 
         {
             agent.enabled = true; 
+            transform.LookAt(destination.transform.position);
             agent.destination = destination.transform.position;
+            anim.SetBool("Walk", true);
         }
 
         if (run2)
         {
+            transform.LookAt(destination.transform.position);
             agent.destination = destination.transform.position;
+            agent.speed = 23;
+            anim.SetBool("Walk", false);
+            anim.SetBool("Run", true);
         }          
 
         if(touch)
@@ -51,6 +60,23 @@ public class EnemyShed : MonoBehaviour
         text.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: Conque ahí estás, ¡Hey, te estoy hablando a ti!";
         agent.enabled= true;
         run2 = true;
+        anim.SetBool("Walk", true);
+        yield return new WaitForSeconds(3);
+        text.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: ¡Vuelve aquí, no te dejaré escapar!";
+        yield return new WaitForSeconds(3);
+        text.SetActive(false);
+    }
+
+    public IEnumerator Dialogue2()
+    {
+        text.SetActive(true);
+        text.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: Maldición, hice demasiado ruido ";
+        yield return new WaitForSeconds(2);
+        touch = true;
+        text.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: Conque ahí estás, ¡Hey, te estoy hablando a ti!";
+        agent.enabled = true;
+        run2 = true;
+        anim.SetBool("Walk", true);
         yield return new WaitForSeconds(3);
         text.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: ¡Vuelve aquí, no te dejaré escapar!";
         yield return new WaitForSeconds(3);

@@ -55,6 +55,7 @@ public class Rifle : MonoBehaviour
 
     public IEnumerator DialogueFinal()
     {
+        player.canRun = false;
         yield return new WaitForSeconds(0.6f);
         run.run = true;
         audioMike.clip = clip[0];
@@ -83,7 +84,8 @@ public class Rifle : MonoBehaviour
         dialogue.SetActive(false);
         yield return new WaitForSeconds(2f);
         run.agent.enabled = false;
-        run.run = false;        
+        run.run = false;
+        run.anim.SetBool("Walk", false);
         panel.SetActive(true);
         Time.timeScale = 0;
         Cursor.visible= true;
@@ -115,7 +117,7 @@ public class Rifle : MonoBehaviour
             print("PresionoCTRL");
             animTrue.init = false;
             StartCoroutine("CTRLOff");
-            head.head = true;
+            //head.head = true;
             player.canWalk = true;
             this.gameObject.GetComponent<Rifle>().enabled = false;
         }

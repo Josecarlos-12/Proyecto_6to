@@ -10,7 +10,7 @@ public class Cushions : MonoBehaviour
     [SerializeField] private Collider col;
     [SerializeField] private GameObject cam, prota, text, panel, objeDreams, posProta, rifle;
     [SerializeField] private NotesUI note;
-    [SerializeField] private int count;
+    [SerializeField] private int count, count2;
     [SerializeField] private SleepMode sleep;
 
     [SerializeField] private GameObject textDialogue;
@@ -21,6 +21,7 @@ public class Cushions : MonoBehaviour
     [SerializeField] private GameObject rotDoor;
     [SerializeField] private Animator animDoor;
     [SerializeField] private OpenDoorM openDoor;
+    [SerializeField] private TasksUI task;
 
     private void Update()
     {
@@ -35,6 +36,7 @@ public class Cushions : MonoBehaviour
 
             if (count == 1)
             {
+                task.taskCount = 2;
                 rotDoor.transform.rotation= Quaternion.Euler(0,180,0);
                 animDoor.enabled= false;
                 openDoor.enabled= false;
@@ -46,6 +48,31 @@ public class Cushions : MonoBehaviour
             }
                 
         }
+
+        if (note.one && note.two && note.three && note.four && note.eight && note.nine)
+        {
+            if(count2<3)
+            count2++;
+
+            if (count2 == 1)
+            {
+                StartCoroutine("After");
+            }                
+        }
+    }
+
+    public IEnumerator After()
+    {
+        yield return new WaitForSeconds(10);
+        task.taskCount = 2;
+        rotDoor.transform.rotation = Quaternion.Euler(0, 180, 0);
+        animDoor.enabled = false;
+        openDoor.enabled = false;
+        col.enabled = false;
+        text.SetActive(false);
+        prota.SetActive(false);
+        cam.SetActive(true);
+        StartCoroutine(Next());
     }
 
     public IEnumerator Next()

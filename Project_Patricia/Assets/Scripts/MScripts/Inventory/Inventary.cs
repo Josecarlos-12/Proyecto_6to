@@ -25,6 +25,10 @@ public class Inventary : MonoBehaviour
     [SerializeField] private GameObject eventPills, eventSleep, eventLaders;
     public bool complete;
 
+    [Header("Audio")]
+    [SerializeField] private AudioSource audioMike;
+    [SerializeField] private AudioClip clip;
+
     public enum Dream
     {
         none, sleep
@@ -141,15 +145,11 @@ public class Inventary : MonoBehaviour
     public IEnumerator DialogueSleep()
     {
         yield return new WaitForSeconds(0);
+        audioMike.clip = clip;
+        audioMike.Play();
         text.SetActive(true);
-        text.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: Oohhh...";
-        yield return new WaitForSeconds(2);
-        text.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: Creo que me siento mejor...";
-        yield return new WaitForSeconds(1);
-        text.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: Hmm no... no cerré...";
-        yield return new WaitForSeconds(1);
-        text.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: el... estudio";
-        yield return new WaitForSeconds(2);
+        text.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: Oohhh... Creo que me siento mejor...Hmm no... no cerré... el... estudio";
+        yield return new WaitForSeconds(14);
         complete= true;
         eventPills.SetActive(true);
         eventSleep.SetActive(true);

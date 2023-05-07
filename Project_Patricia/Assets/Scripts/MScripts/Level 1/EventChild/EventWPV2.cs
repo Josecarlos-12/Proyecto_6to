@@ -11,7 +11,7 @@ public class EventWPV2 : MonoBehaviour
     [SerializeField] private GameObject box, boxOne, chart, chartFall, walk;
     [SerializeField] private AudioSource chartSound;
     [SerializeField] private Animator anim;
-    [SerializeField] private GameObject capsule;
+    [SerializeField] private GameObject capsule, wall;
     [SerializeField] private GameObject cam, player;
 
     [Header("Call Other Script")]
@@ -125,6 +125,7 @@ public class EventWPV2 : MonoBehaviour
         //cam.SetActive(false);
         //
         //yield return new WaitForSeconds(1);
+        wall.SetActive(false);
         walk.SetActive(true);
         yield return new WaitForSeconds(1);
         text.SetActive(true);
