@@ -130,7 +130,7 @@ public class BoxMusicInteractions : MonoBehaviour
                 {
                     bAlarm = true;
                     alarm.Play();
-                    lanter.SetActive(true);
+                    //lanter.SetActive(true);
                     pass.SetActive(false);
                     animDoor.SetBool("Close", false);
 

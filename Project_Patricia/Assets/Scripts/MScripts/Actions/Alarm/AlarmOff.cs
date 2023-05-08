@@ -18,6 +18,8 @@ public class AlarmOff : MonoBehaviour
 
     public bool offAlarm;
 
+    [SerializeField] private GameObject lanter;
+
     void Update()
     {
         if(into && Input.GetKeyDown(KeyCode.E) && box.bAlarm==true)
@@ -63,6 +65,7 @@ public class AlarmOff : MonoBehaviour
         textMesh.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: No me gusta esto";
         yield return new WaitForSeconds(2);
         textMesh.SetActive(false);
+        lanter.SetActive(true);
     }
 
     private void OnTriggerEnter(Collider other)
