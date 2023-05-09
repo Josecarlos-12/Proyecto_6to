@@ -7,7 +7,7 @@ public class EventCapsuleAtico : MonoBehaviour
 {
     [SerializeField] private GameObject text;
     [SerializeField] private Collider col;
-    [SerializeField] private GameObject capsule, step, key;
+    [SerializeField] private GameObject capsule, step, key, mike;
 
     public enum Event
     {
@@ -43,6 +43,7 @@ public class EventCapsuleAtico : MonoBehaviour
         text.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: ¡Wah!";
         yield return new WaitForSeconds(2);
         text.SetActive(false);
+        mike.SetActive(false);
         capsule.GetComponent<MeshRenderer>().enabled = false;
         capsule.GetComponent<Collider>().enabled = false;
         yield return new WaitForSeconds(2);
