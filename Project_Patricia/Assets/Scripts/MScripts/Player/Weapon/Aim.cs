@@ -38,17 +38,17 @@ public class Aim : MonoBehaviour
         {
             if (mouse && weapon.save)
             {
-                cam.fieldOfView = 45;
+                cam.fieldOfView = 55;
             }
             
         }
         if (!mouse || !weapon.save || !inve.rifle)
         {
-            cam.fieldOfView = 60;
+            cam.fieldOfView = 65;
         }
         if(mouse && !weapon.save)
         {
-            cam.fieldOfView = 60;
+            cam.fieldOfView = 65;
         }
 
         if (!inve.rifle)
