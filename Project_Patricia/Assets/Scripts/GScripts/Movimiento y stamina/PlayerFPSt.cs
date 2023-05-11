@@ -13,6 +13,7 @@ public class PlayerFPSt : MonoBehaviour
 
     public float gravity;
     public float jumpHeight;
+    public int i = 0;
 
     public Transform groundCheck;
     public float groundDistance = 0.3f;
@@ -47,6 +48,8 @@ public class PlayerFPSt : MonoBehaviour
 
     public bool canRun;
     public bool canWalk;
+    [SerializeField] private AudioSource audioBreathing;
+    [SerializeField] private AudioSource audioWalking;
     void Start()
     {
         /*currentStamina = maxStamina;
@@ -161,6 +164,7 @@ public class PlayerFPSt : MonoBehaviour
         {
             if (x != 0 || z != 0)
             {
+                
                 player.Move(move.normalized * speed * Time.deltaTime);
                 run = true;
             }
@@ -172,6 +176,18 @@ public class PlayerFPSt : MonoBehaviour
         else
         {
             run = false;
+        }
+        
+        if (Input.GetKey(KeyCode.W) ||Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
+            {
+            if (!audioWalking.isPlaying)
+            {
+                audioWalking.Play();
+            }
+        }
+            else
+        {
+            audioWalking.Stop();
         }
 
         if (run && shift && bEnergy)
@@ -241,11 +257,20 @@ public class PlayerFPSt : MonoBehaviour
 
         if(energy>=2)
         {
+            
             bEnergy = true;
         }
         if (energy <= 1)
         {
+            
+            i++;
+            if (i < 3)
+            {
+                audioBreathing.Play();
+                print("Agitado");
+            }
             bEnergy= false;
+            
         }
     }
 
