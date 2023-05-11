@@ -46,8 +46,10 @@ public class EventChildV2 : MonoBehaviour
             {
                 case EnumAction.one:
                     active.SetActive(true);
-                    coll.enabled = false;
-                    StartCoroutine("Dialogue");
+                    Destroy(this.gameObject);
+                    //active.SetActive(true);
+                    //coll.enabled = false;
+                    // StartCoroutine("Dialogue");
                     break;
                 case EnumAction.two:
                     

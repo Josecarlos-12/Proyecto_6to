@@ -50,6 +50,7 @@ public class PlayerFPSt : MonoBehaviour
     public bool canWalk;
     [SerializeField] private AudioSource audioBreathing;
     [SerializeField] private AudioSource audioWalking;
+    [SerializeField] private AudioClip clipRun, clipWalk;
     void Start()
     {
         /*currentStamina = maxStamina;
@@ -233,6 +234,7 @@ public class PlayerFPSt : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.LeftShift) && bEnergy && canRun)
         {
+            audioWalking.clip = clipRun;
             speed = speedMax;            
         }
         else if (crouch.crouch)
@@ -242,6 +244,7 @@ public class PlayerFPSt : MonoBehaviour
         }
         else if(!shift && !crouch.crouch || !bEnergy)
         {
+            audioWalking.clip = clipWalk;
             speed = speedNormal;
             crounch = false;
         }
