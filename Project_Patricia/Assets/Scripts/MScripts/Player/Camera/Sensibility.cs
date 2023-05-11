@@ -8,9 +8,23 @@ public class Sensibility : MonoBehaviour
 
     public Slider sensibility;
     public float sliderValue;
+    public enum ValueStart
+    {
+        none, value
+    }
+    public ValueStart value;
 
     public void Start()
     {
+        switch (value)
+        {
+            case ValueStart.none:
+                break; 
+            case ValueStart.value:
+                sliderValue = 3;
+                break;
+        }
+
         Cursor.visible = false;
         sensibility.value = PlayerPrefs.GetFloat("SenMouse", sliderValue);
     }
