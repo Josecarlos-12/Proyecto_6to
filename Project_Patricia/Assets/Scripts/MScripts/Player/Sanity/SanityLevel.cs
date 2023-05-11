@@ -16,6 +16,8 @@ public class SanityLevel : MonoBehaviour
 
     public int run, crouch;
 
+    [SerializeField] private GameObject gameOver, prota, cam;
+
     void Start()
     {
         
@@ -103,7 +105,12 @@ public class SanityLevel : MonoBehaviour
             health.inv.SetActive(false);
             Debug.Log("Mike murio");
             health.death = true;
-            Destroy(health.player);
+            Time.timeScale = 0;
+            gameOver.SetActive(true);
+            prota.SetActive(false);
+            cam.transform.position = prota.transform.position;
+            cam.SetActive(true);
+            //Destroy(health.player);
         }
     }
 
