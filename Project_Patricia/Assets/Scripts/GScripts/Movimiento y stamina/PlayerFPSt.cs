@@ -168,27 +168,21 @@ public class PlayerFPSt : MonoBehaviour
                 
                 player.Move(move.normalized * speed * Time.deltaTime);
                 run = true;
+
+                if (!audioWalking.isPlaying)
+                {
+                    audioWalking.Play();
+                }
             }
             else
             {
                 run = false;
+                audioWalking.Stop();
             }
         }
         else
         {
             run = false;
-        }
-        
-        if (Input.GetKey(KeyCode.W) ||Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
-            {
-            if (!audioWalking.isPlaying)
-            {
-                audioWalking.Play();
-            }
-        }
-            else if (audioWalking.isPlaying || !this.gameObject.activeInHierarchy ) 
-        {
-            audioWalking.Stop();
         }
 
         if (run && shift && bEnergy)
