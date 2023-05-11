@@ -29,6 +29,10 @@ public class GrabRifleSounds : MonoBehaviour
     [SerializeField] AnimTrue animReloading;
     [SerializeField] Animator animatorReloading;
 
+    [Header("Change Rifle")]
+    [SerializeField] private GameObject container;
+    [SerializeField] private GameObject lanter, rifle;
+
     void Update()
     {
         if (grab && into && Input.GetKeyDown(KeyCode.E))
@@ -47,7 +51,10 @@ public class GrabRifleSounds : MonoBehaviour
             {
                 Destroy(audioRifle[i]);
             }
-
+            //cambia la posicion de la linterna
+            container.transform.parent = rifle.transform;
+            lanter.SetActive(false);
+            container.transform.position = new Vector3(0.17f, 0.032f, 0.29f);
         }
 
         MouseClick();

@@ -77,7 +77,7 @@ public class Weapon : MonoBehaviour
 
     public void SaveWeapon()
     {
-        if (Input.GetKeyDown(KeyCode.F) && !obj.inHand &&  inventary.rifle)
+        /*if (Input.GetKeyDown(KeyCode.F) && !obj.inHand &&  inventary.rifle)
         {
             save = !save;
             if (save)
@@ -93,7 +93,7 @@ public class Weapon : MonoBehaviour
                 aim.SetActive(false);
                 animBullet.SetBool("Exit", true);
             }            
-        }
+        }*/
 
         if (obj.inHand)
         {
