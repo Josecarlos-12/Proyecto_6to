@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 using static UnityEngine.EventSystems.EventTrigger;
 
 public class Weapon : MonoBehaviour
@@ -12,7 +13,7 @@ public class Weapon : MonoBehaviour
     [SerializeField] private float initialShoot, timeShoot, saveTime, saveTimeMax;
     public GameObject bullet, weapon, aim;
     [SerializeField] private Transform initialBullet;
-    [SerializeField] private TextMeshProUGUI bulletText;
+    [SerializeField] private Text bulletText, handleText;
     [SerializeField] private GameObject bulletContainer;
     [SerializeField] private Animator animBullet;
 
@@ -51,7 +52,8 @@ public class Weapon : MonoBehaviour
 
     public void BulletContainer()
     {
-        bulletText.text="X" + clicks.ToString();
+        bulletText.text= clicks.ToString();
+        handleText.text = handle.ToString();
     }
 
     public void Reloaded()

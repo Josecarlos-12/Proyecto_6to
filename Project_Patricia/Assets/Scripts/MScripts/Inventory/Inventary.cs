@@ -7,14 +7,15 @@ using UnityEngine.UI;
 public class Inventary : MonoBehaviour
 {
     public bool rifle, bPills, bKEy, bKeyComfi;
-    public Sprite sRifle, sKey, sPill;
+    public GameObject sRifle, sKey, sPill;
     public Image image;
     public int pills, pillsTakes;
-    public TextMeshProUGUI count;
+    public Text count;
     [SerializeField] private GameObject cam, prota, panel;
     [SerializeField] private bool one;
     public AudioSource boxMusic;
-
+    [SerializeField] GameObject rifleCount;
+    
     [Header("Call Other Script")]
     [SerializeField] private PlayerHealth sanity;
     [SerializeField] private EventKeyShadow rRifle;
@@ -50,6 +51,8 @@ public class Inventary : MonoBehaviour
             rifle = true;
             bPills = false;
             bKeyComfi = false;
+            sPill.SetActive(false);
+            sKey.SetActive(false);
         }
         if(rifle)
         {
@@ -58,13 +61,15 @@ public class Inventary : MonoBehaviour
                 if (rRifle.canRifle)
                 {
                     count.text = string.Empty;
-                    image.sprite = sRifle;
+                    rifleCount.SetActive(true);
+                    sRifle.SetActive(true);
                     Debug.Log("Rifle");
                 }
                 else if (!rRifle.canRifle)
                 {
                     count.text = string.Empty;
-                    image.sprite = null;
+                    rifleCount.SetActive(false);
+                    sRifle.SetActive(false);
                     bPills = false;
                     bKeyComfi = false;
                 }
@@ -78,18 +83,21 @@ public class Inventary : MonoBehaviour
             rifle = false;
             bPills = true;
             bKeyComfi= false;
+            rifleCount.SetActive(false);
+            sRifle.SetActive(false);
+            sKey.SetActive(false);
         }
         if(bPills)
         {
             if (pills > 0)
             {                
-                image.sprite = sPill;
-                count.text = "X" + pills.ToString();
+                sPill.SetActive(true);
+                count.text = pills.ToString();
             }
             if (pills <= 0)
             {
                 count.text = string.Empty;
-                image.sprite = null;
+                sPill.SetActive(false);
             }
         }
 
@@ -100,17 +108,20 @@ public class Inventary : MonoBehaviour
             rifle = false;
             bPills= false;
             count.text = string.Empty;
+            sPill.SetActive(false);
+            sRifle.SetActive(false);
+            rifleCount.SetActive(false);
         }
         if(bKeyComfi)
         {
             if (bKEy)
             {                
-                image.sprite = sKey;
+                sKey.SetActive(true);
                 Debug.Log("Llaves");
             }
             else
             {
-                image.sprite = null;
+                sKey.SetActive(false);
             }
         }
 

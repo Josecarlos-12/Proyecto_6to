@@ -41,6 +41,9 @@ public class PlayerHealth : MonoBehaviour
     [Header("Call Other Script")]
     [SerializeField] private MoveBoss moveBoss;
 
+    [Header("Life Text")]
+    [SerializeField] private Text textNormal;
+
     void Start()
     {
         //cam = GetComponent<PlayerCamera>();
@@ -79,8 +82,15 @@ public class PlayerHealth : MonoBehaviour
             }
         }
 
+        LifeActu();
+
        // PanelDmg();
-        //Damage();
+       //Damage();
+    }
+
+    public void LifeActu()
+    {
+        textNormal.text = sanity.ToString("0");
     }
 
     private void OnTriggerStay(Collider other)
