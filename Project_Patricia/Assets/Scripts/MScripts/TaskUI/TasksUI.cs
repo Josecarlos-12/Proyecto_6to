@@ -10,7 +10,7 @@ public class TasksUI : MonoBehaviour
     public string task;
     [SerializeField] private float time, mamxTime;
     public bool go;
-    [SerializeField] private int count;
+    public int count, countT ;
     public int taskCount=1;
 
     public enum TaskNumber
@@ -30,8 +30,6 @@ public class TasksUI : MonoBehaviour
     {        
         if (taskCount == 2)
         {
-            int countT = 0;
-
             if(countT < 3)
             {
                 countT++;

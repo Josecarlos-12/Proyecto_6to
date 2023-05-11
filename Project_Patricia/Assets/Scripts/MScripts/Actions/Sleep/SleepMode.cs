@@ -58,6 +58,8 @@ public class SleepMode : MonoBehaviour
                     taskUI.SetActive(true);
                     taskUI.GetComponent<TasksUI>().go = true;
                     taskUI.GetComponent<TasksUI>().taskCount = 1;
+                    taskUI.GetComponent<TasksUI>().count = 0;
+                    taskUI.GetComponent<TasksUI>().countT = 0;
                     taskUI.GetComponent<TasksUI>().number = TasksUI.TaskNumber.two;
                     taskUI.GetComponent<TasksUI>().task = "Go to the sofa near the entrance";
                 }

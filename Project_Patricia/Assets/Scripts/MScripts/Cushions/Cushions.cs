@@ -30,6 +30,9 @@ public class Cushions : MonoBehaviour
     [SerializeField] private Animator[] doorAll;
     [SerializeField] private OpenDoorM[] openDoorScript;
 
+    [SerializeField] private GameObject taskUI;
+    [SerializeField] private AudioSource radio;
+
     private void Update()
     {
         Down();
@@ -92,7 +95,7 @@ public class Cushions : MonoBehaviour
 
     public IEnumerator After()
     {
-        yield return new WaitForSeconds(10);
+        yield return new WaitForSeconds(30);
         for (int i = 0; i < doorAll.Length; i++)
         {
             doorAll[i].SetBool("Open", true)
@@ -148,13 +151,21 @@ public class Cushions : MonoBehaviour
         cam.SetActive(false); 
         prota.transform.position=posProta.transform.position;
         prota.transform.rotation = posProta.transform.rotation;
+        radio.Stop();
         prota.SetActive(true);        
         yield return new WaitForSeconds(0.8f);       
         textDialogue.SetActive(true);
         textDialogue.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: Oooohhmm ¿Qué? ¿Qué hora es? debo cerrar el estudio.";
         audioMike.clip = clip[0];
         audioMike.Play();
-        yield return new WaitForSeconds(9f);        
+        yield return new WaitForSeconds(9f);
+        taskUI.SetActive(true);
+        taskUI.GetComponent<TasksUI>().go = true;
+        taskUI.GetComponent<TasksUI>().taskCount = 1;
+        taskUI.GetComponent<TasksUI>().count = 0;
+        taskUI.GetComponent<TasksUI>().countT = 0;
+        taskUI.GetComponent<TasksUI>().number = TasksUI.TaskNumber.two;
+        taskUI.GetComponent<TasksUI>().task = "Go to the studio";
         textDialogue.SetActive(false);
     }
 

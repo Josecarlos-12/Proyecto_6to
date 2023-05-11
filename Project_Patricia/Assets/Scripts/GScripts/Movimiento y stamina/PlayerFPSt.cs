@@ -186,7 +186,7 @@ public class PlayerFPSt : MonoBehaviour
                 audioWalking.Play();
             }
         }
-            else
+            else if (audioWalking.isPlaying || !this.gameObject.activeInHierarchy ) 
         {
             audioWalking.Stop();
         }

@@ -8,6 +8,7 @@ public class GrabRifleColl : MonoBehaviour
     [SerializeField] private Animator door;
     [SerializeField] private int count;
     [SerializeField] private Animator doorBoss;
+    [SerializeField] private TasksUI task;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -18,6 +19,7 @@ public class GrabRifleColl : MonoBehaviour
 
             if (count == 1)                
             {
+                task.taskCount = 2;
                 chain.SetActive(false);
                 door.SetBool("Open", true);
                 prota.SetActive(false);
