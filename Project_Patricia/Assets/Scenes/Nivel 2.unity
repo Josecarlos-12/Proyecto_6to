@@ -24,7 +24,7 @@ RenderSettings:
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
-  m_AmbientMode: 4
+  m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
   m_SkyboxMaterial: {fileID: 0}
   m_HaloStrength: 0.5
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.025310613, g: 0.024205994, b: 0.02608345, a: 1}
+  m_IndirectSpecularColor: {r: 0.02531188, g: 0.02420826, b: 0.02608995, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -28675,6 +28675,75 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -6360558719573625917, guid: 5c4221304d48f6a4b85e1b3a9eb7c37b, type: 3}
+--- !u!1001 &583154517
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 76a943b5a87d7744895fa9f5986619cd,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 86
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 76a943b5a87d7744895fa9f5986619cd,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 131.55
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 76a943b5a87d7744895fa9f5986619cd,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4.11
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 76a943b5a87d7744895fa9f5986619cd,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -124.95
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 76a943b5a87d7744895fa9f5986619cd,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 76a943b5a87d7744895fa9f5986619cd,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 76a943b5a87d7744895fa9f5986619cd,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 76a943b5a87d7744895fa9f5986619cd,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 76a943b5a87d7744895fa9f5986619cd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 76a943b5a87d7744895fa9f5986619cd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 76a943b5a87d7744895fa9f5986619cd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 76a943b5a87d7744895fa9f5986619cd,
+        type: 3}
+      propertyPath: m_Name
+      value: caja_llaves
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 76a943b5a87d7744895fa9f5986619cd, type: 3}
 --- !u!1 &584650958
 GameObject:
   m_ObjectHideFlags: 0
@@ -65838,7 +65907,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 0cd31fbe40e0ed34a93feaac8fec7cf5,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0cd31fbe40e0ed34a93feaac8fec7cf5,
         type: 3}
@@ -65905,6 +65974,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -6794130833528341316, guid: 0cd31fbe40e0ed34a93feaac8fec7cf5,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 324bb5ef2275e7242beb4fe7a51adde5, type: 2}
+    - target: {fileID: -6142912268518218117, guid: 0cd31fbe40e0ed34a93feaac8fec7cf5,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 324bb5ef2275e7242beb4fe7a51adde5, type: 2}
     - target: {fileID: -5015504306770029076, guid: 0cd31fbe40e0ed34a93feaac8fec7cf5,
         type: 3}
       propertyPath: m_LocalRotation.w
@@ -65950,6 +66029,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: caja_musical
       objectReference: {fileID: 0}
+    - target: {fileID: 1371178765865219172, guid: 0cd31fbe40e0ed34a93feaac8fec7cf5,
+        type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 324bb5ef2275e7242beb4fe7a51adde5, type: 2}
+    - target: {fileID: 2386338361606215628, guid: 0cd31fbe40e0ed34a93feaac8fec7cf5,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 82b5f0cba80be5949b1b86a543147523, type: 2}
+    - target: {fileID: 4531912228224351498, guid: 0cd31fbe40e0ed34a93feaac8fec7cf5,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 82b5f0cba80be5949b1b86a543147523, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0cd31fbe40e0ed34a93feaac8fec7cf5, type: 3}
 --- !u!4 &1163563778 stripped

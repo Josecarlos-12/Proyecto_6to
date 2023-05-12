@@ -37,14 +37,14 @@ public class Lantern : MonoBehaviour
             {
                 lightLantern.enabled = false;
             }
-            else if (lightLantern.enabled == false && actualEnergy > 10)
+            else if (lightLantern.enabled == false)
             {
                 lightLantern.enabled = true;
             }
 
         }
 
-        if (lightLantern.enabled == true)
+       /* if (lightLantern.enabled == true)
         {
             StopCoroutine("LessEnergy");
 
@@ -65,7 +65,7 @@ public class Lantern : MonoBehaviour
         else
         {
             StartCoroutine("LessEnergy");
-        }
+        }*/
     }
 
     public IEnumerator LessEnergy()

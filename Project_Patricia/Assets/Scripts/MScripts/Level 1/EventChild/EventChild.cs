@@ -73,10 +73,13 @@ public class EventChild : MonoBehaviour
 
     public IEnumerator Dialogue()
     {
+        charlie.SetActive(false);
+
+        active.SetActive(true);
         audioMike.clip = clip[0];
         audioMike.Play();
 
-        active.SetActive(true);
+        
         dialogue.SetActive(true);
         dialogue.GetComponent<TextMeshProUGUI>().text = text;
         yield return new WaitForSeconds(time);
@@ -86,7 +89,13 @@ public class EventChild : MonoBehaviour
 
     public IEnumerator DialogueTwo()
     {
+        charlie.SetActive(false);
         active.SetActive(true);
+        if(point!=null)
+        {
+            point.SetActive(true);
+        }
+        
         dialogue.SetActive(true);
 
         audioMike.clip = clip[0];
@@ -106,6 +115,8 @@ public class EventChild : MonoBehaviour
 
     public IEnumerator DialogueSound()
     {
+        charlie.SetActive(false);
+
         audioMike.clip = clip[0];
         audioMike.Play();
 

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class GrabRifleSounds : MonoBehaviour
@@ -52,9 +53,10 @@ public class GrabRifleSounds : MonoBehaviour
                 Destroy(audioRifle[i]);
             }
             //cambia la posicion de la linterna
-            container.transform.parent = rifle.transform;
-            lanter.SetActive(false);
-            container.transform.position = new Vector3(0.17f, 0.032f, 0.29f);
+           // container.transform.parent = rifle.transform;
+            //lanter.SetActive(false);
+            //container.transform.position = new Vector3(0.699f, -0.309f, 0.179f);
+            //container.transform.rotation = Quaternion.Euler(0f, -12.99f, 0f);
         }
 
         MouseClick();

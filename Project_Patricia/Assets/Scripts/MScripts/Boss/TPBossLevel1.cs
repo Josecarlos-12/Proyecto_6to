@@ -10,7 +10,7 @@ public class TPBossLevel1 : MonoBehaviour
     [SerializeField] private GameObject player;
     [SerializeField] private NavMeshAgent agent;
     [SerializeField] private Vector3 posProta;
-    [SerializeField] private float life = 101;
+    public float life = 101;
 
     [Header("trasparencia")]
     [SerializeField] private Material boss;
@@ -39,6 +39,8 @@ public class TPBossLevel1 : MonoBehaviour
 
     [Header("CountLife")]
     [SerializeField] int one, two, three;
+
+    [SerializeField] private AudioSource attack;
 
     void Update()
     {
@@ -217,6 +219,7 @@ public class TPBossLevel1 : MonoBehaviour
 
     public void Punch()
     {
+        attack.Play();
         bPunch = true;
         transform.position = playerBack.position; 
         transform.rotation = playerBack.rotation;

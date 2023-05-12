@@ -120,7 +120,7 @@ public class PlayerHealth : MonoBehaviour
 
                 if (bossTouch == 1)
                 {
-                    bossAudio.Play();
+                    //bossAudio.Play();
                     sanity -= 10;
                     sleep.ModeDreams();
                     StartCoroutine("OffDreams");
