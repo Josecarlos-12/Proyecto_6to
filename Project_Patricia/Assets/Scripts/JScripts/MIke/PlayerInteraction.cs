@@ -13,7 +13,7 @@ public class PlayerInteraction : MonoBehaviour
     [SerializeField] private RaycastHit hit;
     [SerializeField] private float distance;
     [SerializeField] private LayerMask layer;
-    public bool bDoor, bHandle, bLife, bPills, bObj, inHand, bKey, shoot, bCapsule;
+    public bool bDoor, bHandle, bLife, bPills, bObj, inHand, bKey, shoot, bCapsule, bDrawers, changeDrawers;
 
     [Header("Press")]
     [SerializeField] private GameObject texE;
@@ -23,6 +23,7 @@ public class PlayerInteraction : MonoBehaviour
     [SerializeField] private GameObject gameHandle;
     [SerializeField] private GameObject gamePills;
     [SerializeField] private GameObject gameKeys;
+    [SerializeField] private GameObject gameDrawers;
     [SerializeField] private GameObject gameObj, transGame;
 
     [Header("Call other Scripts")]
@@ -133,7 +134,16 @@ public class PlayerInteraction : MonoBehaviour
                 bKey = false;
             }
 
-           
+            if (hit.transform.CompareTag("Drawers"))
+            {
+                texE.SetActive(true);
+                gameDrawers = hit.transform.gameObject;
+                bDrawers = true;
+            }
+            else if (!hit.transform.CompareTag("Drawers"))
+            {
+                bDrawers = false;
+            }
         }
         else
         {            
@@ -141,10 +151,10 @@ public class PlayerInteraction : MonoBehaviour
             bHandle=false;      
             bObj= false;
             bKey= false;   
-            
+            bDrawers= false;
         }
 
-        if (!bPills && !bHandle && !bObj && !bKey)
+        if (!bPills && !bHandle && !bObj && !bKey && !bDrawers)
         {
             texE.SetActive(false);
         }
@@ -258,6 +268,20 @@ public class PlayerInteraction : MonoBehaviour
             Destroy(gameKeys);
             bKey = false;
             texE.SetActive(false);            
+        }
+
+        if (bDrawers && Input.GetKeyDown(KeyCode.E))
+        {
+            changeDrawers = !changeDrawers;
+            if (changeDrawers)
+            {
+                gameDrawers.GetComponent<Animator>().SetBool("Move", true);
+            }
+            else
+            {
+                gameDrawers.GetComponent<Animator>().SetBool("Move", false);
+            }
+            
         }
     }
 

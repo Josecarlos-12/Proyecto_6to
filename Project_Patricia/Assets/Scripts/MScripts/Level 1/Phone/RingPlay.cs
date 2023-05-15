@@ -31,7 +31,7 @@ public class RingPlay : MonoBehaviour
     public IEnumerator NextLevel()
     {
         yield return new WaitForSeconds(4);
-        SceneManager.LoadScene("MainMenu");
+        SceneManager.LoadScene("Nivel 2");
     }
 
     private void OnTriggerEnter(Collider other)
