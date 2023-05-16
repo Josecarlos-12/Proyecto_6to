@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 7.198063, g: 4.2258644, b: 3.7460823, a: 1}
+  m_IndirectSpecularColor: {r: 7.228756, g: 4.243643, b: 3.7617779, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -61952,6 +61952,10 @@ MonoBehaviour:
   count: 0
   head: {fileID: 1948006568}
   anim: {fileID: 2118794280}
+  audioMike: {fileID: 164587129}
+  noiseClip: {fileID: 8300000, guid: 1cf7e128d0e44a746b7d38fd5c4fe29a, type: 3}
+  speekClip: {fileID: 8300000, guid: 353493ee71fe30343a0d5e652b3de8e7, type: 3}
+  escapeClip: {fileID: 8300000, guid: 79296b3c5944e9e49bf14d1579ff223c, type: 3}
 --- !u!195 &1061088302
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -63801,6 +63805,9 @@ MonoBehaviour:
   text: {fileID: 1544979097}
   count: 0
   active: 0
+  audioMike: {fileID: 164587129}
+  silenceClip: {fileID: 8300000, guid: d43be8554bbe7ca4e9102c066c156065, type: 3}
+  slowlyClip: {fileID: 8300000, guid: d83bc375b27d4cf4da59a268124ac02a, type: 3}
 --- !u!1 &1108502774
 GameObject:
   m_ObjectHideFlags: 0
@@ -66461,6 +66468,8 @@ MonoBehaviour:
   count: 0
   enemy: {fileID: 1061088301}
   audioFinish: {fileID: 291316923}
+  audioMike: {fileID: 164587129}
+  clip: {fileID: 8300000, guid: 952c0be7262adf04ba8bd9800dd4e1b8, type: 3}
 --- !u!1 &1147638190
 GameObject:
   m_ObjectHideFlags: 0

@@ -17,6 +17,10 @@ public class EnemyShed : MonoBehaviour
 
     public Animator anim;
 
+
+    [SerializeField] private AudioSource audioMike;
+    [SerializeField] private AudioClip noiseClip, speekClip, escapeClip;
+
     void Start()
     {
         agent= GetComponent<NavMeshAgent>();
@@ -56,12 +60,17 @@ public class EnemyShed : MonoBehaviour
 
     public IEnumerator Dialogue()
     {
+        audioMike.clip = speekClip;
+        audioMike.Play();
+
         text.SetActive(true);
         text.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: Conque ahí estás, ¡Hey, te estoy hablando a ti!";
         agent.enabled= true;
         run2 = true;
         anim.SetBool("Walk", true);
         yield return new WaitForSeconds(3);
+        audioMike.clip = escapeClip;
+        audioMike.Play();
         text.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: ¡Vuelve aquí, no te dejaré escapar!";
         yield return new WaitForSeconds(3);
         text.SetActive(false);
@@ -69,15 +78,23 @@ public class EnemyShed : MonoBehaviour
 
     public IEnumerator Dialogue2()
     {
+        audioMike.clip = noiseClip;
+        audioMike.Play();
+
         text.SetActive(true);
         text.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: Maldición, hice demasiado ruido ";
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(3);
+        audioMike.clip = speekClip;
+        audioMike.Play();
+
         touch = true;
         text.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: Conque ahí estás, ¡Hey, te estoy hablando a ti!";
         agent.enabled = true;
         run2 = true;
         anim.SetBool("Walk", true);
         yield return new WaitForSeconds(3);
+        audioMike.clip = escapeClip;
+        audioMike.Play();
         text.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: ¡Vuelve aquí, no te dejaré escapar!";
         yield return new WaitForSeconds(3);
         text.SetActive(false);

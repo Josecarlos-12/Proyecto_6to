@@ -13,7 +13,9 @@ public class Cupboard : MonoBehaviour
     [SerializeField] private Animator anim;
     [SerializeField] private int count;
     [SerializeField] private EnemyShed enemy;
-    [SerializeField] private AudioSource audioFinish;
+    [SerializeField] private AudioSource audioFinish, audioMike;
+    [SerializeField] private AudioClip clip;
+
 
     // Start is called before the first frame update
     void Start()
@@ -45,6 +47,8 @@ public class Cupboard : MonoBehaviour
 
     public IEnumerator Close()
     {
+        audioMike.clip = clip;
+        audioMike.Play();
         text.SetActive(true);
         text.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: ¡Ya te tengo!";
         yield return new WaitForSeconds(3f);

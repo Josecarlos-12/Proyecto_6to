@@ -9,6 +9,8 @@ public class CrouchTutorial : MonoBehaviour
     [SerializeField] GameObject text;
     [SerializeField] int count;
     public bool active;
+    [SerializeField] private AudioSource audioMike;
+    [SerializeField] private AudioClip silenceClip, slowlyClip;
 
     void Update()
     {
@@ -32,9 +34,14 @@ public class CrouchTutorial : MonoBehaviour
 
     public IEnumerator Dialogue()
     {
+        audioMike.clip = silenceClip;
+        audioMike.Play();
         text.SetActive(true);
         text.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: Shh... Silencio... Despacio..";
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1f);
+        audioMike.clip = slowlyClip;
+        audioMike.Play();
+        yield return new WaitForSeconds(1f);
         text.SetActive(false);
     }
 }
