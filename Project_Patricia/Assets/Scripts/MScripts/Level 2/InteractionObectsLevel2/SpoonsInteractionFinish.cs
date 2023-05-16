@@ -8,6 +8,8 @@ public class SpoonsInteractionFinish : MonoBehaviour
     [SerializeField] private Collider coll;
     public bool accept;
     [SerializeField] private int count;
+    [SerializeField] private GameObject colliderKitchen;
+
 
     void Update()
     {
@@ -20,6 +22,7 @@ public class SpoonsInteractionFinish : MonoBehaviour
             {
                 coll.enabled = true;
                 accept = true;
+                colliderKitchen.SetActive(true);
                 print("Termino");
             }
         }
