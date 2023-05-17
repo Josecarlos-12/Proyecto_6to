@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class IOLevel2 : MonoBehaviour
 {
+    [SerializeField] Collider col;
+
     [SerializeField] private GameObject text;
     [SerializeField] private bool into;
     [SerializeField] private Collider coll, collShiny;
@@ -26,6 +28,7 @@ public class IOLevel2 : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.E) && into)
         {
+            col.enabled = true;
             //animCooking.SetBool("On", true);
             cam.SetActive(true);
             prota.SetActive(false);
