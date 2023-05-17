@@ -32,12 +32,17 @@ public class GrabRifleSounds : MonoBehaviour
 
     [Header("Change Rifle")]
     [SerializeField] private GameObject container;
-    [SerializeField] private GameObject lanter, rifle;
+    [SerializeField] private GameObject spotL, Lanter, pointL, lanterAll;
 
     void Update()
     {
         if (grab && into && Input.GetKeyDown(KeyCode.E))
         {
+            Lanter.SetActive(false);
+            lanterAll.transform.parent = container.transform;
+            spotL.transform.position = pointL.transform.position;
+            spotL.transform.rotation = pointL.transform.rotation;
+
             wayPoint.SetActive(true);
             inve.rifle = true;
             pressE.SetActive(false);
