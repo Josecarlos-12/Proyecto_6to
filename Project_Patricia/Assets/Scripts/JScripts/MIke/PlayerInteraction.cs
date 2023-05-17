@@ -272,8 +272,8 @@ public class PlayerInteraction : MonoBehaviour
 
         if (bDrawers && Input.GetKeyDown(KeyCode.E))
         {
-            changeDrawers = !changeDrawers;
-            if (changeDrawers)
+            changeDrawers = gameDrawers.GetComponent<DrawersOpen>().open;
+            if (!changeDrawers)
             {
                 gameDrawers.GetComponent<Animator>().SetBool("Move", true);
             }
