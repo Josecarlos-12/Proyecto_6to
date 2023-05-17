@@ -12,6 +12,13 @@ public class AnimShadowCharlie : MonoBehaviour
     [SerializeField] private CharlieGoThree go;
     [SerializeField] private SleepMode sleep;
 
+    [SerializeField] private Animator animCharlie;
+
+    public void WalkCharlie()
+    {
+        animCharlie.SetBool("Walk", true);
+    }
+
     public IEnumerator Dialogue()
     {
         text.SetActive(true);
@@ -24,8 +31,10 @@ public class AnimShadowCharlie : MonoBehaviour
 
     public IEnumerator ChageClip()
     {
+        
         audioS.Stop();
         yield return new WaitForSeconds(1);
+        animCharlie.SetBool("Scream", true);
         audioS.clip = clip;
         audioS.Play();
         audioS.loop= false;
@@ -33,6 +42,7 @@ public class AnimShadowCharlie : MonoBehaviour
 
     public void FinAnim()
     {
+        animCharlie.SetBool("Scream", false);
         prota.transform.position = pointCamera.transform.position;
         prota.transform.rotation = pointCamera.transform.rotation;
         cam.SetActive(false);
