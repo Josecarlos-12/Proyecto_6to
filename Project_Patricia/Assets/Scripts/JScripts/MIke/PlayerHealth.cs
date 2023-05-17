@@ -29,7 +29,7 @@ public class PlayerHealth : MonoBehaviour
     public Bloom bloom;
     public bool blm;
 
-    public AudioSource healthSound, childScrean, bossAudio;
+    public AudioSource healthSound, childScrean, bossAudio, mikeHurt;
 
     [Header("SphereCast")]    
     public float size;
@@ -102,6 +102,7 @@ public class PlayerHealth : MonoBehaviour
 
             if (count == 1)
             {
+                mikeHurt.Play();
                 Scream();
                 sleep.ModeDreams();
                 StartCoroutine("OffDreams");
@@ -120,6 +121,7 @@ public class PlayerHealth : MonoBehaviour
 
                 if (bossTouch == 1)
                 {
+                    
                     //bossAudio.Play();
                     sanity -= 10;
                     sleep.ModeDreams();
