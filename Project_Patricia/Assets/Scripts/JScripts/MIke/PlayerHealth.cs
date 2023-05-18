@@ -143,7 +143,7 @@ public class PlayerHealth : MonoBehaviour
 
     public void LifeRegeneration()
     {
-        if (sanity < 50 && !punch && !playerMove.run)
+        if (sanity < 50 && !punch)
         {
             time += Time.deltaTime;
             if (time >= maxtime)
@@ -159,7 +159,7 @@ public class PlayerHealth : MonoBehaviour
                 }                
             }
         }
-        if(sanity < 50 && punch || sanity < 50 && playerMove.run)
+        if(sanity < 50 && punch)
         {
             time= 0;
         }

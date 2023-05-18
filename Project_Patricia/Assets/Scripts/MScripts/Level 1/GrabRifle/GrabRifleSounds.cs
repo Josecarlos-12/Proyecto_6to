@@ -33,6 +33,7 @@ public class GrabRifleSounds : MonoBehaviour
     [Header("Change Rifle")]
     [SerializeField] private GameObject container;
     [SerializeField] private GameObject spotL, Lanter, pointL, lanterAll;
+    [SerializeField] private AudioSource strainCharlie;
 
     void Update()
     {
@@ -58,7 +59,7 @@ public class GrabRifleSounds : MonoBehaviour
                 Destroy(audioRifle[i]);
             }
             //cambia la posicion de la linterna
-           // container.transform.parent = rifle.transform;
+            //container.transform.parent = rifle.transform;
             //lanter.SetActive(false);
             //container.transform.position = new Vector3(0.699f, -0.309f, 0.179f);
             //container.transform.rotation = Quaternion.Euler(0f, -12.99f, 0f);
@@ -77,6 +78,7 @@ public class GrabRifleSounds : MonoBehaviour
         yield return new WaitForSeconds(2);
         tutoRifle.SetActive(true);
         yield return new WaitForSeconds(3);
+        strainCharlie.Play();
         shadowBattle.SetActive(true);
         text.SetActive(false);
         

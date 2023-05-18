@@ -44,6 +44,11 @@ public class EventWPV2 : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        
+    }
+
     public enum Event
     {
         one, two, three, four
