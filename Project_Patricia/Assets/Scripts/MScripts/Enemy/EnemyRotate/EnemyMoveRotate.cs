@@ -17,6 +17,7 @@ public class EnemyMoveRotate : MonoBehaviour
     [SerializeField] PlayerCrouch crouch;
     [SerializeField] bool bCrouch;
     [SerializeField] GameObject container;
+    [SerializeField] Animator animCharlie;
 
     public enum State
     {
@@ -39,7 +40,10 @@ public class EnemyMoveRotate : MonoBehaviour
 
     void Update()
     {
-        Follow();
+        if(player!= null)
+        {
+            Follow();
+        }        
     }
 
     public void Follow()
@@ -91,6 +95,7 @@ public class EnemyMoveRotate : MonoBehaviour
 
         if (follow.rotateR.r)
         {
+            animCharlie.SetBool("Walk", true);
             touch = 0;
             StopCoroutine("FollowTime");
             follow.transform.Rotate(0f, follow.rotationSpeed * -Time.deltaTime, 0f);
@@ -98,11 +103,13 @@ public class EnemyMoveRotate : MonoBehaviour
         }
         else
         {
+            animCharlie.SetBool("Walk", false);
             touchColl = false;
         }
 
         if (follow.rotateL.l)
         {
+            animCharlie.SetBool("Walk", true);
             touch = 0;
             StopCoroutine("FollowTime");
             follow.transform.Rotate(0f, follow.rotationSpeed * Time.deltaTime, 0f);
@@ -110,6 +117,7 @@ public class EnemyMoveRotate : MonoBehaviour
         }
         else
         {
+            animCharlie.SetBool("Walk", false);
             touchColl = false;
         }
 

@@ -107,9 +107,9 @@ public class SanityLevel : MonoBehaviour
             health.death = true;
             Time.timeScale = 0;
             gameOver.SetActive(true);
-            prota.SetActive(false);
-            cam.transform.position = prota.transform.position;
             cam.SetActive(true);
+            cam.transform.position = prota.transform.position;
+            prota.SetActive(false);                      
             //Destroy(health.player);
         }
     }

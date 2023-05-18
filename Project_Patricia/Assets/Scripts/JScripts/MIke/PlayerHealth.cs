@@ -44,6 +44,10 @@ public class PlayerHealth : MonoBehaviour
     [Header("Life Text")]
     [SerializeField] private Text textNormal;
 
+    [Header("Game Over")]
+    [SerializeField] private GameObject camGameOver;
+    [SerializeField] private GameObject panelGameOver;
+
     void Start()
     {
         //cam = GetComponent<PlayerCamera>();
@@ -156,8 +160,18 @@ public class PlayerHealth : MonoBehaviour
             inv.SetActive(false);
             Debug.Log("Mike murio");
             death = true;
-            Destroy(player);
+            //Destroy(player);
+            GameOver();
         }
+    }
+
+    public void GameOver()
+    {
+        camGameOver.SetActive(true);
+        panelGameOver.SetActive(true);
+        camGameOver.transform.position = player.transform.position;
+        player.SetActive(false);        
+         
     }
 
     public void RecieveDamage(int recieveDamage)
@@ -170,7 +184,8 @@ public class PlayerHealth : MonoBehaviour
             inv.SetActive(false);            
             Debug.Log("Mike murio");
             death= true;
-            Destroy(player);
+            //Destroy(player);
+            GameOver();
         }
         if ( sanity > 100 )
         {
