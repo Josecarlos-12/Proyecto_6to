@@ -17,8 +17,8 @@ public class DialogueDorr : MonoBehaviour
 
     [Header("Audios")]
     [SerializeField] private AudioSource backgroundSound;
-    [SerializeField] private AudioSource sfxSounds;
-    [SerializeField] private AudioClip door;
+    [SerializeField] private AudioSource sfxSounds, sfxSounds2;
+    [SerializeField] private AudioClip breathing, door, horror;
 
 
     public void BackGround()
@@ -26,6 +26,23 @@ public class DialogueDorr : MonoBehaviour
         backgroundSound.Play();
     }
 
+    public void Breathing()
+    {
+        sfxSounds.clip = breathing;
+        sfxSounds.Play();
+    }
+
+    public void DoorOpen()
+    {
+        sfxSounds2.clip = door;
+        sfxSounds2.Play();
+    }
+
+    public void Horror()
+    {
+        sfxSounds.clip = horror;
+        sfxSounds.Play();
+    }
 
     public IEnumerator Dialogue()
     {

@@ -71,12 +71,13 @@ public class Rifle : MonoBehaviour
         audioMike.Play();
         yield return new WaitForSeconds(3f);        
         dialogue.SetActive(false);
-        yield return new WaitForSeconds(1f);
+        //yield return new WaitForSeconds(1f);
+        //dialogue.SetActive(true);
+        //dialogue.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: Se está moviendo entre los arbustos...";
+        //audioMike.clip = clip[2];
+        //audioMike.Play();
+        yield return new WaitForSeconds(2f);
         dialogue.SetActive(true);
-        dialogue.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: Se está moviendo entre los arbustos...";
-        audioMike.clip = clip[2];
-        audioMike.Play();
-        yield return new WaitForSeconds(2f);        
         dialogue.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: Esta es mi oportunidad, tengo que evitar que me escuche";
         audioMike.clip = clip[3];
         audioMike.Play();
