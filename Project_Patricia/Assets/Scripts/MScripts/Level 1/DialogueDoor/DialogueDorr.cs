@@ -15,6 +15,18 @@ public class DialogueDorr : MonoBehaviour
     [SerializeField] private AudioSource audioMike;
     [SerializeField] private AudioClip[] clip;
 
+    [Header("Audios")]
+    [SerializeField] private AudioSource backgroundSound;
+    [SerializeField] private AudioSource sfxSounds;
+    [SerializeField] private AudioClip door;
+
+
+    public void BackGround()
+    {
+        backgroundSound.Play();
+    }
+
+
     public IEnumerator Dialogue()
     {
         dialogue.SetActive(true);
