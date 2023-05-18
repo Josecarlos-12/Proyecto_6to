@@ -12,6 +12,7 @@ public class EnemyFollow : MonoBehaviour
     [SerializeField] private bool follow;
     [SerializeField] GameObject container;
 
+    [SerializeField] private Animator animCharlie;
 
     private void OnDisable()
     {
