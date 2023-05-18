@@ -40,7 +40,10 @@ public class EnemyMoveRotate : MonoBehaviour
 
     void Update()
     {
-        Follow();
+        if(player!= null)
+        {
+            Follow();
+        }        
     }
 
     public void Follow()

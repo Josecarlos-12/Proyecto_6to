@@ -12,8 +12,6 @@ public class EnemyFollow : MonoBehaviour
     [SerializeField] private bool follow;
     [SerializeField] GameObject container;
 
-    [SerializeField] private Animator animCharlie;
-
     private void OnDisable()
     {
         touch = false;
@@ -27,20 +25,23 @@ public class EnemyFollow : MonoBehaviour
 
     void Update()
     {
-        if (!touch)
+        if(prota!= null)
         {
-            agent.destination = prota.transform.position;
-        }
-        else
-        {
-            agent.destination = pointReturn.transform.position;
-        }
+            if (!touch)
+            {
+                agent.destination = prota.transform.position;
+            }
+            else
+            {
+                agent.destination = pointReturn.transform.position;
+            }
 
-        if(Vector3.Distance(transform.position, pointReturn.transform.position) < 3 && touch)
-        {
-            enemyFollow.SetActive(false);
-            enemyRotate.SetActive(true);
-        }
+            if (Vector3.Distance(transform.position, pointReturn.transform.position) < 3 && touch)
+            {
+                enemyFollow.SetActive(false);
+                enemyRotate.SetActive(true);
+            }
+        }       
     }
 
     private void OnTriggerEnter(Collider other)
