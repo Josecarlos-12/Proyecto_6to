@@ -19,11 +19,13 @@ public class AlarmOff : MonoBehaviour
     public bool offAlarm;
 
     [SerializeField] private GameObject lanter;
+    [SerializeField] private Animator keyPad;
 
     void Update()
     {
         if(into && Input.GetKeyDown(KeyCode.E) && box.bAlarm==true)
         {
+            keyPad.SetBool("On", false);
             offAlarm= true;
             into = false;
             col.enabled = false;

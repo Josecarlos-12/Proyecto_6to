@@ -13,6 +13,8 @@ public class StartLevelOne : MonoBehaviour
     [SerializeField] private AudioSource audioMike;
     [SerializeField] private AudioClip[] clip;
 
+    [SerializeField] private Animator note;
+
     IEnumerator Start()
     {
         yield return new WaitForSeconds(4.10f);
@@ -45,5 +47,6 @@ public class StartLevelOne : MonoBehaviour
         audioMike.Play();
         yield return new WaitForSeconds(13f);
         text.SetActive(false);
+        note.SetBool("On", true);
     }
 }

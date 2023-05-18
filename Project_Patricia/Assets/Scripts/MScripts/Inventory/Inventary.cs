@@ -25,6 +25,8 @@ public class Inventary : MonoBehaviour
     [SerializeField] private GameObject text;
     [SerializeField] private GameObject eventPills, eventSleep, eventLaders;
     public bool complete;
+    public Animator keyPad;
+
 
     [Header("Audio")]
     [SerializeField] private AudioSource audioMike;
@@ -173,5 +175,7 @@ public class Inventary : MonoBehaviour
         prota.SetActive(false);
         panel.SetActive(true);
         cam.SetActive(true);
+        //Alarma
+        keyPad.SetBool("On", true);
     }
 }
