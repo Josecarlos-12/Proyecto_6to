@@ -134,7 +134,11 @@ public class Inventary : MonoBehaviour
         {
             pills--;
             //Mas sanidad
-            sanity.sanity += 1;
+            if(sanity.sanity < sanity.sanityMax)
+            {
+                sanity.sanity += 1;
+            }
+            
 
             switch (dream)
             {

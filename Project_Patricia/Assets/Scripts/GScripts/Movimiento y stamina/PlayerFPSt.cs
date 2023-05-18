@@ -32,7 +32,7 @@ public class PlayerFPSt : MonoBehaviour
 
     [SerializeField] private float speedNormal;
     [SerializeField] private float speedMax, speed, speedLess;
-    [SerializeField] private bool run, shift, crounch, bEnergy;
+    public bool run, shift, crounch, bEnergy;
     
 
     [Header("Energy")]

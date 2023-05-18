@@ -18,6 +18,9 @@ public class GrabFlashBack : MonoBehaviour
     [SerializeField] AudioSource audi;
     [SerializeField] AudioClip[] clip;
 
+    [Header("Flash")]
+    [SerializeField] private Animator animFlash;
+    [SerializeField] private Collider collFlash, collNext;
 
     public enum Dialogue
     {
@@ -34,6 +37,14 @@ public class GrabFlashBack : MonoBehaviour
     {
         if(into && Input.GetKeyUp(KeyCode.E))
         {
+            collFlash.enabled= false;
+            animFlash.SetBool("On", false);
+            animFlash.enabled= false;
+            if(collNext!= null)
+            {
+                collNext.enabled = true;
+            }            
+
             grab = true;
             textE.SetActive(false);
             coll.enabled = false;

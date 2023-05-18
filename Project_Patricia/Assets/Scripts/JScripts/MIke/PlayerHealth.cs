@@ -11,8 +11,9 @@ public class PlayerHealth : MonoBehaviour
     public GameObject inv;
     public GameObject player;
 
+    [Range(0,100)]
     public float sanity = 100f;
-    public float sanityMax = 125f;
+    public float sanityMax = 100;
 
     public GameObject jumpScare;
 
@@ -40,6 +41,7 @@ public class PlayerHealth : MonoBehaviour
 
     [Header("Call Other Script")]
     [SerializeField] private MoveBoss moveBoss;
+    [SerializeField] private PlayerFPSt playerMove;
 
     [Header("Life Text")]
     [SerializeField] private Text textNormal;
@@ -47,6 +49,10 @@ public class PlayerHealth : MonoBehaviour
     [Header("Game Over")]
     [SerializeField] private GameObject camGameOver;
     [SerializeField] private GameObject panelGameOver;
+
+    [Header("Life Regeneration")]
+    [SerializeField] private bool punch;
+    [SerializeField] private float time, maxtime;
 
     void Start()
     {
@@ -87,7 +93,7 @@ public class PlayerHealth : MonoBehaviour
         }
 
         LifeActu();
-
+        LifeRegeneration();
        // PanelDmg();
        //Damage();
     }
@@ -106,6 +112,7 @@ public class PlayerHealth : MonoBehaviour
 
             if (count == 1)
             {
+                punch = true;
                 mikeHurt.Play();
                 Scream();
                 sleep.ModeDreams();
@@ -125,7 +132,7 @@ public class PlayerHealth : MonoBehaviour
 
                 if (bossTouch == 1)
                 {
-                    
+                    punch = true;
                     //bossAudio.Play();
                     sanity -= 10;
                     sleep.ModeDreams();
@@ -134,10 +141,35 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
+    public void LifeRegeneration()
+    {
+        if (sanity < 50 && !punch && !playerMove.run)
+        {
+            time += Time.deltaTime;
+            if (time >= maxtime)
+            {
+                time = 0;
+                if(sanity < 50)
+                {
+                    sanity += 5;
+                    if (sanity > 50)
+                    {
+                        sanity = 50;
+                    }
+                }                
+            }
+        }
+        if(sanity < 50 && punch || sanity < 50 && playerMove.run)
+        {
+            time= 0;
+        }
+    }
+
     public IEnumerator OffDreams()
     {
         yield return new WaitForSeconds(1.5f);
         sleep.OffDreams();
+        punch= false;
         yield return new WaitForSeconds(2);
         count = 0;
         bossTouch= 0;
