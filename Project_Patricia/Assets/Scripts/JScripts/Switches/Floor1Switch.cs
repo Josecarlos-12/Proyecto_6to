@@ -31,7 +31,7 @@ public class Floor1Switch : MonoBehaviour
             on = !on;
             if (on)
             {
-                //anim.SetBool("SwitchO", true);
+                anim.SetBool("On", true);
                 for (int i = 0; i < Lights.Length; i++)
                 {
                     Lights[i].gameObject.SetActive(false);
@@ -40,7 +40,7 @@ public class Floor1Switch : MonoBehaviour
             }
             else
             {
-                //anim.SetBool("SwitchO", false);
+                anim.SetBool("On", false);
                 for (int i = 0; i < Lights.Length; i++)
                 {
                     Lights[i].gameObject.SetActive(true);

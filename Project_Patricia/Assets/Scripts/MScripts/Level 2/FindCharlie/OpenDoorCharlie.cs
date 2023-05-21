@@ -84,7 +84,7 @@ public class OpenDoorCharlie : MonoBehaviour
         active.SetActive(true);
         dialogue.SetActive(false);
         doorCat.SetBool("Open", true);
-        this.gameObject.SetActive(false);
+        this.gameObject.GetComponent<OpenDoorCharlie>().enabled = false;
     }
 
     private void OnTriggerEnter(Collider other)
