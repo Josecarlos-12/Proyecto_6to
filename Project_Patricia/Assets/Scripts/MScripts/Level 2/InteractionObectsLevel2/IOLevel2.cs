@@ -9,6 +9,7 @@ public class IOLevel2 : MonoBehaviour
 
     [SerializeField] private GameObject text;
     [SerializeField] private bool into;
+    public bool openDrawer;
     [SerializeField] private Collider coll, collShiny;
     [SerializeField] private Animator cookingShiny;
 
@@ -28,7 +29,8 @@ public class IOLevel2 : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.E) && into)
         {
-            col.enabled = true;
+            openDrawer= true;
+            //col.enabled = true;
             //animCooking.SetBool("On", true);
             cam.SetActive(true);
             prota.SetActive(false);

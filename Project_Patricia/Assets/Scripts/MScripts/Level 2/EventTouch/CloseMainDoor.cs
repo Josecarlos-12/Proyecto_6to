@@ -1,13 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class CloseMainDoor : MonoBehaviour
 {
     [SerializeField] private Animator animDoor;
     [SerializeField] private Collider col;
-    [SerializeField] private GameObject text;
+    [SerializeField] private GameObject text, dialogue;
     [SerializeField] private bool into;
+
+    [SerializeField] private PickableObject pickableObject;
+    [SerializeField] private TrashOn trash;
 
     private void Start()
     {
@@ -23,6 +27,11 @@ public class CloseMainDoor : MonoBehaviour
             col.enabled= false;
             animDoor.SetBool("Shiny",false);
             animDoor.SetBool("Close",true);
+            trash.enabled = true;
+            pickableObject.enabled = true;
+            pickableObject.isPickable= true;
+            dialogue.GetComponent<RepeatText>().sText = "Mike Schmith: Bien, ahora siguen los platos";
+            dialogue.SetActive(true);
         }
     }
 
