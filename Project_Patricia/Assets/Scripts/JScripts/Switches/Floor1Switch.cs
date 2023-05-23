@@ -1,16 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using static SpawnEmilio;
 
 public class Floor1Switch : MonoBehaviour
 {
     public GameObject[] Lights;
-    public GameObject text;
+    public GameObject text, dialogue;
     public bool into;
     public bool on;
     public AudioSource switchSound;
     public Animator anim;
+    public int count;
+    public bool touch;
+
+
+    public enum States
+    {
+        good, bad
+    }
+    public States state;
 
     // Start is called before the first frame update
     void Start()
@@ -21,7 +31,16 @@ public class Floor1Switch : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Inpt();
+        switch (state)
+        {
+            case States.good:
+                Inpt();
+                break;
+                case States.bad:
+                Bad();
+                break;
+        }
+        
     }
     public void Inpt()
     {
@@ -49,6 +68,47 @@ public class Floor1Switch : MonoBehaviour
             
         }
     }
+
+    public void Bad()
+    {
+        if (Input.GetKeyDown(KeyCode.E) && into)
+        {
+            switchSound.Play();
+            on = !on;
+            if (on)
+            {
+                touch = true;
+                count++;
+
+                if (count == 1)
+                {
+                    StartCoroutine("CBad");
+                }
+            }
+            else
+            {
+                touch = true;
+                count++;
+
+                if (count == 1)
+                {
+                    StartCoroutine("CBad");
+                }
+            }
+
+        }
+    }
+
+    public IEnumerator CBad()
+    {
+        dialogue.SetActive(true);
+        dialogue.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: Qué raro, ¿Por qué nada está funcionando hoy?";
+        yield return new WaitForSeconds(2);
+        dialogue.SetActive(false);
+        touch= false;
+        count = 0;
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))

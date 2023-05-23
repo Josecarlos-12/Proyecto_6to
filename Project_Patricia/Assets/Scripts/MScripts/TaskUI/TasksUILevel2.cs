@@ -7,12 +7,12 @@ public class TasksUILevel2 : MonoBehaviour
 {
     [SerializeField] private GameObject text;
     [SerializeField] private TextMeshProUGUI textMesh;
-    [SerializeField] private string task;
+    public string task;
     [SerializeField] private float time, mamxTime;
     public bool go;
     [SerializeField] private int count;
     public int taskCount = 1;
-
+    public int countT = 0;
 
     void Update()
     {
@@ -24,8 +24,6 @@ public class TasksUILevel2 : MonoBehaviour
     {
         if (taskCount == 2)
         {
-            int countT = 0;
-
             if (countT < 3)
             {
                 countT++;

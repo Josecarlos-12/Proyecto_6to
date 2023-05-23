@@ -12,14 +12,24 @@ public class EventTouchLevel2 : MonoBehaviour
     [SerializeField] private Animator keyPad;
     public bool active;
     [SerializeField] private bool into;
-    [SerializeField] private GameObject textE;  
+    [SerializeField] private GameObject textE, alarm2;
+
+    [SerializeField] private PickableObject wine;
+    [SerializeField] private TrashOn trashW;
 
     [Header("Dialogue")]
     //[SerializeField] private AudioSource audioMike;
     [SerializeField] private GameObject text;
+    [SerializeField] private string mike;
 
     [Header("Call Other Script")]
     [SerializeField] private ShinyLevel2 shiny;
+
+    public enum Interaction
+    {
+        interaction, touch, vino
+    }
+    public Interaction inte;
 
     void Start()
     {
@@ -28,26 +38,52 @@ public class EventTouchLevel2 : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E) && into)
+        switch (inte)
         {
-            textE.SetActive(false);
-            into = false;
-            active = true;
-            keyPad.SetBool("On", true);
-            col.enabled = false;
-            animDoor.SetBool("Close", false);
-            alarm.Play();
-            StartCoroutine("Dialogue");
-            shiny.on = false;            
+            case Interaction.interaction:
+                if (Input.GetKeyDown(KeyCode.E) && into)
+                {
+                    textE.SetActive(false);
+                    into = false;
+                    active = true;
+                    keyPad.SetBool("On", true);
+                    col.enabled = false;
+                    animDoor.SetBool("Close", false);
+                    alarm.Play();
+                    StartCoroutine("Dialogue");
+                    shiny.on = false;
+                }
+                break; 
+            case Interaction.touch:
+                break;
         }
+
+        
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            into = true;
-            textE.SetActive(true);
+            switch (inte)
+            {
+                case Interaction.interaction:
+                    into = true;
+                    textE.SetActive(true);
+                    break;
+                case Interaction.touch:
+                    StartCoroutine("DialogueAlarm2");
+                    alarm.Play();
+                    col.enabled = false;
+                    animDoor.SetBool("Close", false);
+                    keyPad.SetBool("On", true);
+                    break;
+                case Interaction.vino:
+                    col.enabled = false;
+                    StartCoroutine("DialogueAlarm3");
+                    break;
+            }
+            
         }
     }
 
@@ -61,6 +97,17 @@ public class EventTouchLevel2 : MonoBehaviour
 
     }
 
+    public IEnumerator DialogueAlarm2()
+    {
+        yield return new WaitForSeconds(1);
+        text.SetActive(true);
+        text.GetComponent<TextMeshProUGUI>().text = mike;
+        alarm2.SetActive(true);
+        yield return new WaitForSeconds(2);
+        text.SetActive(false);
+        this.gameObject.SetActive(false);
+    }
+
     public IEnumerator Dialogue()
     {
         yield return new WaitForSeconds(1);
@@ -69,6 +116,19 @@ public class EventTouchLevel2 : MonoBehaviour
         yield return new WaitForSeconds(2);
         text.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: ¿Alguien habrá entrado?";
         yield return new WaitForSeconds(3);
+        text.SetActive(false);
+        this.gameObject.SetActive(false);
+    }
+
+    public IEnumerator DialogueAlarm3()
+    {
+        yield return new WaitForSeconds(1);
+        text.SetActive(true);
+        text.GetComponent<TextMeshProUGUI>().text = mike;
+        yield return new WaitForSeconds(2);
+        trashW.enabled = true;
+        wine.enabled = true;
+        wine.isPickable = true;
         text.SetActive(false);
         this.gameObject.SetActive(false);
     }

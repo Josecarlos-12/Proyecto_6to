@@ -5,19 +5,21 @@ using UnityEngine;
 
 public class SpoonsInteractionFinish : MonoBehaviour
 {
-    [SerializeField] private TrashOn trashOne, trashTwo, trashDishes;
+    [SerializeField] private TrashOn trashOne, trashTwo, trashDishes, trashGlass, trashGlasses2, wine;
     [SerializeField] private Collider coll;
     public bool accept;
-    [SerializeField] private int count, count2;
+    [SerializeField] private int count, count2, count3, count4;
     [SerializeField] private GameObject colliderKitchen;    
     [SerializeField] private GameObject textRepeat;
     [SerializeField] private ShinyLevel2 shiny;
-    [SerializeField] private GameObject textReapeat;
+    [SerializeField] private GameObject textReapeat, AlarmOn;
 
     [SerializeField] private PickableObject pickableObject, pickableObject2;
     [SerializeField] private TrashOn trash, trash2;
 
     [SerializeField] private ShinyLevel2 glasses, glasses2;
+    [SerializeField] private GameObject flower;
+
 
     [Header("Dialogue")]
     [SerializeField] private GameObject textDialogue;
@@ -45,7 +47,7 @@ public class SpoonsInteractionFinish : MonoBehaviour
         if (trashDishes.into)
         {
 
-            if(count<3)
+            if(count2<3)
             count2++;
 
             if (count2 == 1)
@@ -65,6 +67,40 @@ public class SpoonsInteractionFinish : MonoBehaviour
                 glasses2.on = true;
             }
         }
+
+        if(trashGlass.into && trashGlasses2.into)
+        {
+            if(count3< 3)
+            count3++;
+
+            if (count3 == 1)
+            {
+                AlarmOn.SetActive(true);
+                textReapeat.SetActive(false);
+                StartCoroutine("DialogueGlass");
+            }
+        }
+
+        if (wine.into)
+        {
+            if(count4< 3)
+               count4++;
+
+            if (count4 == 1)
+            {
+                StartCoroutine("DialogueWine");
+            }
+        }
+    }
+
+    public IEnumerator DialogueGlass()
+    {
+        textDialogue.SetActive(true);
+        textDialogue.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: Un vino sería fabuloso para esta cena";
+        yield return new WaitForSeconds(3);
+        textDialogue.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: Traeré el Bricco Magno que queda";
+        yield return new WaitForSeconds(3);
+        textDialogue.SetActive(false);
     }
 
     public IEnumerator Dialogue()
@@ -72,6 +108,21 @@ public class SpoonsInteractionFinish : MonoBehaviour
         textDialogue.SetActive(true);
         textDialogue.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: Bien, ahora siguen los platos";
         yield return new WaitForSeconds(2);
+        textDialogue.SetActive(false);
+    }
+
+    public IEnumerator DialogueWine()
+    {
+        textDialogue.SetActive(true);
+        textDialogue.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: Uhmm, lo único que faltaría es...";
+        yield return new WaitForSeconds(2);
+        textDialogue.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: Una flor para la mesa";
+        yield return new WaitForSeconds(2);
+        textDialogue.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: A Catelyn le encanta las margaritas";
+        yield return new WaitForSeconds(2);
+        textDialogue.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: Creo haber visto crecer algunas cerca de la entrada";
+        yield return new WaitForSeconds(3);
+        flower.SetActive(true);
         textDialogue.SetActive(false);
     }
 }
