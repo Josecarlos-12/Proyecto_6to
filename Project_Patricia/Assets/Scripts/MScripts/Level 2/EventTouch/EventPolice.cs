@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class EventPolice : MonoBehaviour
 {
-    [SerializeField] private GameObject text, dialogue;
+    [SerializeField] private GameObject text, dialogue, fuses;
     [SerializeField] private bool into;
     [SerializeField] private Collider col;
 
@@ -20,6 +20,7 @@ public class EventPolice : MonoBehaviour
     {
         if(into && Input.GetKeyDown(KeyCode.E))
         {
+            task.taskCount = 2;
             col.enabled= false;
             into = false;
             StartCoroutine("Dialogue");
@@ -33,6 +34,7 @@ public class EventPolice : MonoBehaviour
         yield return new WaitForSeconds(1);
         dialogue.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: Tengo que revisar los fusibles rápido, no me siento bien con todo oscuro";
         yield return new WaitForSeconds(4);
+        fuses.SetActive(true);
         dialogue.SetActive(false);
     }
 

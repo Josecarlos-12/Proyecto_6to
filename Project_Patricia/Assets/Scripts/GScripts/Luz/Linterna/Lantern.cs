@@ -20,29 +20,24 @@ public class Lantern : MonoBehaviour
     [Header("Interfaz")]
     public Image batteryBar;
 
-    // Start is called before the first frame update
-    void Start()
+    public enum Lanter
     {
-        
+        god, bad
     }
+    public Lanter lanter;
 
-    // Update is called once per frame
     void Update()
     {
-    
-        if(Input.GetButtonDown("Lantern"))
+        switch (lanter)
         {
-
-            if(lightLantern.enabled == true)
-            {
-                lightLantern.enabled = false;
-            }
-            else if (lightLantern.enabled == false)
-            {
-                lightLantern.enabled = true;
-            }
-
+            case Lanter.god:
+                Normal();
+                break;
+            case Lanter.bad:
+                Bad();
+                break;
         }
+        
 
        /* if (lightLantern.enabled == true)
         {
@@ -66,6 +61,28 @@ public class Lantern : MonoBehaviour
         {
             StartCoroutine("LessEnergy");
         }*/
+    }
+
+    public void Normal()
+    {
+        if (Input.GetButtonDown("Lantern"))
+        {
+
+            if (lightLantern.enabled == true)
+            {
+                lightLantern.enabled = false;
+            }
+            else if (lightLantern.enabled == false)
+            {
+                lightLantern.enabled = true;
+            }
+
+        }
+    }
+
+    public void Bad()
+    {
+        print("Malogrado");
     }
 
     public IEnumerator LessEnergy()
