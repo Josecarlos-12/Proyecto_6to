@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class FusesCount : MonoBehaviour
 {
+    [SerializeField] private Animator anim;
     [SerializeField] private GameObject dialogue, cat;
     [SerializeField] private Fuses[] fuses;
     [SerializeField] private int one, two, three, four, five, six;
@@ -97,6 +98,7 @@ public class FusesCount : MonoBehaviour
         dialogue.GetComponent<TextMeshProUGUI>().text = "Catelyn Schmith: Mike, ¿Por qué Charlie no está en su habitación?";
         yield return new WaitForSeconds(4);
         dialogue.SetActive(false);
+        anim.SetBool("Punch", true);
         print("Lapazo");
     }
 }
