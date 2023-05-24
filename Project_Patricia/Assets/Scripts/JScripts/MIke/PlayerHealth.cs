@@ -35,7 +35,7 @@ public class PlayerHealth : MonoBehaviour
     [Header("SphereCast")]    
     public float size;
     public int count = 0;
-    public int bossTouch = 0;
+    public int bossTouch = 0, catPunch;
     [SerializeField] private SleepMode sleep;
     RaycastHit hit;
 
@@ -120,11 +120,7 @@ public class PlayerHealth : MonoBehaviour
                 childScrean.Play();
             }
         }
-        if(other.gameObject.name == "PunchBoss")
-        {
-            //sanity -= 10;
-            print("Pego boss");
-        }
+        
         if (other.gameObject.name == "BossCon")
         {
                 if (bossTouch < 3)
@@ -138,6 +134,23 @@ public class PlayerHealth : MonoBehaviour
                     sleep.ModeDreams();
                     StartCoroutine("OffDreams");
                 }
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.name == "PunchBoss")
+        {
+            sanity -= 5;
+            sleep.ModeDreams();
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.name == "PunchBoss")
+        {           
+            StartCoroutine("OffDreams");
         }
     }
 
@@ -167,6 +180,7 @@ public class PlayerHealth : MonoBehaviour
 
     public IEnumerator OffDreams()
     {
+        catPunch = 0;
         yield return new WaitForSeconds(1.5f);
         sleep.OffDreams();
         punch= false;

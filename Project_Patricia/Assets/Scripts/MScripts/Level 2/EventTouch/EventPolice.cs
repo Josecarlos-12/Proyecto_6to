@@ -20,6 +20,7 @@ public class EventPolice : MonoBehaviour
     {
         if(into && Input.GetKeyDown(KeyCode.E))
         {
+            text.SetActive(false);
             task.taskCount = 2;
             col.enabled= false;
             into = false;
