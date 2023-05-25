@@ -38,6 +38,7 @@ public class OpenDoorBathroom : MonoBehaviour
     public IEnumerator Next()
     {
         yield return new WaitForSeconds(0.4f);
+        audioDoor.clip = clip;
         audioDoor.Play();
         yield return new WaitForSeconds(1.6f);
         mike.clip = clipMike[0];
