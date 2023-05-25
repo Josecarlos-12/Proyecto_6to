@@ -27,6 +27,10 @@ public class AnimFlower : MonoBehaviour
     [SerializeField] private AudioSource mike;
     [SerializeField] private AudioClip[] clip;
 
+    [Header("Door Close")]
+    [SerializeField] private AudioSource audioDoor;
+    [SerializeField] private AudioClip audioClip;
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
@@ -52,6 +56,8 @@ public class AnimFlower : MonoBehaviour
 
     public void Dream()
     {
+        audioDoor.clip = audioClip;
+
         animDoor.SetBool("Close", true);
         animDoorV2.SetBool("Close", true);
         StartCoroutine("ChangeMode");
