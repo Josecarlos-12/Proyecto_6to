@@ -15,6 +15,9 @@ public class OpenDoorFlower : MonoBehaviour
     [SerializeField] private TasksUILevel2 task;
     [SerializeField] private GameObject taskGame;
 
+    [Header("Audio")]
+    [SerializeField] private AudioSource mike;
+    [SerializeField] private AudioClip clip;
 
     void Start()
     {
@@ -36,6 +39,9 @@ public class OpenDoorFlower : MonoBehaviour
 
     public IEnumerator Dialogue()
     {
+        mike.clip = clip;
+        mike.Play();
+
         dialogue.SetActive(true);
         dialogue.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: Ya le había dicho a Cat que en esta casa siempre tiene que haber una luz encendida";
         yield return new WaitForSeconds(4);

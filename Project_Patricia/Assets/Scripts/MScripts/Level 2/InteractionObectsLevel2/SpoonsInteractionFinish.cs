@@ -9,7 +9,7 @@ public class SpoonsInteractionFinish : MonoBehaviour
     [SerializeField] private Collider coll;
     public bool accept;
     [SerializeField] private int count, count2, count3, count4;
-    [SerializeField] private GameObject colliderKitchen;    
+    [SerializeField] private GameObject colliderKitchen;
     [SerializeField] private GameObject textRepeat;
     [SerializeField] private ShinyLevel2 shiny;
     [SerializeField] private GameObject textReapeat, AlarmOn;
@@ -24,6 +24,10 @@ public class SpoonsInteractionFinish : MonoBehaviour
 
     [Header("Dialogue")]
     [SerializeField] private GameObject textDialogue;
+
+    [Header("Audio")]
+    [SerializeField] private AudioSource mike;
+    [SerializeField] private AudioClip[] clip;
 
     void Update()
     {
@@ -114,13 +118,22 @@ public class SpoonsInteractionFinish : MonoBehaviour
 
     public IEnumerator DialogueWine()
     {
+        mike.clip = clip[0];
+        mike.Play();
+
         textDialogue.SetActive(true);
         textDialogue.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: Uhmm, lo único que faltaría es...";
         yield return new WaitForSeconds(2);
         textDialogue.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: Una flor para la mesa";
         yield return new WaitForSeconds(2);
+        mike.clip = clip[1];
+        mike.Play();
+
         textDialogue.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: A Catelyn le encanta las margaritas";
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(3);
+        mike.clip = clip[2];
+        mike.Play();
+
         textDialogue.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: Creo haber visto crecer algunas cerca de la entrada";
         yield return new WaitForSeconds(3);
         flower.SetActive(true);

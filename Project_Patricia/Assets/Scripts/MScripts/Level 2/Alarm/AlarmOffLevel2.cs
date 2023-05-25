@@ -14,6 +14,10 @@ public class AlarmOffLevel2 : MonoBehaviour
     [SerializeField] private Collider col;
     [SerializeField] private GameObject closeDoor, colliderActive, shadowCat;
 
+    [Header("Audio")]
+    [SerializeField] private AudioSource mike;
+    [SerializeField] private AudioClip[] clip;
+
     public enum Alarm
     {
         one, two, three
@@ -66,9 +70,15 @@ public class AlarmOffLevel2 : MonoBehaviour
     public IEnumerator Dialogue()
     {
         yield return new WaitForSeconds(1.0f);
+        mike.clip = clip[0];
+        mike.Play();
+
         dialogue.SetActive(true);
         dialogue.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: Hmm, no parece que haya nadie...";
         yield return new WaitForSeconds(3f);
+        mike.clip = clip[1];
+        mike.Play();
+
         dialogue.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: Y tampoco escucho nada";
         yield return new WaitForSeconds(2f);
         doorAnim.SetBool("Shiny", true);
@@ -78,6 +88,9 @@ public class AlarmOffLevel2 : MonoBehaviour
 
     public IEnumerator Dialogue2()
     {
+        mike.clip = clip[0];
+        mike.Play();
+
         dialogue.SetActive(true);
         dialogue.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: ¿Esta cosa ya se malogró o qué?";
         yield return new WaitForSeconds(3f);
@@ -88,6 +101,8 @@ public class AlarmOffLevel2 : MonoBehaviour
 
     public IEnumerator Dialogue3()
     {
+        
+
         dialogue.SetActive(true);
         dialogue.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: Dejaré la puerta como está";
         yield return new WaitForSeconds(2f);

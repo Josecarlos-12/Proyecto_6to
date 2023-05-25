@@ -11,6 +11,10 @@ public class EventBathroom : MonoBehaviour
     [SerializeField] private Collider coll;
     public bool active;
 
+    [Header("Audio")]
+    [SerializeField] private AudioSource mike;
+    [SerializeField] private AudioClip clip;
+
     private void Start()
     {
         this.gameObject.SetActive(false);
@@ -34,6 +38,8 @@ public class EventBathroom : MonoBehaviour
 
     public IEnumerator Dialogue()
     {
+        mike.clip= clip;
+        mike.Play();
         dialogue.SetActive(true);
         dialogue.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: ¿Prendió la ducha? ¿Se va a bañar aquí abajo? Ha de estar muy cansada";
         yield return new WaitForSeconds(5);

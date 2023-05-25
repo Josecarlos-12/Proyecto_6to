@@ -5,13 +5,58 @@ using UnityEngine;
 public class CountFlash : MonoBehaviour
 {
     public GrabFlashBack[] grab;
+    public GrabFlashBackV2[] grabv2;
     [SerializeField] private AudioSource ringtone;
     [SerializeField] private int count;
     public bool ring;
+    public GameObject cat, chair, episode;
+
+    public enum State
+    {
+        flash, cat
+    }
+    public State state;
 
     private void Update()
     {
-        GrabFlas();
+        switch (state)
+        {
+            case State.flash:
+                GrabFlas();
+                break;
+            case State.cat:
+                GrabPaint();
+                break;
+        }
+        
+    }
+
+    public void GrabPaint()
+    {
+        int contador = 0;
+        for (int i = 0; i < grabv2.Length; i++)
+        {
+
+            if (grabv2[i].grab == true)
+            {
+                contador++;
+                if (contador == grabv2.Length)
+                {
+                    if (count < 3)
+                    {
+                        count++;
+                    }
+
+                    if (count == 1)
+                    {
+                        ringtone.Play();
+                        cat.SetActive(true);
+                        chair.SetActive(true);
+                        episode.SetActive(true);
+                    }
+                }
+            }
+        }
     }
 
     public void GrabFlas()

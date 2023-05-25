@@ -15,6 +15,9 @@ public class EventTouchCat : MonoBehaviour
     [SerializeField] private GameObject taskGame, boxPolice;
     [SerializeField] private AudioSource audioBack;
 
+    [Header("Audio")]
+    [SerializeField] private AudioSource mike;
+    [SerializeField] private AudioClip[] clip;
 
     public enum Touch
     {
@@ -126,13 +129,22 @@ public class EventTouchCat : MonoBehaviour
 
     public IEnumerator Dialogue()
     {
+        mike.clip = clip[0];
+        mike.Play();
+
         audioBack.Stop();
         task.taskCount = 2;
         dialogue.SetActive(true);
         dialogue.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: ¿Cat?";
         yield return new WaitForSeconds(2);
+        mike.clip = clip[1];
+        mike.Play();
+
+
         dialogue.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: Quizá fue a ver a Charlie";
         yield return new WaitForSeconds(2);
+
+
         dialogue.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: Bueno, subiré a verlos";
         yield return new WaitForSeconds(2);
         dialogue.SetActive(false);

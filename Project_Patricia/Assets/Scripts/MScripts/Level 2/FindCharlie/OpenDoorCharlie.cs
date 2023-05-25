@@ -22,8 +22,9 @@ public class OpenDoorCharlie : MonoBehaviour
 
     [Header("Audios")]
     [SerializeField] private GameObject steps;
-    [SerializeField] private AudioSource frontDoor ,doorClose;
+    [SerializeField] private AudioSource frontDoor ,doorClose, mike;
     [SerializeField] private AudioClip close, creak;
+    [SerializeField] private AudioClip[] clipMike;
 
 
     void Update()
@@ -54,13 +55,16 @@ public class OpenDoorCharlie : MonoBehaviour
 
     public IEnumerator TrueWalk()
     {
+        mike.clip= clipMike[0];
+        mike.Play();
+
         dialogue.SetActive(true);
-        dialogue.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: Creo que ya se durmió";
+        dialogue.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: Creo que ya se durmió...";
         yield return new WaitForSeconds(0.5f);
         walk.canWalk = true;
         crouch.crouchCan = true;
         yield return new WaitForSeconds(1.5f);
-        dialogue.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: Al parecer todo está bien...";
+        dialogue.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: Al parecer todo está bien";
         yield return new WaitForSeconds(3f);
         frontDoor.Play();        
         dialogue.SetActive(false);
@@ -76,9 +80,15 @@ public class OpenDoorCharlie : MonoBehaviour
         doorClose.volume = 0.5f;
         doorClose.Play();
         yield return new WaitForSeconds(1f);
+        mike.clip = clipMike[1];
+        mike.Play();
+
         dialogue.SetActive(true);
         dialogue.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: Ohh, Cat ya llegó de su reunión, pensé que regresaría más tarde";
         yield return new WaitForSeconds(4f);
+        mike.clip = clipMike[2];
+        mike.Play();
+
         dialogue.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: Como sea, iré a recibirla";
         yield return new WaitForSeconds(3f);
         active.SetActive(true);

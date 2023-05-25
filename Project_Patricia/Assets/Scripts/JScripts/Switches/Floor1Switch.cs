@@ -16,6 +16,9 @@ public class Floor1Switch : MonoBehaviour
     public int count;
     public bool touch;
 
+    [Header("Audio")]
+    [SerializeField] private AudioSource mike;
+    [SerializeField] private AudioClip clip;
 
     public enum States
     {
@@ -96,12 +99,14 @@ public class Floor1Switch : MonoBehaviour
                     StartCoroutine("CBad");
                 }
             }
-
         }
     }
 
     public IEnumerator CBad()
     {
+        mike.clip = clip;
+        mike.Play();
+
         dialogue.SetActive(true);
         dialogue.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: Qué raro, ¿Por qué nada está funcionando hoy?";
         yield return new WaitForSeconds(2);

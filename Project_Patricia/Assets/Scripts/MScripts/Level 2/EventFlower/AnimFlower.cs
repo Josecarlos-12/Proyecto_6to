@@ -23,6 +23,10 @@ public class AnimFlower : MonoBehaviour
     [Header("Dialogue")]
     [SerializeField] private GameObject text;
 
+    [Header("Audio")]
+    [SerializeField] private AudioSource mike;
+    [SerializeField] private AudioClip[] clip;
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
@@ -37,6 +41,9 @@ public class AnimFlower : MonoBehaviour
 
     public IEnumerator Smell()
     {
+        mike.clip = clip[0];
+        mike.Play();
+
         text.SetActive(true);
         text.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: Aahh, me recuerdan a ella";
         yield return new WaitForSeconds(2);
@@ -72,8 +79,14 @@ public class AnimFlower : MonoBehaviour
         wakingUp.WakingOn();
         yield return new WaitForSeconds(1f);        
         text.SetActive(true);
+        mike.clip = clip[1];
+        mike.Play();
+
         text.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: ¡¿Caaat?!";
         yield return new WaitForSeconds(1f);
+        mike.clip = clip[2];
+        mike.Play();
+
         text.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: Agh, no creo que me escuche";
         task.taskCount = 1;
         taskGame.SetActive(true);

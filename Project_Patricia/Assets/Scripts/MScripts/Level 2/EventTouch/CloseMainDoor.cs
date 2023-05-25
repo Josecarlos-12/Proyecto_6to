@@ -13,6 +13,10 @@ public class CloseMainDoor : MonoBehaviour
     [SerializeField] private PickableObject pickableObject;
     [SerializeField] private TrashOn trash;
 
+    [Header("Audio")]
+    [SerializeField] private AudioSource mike;
+    [SerializeField] private AudioClip clip;
+
     public enum CloseDoor
     {
         one, two
@@ -41,7 +45,7 @@ public class CloseMainDoor : MonoBehaviour
                     pickableObject.isPickable = true;
                     dialogue.GetComponent<RepeatText>().sText = "Mike Schmith: Bien, ahora siguen los platos";
                     dialogue.SetActive(true);
-                    this.gameObject.SetActive(false);
+                    StartCoroutine("One");
                 }
                 break;
                 case CloseDoor.two:
@@ -58,8 +62,23 @@ public class CloseMainDoor : MonoBehaviour
         }
     }
 
+    public IEnumerator One()
+    {
+        mike.clip = clip;
+        mike.Play();
+
+        dialogueV2.SetActive(true);
+        dialogueV2.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: tal vez ha sido un animal";
+        yield return new WaitForSeconds(2);
+        dialogueV2.SetActive(true);
+        this.gameObject.SetActive(false);
+    }
+
     public IEnumerator Dialogue()
     {
+        mike.clip = clip;
+        mike.Play();
+
         dialogueV2.SetActive(true);
         dialogueV2.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: Espero que esta vez ya no suene...";
         alarmV2.SetActive(true);

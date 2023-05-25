@@ -25,6 +25,10 @@ public class IOLevel2 : MonoBehaviour
     [Header("Dialogue")]
     [SerializeField] private GameObject textDialogue;
 
+    [Header("Audio")]
+    [SerializeField] private AudioSource mike;
+    [SerializeField] private AudioClip[] clip;
+
     void Update()
     {
         if(Input.GetKeyDown(KeyCode.E) && into)
@@ -47,6 +51,9 @@ public class IOLevel2 : MonoBehaviour
     public IEnumerator AnimFalse()
     {
         yield return new WaitForSeconds(2);
+        mike.clip = clip[0];
+        mike.Play();
+
         textDialogue.SetActive(true);
         textDialogue.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: Hmmm huele muy bien y se ve rico";
         yield return new WaitForSeconds(2.30f);
@@ -55,6 +62,9 @@ public class IOLevel2 : MonoBehaviour
         prota.SetActive(true);
         cam.SetActive(false);
         yield return new WaitForSeconds(1f);
+        mike.clip = clip[1];
+        mike.Play();
+
         textDialogue.SetActive(true);
         textDialogue.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: Bien... pondré la mesa";
         yield return new WaitForSeconds(2f);

@@ -19,11 +19,14 @@ public class OpenDoorBathroom : MonoBehaviour
     [Header("Dialogue")]
     [SerializeField] private GameObject dialogue;
 
+    [Header("Audio")]
+    [SerializeField] private AudioSource mike;
+    [SerializeField] private AudioClip[] clipMike;
+
     private void Update()
     {
         if(into && Input.GetKeyDown(KeyCode.E))
         {
-            audioDoor.clip = clip;            
             text.SetActive(false);
             thisColl.enabled= false;
             into= false;
@@ -37,9 +40,15 @@ public class OpenDoorBathroom : MonoBehaviour
         yield return new WaitForSeconds(0.4f);
         audioDoor.Play();
         yield return new WaitForSeconds(1.6f);
+        mike.clip = clipMike[0];
+        mike.Play();
+
         dialogue.SetActive(true);
         dialogue.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: Quizá no le fue muy bien es esa reunión";
         yield return new WaitForSeconds(2f);
+        mike.clip = clipMike[1];
+        mike.Play();
+
         dialogue.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: Debería ir a la cocina a prepararle algo de comer";
         yield return new WaitForSeconds(3f);
         dialogue.SetActive(false);

@@ -25,6 +25,10 @@ public class EventTouchLevel2 : MonoBehaviour
     [Header("Call Other Script")]
     [SerializeField] private ShinyLevel2 shiny;
 
+    [Header("Audio")]
+    [SerializeField] private AudioSource audioMike;
+    [SerializeField] private AudioClip clipMike;
+
     public enum Interaction
     {
         interaction, touch, vino
@@ -100,6 +104,14 @@ public class EventTouchLevel2 : MonoBehaviour
     public IEnumerator DialogueAlarm2()
     {
         yield return new WaitForSeconds(1);
+
+        if (audioMike != null)
+        {
+            audioMike.clip = clipMike;
+            audioMike.Play();
+        }
+        
+
         text.SetActive(true);
         text.GetComponent<TextMeshProUGUI>().text = mike;
         alarm2.SetActive(true);
@@ -111,11 +123,14 @@ public class EventTouchLevel2 : MonoBehaviour
     public IEnumerator Dialogue()
     {
         yield return new WaitForSeconds(1);
+        audioMike.clip = clipMike;
+        audioMike.Play();
+
         text.SetActive(true);
-        text.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: ¿Qué?";
-        yield return new WaitForSeconds(2);
-        text.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: ¿Alguien habrá entrado?";
-        yield return new WaitForSeconds(3);
+        text.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: ¿Qué? ¿Alguien habrá entrado?";
+        //yield return new WaitForSeconds(2);
+        //text.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: ";
+        yield return new WaitForSeconds(4);
         text.SetActive(false);
         this.gameObject.SetActive(false);
     }

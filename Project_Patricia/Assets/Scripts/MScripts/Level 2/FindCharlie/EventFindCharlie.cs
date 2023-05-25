@@ -14,6 +14,10 @@ public class EventFindCharlie : MonoBehaviour
     [Header("Call Other Script")]
     [SerializeField] private OpenDoorM openDoor;
 
+    [Header("Audio")]
+    [SerializeField] private AudioSource mike;
+    [SerializeField] private AudioClip clip;
+
     void Start()
     {
      this.gameObject.SetActive(false);   
@@ -31,6 +35,9 @@ public class EventFindCharlie : MonoBehaviour
 
     public IEnumerator Dialogue()
     {
+        mike.clip= clip;
+        mike.Play();
+
         openDoor.enabled= false;
         otherColl.enabled= false;
         text.SetActive(true);
