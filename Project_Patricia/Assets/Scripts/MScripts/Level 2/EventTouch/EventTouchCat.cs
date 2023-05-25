@@ -13,6 +13,7 @@ public class EventTouchCat : MonoBehaviour
     [SerializeField] private GameObject floor2God, floor2Bad;
     [SerializeField] private TasksUILevel2 task;
     [SerializeField] private GameObject taskGame, boxPolice;
+    [SerializeField] private AudioSource audioBack;
 
 
     public enum Touch
@@ -125,6 +126,7 @@ public class EventTouchCat : MonoBehaviour
 
     public IEnumerator Dialogue()
     {
+        audioBack.Stop();
         task.taskCount = 2;
         dialogue.SetActive(true);
         dialogue.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: ¿Cat?";

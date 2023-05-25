@@ -13,9 +13,12 @@ public class AnimFlower : MonoBehaviour
     [SerializeField] private GameObject switchGog, switchBad;
     [SerializeField] private GameObject[] lightDesactive;
     [SerializeField] private GameObject openDoor;
+    [SerializeField] private GameObject eyes;
+
     [Header("Task")]
     [SerializeField] private TasksUILevel2 task;
     [SerializeField] private GameObject taskGame;
+    [SerializeField] private Animator animFlower;
 
     [Header("Dialogue")]
     [SerializeField] private GameObject text;
@@ -24,6 +27,7 @@ public class AnimFlower : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
+            animFlower.enabled = false;
             cam.SetActive(true);
             prota.SetActive(false);
             col.enabled = false;
@@ -56,6 +60,7 @@ public class AnimFlower : MonoBehaviour
 
     public IEnumerator ChangeMode()
     {
+        eyes.SetActive(true);
         wakingUp.WakingOn();
         yield return new WaitForSeconds(0.5f);
         wakingUp.WakingOff();
@@ -65,13 +70,14 @@ public class AnimFlower : MonoBehaviour
         wakingUp.WakingOff();
         yield return new WaitForSeconds(0.5f);
         wakingUp.WakingOn();
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(1f);        
         text.SetActive(true);
         text.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: ¡¿Caaat?!";
         yield return new WaitForSeconds(1f);
         text.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: Agh, no creo que me escuche";
         task.taskCount = 1;
         taskGame.SetActive(true);
+        eyes.SetActive(false);
         task.countT = 0;
         task.go = true;
         task.task = "Returns home";

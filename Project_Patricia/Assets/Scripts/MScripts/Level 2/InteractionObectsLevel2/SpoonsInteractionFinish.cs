@@ -19,6 +19,7 @@ public class SpoonsInteractionFinish : MonoBehaviour
 
     [SerializeField] private ShinyLevel2 glasses, glasses2;
     [SerializeField] private GameObject flower;
+    [SerializeField] private Animator animFlower;
 
 
     [Header("Dialogue")]
@@ -123,6 +124,7 @@ public class SpoonsInteractionFinish : MonoBehaviour
         textDialogue.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: Creo haber visto crecer algunas cerca de la entrada";
         yield return new WaitForSeconds(3);
         flower.SetActive(true);
+        animFlower.enabled= true;
         textDialogue.SetActive(false);
     }
 }

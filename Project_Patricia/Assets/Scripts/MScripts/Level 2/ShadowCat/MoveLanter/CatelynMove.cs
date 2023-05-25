@@ -7,15 +7,30 @@ public class CatelynMove : MonoBehaviour
 {
     [SerializeField] private NavMeshAgent agent;
     [SerializeField] private int count;
-    [SerializeField] private GameObject cat, player, container;
-    [SerializeField] private Animator animCat;
+    public GameObject cat, player, container;
+    [SerializeField] private Animator animCat, animdoor;
     [SerializeField] private bool follow;
 
     [Header("Punch")]
     [SerializeField] private GameObject punch;
     [SerializeField] private float sizeP;
-    [SerializeField] private bool bPunch;
+    [SerializeField] private bool bPunch, touch;
     [SerializeField] private int pCount;
+
+
+    [Header("Lanter Player")]
+    [SerializeField] private Light lanter;
+    [SerializeField] private GameObject lightsAll;
+
+    [Header("Other Cat")]
+    public GameObject catV2;
+    public GameObject catChangePos;
+
+    public enum state
+    {
+        none, catFollow
+    }
+    public state enumFollow;
 
 
     private void Start()
@@ -25,15 +40,25 @@ public class CatelynMove : MonoBehaviour
 
     private void Update()
     {
-        Follow();
-        Punch();
+        switch (enumFollow)
+        {
+            case state.catFollow:
+                Follow();
+                Punch();
+                break;
+            case state.none:
+                break;
+        }
+
+        
     }
 
     public void Follow()
     {
-        if (follow && !bPunch)
+        if (follow && !bPunch && !touch)
         {
             //agent.speed = 8;
+            agent.stoppingDistance = 8;
             agent.destination = player.transform.position;
             //animCat.SetBool("Flash", false);
             animCat.SetBool("Walk", true);
@@ -54,7 +79,7 @@ public class CatelynMove : MonoBehaviour
         else
         {
             bPunch = false;
-            animCat.SetBool("Walk", true);
+            //animCat.SetBool("Walk", true);
             animCat.SetBool("Punch", false);
         }
     }
@@ -69,29 +94,39 @@ public class CatelynMove : MonoBehaviour
         punch.SetActive(false);
     }
 
-    private void OnTriggerEnter(Collider other)
+
+    private void OnTriggerStay(Collider other)
     {
         if (other.gameObject.name == "DeEyes")
         {
-           
-            count++;
-            if(count== 1)
-            {follow= false;
-                animCat.SetBool("Walk", false);
-                animCat.SetBool("Flash", true);
-                agent.speed = 0;
-                
-            }            
+            if (lanter.enabled)
+            {
+                count++;
+                if (count == 1)
+                {
+                    animdoor.SetBool("Close", true);
+                    touch = true;
+                    follow = false;
+                    animCat.SetBool("Walk", false);
+                    animCat.SetBool("Flash", true);
+                    agent.speed = 0;
+                    lanter.enabled = false;
+
+                }
+            }
+
         }
+
     }
 
     public IEnumerator Rotate()
     {
         yield return new WaitForSeconds(2);
         print("S");
-        cat.transform.rotation = container.transform.rotation;
-       // print(cat.transform.rotation);
-        follow = true;               
+        lightsAll.SetActive(true);
+        
+        //cat.transform.rotation = container.transform.rotation;
+        //follow = true;               
     }
 
     private void OnDrawGizmos()

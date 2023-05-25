@@ -10,6 +10,7 @@ public class AnimMoveCat : MonoBehaviour
     [SerializeField] private GameObject lanterGod, lanterBad, LanterPlayer;
     [SerializeField] private Lantern lanter;
     [SerializeField] private Light sun, ligthLanter;
+    [SerializeField] private GameObject cat;
 
 
 
@@ -42,6 +43,8 @@ public class AnimMoveCat : MonoBehaviour
         yield return new WaitForSeconds(3);
         ligthLanter.enabled = true;
         dialogue.SetActive(false);
+        yield return new WaitForSeconds(2);
+        cat.SetActive(true);
     }
 
     public void CursorMouse()

@@ -120,6 +120,11 @@ public class PlayerHealth : MonoBehaviour
                 childScrean.Play();
             }
         }
+
+        if (other.gameObject.name== "ReturnEnemy")
+        {
+
+        }
         
         if (other.gameObject.name == "BossCon")
         {
@@ -141,10 +146,13 @@ public class PlayerHealth : MonoBehaviour
     {
         if (other.gameObject.name == "PunchBoss")
         {
+            mikeHurt.Play();
             sanity -= 5;
             sleep.ModeDreams();
         }
     }
+
+    
 
     private void OnTriggerExit(Collider other)
     {
@@ -152,7 +160,14 @@ public class PlayerHealth : MonoBehaviour
         {           
             StartCoroutine("OffDreams");
         }
+
+        if (other.gameObject.name == "ReturnEnemy")
+        {
+
+        }
     }
+
+    
 
     public void LifeRegeneration()
     {

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using static SpawnEmilio;
 
@@ -113,8 +114,11 @@ public class Floor1Switch : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            text.SetActive(true);
-            into = true;
+            if(this.gameObject.GetComponent<Floor1Switch>().enabled==true)
+            {
+                text.SetActive(true);
+                into = true;
+            }            
         }
     }
 
