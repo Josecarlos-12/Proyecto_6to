@@ -29,6 +29,7 @@ public class AnimFlower : MonoBehaviour
 
     [Header("Door Close")]
     [SerializeField] private AudioSource audioDoor;
+    [SerializeField] private AudioSource back;
     [SerializeField] private AudioClip audioClip;
 
     private void OnTriggerEnter(Collider other)
@@ -57,6 +58,7 @@ public class AnimFlower : MonoBehaviour
     public void Dream()
     {
         audioDoor.clip = audioClip;
+        audioDoor.Play();
 
         animDoor.SetBool("Close", true);
         animDoorV2.SetBool("Close", true);
@@ -87,6 +89,7 @@ public class AnimFlower : MonoBehaviour
         text.SetActive(true);
         mike.clip = clip[1];
         mike.Play();
+        back.Play();
 
         text.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: ¡¿Caaat?!";
         yield return new WaitForSeconds(1f);
@@ -100,7 +103,7 @@ public class AnimFlower : MonoBehaviour
         task.countT = 0;
         task.go = true;
         task.task = "Returns home";
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(3f);        
         text.SetActive(false);
     }
 

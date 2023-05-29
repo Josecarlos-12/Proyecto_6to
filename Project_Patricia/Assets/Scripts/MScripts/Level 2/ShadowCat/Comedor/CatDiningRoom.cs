@@ -9,6 +9,8 @@ public class CatDiningRoom : MonoBehaviour
     [SerializeField] private float size, size2;
     [SerializeField] private int count, count2;
     [SerializeField] private Animator animCat;
+    [SerializeField] private AudioSource scare;
+
 
     void Start()
     {
@@ -17,7 +19,22 @@ public class CatDiningRoom : MonoBehaviour
 
     void Update()
     {
-        Distance();
+        //Distance();
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.name=="DeEyes")
+        {
+            StartCoroutine("Cat");
+        }
+    }
+
+    public IEnumerator Cat()
+    {
+        scare.Play();
+        yield return new WaitForSeconds(1);
+        this.gameObject.SetActive(false);
     }
 
     public void Distance()

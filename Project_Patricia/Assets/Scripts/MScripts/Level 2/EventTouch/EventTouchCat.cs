@@ -18,6 +18,8 @@ public class EventTouchCat : MonoBehaviour
     [Header("Audio")]
     [SerializeField] private AudioSource mike;
     [SerializeField] private AudioClip[] clip;
+    [SerializeField] private AudioSource scare;
+
 
     public enum Touch
     {
@@ -36,6 +38,7 @@ public class EventTouchCat : MonoBehaviour
                     StartCoroutine("Dialogue");
                     break;
                 case Touch.cat:
+                    scare.Play();
                     col.enabled = false;
                     StartCoroutine("DialogueCat");
                     break;

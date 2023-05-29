@@ -17,7 +17,7 @@ public class EventWPV2 : MonoBehaviour
     [Header("Call Other Script")]
     [SerializeField] private SleepMode sleep;
 
-    [SerializeField] private AudioSource audioMike, audi;
+    [SerializeField] private AudioSource audioMike, audi, back;
     [SerializeField] private AudioClip[] clip;
 
     private void Start()
@@ -108,6 +108,8 @@ public class EventWPV2 : MonoBehaviour
 
     public IEnumerator Box()
     {
+        back.Play();
+
         box.GetComponent<Collider>().enabled = false;
         boxOne.GetComponent<Collider>().enabled = false;
         chart.SetActive(false);

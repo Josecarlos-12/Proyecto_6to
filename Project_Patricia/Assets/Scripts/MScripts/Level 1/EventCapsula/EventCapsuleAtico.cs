@@ -8,6 +8,10 @@ public class EventCapsuleAtico : MonoBehaviour
     [SerializeField] private GameObject text;
     [SerializeField] private Collider col;
     [SerializeField] private GameObject capsule, step, key, mike;
+    [SerializeField] private AudioSource scare;
+
+    [SerializeField] private TasksUILevel2 task;
+    [SerializeField] private GameObject taskUI;
 
     public enum Event
     {
@@ -23,6 +27,7 @@ public class EventCapsuleAtico : MonoBehaviour
             switch (eve)
             {
                 case Event.one:
+                    scare.Play();
                     StartCoroutine("Dialogue");
                     break;
                 case Event.two:
@@ -55,7 +60,12 @@ public class EventCapsuleAtico : MonoBehaviour
         text.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: Tranquilo hijo, voy a sacarte de aquí ";
         yield return new WaitForSeconds(3);
         text.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: Iré a buscar las llaves del ático, regreso enseguida ";
+        //Aqui tarea        
+
         yield return new WaitForSeconds(4);
+
+        taskUI.SetActive(true);
+        task.go = true;
         step.SetActive(true);
         text.SetActive(false);
         Destroy(gameObject);
@@ -75,6 +85,7 @@ public class EventCapsuleAtico : MonoBehaviour
 
     public IEnumerator Pad()
     {
+        task.taskCount = 2;
         text.SetActive(true);
         text.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: ¿Y las llaves?";
         yield return new WaitForSeconds(2);
