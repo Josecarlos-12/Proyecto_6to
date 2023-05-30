@@ -15,7 +15,7 @@ public class Weapon : MonoBehaviour
     [SerializeField] private Transform initialBullet;
     [SerializeField] private Text bulletText, handleText;
     [SerializeField] private GameObject bulletContainer;
-    [SerializeField] private Animator animBullet;
+    [SerializeField] private Animator animBullet, animRifle;
 
     [Header("Reload")]
     public int handle = 2;
@@ -142,7 +142,9 @@ public class Weapon : MonoBehaviour
         if (canShoot && save && pause.shoot && notes.shoot && inte.shoot)
         {          
             if (Input.GetMouseButtonDown(0) && Time.time > initialShoot && clicks > 0 && !obj.inHand && inventary.rifle)
-            {                
+            {
+                animRifle.SetBool("Shoot", true);
+                StartCoroutine("ShootFalse");
                 shootSound.Play();
                 animBullet.SetBool("Exit", false);
                 Instantiate(bullet, initialBullet.transform.position, initialBullet.transform.rotation);
@@ -158,4 +160,10 @@ public class Weapon : MonoBehaviour
         }
 
     }    
+
+    public IEnumerator ShootFalse()
+    {
+        yield return new WaitForSeconds(0.15f);
+        animRifle.SetBool("Shoot", false);
+    }
 }
