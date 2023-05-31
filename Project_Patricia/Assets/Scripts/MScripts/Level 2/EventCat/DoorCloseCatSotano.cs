@@ -4,15 +4,75 @@ using UnityEngine;
 
 public class DoorCloseCatSotano : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private GameObject textE;
+    [SerializeField] private bool into;
+    [SerializeField] private AudioSource audioDoor;
+    [SerializeField] private Collider col;
+    [SerializeField] private Animator animChart;
+
+    [Header("Chart")]
+    [SerializeField] private GameObject chart;
+    [SerializeField] private GameObject camChart, prota;
+    
+    public enum Change
     {
-        
+        door, chart
+    }
+    public Change change;
+
+    private void Update()
+    {
+        if(into && Input.GetKeyDown(KeyCode.E))
+        {
+            switch (change)
+            {
+                case Change.door:
+                    Desactive();
+                    StartCoroutine("ChartShiny");
+                    print("Puerta Cerrada");
+                    break; 
+                case Change.chart:
+                    Desactive();
+                    chart.SetActive(false);
+                    prota.SetActive(false);
+                    camChart.SetActive(true);
+                    Cursor.visible = true;
+                    Cursor.lockState = CursorLockMode.None;
+                    print("Cuadro");
+                    break;
+            }
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Desactive()
     {
-        
+        col.enabled = false;
+        into = false;
+        textE.SetActive(false);
+    }
+
+    public IEnumerator ChartShiny()
+    {
+        yield return new WaitForSeconds(0.5f);
+        animChart.SetBool("On", true);
+        chart.SetActive(true);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            into= true;
+            textE.SetActive(true);
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            into = false;
+            textE.SetActive(false);
+        }
     }
 }

@@ -4,12 +4,11 @@ using UnityEngine;
 
 public class Rotate : MonoBehaviour
 {
-    private float sensitivity;
-    private Vector3 mouseReference;
-    private Vector3 mouseOffset;
-    private Vector3 rotation;
-    private bool isRotating;
-    public Camera cam;
+    public float sensitivity;
+    public Vector3 mouseReference;
+    public Vector3 mouseOffset;
+    public Vector3 rotation;
+    public bool isRotating;
 
     void Start()
     {
@@ -38,6 +37,7 @@ public class Rotate : MonoBehaviour
     {
         isRotating = true;
         mouseReference = Input.mousePosition;
+        print("TOco");
     }
 
     void OnMouseUp()

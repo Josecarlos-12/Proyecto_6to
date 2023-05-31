@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 2160.0078, g: 2263.7617, b: 3286.5664, a: 1}
+  m_IndirectSpecularColor: {r: 2160, g: 2263.7617, b: 3286.5469, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -139,7 +139,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!95 &21808626
 Animator:
   serializedVersion: 5
@@ -824,6 +824,8 @@ MonoBehaviour:
   anim: {fileID: 337023942}
   count: 0
   touch: 0
+  mike: {fileID: 0}
+  clip: {fileID: 0}
   state: 0
 --- !u!95 &337023942
 Animator:
@@ -1020,7 +1022,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &582581436
 Transform:
   m_ObjectHideFlags: 0
@@ -1835,6 +1837,8 @@ MonoBehaviour:
   anim: {fileID: 1521060896}
   count: 0
   touch: 0
+  mike: {fileID: 0}
+  clip: {fileID: 0}
   state: 0
 --- !u!95 &1521060896
 Animator:
@@ -1938,6 +1942,7 @@ MonoBehaviour:
   anim: {fileID: 1814266261}
   open: 0
   close: 0
+  touch: 0
 --- !u!65 &1572012823
 BoxCollider:
   m_ObjectHideFlags: 0
