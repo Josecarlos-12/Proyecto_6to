@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.XR;
 
 public class SteepsCats : MonoBehaviour
 {
@@ -18,6 +19,10 @@ public class SteepsCats : MonoBehaviour
     [Header("Cam Follow Steeps")]
     [SerializeField] private GameObject prota;
     [SerializeField] private GameObject camSee, camProta;
+
+    [Header("Dream")]
+    [SerializeField] private GameObject eyes;
+    [SerializeField] private WakingUpMode wakingUp;
 
     void Start()
     {
@@ -46,8 +51,26 @@ public class SteepsCats : MonoBehaviour
                 float rotY=camSee.transform.rotation.eulerAngles.y;
                 prota.transform.rotation = Quaternion.Euler(0, rotY, 0);
                 this.gameObject.GetComponent<AudioSource>().Stop();
-                this.gameObject.SetActive(false);
+                
+                StartCoroutine("SteepsFinish");
             }
         }
+    }
+
+    public IEnumerator SteepsFinish()
+    {
+        eyes.SetActive(true);
+        wakingUp.WakingOn();
+        yield return new WaitForSeconds(0.5f);
+        wakingUp.WakingOff();
+        yield return new WaitForSeconds(0.5f);
+        wakingUp.WakingOn();
+        yield return new WaitForSeconds(0.5f);
+        wakingUp.WakingOff();
+        yield return new WaitForSeconds(0.5f);
+        wakingUp.WakingOn();
+        yield return new WaitForSeconds(1);
+        eyes.SetActive(false);
+        this.gameObject.SetActive(false);
     }
 }

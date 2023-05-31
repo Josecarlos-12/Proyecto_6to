@@ -8,12 +8,11 @@ public class AnimFlower : MonoBehaviour
     [SerializeField] private Animator animCam;
     [SerializeField] private GameObject cam, prota;
     [SerializeField] private Collider col;
-    [SerializeField] private Animator animDoor, animDoorV2;
-    [SerializeField] private WakingUpMode wakingUp;
+    [SerializeField] private Animator animDoor, animDoorV2;    
     [SerializeField] private GameObject switchGog, switchBad;
     [SerializeField] private GameObject[] lightDesactive;
     [SerializeField] private GameObject openDoor;
-    [SerializeField] private GameObject eyes;
+    
 
     [Header("Task")]
     [SerializeField] private TasksUILevel2 task;
@@ -74,17 +73,7 @@ public class AnimFlower : MonoBehaviour
     }
 
     public IEnumerator ChangeMode()
-    {
-        eyes.SetActive(true);
-        wakingUp.WakingOn();
-        yield return new WaitForSeconds(0.5f);
-        wakingUp.WakingOff();
-        yield return new WaitForSeconds(0.5f);
-        wakingUp.WakingOn();
-        yield return new WaitForSeconds(0.5f);
-        wakingUp.WakingOff();
-        yield return new WaitForSeconds(0.5f);
-        wakingUp.WakingOn();
+    {        
         yield return new WaitForSeconds(1f);        
         text.SetActive(true);
         mike.clip = clip[1];
@@ -99,7 +88,6 @@ public class AnimFlower : MonoBehaviour
         text.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: Agh, no creo que me escuche";
         task.taskCount = 1;
         taskGame.SetActive(true);
-        eyes.SetActive(false);
         task.countT = 0;
         task.go = true;
         task.task = "Returns home";

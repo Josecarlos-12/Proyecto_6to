@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class Inventary : MonoBehaviour
 {
-    public bool rifle, bPills, bKEy, bKeyComfi;
+    public bool rifle, bPills, bKEy, bKeyComfi, spriteRifle;
     public GameObject sRifle, sKey, sPill;
     public Image image;
     public int pills, pillsTakes;
@@ -60,14 +60,14 @@ public class Inventary : MonoBehaviour
         {
             if (rRifle != null)
             {
-                if (rRifle.canRifle)
+                if (rRifle.canRifle || spriteRifle)
                 {
                     count.text = string.Empty;
                     rifleCount.SetActive(true);
                     sRifle.SetActive(true);
                     Debug.Log("Rifle");
                 }
-                else if (!rRifle.canRifle)
+                else if (!rRifle.canRifle || !spriteRifle)
                 {
                     count.text = string.Empty;
                     rifleCount.SetActive(false);
@@ -76,7 +76,21 @@ public class Inventary : MonoBehaviour
                     bKeyComfi = false;
                 }
             }
-           
+            if (spriteRifle)
+            {
+                count.text = string.Empty;
+                rifleCount.SetActive(true);
+                sRifle.SetActive(true);
+                Debug.Log("Rifle");
+            }
+            else if (!spriteRifle)
+            {
+                count.text = string.Empty;
+                rifleCount.SetActive(false);
+                sRifle.SetActive(false);
+                bPills = false;
+                bKeyComfi = false;
+            }
         }
 
         

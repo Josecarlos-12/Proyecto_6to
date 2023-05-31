@@ -22,7 +22,7 @@ public class Rotate : MonoBehaviour
         {
             mouseOffset = (Input.mousePosition - mouseReference);
             rotation.y = -(mouseOffset.x) * sensitivity;
-            rotation.x = (mouseOffset.y) * sensitivity;
+            rotation.z = (-mouseOffset.y) * sensitivity;
             Debug.Log(transform.parent.eulerAngles);
             transform.parent.eulerAngles += rotation;
             mouseReference = Input.mousePosition;
@@ -36,8 +36,7 @@ public class Rotate : MonoBehaviour
     void OnMouseDown()
     {
         isRotating = true;
-        mouseReference = Input.mousePosition;
-        print("TOco");
+        mouseReference = Input.mousePosition;        
     }
 
     void OnMouseUp()

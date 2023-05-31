@@ -8,8 +8,7 @@ public class CatDoorSotano : MonoBehaviour
     [SerializeField] private bool into;
     [SerializeField] private int count;
     [SerializeField] private GameObject steeps;
-    [SerializeField] private GameObject catEnemy;
-
+    [SerializeField] private GameObject catEnemy;   
 
     [Header("Character")]
     [SerializeField] private PlayerFPSt move;

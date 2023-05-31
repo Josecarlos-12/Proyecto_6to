@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DoorCloseCatSotano : MonoBehaviour
 {
-    [SerializeField] private GameObject textE;
+    [SerializeField] private GameObject textE, spotLight;
     [SerializeField] private bool into;
     [SerializeField] private AudioSource audioDoor;
     [SerializeField] private Collider col;
@@ -28,6 +28,7 @@ public class DoorCloseCatSotano : MonoBehaviour
             {
                 case Change.door:
                     Desactive();
+                    spotLight.SetActive(false);
                     StartCoroutine("ChartShiny");
                     print("Puerta Cerrada");
                     break; 
