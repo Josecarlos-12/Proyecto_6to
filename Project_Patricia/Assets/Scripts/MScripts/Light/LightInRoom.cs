@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class LightInRoom : MonoBehaviour
 {
-    public GameObject[] up, down, on;
+    public GameObject[] up, down, on, lightFinish;
     public Floor1Switch[] switchFloor;
     public int upR, dowmR;
     [SerializeField] CatelynMove cat;
@@ -18,7 +18,6 @@ public class LightInRoom : MonoBehaviour
     public Enemy catEnemy;
 
     [Header("Final")]
-    
     [SerializeField] private GameObject first, second;
 
     IEnumerator Start()
@@ -118,22 +117,20 @@ public class LightInRoom : MonoBehaviour
 
         if(time>maxTime)
         {
-            StopCoroutine("NextLight");
+            //StopCoroutine("NextLight");            
 
-            for (int i = 0; i < up.Length; i++)
+            /*for (int i = 0; i < up.Length; i++)
             {
-                up[i].SetActive(true);
+                up[i].SetActive(false);
             }
 
             for (int i = 0; i < down.Length; i++)
             {
                 down[i].SetActive(false);
             }
-            catEnemy.state = Enemy.State.follow;
+            catEnemy.state = Enemy.State.follow;*/
             first.gameObject.SetActive(true);
-            second.gameObject.SetActive(true);
-            
-
+            //second.gameObject.SetActive(true);
 
             this.gameObject.SetActive(false);
         }

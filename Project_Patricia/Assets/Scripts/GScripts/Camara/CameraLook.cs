@@ -7,7 +7,7 @@ public class CameraLook : MonoBehaviour
     public bool moveCamera = false;
     public float mouseSensitivity = 80f;
     public Transform playerBody;
-    float xRotation = 0;
+    public float xRotation = 0;
 
     public Sensibility sen;
 
