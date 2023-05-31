@@ -254,7 +254,7 @@ public class PlayerFPSt : MonoBehaviour
 
         if(energy>=2)
         {
-            
+            i = 0;
             bEnergy = true;
         }
         if (energy <= 1)
