@@ -46,7 +46,7 @@ public class OpenDoorBathroom : MonoBehaviour
 
         dialogue.SetActive(true);
         dialogue.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: Quizá no le fue muy bien es esa reunión";
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(4f);
         mike.clip = clipMike[1];
         mike.Play();
 

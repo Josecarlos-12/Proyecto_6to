@@ -10,6 +10,8 @@ public class FusesCount : MonoBehaviour
     [SerializeField] private Fuses[] fuses;
     [SerializeField] private int one, two, three, four, five, six;
     [SerializeField] private int oneC, twoC, threeC, fourC, fiveC, sixC;
+    [SerializeField] private AudioSource mike;
+    [SerializeField] private AudioClip clip;
 
     private void Update()
     {
@@ -88,6 +90,9 @@ public class FusesCount : MonoBehaviour
 
     public IEnumerator Dialogue()
     {
+        mike.clip = clip;
+        mike.Play();
+
         dialogue.SetActive(true);
         dialogue.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: Parece que nada de esto va a funcionar";
         yield return new WaitForSeconds(3);

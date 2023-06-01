@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class OpenDoorShed : MonoBehaviour
 {
-    [SerializeField] private Animator animDoor;
-    [SerializeField] private GameObject mike, textE;
+    [SerializeField] private Animator animDoor, animKey;
+    [SerializeField] private GameObject textE;
     [SerializeField] private Collider col;
     [SerializeField] private bool into;
 
@@ -17,7 +17,8 @@ public class OpenDoorShed : MonoBehaviour
             into = false;
             textE.SetActive(false);
             animDoor.SetBool("On", true);
-            mike.SetActive(true);
+            animKey.SetBool("On", true);
+            this.gameObject.SetActive(false);
         }
     }
 

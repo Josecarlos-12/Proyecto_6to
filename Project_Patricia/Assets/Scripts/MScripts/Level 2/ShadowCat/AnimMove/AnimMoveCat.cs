@@ -12,10 +12,15 @@ public class AnimMoveCat : MonoBehaviour
     [SerializeField] private Light sun, ligthLanter;
     [SerializeField] private GameObject cat;
 
+    [SerializeField] private AudioSource mike;
+    [SerializeField] private AudioClip[] clip;
 
 
     public IEnumerator DialogueInit()
     {
+        mike.clip = clip[0];
+        mike.Play();
+
         dialogue.SetActive(true);
         dialogue.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: ¿Qué fue eso?";
         yield return new WaitForSeconds(2);
@@ -38,6 +43,9 @@ public class AnimMoveCat : MonoBehaviour
         cam.SetActive(false);
         thisAnim.enabled = false;
         yield return new WaitForSeconds(1);
+        mike.clip = clip[1];
+        mike.Play();
+
         dialogue.SetActive(true);
         dialogue.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: Tengo que encontrar a Cat, quizá esté en peligro";
         yield return new WaitForSeconds(3);

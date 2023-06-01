@@ -9,6 +9,9 @@ public class EventPolice : MonoBehaviour
     [SerializeField] private bool into;
     [SerializeField] private Collider col;
 
+    [SerializeField] private AudioSource audioMike;
+    [SerializeField] private AudioClip clip;
+
     [Header("Call Other Script"),SerializeField] private TasksUILevel2 task;
 
     private void Start()
@@ -30,6 +33,8 @@ public class EventPolice : MonoBehaviour
 
     public IEnumerator Dialogue()
     {
+        audioMike.clip= clip;
+        audioMike.Play();
         dialogue.SetActive(true);
         dialogue.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: Carajo";
         yield return new WaitForSeconds(1);

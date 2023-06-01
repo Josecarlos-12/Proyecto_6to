@@ -85,7 +85,7 @@ public class OpenDoorCharlie : MonoBehaviour
 
         dialogue.SetActive(true);
         dialogue.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: Ohh, Cat ya llegó de su reunión, pensé que regresaría más tarde";
-        yield return new WaitForSeconds(4f);
+        yield return new WaitForSeconds(6f);
         mike.clip = clipMike[2];
         mike.Play();
 

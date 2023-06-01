@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class ShedMike : MonoBehaviour
 {
-    [SerializeField] private GameObject dialogue;
+    [SerializeField] private GameObject dialogue, mike;
     [SerializeField] private AudioSource audioScare;
     [SerializeField] private Collider col;
 
@@ -23,7 +23,13 @@ public class ShedMike : MonoBehaviour
         audioScare.Play();
         dialogue.SetActive(true);
         dialogue.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: ¿Qué? ¿Tú otra vez?";
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(0.3f);
+        mike.SetActive(false);
+        yield return new WaitForSeconds(0.5f);
+        mike.SetActive(true);
+        yield return new WaitForSeconds(0.6f);
+        mike.SetActive(false);
+        yield return new WaitForSeconds(1.5f);
         dialogue.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: ¡No tengo tiempo para esto!";
         yield return new WaitForSeconds(3);
         dialogue.SetActive(false);

@@ -48,6 +48,9 @@ public class EventTouchCat : MonoBehaviour
 
     public IEnumerator DialogueCat()
     {
+        mike.clip = clip[0];
+        mike.Play();
+
         dialogue.SetActive(true);
         dialogue.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: ¿Cat?";
         yield return new WaitForSeconds(2);
@@ -117,8 +120,15 @@ public class EventTouchCat : MonoBehaviour
         floor2Bad.SetActive(true);
 
         dialogue.SetActive(true);
+
+        mike.clip = clip[1];
+        mike.Play();
+
         dialogue.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: ¡¿Quién está en la casa?!";
         yield return new WaitForSeconds(2);
+
+        mike.clip = clip[2];
+        mike.Play();
         dialogue.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: ¡Vete ahora mismo o llamaré a la policía!";
         task.countT = 0;
         task.taskCount = 1;

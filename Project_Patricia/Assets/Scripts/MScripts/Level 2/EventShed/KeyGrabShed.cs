@@ -1,0 +1,46 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class KeyGrabShed : MonoBehaviour
+{
+    [SerializeField] private GameObject textE, mike;
+    [SerializeField] private bool into;
+    [SerializeField] private Collider col;
+    public int key;
+
+    [Header("Call Other Script")]
+    [SerializeField] private Inventary invetory;
+
+    private void Update()
+    {
+        if(into && Input.GetKeyDown(KeyCode.E))
+        {
+            col.enabled= false;
+            into = false;
+            textE.SetActive(false);
+            key = 0;
+            invetory.bKEy = true;
+            mike.SetActive(true);
+            this.gameObject.SetActive(false);
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            into= true;
+            textE.SetActive(true);
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            into= false;
+            textE.SetActive(false);
+        }
+    }
+}
