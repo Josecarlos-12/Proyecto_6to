@@ -70,6 +70,8 @@ public class TouchCatPaint : MonoBehaviour
         yield return new WaitForSeconds(1f);
         text.SetActive(true);
         yield return new WaitForSeconds(2f);
+        Cursor.visible= true;
+        Cursor.lockState= CursorLockMode.None;
         SceneManager.LoadScene("MainMenu");
     }
 }

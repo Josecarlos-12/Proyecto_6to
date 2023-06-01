@@ -14,7 +14,7 @@ public class ChartCatBasement : MonoBehaviour
     {
         yield return new WaitForSeconds(1f);
         dialogue.SetActive(true);
-        dialogue.GetComponent<TextMeshProUGUI>().text= "Mike Schmith: Cierto, la llave la guardé ahí";
+        dialogue.GetComponent<TextMeshProUGUI>().text= "Mike Schmith: Cierto, la llave la guardé ahí, en el cobertizo";
         yield return new WaitForSeconds(2f);
         dialogue.SetActive(false);
         init= true;

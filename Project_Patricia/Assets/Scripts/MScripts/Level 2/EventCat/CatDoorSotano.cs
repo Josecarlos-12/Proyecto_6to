@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class CatDoorSotano : MonoBehaviour
 {
-    [SerializeField] private bool into;
+    public bool into;
     [SerializeField] private int count;
     [SerializeField] private GameObject steeps;
     [SerializeField] private GameObject catEnemy;   
@@ -21,6 +21,7 @@ public class CatDoorSotano : MonoBehaviour
 
     [Header("Call Other Script")]
     [SerializeField] private LightInRoom room;
+    [SerializeField] private CameraLook camLook;
 
 
     private void Update()
@@ -40,6 +41,7 @@ public class CatDoorSotano : MonoBehaviour
                 camSee.transform.position = camProta.transform.position;
                 catEnemy.SetActive(false);
                 StartCoroutine("Light");
+                camLook.moveCamera= false;
             }
             camSee.transform.LookAt(steeps.transform.position);
         }

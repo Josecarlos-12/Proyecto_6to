@@ -19,6 +19,7 @@ public class LightInRoom : MonoBehaviour
 
     [Header("Final")]
     [SerializeField] private GameObject first, second;
+    [SerializeField] private int count;
 
     IEnumerator Start()
     {
@@ -129,10 +130,20 @@ public class LightInRoom : MonoBehaviour
                 down[i].SetActive(false);
             }
             catEnemy.state = Enemy.State.follow;*/
-            first.gameObject.SetActive(true);
-            //second.gameObject.SetActive(true);
+           
+            if(count<3)
+            count++;
 
-            this.gameObject.SetActive(false);
+            if (count == 1)
+            {
+                first.gameObject.SetActive(true);
+                //second.gameObject.SetActive(true);
+
+                this.gameObject.SetActive(false);
+
+            }
+
+           
         }
     }
 

@@ -24,6 +24,9 @@ public class SteepsCats : MonoBehaviour
     [SerializeField] private GameObject eyes;
     [SerializeField] private WakingUpMode wakingUp;
 
+    [SerializeField] private CameraLook camLook;
+    [SerializeField] private CatDoorSotano cat;
+
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -35,11 +38,13 @@ public class SteepsCats : MonoBehaviour
 
         if(Vector3.Distance(transform.position, posFinish.position) < 3)
         {
-            if(count<1)
+            
+            if (count<3)
             count++;
 
             if (count == 1)
             {
+                cat.into = true;
                 colliderMove.SetActive(false);
                 chart.SetActive(true);
                 wallFalse.SetActive(false);
@@ -51,7 +56,7 @@ public class SteepsCats : MonoBehaviour
                 float rotY=camSee.transform.rotation.eulerAngles.y;
                 prota.transform.rotation = Quaternion.Euler(0, rotY, 0);
                 this.gameObject.GetComponent<AudioSource>().Stop();
-                
+                camLook.moveCamera = true;
                 StartCoroutine("SteepsFinish");
             }
         }
@@ -71,6 +76,6 @@ public class SteepsCats : MonoBehaviour
         wakingUp.WakingOn();
         yield return new WaitForSeconds(1);
         eyes.SetActive(false);
-        this.gameObject.SetActive(false);
+        //this.gameObject.SetActive(false);
     }
 }
