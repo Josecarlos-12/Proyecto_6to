@@ -14,7 +14,6 @@ public class DoorOpenKey : MonoBehaviour
     {
         if(numberKey.numberKey == 1 && into && Input.GetKeyDown(KeyCode.E))
         {
-            
             anim.SetBool("Open", true);
             into = false;
             numberKey.numberKey = 0;

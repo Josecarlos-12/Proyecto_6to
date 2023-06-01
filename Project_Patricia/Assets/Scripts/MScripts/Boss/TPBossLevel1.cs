@@ -287,7 +287,7 @@ public class TPBossLevel1 : MonoBehaviour
         {
             anim.SetBool("Run", false);
             anim.SetBool("Punch", false);
-            life -= 8;
+            life -= 13;
             StopCoroutine("PunchCorutine");            
             agent.speed = 0;
             agent.acceleration = 0;
@@ -303,7 +303,7 @@ public class TPBossLevel1 : MonoBehaviour
         }
         else
         {
-            life -= 8;
+            life -= 13;
         } 
     }
 

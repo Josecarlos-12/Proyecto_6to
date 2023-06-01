@@ -6,7 +6,8 @@ public class Feet : MonoBehaviour
 {
     [SerializeField] private CharacterController character;
 
-    private void OnTriggerEnter(Collider other)
+
+    private void OnTriggerStay(Collider other)
     {
         if (other.gameObject.CompareTag("Ladder"))
         {

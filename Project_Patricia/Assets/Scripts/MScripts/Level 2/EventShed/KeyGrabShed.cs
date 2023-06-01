@@ -8,9 +8,10 @@ public class KeyGrabShed : MonoBehaviour
     [SerializeField] private bool into;
     [SerializeField] private Collider col;
     public int key;
+    public bool onLight;
 
     [Header("Call Other Script")]
-    [SerializeField] private Inventary invetory;
+    [SerializeField] private Inventary inventory;
 
     private void Update()
     {
@@ -19,9 +20,10 @@ public class KeyGrabShed : MonoBehaviour
             col.enabled= false;
             into = false;
             textE.SetActive(false);
-            key = 0;
-            invetory.bKEy = true;
+            key = 1;
+            inventory.bKEy = true;
             mike.SetActive(true);
+            onLight= true;
             this.gameObject.SetActive(false);
         }
     }
