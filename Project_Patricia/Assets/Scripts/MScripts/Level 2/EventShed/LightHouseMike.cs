@@ -7,6 +7,7 @@ public class LightHouseMike : MonoBehaviour
     [SerializeField] private KeyGrabShed key;
     [SerializeField] private int count;
     [SerializeField] private Animator[] lightHouse;
+    [SerializeField] private Collider[] col;
 
     [Header("Lights House")]
     [SerializeField] private Animator[] lightOne;
@@ -34,6 +35,21 @@ public class LightHouseMike : MonoBehaviour
                 StartCoroutine("CorutineStart");
             }
         }
+
+        if(Input.GetKeyDown(KeyCode.H))
+        {
+            for (int i = 0; i < col.Length; i++)
+            {
+                Collider objectsLights = col[i];
+
+                if(objectsLights.enabled)
+                {
+                    print("Prendido: "+objectsLights.transform.parent.parent.name);
+                    break;
+                }
+            }
+        }
+        
     }
 
     public IEnumerator CorutineStart()
