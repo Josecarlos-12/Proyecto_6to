@@ -31,6 +31,7 @@ public class LightHouseMike : MonoBehaviour
                 {
                     lightHouse[i].SetBool("Off", true);
                 }
+                StartCoroutine("CorutineStart");
             }
         }
     }
@@ -86,7 +87,39 @@ public class LightHouseMike : MonoBehaviour
         LightSixOn();
         yield return new WaitForSeconds(8);
         LightSixOff();
-
+        yield return new WaitForSeconds(2);
+        LightFiveOn();
+        yield return new WaitForSeconds(8);
+        LightFiveOff();
+        yield return new WaitForSeconds(2);
+        LightThreeOn();
+        yield return new WaitForSeconds(8);
+        LightThreeOff();
+        yield return new WaitForSeconds(2);
+        LightFiveOn();
+        yield return new WaitForSeconds(8);
+        LightFiveOff();
+        yield return new WaitForSeconds(2);
+        LightFourOn();
+        yield return new WaitForSeconds(8);
+        LightFourOff();
+        yield return new WaitForSeconds(2);
+        LightThreeOn();
+        yield return new WaitForSeconds(8);
+        LightThreeOff();
+        yield return new WaitForSeconds(2);
+        LightFourOn();
+        yield return new WaitForSeconds(8);
+        LightFourOff();
+        yield return new WaitForSeconds(2);
+        LightThreeOn();
+        yield return new WaitForSeconds(8);
+        LightThreeOff();
+        yield return new WaitForSeconds(2);
+        LightTwoOn();
+        yield return new WaitForSeconds(8);
+        LightTwoOff();
+        yield return CorutineStart();
     }
 
     #region LightOne
