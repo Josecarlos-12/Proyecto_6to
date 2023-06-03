@@ -27,9 +27,12 @@ public class MikeBossLevel2 : MonoBehaviour
     [SerializeField] private GameObject text;
 
     [Header("TP")]
-    [SerializeField] GameObject[] points, pointsSeventy, pointsFourty, pointsTen;
     [SerializeField] int despoint;
+    [SerializeField] GameObject[] points, pointsSeventy, pointsFourty, pointsTen;    
     [SerializeField] int tp, punch, damage, countOne;
+
+    [Header("Light House")]
+    [SerializeField] private GameObject[] pointsLightHouse;
 
     [Header("Punch")]
     [SerializeField] Transform playerBack;
@@ -73,7 +76,8 @@ public class MikeBossLevel2 : MonoBehaviour
 
                 if (punch == 1)
                 {
-                    Punch();
+                    //Punch();
+                    StartCoroutine("Recovery");
                 }
             }
         }
@@ -216,6 +220,25 @@ public class MikeBossLevel2 : MonoBehaviour
         }
     }
 
+    public IEnumerator Recovery()
+    {
+        int ran = Random.Range(0, pointsLightHouse.Length - 1);
+        transform.position = pointsLightHouse[ran].transform.position;
+        print(pointsLightHouse[ran].transform.parent);
+        bPunch = true;
+        yield return new WaitForSeconds(20);
+        life += 4;
+        bPunch = false;
+        anim.SetBool("Run", false);
+        anim.SetBool("Punch", false);
+        tp = 0;
+        countOne = 0;
+        punch = 0;
+        agent.speed = 0;
+        agent.acceleration = 0;
+        print("Se Curo");
+    }
+
     public void Punch()
     {
         attack.Play();
@@ -288,6 +311,7 @@ public class MikeBossLevel2 : MonoBehaviour
             anim.SetBool("Punch", false);
             life -= 13;
             StopCoroutine("PunchCorutine");
+            StopCoroutine("Recovery");
             agent.speed = 0;
             agent.acceleration = 0;
 
