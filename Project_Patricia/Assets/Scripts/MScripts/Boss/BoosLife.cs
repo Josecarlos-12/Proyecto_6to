@@ -21,23 +21,28 @@ public class BoosLife : MonoBehaviour
 
     private void Update()
     {
-        if(level2.offLight && into)
+        switch (levels)
         {
-            if(count<3)
-            count++;
-
-            if(count == 1)
-            {
-                if (gameLight.GetComponent<Light>().enabled)
+            case Levels.two:
+                if (level2.offLight && into)
                 {
-                    gameLight.transform.parent.GetComponent<Animator>().SetBool("Off", true);
-                }
-            }            
-        }   
+                    if (count < 3)
+                        count++;
 
-        if(!level2.offLight)
-        {
-            count = 0;
+                    if (count == 1)
+                    {
+                        if (gameLight.GetComponent<Light>().enabled)
+                        {
+                            gameLight.transform.parent.GetComponent<Animator>().SetBool("Off", true);
+                        }
+                    }
+                }
+
+                if (!level2.offLight)
+                {
+                    count = 0;
+                }
+                break;
         }
     }
 

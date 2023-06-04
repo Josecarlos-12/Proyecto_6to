@@ -11,8 +11,14 @@ public class SpawnEnemyRot : MonoBehaviour
     [SerializeField] List<GameObject> tags;
     [SerializeField] int count;
 
+    [Header("Call Other Script")]
+    [SerializeField] private Inventary rifle;
+
+
     private void Start()
     {
+        rifle.spriteRifle= true;
+
         for (int i = 0; i < points.Length; i++)
         {
             GameObject ene = Instantiate(enemy, points[i].transform.position, points[i].transform.rotation);

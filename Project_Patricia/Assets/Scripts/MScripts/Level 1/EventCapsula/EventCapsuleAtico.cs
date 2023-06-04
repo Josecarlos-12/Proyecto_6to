@@ -12,6 +12,7 @@ public class EventCapsuleAtico : MonoBehaviour
 
     [SerializeField] private TasksUILevel2 task;
     [SerializeField] private GameObject taskUI;
+    [SerializeField] private Animator animKeyBox;
 
     [Header("Audio")]
     [SerializeField] private AudioSource mikeAudio;
@@ -80,6 +81,8 @@ public class EventCapsuleAtico : MonoBehaviour
         text.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: Iré a buscar las llaves del ático, regreso enseguida ";
         //Aqui tarea        
 
+        animKeyBox.SetBool("On", true);
+
         yield return new WaitForSeconds(4);
 
         taskUI.SetActive(true);
@@ -106,6 +109,8 @@ public class EventCapsuleAtico : MonoBehaviour
 
     public IEnumerator Pad()
     {
+        animKeyBox.SetBool("On", false);
+
         mikeAudio.clip = clip[0];
         mikeAudio.Play();
 

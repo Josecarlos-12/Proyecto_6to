@@ -65,7 +65,6 @@ public class Inventary : MonoBehaviour
                     count.text = string.Empty;
                     rifleCount.SetActive(true);
                     sRifle.SetActive(true);
-                    Debug.Log("Rifle");
                 }
                 else if (!rRifle.canRifle || !spriteRifle)
                 {
@@ -81,7 +80,6 @@ public class Inventary : MonoBehaviour
                 count.text = string.Empty;
                 rifleCount.SetActive(true);
                 sRifle.SetActive(true);
-                Debug.Log("Rifle");
             }
             else if (!spriteRifle)
             {
