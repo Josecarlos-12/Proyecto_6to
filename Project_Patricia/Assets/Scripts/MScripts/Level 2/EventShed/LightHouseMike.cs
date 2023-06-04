@@ -7,7 +7,7 @@ public class LightHouseMike : MonoBehaviour
     [SerializeField] private KeyGrabShed key;
     [SerializeField] private int count;
     [SerializeField] private Animator[] lightHouse;
-    [SerializeField] private Collider[] col;
+    public Collider[] col;
 
     [Header("Lights House")]
     [SerializeField] private Animator[] lightOne;
@@ -38,15 +38,21 @@ public class LightHouseMike : MonoBehaviour
 
         if(Input.GetKeyDown(KeyCode.H))
         {
+            List<Collider> disabledColliders = new List<Collider>();
+
             for (int i = 0; i < col.Length; i++)
             {
-                Collider objectsLights = col[i];
-
-                if(objectsLights.enabled)
+                if (!col[i].enabled)
                 {
-                    print("Prendido: "+objectsLights.transform.parent.parent.name);
-                    break;
+                    disabledColliders.Add(col[i]);
                 }
+            }
+
+            if (disabledColliders.Count > 0)
+            {
+                int randomIndex = Random.Range(0, disabledColliders.Count);
+                Collider randomCollider = disabledColliders[randomIndex];
+                print(randomIndex);
             }
         }
         

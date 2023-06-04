@@ -8,11 +8,38 @@ public class BoosLife : MonoBehaviour
     [SerializeField] private TPBossLevel1 bossLevel1;
     [SerializeField] private MikeBossLevel2 level2;
 
+    [Header("Level 2")]
+    [SerializeField] private bool into;
+    [SerializeField] private int count;
+    [SerializeField] private GameObject gameLight;
+
     public enum Levels
     {
         one, two
     }
     public Levels levels;
+
+    private void Update()
+    {
+        if(level2.offLight && into)
+        {
+            if(count<3)
+            count++;
+
+            if(count == 1)
+            {
+                if (gameLight.GetComponent<Light>().enabled)
+                {
+                    gameLight.transform.parent.GetComponent<Animator>().SetBool("Off", true);
+                }
+            }            
+        }   
+
+        if(!level2.offLight)
+        {
+            count = 0;
+        }
+    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -28,8 +55,20 @@ public class BoosLife : MonoBehaviour
                     print("Toco");
                     level2.TouchTriBoss();
                     break;
-            }
-            
+            }            
         }
+
+        switch (levels)
+        {
+            case Levels.two:
+                if (other.gameObject.name == "Spot Light")
+                {
+                    print("Spot");
+                    gameLight = other.gameObject;
+                    into = true;
+                }
+                break;
+        }
+        
     }
 }

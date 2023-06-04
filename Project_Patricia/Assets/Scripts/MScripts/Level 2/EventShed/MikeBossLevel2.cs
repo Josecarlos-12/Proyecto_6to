@@ -33,6 +33,8 @@ public class MikeBossLevel2 : MonoBehaviour
 
     [Header("Light House")]
     [SerializeField] private GameObject[] pointsLightHouse;
+    [SerializeField] private LightHouseMike lHouse;
+    public bool offLight;
 
     [Header("Punch")]
     [SerializeField] Transform playerBack;
@@ -77,7 +79,8 @@ public class MikeBossLevel2 : MonoBehaviour
                 if (punch == 1)
                 {
                     //Punch();
-                    StartCoroutine("Recovery");
+                    //StartCoroutine("Recovery");
+                    Light_Punch();
                 }
             }
         }
@@ -117,7 +120,8 @@ public class MikeBossLevel2 : MonoBehaviour
 
                 if (punch == 1)
                 {
-                    Punch();
+                    //Punch();
+                    Light_Punch_Life();
                 }
             }
         }
@@ -156,7 +160,8 @@ public class MikeBossLevel2 : MonoBehaviour
 
                 if (punch == 1)
                 {
-                    Punch();
+                    //Punch();
+                    Light_Punch_Life();
                 }
             }
         }
@@ -194,7 +199,8 @@ public class MikeBossLevel2 : MonoBehaviour
 
                 if (punch == 1)
                 {
-                    Punch();
+                    //Punch();
+                    Light_Punch_Life();
                 }
             }
         }
@@ -218,6 +224,84 @@ public class MikeBossLevel2 : MonoBehaviour
                 prota.transform.rotation = pos.transform.rotation;
             }
         }
+    }
+
+    public void Light_Punch()
+    {
+        int range = Random.Range(0, 1);
+
+        if (range == 0)
+        {
+            print("Golpe");
+            Punch();
+            range = 2;
+        }
+        if (range == 1)
+        {
+            print("Apago luz");
+            StartCoroutine("LightOff");
+            range = 2;
+        }
+    }
+
+    public void Light_Punch_Life()
+    {
+        int range = Random.Range(0, 2);
+
+        if (range == 0)
+        {
+            print("Golpe");
+            Punch();
+            range = 3;
+        }
+        if (range == 1)
+        {
+            print("Apago luz");
+            StartCoroutine("LightOff");
+            range = 3;
+        }
+        if (range == 2)
+        {
+            print("Recupero vida");
+            StartCoroutine("Recovery");
+            range = 3;
+        }
+    }
+
+    public IEnumerator LightOff()
+    {
+
+        bPunch = true;
+        List<Collider> disabledColliders = new List<Collider>();
+
+        for (int i = 0; i < lHouse.col.Length; i++)
+        {
+            if (lHouse.col[i].enabled)
+            {
+                disabledColliders.Add(lHouse.col[i]);
+            }
+        }
+
+        if (disabledColliders.Count > 0)
+        {
+            int randomIndex = Random.Range(0, disabledColliders.Count);
+            Collider randomCollider = disabledColliders[randomIndex];
+            print(randomCollider.transform.position);
+            transform.position = new Vector3(randomCollider.transform.position.x + 5, randomCollider.transform.position.y, randomCollider.transform.position.z);
+        }
+        yield return new WaitForSeconds(1);
+        offLight= true;
+        yield return new WaitForSeconds(4);
+        offLight = false;
+        bPunch = false;
+        anim.SetBool("Run", false);
+        anim.SetBool("Punch", false);
+        tp = 0;
+        countOne = 0;
+        punch = 0;
+        agent.speed = 0;
+        agent.acceleration = 0;
+
     }
 
     public IEnumerator Recovery()
@@ -312,6 +396,7 @@ public class MikeBossLevel2 : MonoBehaviour
             life -= 13;
             StopCoroutine("PunchCorutine");
             StopCoroutine("Recovery");
+            StopCoroutine("LightOff");
             agent.speed = 0;
             agent.acceleration = 0;
 
