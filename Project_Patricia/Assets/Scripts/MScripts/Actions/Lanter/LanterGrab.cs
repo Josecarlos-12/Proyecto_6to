@@ -11,7 +11,11 @@ public class LanterGrab : MonoBehaviour
     [SerializeField] private GameObject dialogueText, tutoLanter;
     [SerializeField] AnimTrue animLanter;
     [SerializeField] Animator anim;
- 
+
+    [Header("Audio")]
+    [SerializeField] private AudioSource mike;
+    [SerializeField] private AudioClip clip;
+
     private void Update()
     {
         LanterInput();
@@ -34,6 +38,9 @@ public class LanterGrab : MonoBehaviour
 
     public IEnumerator Dialogue()
     {
+        mike.clip = clip;
+        mike.Play();
+
         dialogueText.SetActive(true);
         dialogueText.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: ¡Charlie! Regresa! ¡Es peligroso que estes fuera!";
         yield return new WaitForSeconds(2);

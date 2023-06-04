@@ -25,6 +25,7 @@ public class EventChild : MonoBehaviour
     [SerializeField] private AudioSource audioMike;
     [SerializeField] private AudioClip[] clip;
 
+
     public enum EnumAction
     {
         one, two,three, four, five,rifle
@@ -116,7 +117,6 @@ public class EventChild : MonoBehaviour
     public IEnumerator DialogueSound()
     {
         charlie.SetActive(false);
-
         audioMike.clip = clip[0];
         audioMike.Play();
 
@@ -141,6 +141,9 @@ public class EventChild : MonoBehaviour
 
     public IEnumerator RifleEvent()
     {
+        audioMike.clip= clip[0];
+        audioMike.Play();
+
         dialogue.SetActive(true);
         dialogue.GetComponent<TextMeshProUGUI>().text = textTwo[0];
         yield return new WaitForSeconds(timeTwo[0]);
@@ -150,6 +153,9 @@ public class EventChild : MonoBehaviour
         charlie.transform.position = point.transform.position;
         charlie.transform.rotation= point.transform.rotation;
         yield return new WaitForSeconds(timeTwo[2]);
+        audioMike.clip = clip[1];
+        audioMike.Play();
+
         dialogue.SetActive(true);
         dialogue.GetComponent<TextMeshProUGUI>().text = textTwo[1];
         yield return new WaitForSeconds(timeTwo[3]);

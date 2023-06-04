@@ -31,6 +31,11 @@ public class EventKeyShadow : MonoBehaviour
     [SerializeField] private Animator animCine;
     [SerializeField] private int countAnim;
 
+    [Header("Dialogue")]
+    [SerializeField] private AudioSource mike;
+    [SerializeField] private AudioSource charlie;
+    [SerializeField] private AudioClip[] clip;
+
 
     private void Start()
     {
@@ -68,6 +73,9 @@ public class EventKeyShadow : MonoBehaviour
 
     public IEnumerator DialogueRifle()
     {
+        mike.clip = clip[0];
+        mike.Play();
+
         text.SetActive(true);
         text.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: ¡Hablo en serio!";
         yield return new WaitForSeconds(2);
@@ -76,14 +84,20 @@ public class EventKeyShadow : MonoBehaviour
         cam.SetActive(true);
         player.SetActive(false);
         yield return new WaitForSeconds(1f);
+        charlie.clip = clip[1];
+        charlie.Play();
+
         text.SetActive(true);
-        text.GetComponent<TextMeshProUGUI>().text = "Charlie Schmith: ¡Papaaaaaaaaaaaa!";
+        text.GetComponent<TextMeshProUGUI>().text = "Charlie Schmith: ¡Papá!, ayudaaa";
         yield return new WaitForSeconds(5);
         text.SetActive(false);
     }
 
     public IEnumerator Destroy()
     {
+        mike.clip = clip[2];
+        mike.Play();
+
         text.SetActive(true);
         text.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: Déjame ver a mi hijo!";
         yield return new WaitForSeconds(2);
@@ -99,6 +113,9 @@ public class EventKeyShadow : MonoBehaviour
 
     public IEnumerator Dialogue()
     {
+        mike.clip = clip[3];
+        mike.Play();
+
         text.SetActive(true);
         text.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: ¡¿Qué quieres?! ¡¿Qué haces aquí?!";
         yield return new WaitForSeconds(3);

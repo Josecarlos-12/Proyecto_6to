@@ -10,8 +10,17 @@ public class AnimKeyEvent : MonoBehaviour
     [SerializeField] private GameObject cam, prota, shadow, boss;
     [SerializeField] private ActiveBoss active;
 
+    [Header("Dialogue")]
+    [SerializeField] private AudioSource mike;
+    [SerializeField] private AudioClip[] clip;
+
+
+
     public IEnumerator DialogueOne()
     {
+        mike.clip = clip[0];
+        mike.Play();
+
         text.SetActive(true);
         text.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: ¡Contestaaa!";
         yield return new WaitForSeconds(2);
@@ -25,6 +34,9 @@ public class AnimKeyEvent : MonoBehaviour
             sound[i].Play();
         }
         yield return new WaitForSeconds(3);
+        mike.clip = clip[1];
+        mike.Play();
+
         text.SetActive(true);
         text.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: Te lo advertí";
         yield return new WaitForSeconds(2);

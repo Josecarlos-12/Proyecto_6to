@@ -11,8 +11,11 @@ public class AnimShadowCharlie : MonoBehaviour
     [SerializeField] private GameObject cam, prota, pointCamera;
     [SerializeField] private CharlieGoThree go;
     [SerializeField] private SleepMode sleep;
-
     [SerializeField] private Animator animCharlie;
+
+    [Header("Dialogue")]
+    [SerializeField] private AudioSource audioMike;
+    [SerializeField] private AudioClip[] clipMike;
 
     public void WalkCharlie()
     {
@@ -21,10 +24,14 @@ public class AnimShadowCharlie : MonoBehaviour
 
     public IEnumerator Dialogue()
     {
+        audioMike.clip = clipMike[0];
+        audioMike.Play();
+
         text.SetActive(true);
         text.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: Hey, tranquilo... ya no llores";
-        yield return new WaitForSeconds(2);
-        text.GetComponent<TextMeshProUGUI>().text = "Mike Schmith:  Aquí está papá";
+        yield return new WaitForSeconds(4);
+
+        text.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: Aquí está papá";
         yield return new WaitForSeconds(2);
         text.SetActive(false);
     }
