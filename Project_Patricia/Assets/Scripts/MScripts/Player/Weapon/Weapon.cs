@@ -31,6 +31,7 @@ public class Weapon : MonoBehaviour
 
     [Header("Sound")]
     [SerializeField] AudioSource shootSound;
+    [SerializeField] ParticleSystem smoke;
 
     private void Start()
     {
@@ -143,6 +144,7 @@ public class Weapon : MonoBehaviour
         {          
             if (Input.GetMouseButtonDown(0) && Time.time > initialShoot && clicks > 0 && !obj.inHand && inventary.rifle)
             {
+                //smoke.Play();
                 animRifle.SetBool("Shoot", true);
                 StartCoroutine("ShootFalse");
                 shootSound.Play();
