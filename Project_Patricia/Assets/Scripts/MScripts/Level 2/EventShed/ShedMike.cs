@@ -9,6 +9,11 @@ public class ShedMike : MonoBehaviour
     [SerializeField] private AudioSource audioScare;
     [SerializeField] private Collider col;
 
+    [Header("Batlle")]
+    [SerializeField] private GameObject shadowMike;
+    [SerializeField] private GameObject stopBattle, stopBattle2;
+    [SerializeField] private AudioSource audioBattle;
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.name == "DeEyes")
@@ -31,6 +36,12 @@ public class ShedMike : MonoBehaviour
         mike.SetActive(false);
         yield return new WaitForSeconds(1.5f);
         dialogue.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: ¡No tengo tiempo para esto!";
+
+        shadowMike.SetActive(true);
+        stopBattle.SetActive(true);
+        stopBattle2.SetActive(true);
+        audioBattle.Play();
+        audioBattle.loop = true;
         yield return new WaitForSeconds(3);
         dialogue.SetActive(false);
     }

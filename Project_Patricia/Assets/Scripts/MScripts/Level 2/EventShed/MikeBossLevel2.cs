@@ -43,6 +43,7 @@ public class MikeBossLevel2 : MonoBehaviour
 
     [Header("CountLife")]
     [SerializeField] int one, two, three;
+    [SerializeField] private int stateMikeRandom;
 
     [SerializeField] private AudioSource attack;
 
@@ -218,58 +219,58 @@ public class MikeBossLevel2 : MonoBehaviour
                 agent.speed = 0;
                 myAlpha = 1;
                 animCam.SetBool("Final", true);
-                //prota.SetActive(false);
-                //cam.SetActive(true);
-                prota.transform.position = pos.transform.position;
-                prota.transform.rotation = pos.transform.rotation;
+                prota.SetActive(false);
+                cam.SetActive(true);
+                //prota.transform.position = pos.transform.position;
+                //prota.transform.rotation = pos.transform.rotation;
             }
         }
     }
 
     public void Light_Punch()
     {
-        int range = Random.Range(0, 1);
+        stateMikeRandom = Random.Range(1, 3);
 
-        if (range == 0)
+        if (stateMikeRandom == 1)
         {
             print("Golpe");
             Punch();
-            range = 2;
         }
-        if (range == 1)
+        if (stateMikeRandom == 2)
         {
+            agent.enabled = false;
             print("Apago luz");
             StartCoroutine("LightOff");
-            range = 2;
         }
     }
 
     public void Light_Punch_Life()
     {
-        int range = Random.Range(0, 2);
+         stateMikeRandom = Random.Range(1, 4);
 
-        if (range == 0)
+        if (stateMikeRandom == 1)
         {
             print("Golpe");
             Punch();
-            range = 3;
         }
-        if (range == 1)
+        if (stateMikeRandom == 2)
         {
             print("Apago luz");
             StartCoroutine("LightOff");
-            range = 3;
         }
-        if (range == 2)
+        if (stateMikeRandom == 3)
         {
             print("Recupero vida");
             StartCoroutine("Recovery");
-            range = 3;
         }
     }
 
     public IEnumerator LightOff()
     {
+        agent.speed = 0;
+        agent.acceleration = 0;
+        anim.SetBool("Run", false);
+        anim.SetBool("Punch", false);
 
         bPunch = true;
         List<Collider> disabledColliders = new List<Collider>();
@@ -292,6 +293,8 @@ public class MikeBossLevel2 : MonoBehaviour
         yield return new WaitForSeconds(1);
         offLight= true;
         yield return new WaitForSeconds(4);
+        stateMikeRandom = 0;
+
         offLight = false;
         bPunch = false;
         anim.SetBool("Run", false);
@@ -310,7 +313,9 @@ public class MikeBossLevel2 : MonoBehaviour
         transform.position = pointsLightHouse[ran].transform.position;
         print(pointsLightHouse[ran].transform.parent);
         bPunch = true;
-        yield return new WaitForSeconds(20);
+        yield return new WaitForSeconds(4);
+        stateMikeRandom = 0;
+
         life += 4;
         bPunch = false;
         anim.SetBool("Run", false);
@@ -339,6 +344,7 @@ public class MikeBossLevel2 : MonoBehaviour
         posProta = player.transform.position;
         transform.LookAt(posProta);
         yield return new WaitForSeconds(1);
+        agent.enabled = true;
         anim.SetBool("Run", true);
         agent.speed = 30;
         agent.acceleration = 300;
@@ -346,6 +352,9 @@ public class MikeBossLevel2 : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         anim.SetBool("Punch", true);
         yield return new WaitForSeconds(1);
+        stateMikeRandom = 0;
+        agent.enabled = false;
+
         bPunch = false;
         anim.SetBool("Run", false);
         anim.SetBool("Punch", false);
@@ -452,8 +461,8 @@ public class MikeBossLevel2 : MonoBehaviour
     public IEnumerator ActiveProta()
     {
 
-        //prota.SetActive(true);
-        //cam.SetActive(false);
+        prota.SetActive(true);
+        cam.SetActive(false);
         //boxInta.transform.position = transform.position;
         //boxInta.SetActive(true);
 
@@ -464,7 +473,7 @@ public class MikeBossLevel2 : MonoBehaviour
         //audioMike.clip = clip[0];
         //audioMike.Play();        
         yield return new WaitForSeconds(1);
-        text.SetActive(false);
+        //text.SetActive(false);
         Destroy(gameObject);
     }
 
