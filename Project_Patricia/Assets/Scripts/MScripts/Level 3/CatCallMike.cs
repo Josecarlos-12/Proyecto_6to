@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class CatCallMike : MonoBehaviour
 {
@@ -11,7 +12,16 @@ public class CatCallMike : MonoBehaviour
 
     [Header("Hectic")]
     [SerializeField] private AudioSource hectic;
-    [SerializeField] private GameObject prota, point, eyes;
+    [SerializeField] private GameObject prota, point, eyes, shadowMike;
+    [SerializeField] private Animator animEyes, animShadowMike;
+    [SerializeField] private NavMeshAgent agent;
+    [SerializeField] private Transform pointChimney;
+
+    [Header("Call Other Script")]
+    [SerializeField] private PlayerFPSt move;
+    [SerializeField] private PlayerCrouch crouch;
+    [SerializeField] private Weapon weapon;
+    [SerializeField] private CameraLook look;
     public enum Touch
     {
         charlie, mikeCatRoom, PentHouse
@@ -96,13 +106,28 @@ public class CatCallMike : MonoBehaviour
         prota.transform.rotation = point.transform.rotation;
         dialogue.GetComponent<TextMeshProUGUI>().text = "Catelyn: ¡Miiiiiike! \n Charlie: ¡Papaaaaaaa! ";
         hectic.Play();
+        shadowMike.SetActive(true);
         yield return new WaitForSeconds(2);
+        animEyes.SetBool("Open", true);
+        move.canWalk = false;
+        crouch.crouchCan = false;
+        weapon.shoot = false;
+        weapon.shootTwo= false;
+        look.xRotation = 0;
         // Abre los Ojos
         yield return new WaitForSeconds(2);
         dialogue.GetComponent<TextMeshProUGUI>().text = "¿Escuchas sus voces?";
         yield return new WaitForSeconds(2);
         dialogue.GetComponent<TextMeshProUGUI>().text = "Igual yo...";
         yield return new WaitForSeconds(2);
+        eyes.SetActive(false);
         dialogue.GetComponent<TextMeshProUGUI>().text = "Todo el tiempo...";
+        yield return new WaitForSeconds(2);
+        animShadowMike.SetBool("Standing", true);
+        dialogue.SetActive(false);
+        yield return new WaitForSeconds(2.8f);
+        animShadowMike.SetBool("Walk", true);
+        agent.destination = pointChimney.position;
+        yield return new WaitForSeconds(0.6f);
     }
 }
