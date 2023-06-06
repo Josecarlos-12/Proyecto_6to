@@ -18,18 +18,41 @@ public class SanityLevel : MonoBehaviour
 
     [SerializeField] private GameObject gameOver, prota, cam;
 
-    void Start()
+    [Header("Less Life")]
+    [SerializeField] private bool into;
+    [SerializeField] private int count;
+    [SerializeField] private float time, maxTime;
+    [SerializeField] private Light lightLanter;
+    [SerializeField] private int countSound;
+    [SerializeField] private AudioSource allDark, hectic;
+
+    [Header("Less Audio")]
+    [SerializeField] private float timeAudio;
+    [SerializeField] private float timeAudioMax;
+    [SerializeField] private bool lessLife;
+
+    public enum LightLife
     {
-        
+        None, less
     }
+    public LightLife lightLife;
 
     void Update()
     {
+        switch (lightLife)
+        {
+            case LightLife.less:
+                ReduceLife();
+                LessAudio();
+                break;
+        }
+
         PanelDmg();
 
-      
 
-        if(bGood && health.sanity > 60)
+
+
+        if (bGood && health.sanity > 60)
         {
 
             BloomChange(-4f);
@@ -45,26 +68,26 @@ public class SanityLevel : MonoBehaviour
         }
         if (bGood && health.sanity > 40)
         {
-            if(run<3)
-            run++;
+            if (run < 3)
+                run++;
 
             if (run == 1)
             {
-                
+
             }
 
             sleep.run.canRun = true;
         }
 
-            if (bGood && health.sanity > 10)
+        if (bGood && health.sanity > 10)
         {
             if (crouch < 3)
                 crouch++;
 
-            
-            if(crouch == 1) 
+
+            if (crouch == 1)
             {
-               
+
             }
 
             sleep.crouch.crouchCan = true;
@@ -77,7 +100,7 @@ public class SanityLevel : MonoBehaviour
 
     public void PanelDmg()
     {
-        if(health.sanity > 61)
+        if (health.sanity > 61)
         {
             Good();
         }
@@ -96,7 +119,7 @@ public class SanityLevel : MonoBehaviour
         }
         if (health.sanity <= 10)
         {
-            SanityTen();            
+            SanityTen();
         }
         if (health.sanity <= 0)
         {
@@ -109,7 +132,7 @@ public class SanityLevel : MonoBehaviour
             gameOver.SetActive(true);
             cam.SetActive(true);
             cam.transform.position = prota.transform.position;
-            prota.SetActive(false);                      
+            prota.SetActive(false);
             //Destroy(health.player);
         }
     }
@@ -118,8 +141,8 @@ public class SanityLevel : MonoBehaviour
     {
         if (bGood)
         {
-            if(good<3)
-            good++;
+            if (good < 3)
+                good++;
 
             if (good == 1)
             {
@@ -135,9 +158,9 @@ public class SanityLevel : MonoBehaviour
                 crouch = 0;
             }
 
-           
+
         }
-      
+
     }
 
     public void SanitySixty()
@@ -158,9 +181,9 @@ public class SanityLevel : MonoBehaviour
     }
 
     public void SanityForty()
-    {        
-        if(forty<3)
-        forty++;
+    {
+        if (forty < 3)
+            forty++;
 
         BloomChange(0.9f);
 
@@ -174,8 +197,8 @@ public class SanityLevel : MonoBehaviour
 
     public void SanityTwenty()
     {
-        if(twenty< 3)
-        twenty++;
+        if (twenty < 3)
+            twenty++;
 
         //Modo Sueño
 
@@ -183,7 +206,7 @@ public class SanityLevel : MonoBehaviour
         {
             print("Esta en 20 de cordura");
             print("Modo Sueño + bloom");
-            
+
         }
     }
 
@@ -208,5 +231,123 @@ public class SanityLevel : MonoBehaviour
         float curreentIn = health.bloom.intensity.value;
         float newInten = Mathf.Lerp(curreentIn, Inten, changeSpeed * Time.deltaTime);
         health.bloom.intensity.value = newInten;
+    }
+
+    public void ReduceLife()
+    {
+        if (!into && !lightLanter.enabled)
+        {
+            lessLife = false;
+            time += Time.deltaTime;
+
+            if (time >= maxTime)
+            {
+                time = 0;
+                health.sanity -= 4;
+                health.DamageNormal();
+            }
+
+
+            if (countSound < 3)
+                countSound++;
+
+
+            if (countSound == 1)
+            {
+                hectic.volume = 1;
+                allDark.volume = 0.5f;
+                hectic.Play();
+                allDark.Play();
+            }
+
+        }
+        else
+        {
+            countSound = 0;
+        }
+
+        if (lightLanter.enabled)
+        {
+            time = 0;
+
+            if (count < 3)
+                count++;
+
+            if (count == 1)
+            {
+                lessLife = true;                
+                health.StartCoroutine("OffDreams");
+            }
+        }
+        else
+        {
+            count = 0;
+        }
+    }
+
+
+    public void LessAudio()
+    {
+        if (lessLife)
+        {
+            if (hectic.volume > 0.01)
+            {
+                timeAudio += Time.deltaTime;
+
+                if (timeAudio >= timeAudioMax)
+                {
+                    timeAudio = 0;
+                    allDark.volume -= 0.09f;
+                    hectic.volume -= 0.09f;
+                }
+
+                if (hectic.volume <= 0.01f)
+                {
+                    hectic.Stop();
+                    allDark.Stop();
+                }
+            }
+        }        
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        switch (lightLife)
+        {
+            case LightLife.less:
+                if (other.gameObject.CompareTag("LightLife"))
+                {
+                    into = true;
+                    health.punch = false;
+
+                    if (count < 3)
+                        count++;
+
+                    if (count == 1)
+                    {
+                        countSound = 0;
+                        lessLife = true;
+                        health.StartCoroutine("OffDreams");
+                    }
+                }
+                break;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        switch (lightLife)
+        {
+            case LightLife.less:
+                if (other.gameObject.CompareTag("LightLife"))
+                {
+                    lessLife = false;
+                    count = 0;
+                    time = 0;
+                    into = false;
+                    health.punch = true;
+                }
+                break;
+        }
     }
 }

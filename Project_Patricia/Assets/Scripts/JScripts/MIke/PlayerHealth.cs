@@ -51,7 +51,7 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] private GameObject panelGameOver;
 
     [Header("Life Regeneration")]
-    [SerializeField] private bool punch;
+    public bool punch;
     [SerializeField] private float time, maxtime;
 
     void Start()
@@ -148,10 +148,15 @@ public class PlayerHealth : MonoBehaviour
         {
             mikeHurt.Play();
             sanity -= 5;
-            sleep.ModeDreams();
+            DamageNormal();
         }
     }
 
+    public void DamageNormal()
+    {
+        
+        sleep.ModeDreams();
+    }
     
 
     private void OnTriggerExit(Collider other)

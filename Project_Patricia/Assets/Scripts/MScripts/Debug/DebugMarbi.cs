@@ -29,6 +29,11 @@ public class DebugMarbi : MonoBehaviour
             SceneManager.LoadScene("Nivel 2");
             Time.timeScale = 1;
         }
+        if (Input.GetKeyDown(KeyCode.F4))
+        {
+            SceneManager.LoadScene("Nivel 3");
+            Time.timeScale = 1;
+        }
     }
 
     public void Menu()

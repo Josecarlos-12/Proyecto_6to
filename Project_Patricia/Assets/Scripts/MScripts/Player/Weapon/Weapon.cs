@@ -36,7 +36,7 @@ public class Weapon : MonoBehaviour
     private void Start()
     {
         obj=GetComponent<PlayerInteraction>();
-        weapon.SetActive(false);
+        //weapon.SetActive(false);
         aim.SetActive(false);
     }
 

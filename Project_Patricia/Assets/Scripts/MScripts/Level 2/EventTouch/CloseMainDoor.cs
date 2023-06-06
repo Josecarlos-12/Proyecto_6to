@@ -70,7 +70,7 @@ public class CloseMainDoor : MonoBehaviour
         dialogueV2.SetActive(true);
         dialogueV2.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: tal vez ha sido un animal";
         yield return new WaitForSeconds(2);
-        dialogueV2.SetActive(true);
+        dialogueV2.SetActive(false);
         this.gameObject.SetActive(false);
     }
 

@@ -309,9 +309,30 @@ public class MikeBossLevel2 : MonoBehaviour
 
     public IEnumerator Recovery()
     {
-        int ran = Random.Range(0, pointsLightHouse.Length - 1);
-        transform.position = pointsLightHouse[ran].transform.position;
-        print(pointsLightHouse[ran].transform.parent);
+        //int ran = Random.Range(0, pointsLightHouse.Length - 1);
+        //transform.position = pointsLightHouse[ran].transform.position;
+        //print(pointsLightHouse[ran].transform.parent);
+        List<Collider> disabledColliders = new List<Collider>();
+
+        for (int i = 0; i < lHouse.col.Length; i++)
+        {
+            if (!lHouse.col[i].enabled)
+            {
+                disabledColliders.Add(lHouse.col[i]);
+            }
+        }
+
+        if (disabledColliders.Count > 0)
+        {
+            int randomIndex = Random.Range(0, disabledColliders.Count);
+            Collider randomCollider = disabledColliders[randomIndex];
+            print(randomCollider.transform.position);
+            transform.position = new Vector3(randomCollider.transform.position.x + 5, randomCollider.transform.position.y, randomCollider.transform.position.z);
+        }
+
+
+
+
         bPunch = true;
         yield return new WaitForSeconds(4);
         stateMikeRandom = 0;
