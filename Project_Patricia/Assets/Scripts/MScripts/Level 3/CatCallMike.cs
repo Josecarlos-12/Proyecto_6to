@@ -58,6 +58,8 @@ public class CatCallMike : MonoBehaviour
     public IEnumerator Dialogue()
     {
         dialogue.SetActive(true);
+        dialogue.GetComponent<TextMeshProUGUI>().text = "Charlie Schmith: ¡Papaaaaaa! ¡Tengo miedooo!";
+        yield return new WaitForSeconds(3);
         dialogue.GetComponent<TextMeshProUGUI>().text = "Catelyn Schmith: ¡Miiiiiike!";
         yield return new WaitForSeconds(2);
         dialogue.GetComponent<TextMeshProUGUI>().text = "Catelyn Schmith: ¡Te necesitooooo!";
