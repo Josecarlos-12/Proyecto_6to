@@ -8,7 +8,7 @@ public class TurnShadowMike : MonoBehaviour
 {
     [SerializeField] private NavMeshAgent agent;
     [SerializeField] private Animator anim;
-    [SerializeField] private GameObject dialogue,pointChimney;
+    [SerializeField] private GameObject dialogue, pointChimney, battleMike;
     [SerializeField] private int count;
 
     [Header("Call Other Script")]
@@ -57,6 +57,8 @@ public class TurnShadowMike : MonoBehaviour
 
         yield return new WaitForSeconds(2);
         dialogue.SetActive(false);
+        battleMike.SetActive(true);
+        Destroy(gameObject.transform.parent.parent.gameObject);
         print("En ese momento se la saca y comienza la batalla final");
     }
 }
