@@ -15,7 +15,12 @@ public class BossLevell3 : MonoBehaviour
     [SerializeField] private Transform player;
     [SerializeField] private Vector3 posPivot; 
     [SerializeField] private float posY;
-    [SerializeField] private GameObject container, rifle; 
+    [SerializeField] private GameObject container, rifle;
+
+    [Header("Shoot")]
+    [SerializeField] private float time;
+    [SerializeField] private float maxTime;
+
     
     private void Update()
     {
@@ -29,7 +34,8 @@ public class BossLevell3 : MonoBehaviour
 
         if (Vector3.Distance(transform.position, player.position) < size)
         {
-            animMike.SetBool("Walk", true);
+            Shoot();
+            //animMike.SetBool("Walk", true);
             agent.destination = player.position;
             StopCoroutine("FalseWalk");
         }
@@ -41,7 +47,25 @@ public class BossLevell3 : MonoBehaviour
         if (Vector3.Distance(transform.position, player.position) < size && Vector3.Distance(transform.position, player.position) > 7)
         {
             transform.LookAt(player.position);
+            animMike.SetTrigger("Shoot");
         }
+    }
+
+    public void Shoot()
+    {
+        time += Time.deltaTime;
+
+        if(time > maxTime)
+        {
+            time = 0;
+            animMike.SetBool("Shoot", true);
+            print("Disparo");
+        }
+    }
+
+    public void ShootFalse()
+    {
+        animMike.SetBool("Shoot", false);
     }
 
     public IEnumerator FalseWalk()
