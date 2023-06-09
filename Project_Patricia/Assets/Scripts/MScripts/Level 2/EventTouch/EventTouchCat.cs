@@ -53,10 +53,7 @@ public class EventTouchCat : MonoBehaviour
 
         dialogue.SetActive(true);
         dialogue.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: ¿Cat?";
-        yield return new WaitForSeconds(0.8f);
-        shadowCat.SetActive(false);
-
-        yield return new WaitForSeconds(1.2f);
+        yield return new WaitForSeconds(2);
         dialogue.SetActive(false);
 
         yield return new WaitForSeconds(0.4f);        
@@ -72,7 +69,6 @@ public class EventTouchCat : MonoBehaviour
         }
 
         yield return new WaitForSeconds(0.2f);
-        
         for (int i = 0; i < lightActive.Length; i++)
         {
             lightActive[i].SetActive(false);
@@ -119,7 +115,7 @@ public class EventTouchCat : MonoBehaviour
             allLightActive[i].SetActive(false);
         }
 
-        
+        shadowCat.SetActive(false);
         floor2God.SetActive(false);
         floor2Bad.SetActive(true);
 
