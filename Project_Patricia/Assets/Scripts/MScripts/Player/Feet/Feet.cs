@@ -11,7 +11,7 @@ public class Feet : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Ladder"))
         {
-            character.stepOffset = 1.9f;
+            character.stepOffset = 2f;
         }
     }
 
