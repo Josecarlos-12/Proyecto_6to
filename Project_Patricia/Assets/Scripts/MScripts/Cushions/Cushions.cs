@@ -100,7 +100,7 @@ public class Cushions : MonoBehaviour
         yield return new WaitForSeconds(30);
         for (int i = 0; i < doorAll.Length; i++)
         {
-            doorAll[i].SetBool("Front", true)
+            doorAll[i].SetBool("Open", true)
 ;
         }
 
@@ -130,7 +130,7 @@ public class Cushions : MonoBehaviour
     {
         for (int i = 0; i < doorAll.Length; i++)
         {
-            doorAll[i].SetBool("Front", false);
+            doorAll[i].SetBool("Open", false);
         }
         for (int i = 0; i < openDoorScript.Length; i++)
         {
