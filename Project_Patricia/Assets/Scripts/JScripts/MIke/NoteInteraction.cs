@@ -23,6 +23,7 @@ public class NoteInteraction : MonoBehaviour
     public DialogueNote noteNote;
     public bool grabNote;
     public int add = 0;
+    public StrongBoxCode strongBox;
 
     [Header("Press")]
     [SerializeField] private GameObject texE;
@@ -34,7 +35,7 @@ public class NoteInteraction : MonoBehaviour
 
     public enum Check
     {
-        normal, work, dialogue
+        normal, work, dialogue, codeOne, codeTwo, codeThree
     }
 
     public Check check;
@@ -106,6 +107,15 @@ public class NoteInteraction : MonoBehaviour
                     print(noteList.sNote.Count);
                     workInt = noteList.sNote.Count;
                     grabNote = true;
+                    break;
+                case Check.codeOne:
+                    strongBox.codeOne = true;
+                    break;
+                case Check.codeTwo:
+                    strongBox.codeTwo= true;
+                    break;
+                case Check.codeThree:
+                    strongBox.codeThree= true;
                     break;
             }
             Destroy(gameObject);           
