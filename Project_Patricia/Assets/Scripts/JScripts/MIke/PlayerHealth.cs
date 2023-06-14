@@ -53,6 +53,7 @@ public class PlayerHealth : MonoBehaviour
     [Header("Life Regeneration")]
     public bool punch;
     [SerializeField] private float time, maxtime;
+    public bool bulletBoos;
 
     void Start()
     {
@@ -150,6 +151,23 @@ public class PlayerHealth : MonoBehaviour
             sanity -= 5;
             DamageNormal();
         }
+
+        if(other.gameObject.name == "BulletBoss")
+        {
+            if (bossTouch < 3)
+                bossTouch++;
+
+            if (bossTouch == 1)
+            {
+                print("Bullet");
+                bulletBoos = true;
+                punch = true;
+                mikeHurt.Play();
+                sanity -= 10;
+                sleep.ModeDreams();
+                StartCoroutine("OffDreams");
+            }
+        }
     }
 
     public void DamageNormal()
@@ -162,7 +180,7 @@ public class PlayerHealth : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         if (other.gameObject.name == "PunchBoss")
-        {           
+        {
             StartCoroutine("OffDreams");
         }
 
@@ -207,6 +225,7 @@ public class PlayerHealth : MonoBehaviour
         yield return new WaitForSeconds(2);
         count = 0;
         bossTouch= 0;
+        print("Off");
     }
 
     public void Scream()

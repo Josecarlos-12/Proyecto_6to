@@ -18,7 +18,8 @@ public class EventsBossLevel3 : MonoBehaviour
 
     public void Shoot()
     {
-        Instantiate(bullet, point.position, point.rotation);
+        GameObject bulletInstatiate = Instantiate(bullet, point.position, point.rotation);
+        bulletInstatiate.name = "BulletBoss";
     }
 
     public void ShootFalse()

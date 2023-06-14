@@ -245,6 +245,7 @@ public class SanityLevel : MonoBehaviour
                 time = 0;
                 health.sanity -= 4;
                 health.DamageNormal();
+                health.StartCoroutine("OffDreams");
             }
 
 
@@ -327,7 +328,7 @@ public class SanityLevel : MonoBehaviour
                     {
                         countSound = 0;
                         lessLife = true;
-                        health.StartCoroutine("OffDreams");
+                        //health.StartCoroutine("OffDreams");
                     }
                 }
                 break;

@@ -13,4 +13,12 @@ public class ShootBoss : MonoBehaviour
         rb.AddForce(transform.forward * speed * Time.deltaTime, ForceMode.Impulse);
         Destroy(gameObject, 8);
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.name== "Health")
+        {
+            Destroy(gameObject);
+        }
+    }
 }
