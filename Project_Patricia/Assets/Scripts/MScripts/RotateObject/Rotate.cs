@@ -9,6 +9,12 @@ public class Rotate : MonoBehaviour
     public Vector3 mouseOffset;
     public Vector3 rotation;
     public bool isRotating;
+    public enum State
+    {
+        more, less
+    }
+    public State state;
+
 
     void Start()
     {
@@ -22,7 +28,19 @@ public class Rotate : MonoBehaviour
         {
             mouseOffset = (Input.mousePosition - mouseReference);
             rotation.y = -(mouseOffset.x) * sensitivity;
-            rotation.z = (-mouseOffset.y) * sensitivity;
+
+            switch (state)
+            {
+                case State.more:
+                    rotation.z = (-mouseOffset.y) * sensitivity;
+                    break;
+                    
+                case State.less:
+                    rotation.z = (mouseOffset.y) * sensitivity;
+                    break;
+            }
+
+            
             Debug.Log(transform.parent.eulerAngles);
             transform.parent.eulerAngles += rotation;
             mouseReference = Input.mousePosition;

@@ -22,7 +22,8 @@ public class KeypadController : MonoBehaviour
     [SerializeField] private Collider col;
     [SerializeField] private StrongBoxCode box;
     [SerializeField] private Animator animBox;
-
+    [SerializeField] private GameObject gameObjects;
+    [SerializeField] private Collider colActive;
     private void Start()
     {
         passwordText.text = "";
@@ -65,9 +66,12 @@ public class KeypadController : MonoBehaviour
             col.enabled = false;
             box.enabled = false;
             animBox.SetBool("Open", true);
-
+            print("DD");
+            StartCoroutine("OnObjects");
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
             //if (audioSource != null)
-              //  audioSource.PlayOneShot(correctSound);
+            //  audioSource.PlayOneShot(correctSound);
 
             passwordText.color = Color.green;
             StartCoroutine(waitAndClear());
@@ -80,6 +84,13 @@ public class KeypadController : MonoBehaviour
             passwordText.color = Color.red;
             StartCoroutine(waitAndClear());
         }
+    }
+
+    public IEnumerator OnObjects()
+    {
+        yield return new WaitForSeconds(1);
+        gameObjects.SetActive(true);
+        colActive.enabled = true;
     }
 
     IEnumerator waitAndClear()
