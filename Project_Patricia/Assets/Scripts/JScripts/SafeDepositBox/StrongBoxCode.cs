@@ -13,7 +13,8 @@ public class StrongBoxCode : MonoBehaviour
     public Animator anim;
     public int counter;
     public Collider coll;
-
+    public GameObject cam, prota;
+    public bool touch;
 
     // Start is called before the first frame update
     void Start()
@@ -38,18 +39,42 @@ public class StrongBoxCode : MonoBehaviour
 
         if(inside == true && Input.GetKeyDown(KeyCode.E))
         {
+            
             inside = false;
-            coll.enabled = false;
+            //coll.enabled = false;
             eText.SetActive(false);
-            anim.SetBool("On", false); 
+            anim.SetBool("On", false);
+            cam.SetActive(true);
+            prota.SetActive(false);
             print("Se Abrio");
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
+            StartCoroutine("On");
+        }
+
+        if(touch && Input.GetKeyDown(KeyCode.E))
+        {
+            touch = false;
+            cam.SetActive(false);
+            prota.SetActive(true); print("Se choca");
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
         }
     }
-    
 
+    public IEnumerator On()
+    {
+        yield return new WaitForSeconds(0.5f);
+        touch = true;
+    }
     private void OnTriggerEnter(Collider other)
     {
-       if (other.gameObject.CompareTag("Player"))
+       
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.gameObject.CompareTag("Player"))
         {
             eText.SetActive(true);
             inside = true;

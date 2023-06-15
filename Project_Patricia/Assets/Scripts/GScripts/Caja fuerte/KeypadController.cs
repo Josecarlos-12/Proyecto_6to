@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,12 +9,19 @@ public class KeypadController : MonoBehaviour
     public DoorController door;
     public string password;
     public int passwordLimit;
-    public Text passwordText;
+    public TextMeshProUGUI passwordText;
 
     [Header("Audio")]
     public AudioSource audioSource;
     public AudioClip correctSound;
     public AudioClip wrongSound;
+
+    [Header("Finish")]
+    [SerializeField] private GameObject cam;
+    [SerializeField] private GameObject prota;
+    [SerializeField] private Collider col;
+    [SerializeField] private StrongBoxCode box;
+    [SerializeField] private Animator animBox;
 
     private void Start()
     {
@@ -50,18 +58,24 @@ public class KeypadController : MonoBehaviour
     {
         if (passwordText.text == password)
         {
-            door.lockedByPassword = false;
+            //door.lockedByPassword = false;
+            print("Abrio");
+            cam.SetActive(false);
+            prota.SetActive(true);
+            col.enabled = false;
+            box.enabled = false;
+            animBox.SetBool("Open", true);
 
-            if (audioSource != null)
-                audioSource.PlayOneShot(correctSound);
+            //if (audioSource != null)
+              //  audioSource.PlayOneShot(correctSound);
 
             passwordText.color = Color.green;
             StartCoroutine(waitAndClear());
         }
         else
         {
-            if (audioSource != null)
-                audioSource.PlayOneShot(wrongSound);
+            //if (audioSource != null)
+              //  audioSource.PlayOneShot(wrongSound);
 
             passwordText.color = Color.red;
             StartCoroutine(waitAndClear());

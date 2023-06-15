@@ -16,6 +16,10 @@ public class EventsBossLevel3 : MonoBehaviour
     [SerializeField] private GameObject container;
     public int shootCount;
 
+    [Header("Note")]
+    [SerializeField] private GameObject note;
+    [SerializeField] private Vector3 pos;
+
     public void Shoot()
     {
         GameObject bulletInstatiate = Instantiate(bullet, point.position, point.rotation);
@@ -35,6 +39,8 @@ public class EventsBossLevel3 : MonoBehaviour
         if (life <= 0)
         {
             Destroy(container);
+            note.transform.position = pos;
+            note.SetActive(true);
         }
     }
 
@@ -42,6 +48,7 @@ public class EventsBossLevel3 : MonoBehaviour
     {
         if (other.gameObject.CompareTag("BulletPlayer"))
         {
+            pos = new Vector3(transform.position.x, transform.position.y + 8, transform.position.z);
             Destroy(other.gameObject);
             LessLife();
         }

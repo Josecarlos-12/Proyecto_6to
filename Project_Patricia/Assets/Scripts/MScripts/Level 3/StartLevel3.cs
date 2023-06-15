@@ -90,7 +90,7 @@ public class StartLevel3 : MonoBehaviour
         yield return new WaitForSeconds(2);
         dialogue.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: ¡Caaaat!";
         yield return new WaitForSeconds(2);
-        // Luego Charlie volverá a llamar a Mike desde la habitación de Charlie
+        // Luego Charlie volverá a llamar a Mike desde el atico
         //charlieRoom.GetComponent<AudioSource>().Play();
         dialogue.GetComponent<TextMeshProUGUI>().text = "Charlie Schmith: ¡Papaaaaaaa! ayudaaaa!";
         yield return new WaitForSeconds(3);
