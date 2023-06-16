@@ -15,7 +15,8 @@ public class PopUpEvents : MonoBehaviour
     [SerializeField] private GameObject mike;
     [SerializeField] private NavMeshAgent agent;
     [SerializeField] private Transform point;
-    [SerializeField] private GameObject mikeWalk;
+    [SerializeField] private GameObject mikeWalk, inteDoor;
+    [SerializeField] private Animator animDoor;
 
     public void OpenEyes()
     {
@@ -38,6 +39,8 @@ public class PopUpEvents : MonoBehaviour
         mike.SetActive(false);
         shadowMike.SetBool("Walk", true);
         agent.destination = point.position;
+        animDoor.SetBool("Close", false);
+        inteDoor.SetActive(true);
     }
 
     public void TranformMike()
