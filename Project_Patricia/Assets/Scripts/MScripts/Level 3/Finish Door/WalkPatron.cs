@@ -10,11 +10,13 @@ public class WalkPatron : MonoBehaviour
     [SerializeField] private int destPoint = 0;
     [SerializeField] private NavMeshAgent agent;
     [SerializeField] private int count;
+    [SerializeField] private Animator animMike;
 
     [SerializeField] private CamFalseMove move;
 
-    [SerializeField] Transform shadow;
+    [SerializeField] Transform shadow, mikePos;
 
+    [SerializeField] float size;
     public enum State
     {
         mike, cam
@@ -31,6 +33,11 @@ public class WalkPatron : MonoBehaviour
                     GotoNextPoint();
 
                 }
+                if(Vector3.Distance(mikePos.position, points[5].transform.position) < size)
+                {
+                    animMike.SetBool("Walk", false);
+                }
+
                 break; case State.cam:
                 transform.LookAt(shadow.position);
                 if (agent.remainingDistance < 1 && count <= points.Length - 1 && move.moveCam)
@@ -55,6 +62,12 @@ public class WalkPatron : MonoBehaviour
         destPoint = (destPoint + 1) % points.Length;
         count++;
         print(count);
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, size);
     }
 
 }

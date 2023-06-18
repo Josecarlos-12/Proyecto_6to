@@ -11,11 +11,12 @@ public class CamFalseMove : MonoBehaviour
     public bool moveCam;
     [SerializeField] NavMeshAgent agent;
     [SerializeField] private GameObject credits;
+    [SerializeField] private Animator animMike;
 
 
     public void Move()
     {
-        cam.enabled= false;
+        cam.enabled = false;
         StartCoroutine("Next");
 
     }
@@ -24,6 +25,7 @@ public class CamFalseMove : MonoBehaviour
     {
         yield return new WaitForSeconds(1.35f);
         move = true;
+        animMike.SetBool("Walk", true);
         yield return new WaitForSeconds(2f);
         moveCam= true;
         agent.enabled= true;
