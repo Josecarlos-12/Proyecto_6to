@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class FinishAnimLevel3 : MonoBehaviour
 {
@@ -44,5 +45,10 @@ public class FinishAnimLevel3 : MonoBehaviour
     public void Eyes()
     {
         eyes.SetActive(true);
+    }
+
+    public void Credits()
+    {
+        SceneManager.LoadScene("Credits");
     }
 }
