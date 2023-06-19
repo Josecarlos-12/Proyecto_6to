@@ -168,20 +168,20 @@ public class BoxMusicInteractions : MonoBehaviour
 
     public IEnumerator IEDream()
     {
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSecondsRealtime(3);
         sleep.ModeDreams();
         pills.SetActive(true);
         //Texto cuando suena la caja y empieza el modo sueño.
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSecondsRealtime(1);
         text.SetActive(true);
         text.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: Ohh... Mi cabeza me explota...";
         audioMike.clip = clip[0];
         audioMike.Play();
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSecondsRealtime(3);
         text.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: necesito mis pastillas...";
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSecondsRealtime(3);
         text.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: Están en mi habitación";
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSecondsRealtime(2);
         text.SetActive(false);
     }
 }

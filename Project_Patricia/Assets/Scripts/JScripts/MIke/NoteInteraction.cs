@@ -24,6 +24,7 @@ public class NoteInteraction : MonoBehaviour
     public bool grabNote;
     public int add = 0;
     public StrongBoxCode strongBox;
+    [SerializeField] private AudioSource grabNoteSound;
 
     [Header("Press")]
     [SerializeField] private GameObject texE;
@@ -32,6 +33,7 @@ public class NoteInteraction : MonoBehaviour
 
     [Header("TasksUI")]
     [SerializeField] private TasksUI task;
+    [SerializeField] private Collider drawerCol;
 
     public enum Check
     {
@@ -109,15 +111,21 @@ public class NoteInteraction : MonoBehaviour
                     grabNote = true;
                     break;
                 case Check.codeOne:
+                    if(strongBox!=null)
                     strongBox.codeOne = true;
+
+                    if(drawerCol!=null)
+                        drawerCol.enabled=true;
                     break;
                 case Check.codeTwo:
-                    strongBox.codeTwo= true;
+                    if (strongBox != null)
+                        strongBox.codeTwo= true;
                     break;
                 case Check.codeThree:
                     strongBox.codeThree= true;
                     break;
             }
+            grabNoteSound.Play();
             Destroy(gameObject);           
             //count = 0;
         }             

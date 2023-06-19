@@ -35,6 +35,9 @@ public class NotesUI : MonoBehaviour
     [SerializeField] PlayerCrouch crouch;
     [SerializeField] CameraLook cam;
 
+    [Header("Sound")]
+    [SerializeField] private AudioSource noteSound;
+
     private void Start()
     {
         shoot = true;
@@ -164,6 +167,7 @@ public class NotesUI : MonoBehaviour
         {
             if (noteCount < sNote.Count - 1)
             {
+                noteSound.Play();
                 noteCount++;
             }
         }
@@ -171,6 +175,7 @@ public class NotesUI : MonoBehaviour
         {
             if (noteCount > 0)
             {
+                noteSound.Play();
                 noteCount--;
             }
         }

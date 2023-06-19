@@ -11,6 +11,12 @@ public class BoxPlayMusic : MonoBehaviour
     [SerializeField] BoxMusicInteractions box;
     public bool animBox;
 
+    [Header("Note")]
+    [SerializeField] private GameObject note;
+    [SerializeField] private Animator drawer, noteAnim;
+    [SerializeField] private Collider colDrawer;
+    public bool on;
+
     void Update()
     {
         if(into && Input.GetKeyDown(KeyCode.E))
@@ -22,7 +28,21 @@ public class BoxPlayMusic : MonoBehaviour
             into = false;
             handle.SetBool("Handle", true);
             box.audi.Play();
+            StartCoroutine("Code1");
         }
+    }
+
+    public IEnumerator Code1()
+    {
+        yield return new WaitForSeconds(1.7f);
+        on = true;
+        note.SetActive(true);
+        drawer.SetBool("On", true);
+        noteAnim.SetBool("On", true);
+        yield return new WaitForSeconds(0.3f);
+        colDrawer.enabled = true;
+        yield return new WaitForSeconds(4);
+        drawer.SetBool("On", false);
     }
 
     private void OnTriggerEnter(Collider other)
