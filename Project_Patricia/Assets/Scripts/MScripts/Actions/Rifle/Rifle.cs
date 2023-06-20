@@ -28,6 +28,7 @@ public class Rifle : MonoBehaviour
     [SerializeField] private CrouchTutorial crTuto;
     [SerializeField] private GameObject coll;
     [SerializeField] private EnemyShed enemy;
+    [SerializeField] private Animator animCrouch;
 
     [Header("Don´t Move CTRL")]
     [SerializeField] GameObject gameCTRL;
@@ -87,28 +88,38 @@ public class Rifle : MonoBehaviour
         run.agent.enabled = false;
         run.run = false;
         run.anim.SetBool("Walk", false);
-        panel.SetActive(true);
-        Time.timeScale = 0;
-        Cursor.visible= true;
-        Cursor.lockState= CursorLockMode.None;
+        gameCTRL.SetActive(true);
+
+        
+        //Time.timeScale = 0;
+        //Cursor.visible= true;
+        //Cursor.lockState= CursorLockMode.None;
 
         shadow.transform.position = point.transform.position;
         colliders.SetActive(true);
+
+        enemy.accept = true;
+        coll.SetActive(true);
+        crTuto.active = true;
+        player.canWalk = false;
+        yield return new WaitForSeconds(1f);
+        panel.SetActive(true);
+         yield return new WaitForSeconds(11f);
+        animCrouch.SetBool("Off", true);
+        yield return new WaitForSeconds(0.4f);
+         panel.SetActive(false);
     }
 
     public void AcceptButton()
     {        
-        enemy.accept = true;
-        coll.SetActive(true);
-        crTuto.active= true;
-        panel.SetActive(false);
+        
         Time.timeScale = 1;
         Cursor.visible= false;
         Cursor.lockState = CursorLockMode.Locked;
 
         //Hago aparecer el UI CTRL--Detengo movimiento del personaje
-        gameCTRL.SetActive(true);
-        player.canWalk= false;
+        
+        
     }
 
     public void CTRLButton()
@@ -117,7 +128,7 @@ public class Rifle : MonoBehaviour
         {
             print("PresionoCTRL");
             animTrue.init = false;
-            StartCoroutine("CTRLOff");
+            gameCTRL.transform.GetChild(0).GetComponent<Animator>().SetBool("Exit", true);
             //head.head = true;
             player.canWalk = true;
             this.gameObject.GetComponent<Rifle>().enabled = false;

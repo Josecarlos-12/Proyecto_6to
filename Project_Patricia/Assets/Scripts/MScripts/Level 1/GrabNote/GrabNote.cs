@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GrabNote : MonoBehaviour
 {
-    [SerializeField] private InteracionKeys note;
+    [SerializeField] private NoteInteraction note;
     [SerializeField] private PickableObject[] pickableObject;
     [SerializeField] private TrashOn[] trashOn;
     [SerializeField] private int count;

@@ -8,10 +8,18 @@ public class NotesUI : MonoBehaviour
 {
     public GameObject note;
     public TextMeshProUGUI text;
+
     public Image imageNote;
+    public TextMeshProUGUI textTraduction;
+    
     public bool bNote, intoNote;
+
     public List<Sprite> sNote = new List<Sprite>();
+    [TextArea(4,4)]
+    public List<string> traducttionNote = new List<string>();
     public Sprite save;
+    public string tSave;
+    
     public int noteCount;
     public Weapon weapon;
     public bool shoot;
@@ -37,6 +45,12 @@ public class NotesUI : MonoBehaviour
 
     [Header("Sound")]
     [SerializeField] private AudioSource noteSound;
+
+    [Header("Traduction")]
+    [SerializeField] private GameObject traduction;
+    [SerializeField] private bool bTraduction;
+
+    public bool init;
 
     private void Start()
     {
@@ -64,11 +78,30 @@ public class NotesUI : MonoBehaviour
         Note();        
         CheckList();
         InputMouse();
+        Traduction();
+    }
+
+    public void Traduction()
+    {
+        if(Input.GetKeyDown(KeyCode.T))
+        {
+            bTraduction = !bTraduction;
+
+            if(bTraduction)
+            {
+                traduction.SetActive(true);
+            }
+            else
+            {
+                traduction.SetActive(false);
+            }
+
+        }
     }
 
     public void Note()
     {
-        if(Input.GetKeyDown(KeyCode.N) && !pause.isPaused)
+        if(Input.GetKeyDown(KeyCode.N) && !pause.isPaused && init)
         {
             bNote = !bNote;
 
@@ -96,7 +129,8 @@ public class NotesUI : MonoBehaviour
         }
         else if (sNote.Count !=0) 
         {
-        imageNote.sprite = sNote[noteCount];
+            imageNote.sprite = sNote[noteCount];
+            textTraduction.text = traducttionNote[noteCount];
         }
 
     }
@@ -187,6 +221,7 @@ public class NotesUI : MonoBehaviour
         {
             intoNote = true;
             save = other.GetComponent<NoteInteraction>().image;
+            tSave = other.GetComponent<NoteInteraction>().noteText;
         }
     }
 

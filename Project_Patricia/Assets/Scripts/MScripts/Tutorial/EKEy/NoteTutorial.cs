@@ -8,7 +8,9 @@ public class NoteTutorial : MonoBehaviour
     [SerializeField] GameObject tutorialN, note, panel;
     [SerializeField] AnimTrue finish;
     [SerializeField] int count;
-
+    [SerializeField] private NotesUI noteUI;
+    [SerializeField] private Animator off, animN;
+    [SerializeField] private GameObject tuto;
 
     void Start()
     {
@@ -31,24 +33,38 @@ public class NoteTutorial : MonoBehaviour
 
         if(finish.finish && Input.GetKeyDown(KeyCode.N))
         {
-            finish.finish = false; 
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
-            panel.SetActive(true);
+            animN.SetBool("Exit", true);
+            finish.finish = false;
+            //Cursor.lockState = CursorLockMode.None;
+            //Cursor.visible = true;
+            StartCoroutine("NotePanel");
         }
+    }
+
+    public IEnumerator NotePanel()
+    {
+        yield return new WaitForSeconds(2);
+        panel.SetActive(true);
+        yield return new WaitForSeconds(11);
+        off.SetBool("Off", true);
+        yield return new WaitForSeconds(0.5f);
+        panel.SetActive(false);
+        tuto.SetActive(true);
     }
 
     public IEnumerator ActivePanel()
     {
         yield return new WaitForSeconds(5);
         tutorialN.SetActive(true);
+        yield return new WaitForSeconds(1.3f);
+        noteUI.init = true;
     }
 
 
     public void Accept()
     {
         tutorialN.SetActive(false);
-        panel.SetActive(false);
+        
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }

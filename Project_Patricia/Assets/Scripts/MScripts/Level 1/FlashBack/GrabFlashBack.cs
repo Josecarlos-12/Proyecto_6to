@@ -22,6 +22,11 @@ public class GrabFlashBack : MonoBehaviour
     [SerializeField] private Animator animFlash;
     [SerializeField] private Collider collFlash, collNext;
 
+    [Header("PopUp")]
+    [SerializeField] private GameObject popUp;
+    [SerializeField] private GameObject textOff;
+    [SerializeField] private bool one, two, three;
+
     public enum Dialogue
     {
         one,two,thre
@@ -31,6 +36,20 @@ public class GrabFlashBack : MonoBehaviour
     private void Update()
     {
         PressInput();
+        PopUpOff();
+    }
+
+    public void PopUpOff()
+    {
+        if (one && Input.GetKeyDown(KeyCode.E))
+        {
+            popUp.SetActive(false);
+            prota.SetActive(true);
+            textOff.SetActive(false);
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
+            enabled = false;
+        }
     }
 
     public void PressInput()
@@ -39,7 +58,7 @@ public class GrabFlashBack : MonoBehaviour
         {
             collFlash.enabled= false;
             animFlash.SetBool("On", false);
-            animFlash.enabled= false;
+            //animFlash.enabled= false;
             if(collNext!= null)
             {
                 collNext.enabled = true;
@@ -59,19 +78,28 @@ public class GrabFlashBack : MonoBehaviour
             }
 
 
-            panel.SetActive(true);
-            cam.SetActive(true);
-            prota.SetActive(false);
+            
+            
 
             switch (textD)
             {
                 case Dialogue.one:
+                    Cursor.visible = true;
+                    Cursor.lockState = CursorLockMode.None;
+                    popUp.SetActive(true);
+                    prota.SetActive(false);
                     StartCoroutine("FLSB");
                     break;
                 case Dialogue.two:
+                    cam.SetActive(true);
+                    prota.SetActive(false);
+                    panel.SetActive(true);
                     StartCoroutine("FLSB2");
                     break;
                 case Dialogue.thre:
+                    cam.SetActive(true);
+                    prota.SetActive(false);
+                    panel.SetActive(true);
                     StartCoroutine("FLSB3");
                     break;
             }
@@ -90,10 +118,12 @@ public class GrabFlashBack : MonoBehaviour
         dialogue.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: Sabes que no puedes salir, estás enfermo";
         yield return new WaitForSeconds(4);
         dialogue.SetActive(false);
+        one = true;
+        textOff.SetActive(true);
 
         panel.SetActive(false);
-        cam.SetActive(false);
-        prota.SetActive(true);
+        //cam.SetActive(false);
+        //prota.SetActive(true);
     }
 
     public IEnumerator FLSB2()

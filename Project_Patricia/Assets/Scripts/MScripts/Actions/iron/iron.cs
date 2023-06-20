@@ -14,7 +14,7 @@ public class iron : MonoBehaviour
     [SerializeField] private GameObject cam, prota, panel, textE, wornClothes, cleanClothes;
     public NotesUI note;
     [SerializeField] private NoteInteraction noteGrab;
-    
+
     public AudioSource audioSource;
     public AudioClip audioClip;
     public AudioClip taskClip;
@@ -25,20 +25,26 @@ public class iron : MonoBehaviour
     }
     public Check check;
 
+    [Header("trash")]
+    [SerializeField] private GameObject trash;
+    [SerializeField] private GameObject Point;
+    [SerializeField] private PickableObject pick;
+    [SerializeField] private PickUpObject pickObject;
+
     private void Start()
     {
-                   
+
     }
 
     private void Update()
     {
         Iron();
-       
+
     }
 
     public void Iron()
     {
-        if(into  && Input.GetKeyDown(KeyCode.E) && count ==0 && noteGrab.grabNote)
+        if (into && Input.GetKeyDown(KeyCode.E) && count == 0 && noteGrab.grabNote)
         {
             count++;
             prota.SetActive(false);
@@ -51,7 +57,7 @@ public class iron : MonoBehaviour
 
     public IEnumerator Next()
     {
-        
+
         switch (check)
         {
             case Check.three:
@@ -67,7 +73,7 @@ public class iron : MonoBehaviour
         yield return new WaitForSeconds(1);
         Destroy(wornClothes);
         cleanClothes.SetActive(true);
-        yield return new WaitForSeconds(4);        
+        yield return new WaitForSeconds(4);
         prota.SetActive(true);
         panel.SetActive(false);
         cam.SetActive(false);
@@ -77,16 +83,36 @@ public class iron : MonoBehaviour
                 note.check = 3;
                 break;
             case Check.four:
-                
+
                 note.check = 4;
-            cF = true;
-            break;
+                cF = true;
+                break;
             case Check.nine:
+                trash.SetActive(true);
+                pickObject.PickedObject = trash;
+                trash.transform.parent = Point.transform;
+                trash.transform.position = Point.transform.position;
+                trash.GetComponent<Rigidbody>().useGravity = false;
+                trash.GetComponent<Rigidbody>().isKinematic= true;
+                pick.isPickable = false;
                 note.check = 9;
                 break;
         }
         yield return new WaitForSeconds(0.5f);
-        audioSource.PlayOneShot(taskClip);//Aqui poner Sonidos 
+
+        switch (check)
+        {
+            case Check.three:
+                audioSource.PlayOneShot(taskClip);//Aqui poner Sonidos 
+                break;
+            case Check.four:
+                audioSource.PlayOneShot(taskClip);//Aqui poner Sonidos 
+                break;
+            case Check.nine:
+                audioSource.PlayOneShot(taskClip);
+                break;
+        }
+        
     }  
 
     private void OnTriggerEnter(Collider other)

@@ -87,6 +87,7 @@ public class NoteInteraction : MonoBehaviour
             if(add== 1)
             {
                 noteList.sNote.Add(noteList.save);
+                noteList.traducttionNote.Add(noteList.tSave);
             }
             
         }

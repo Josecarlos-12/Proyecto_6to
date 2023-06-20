@@ -11,7 +11,7 @@ public class Rotate : MonoBehaviour
     public bool isRotating;
     public enum State
     {
-        more, less
+        more, less, flash
     }
     public State state;
 
@@ -27,16 +27,23 @@ public class Rotate : MonoBehaviour
         if (isRotating)
         {
             mouseOffset = (Input.mousePosition - mouseReference);
-            rotation.y = -(mouseOffset.x) * sensitivity;
+            
 
             switch (state)
             {
                 case State.more:
+                    rotation.y = -(mouseOffset.x) * sensitivity;
                     rotation.z = (-mouseOffset.y) * sensitivity;
                     break;
                     
                 case State.less:
+                    rotation.y = -(mouseOffset.x) * sensitivity;
                     rotation.z = (mouseOffset.y) * sensitivity;
+                    break;
+
+                case State.flash:
+                    rotation.y = -(mouseOffset.x) * sensitivity;
+                    rotation.x = -(mouseOffset.y) * sensitivity;
                     break;
             }
 

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ShinyObjects : MonoBehaviour
 {
-    [SerializeField] private InteracionKeys note;
+    [SerializeField] private NoteInteraction note;
     [SerializeField] Animator anim;
     [SerializeField] PickableObject pick;
     [SerializeField] GameObject clouth;
