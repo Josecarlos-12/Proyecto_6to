@@ -20,6 +20,9 @@ public class Floor1Switch : MonoBehaviour
     [SerializeField] private AudioSource mike;
     [SerializeField] private AudioClip clip;
 
+    [Header("Emisivo")]
+    [SerializeField] private MeshRenderer[] material;
+
     public enum States
     {
         good, bad
@@ -59,7 +62,12 @@ public class Floor1Switch : MonoBehaviour
                 {
                     Lights[i].gameObject.SetActive(false);
                 }
-                
+                for (int i = 0; i < material.Length; i++)
+                {
+                    Color emission = material[i].material.GetColor("_EmissionColor");
+                    emission *= 1;
+                    material[i].material.SetColor("_EmissionColor",emission);
+                }
             }
             else
             {
@@ -67,7 +75,13 @@ public class Floor1Switch : MonoBehaviour
                 for (int i = 0; i < Lights.Length; i++)
                 {
                     Lights[i].gameObject.SetActive(true);
-                } 
+                }
+                for (int i = 0; i < material.Length; i++)
+                {
+                    Color emission = material[i].material.GetColor("_EmissionColor");
+                    emission *= 8;
+                    material[i].material.SetColor("_EmissionColor", emission);
+                }
             }
             
         }
