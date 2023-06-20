@@ -8,26 +8,34 @@ public class DarkZoneTutorial : MonoBehaviour
     [SerializeField] GameObject panel, textE;
     [SerializeField] bool into;
 
+    [SerializeField] private Animator animPanel;
+
     void Update()
     {
         if(into && Input.GetKeyDown(KeyCode.E))
         {
-            thisColl.enabled= false;
-            textE.SetActive(false);
-            into = false;
-            panel.SetActive(true);
-            Time.timeScale = 0;
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
+            
+            //Time.timeScale = 0;
+            //Cursor.lockState = CursorLockMode.None;
+            //Cursor.visible = true;
         }
+    }
+
+    public IEnumerator FalsePanel()
+    {
+        otherColl.enabled = true;
+        yield return new WaitForSeconds(10);
+        animPanel.SetBool("Off", true);
+        yield return new WaitForSeconds(2);
+        panel.SetActive(false);
     }
 
     public void Accetp()
     {
         panel.SetActive(false);
-        Time.timeScale = 1;
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        //Time.timeScale = 1;
+        //Cursor.lockState = CursorLockMode.Locked;
+        //Cursor.visible = false;
         otherColl.enabled = true;
     }
 
@@ -35,8 +43,13 @@ public class DarkZoneTutorial : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            into = true;
-            textE.SetActive(true);
+            thisColl.enabled = false;
+            textE.SetActive(false);
+            into = false;
+            panel.SetActive(true);
+            StartCoroutine("FalsePanel");
+            //into = true;
+            //textE.SetActive(true);
         }
     }
 
@@ -44,8 +57,8 @@ public class DarkZoneTutorial : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            into = false;
-            textE.SetActive(false);
+            //into = false;
+            //textE.SetActive(false);
         }
     }
 }

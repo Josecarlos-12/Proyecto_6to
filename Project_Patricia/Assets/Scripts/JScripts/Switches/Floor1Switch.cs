@@ -22,6 +22,7 @@ public class Floor1Switch : MonoBehaviour
 
     [Header("Emisivo")]
     [SerializeField] private MeshRenderer[] material;
+    [SerializeField] private Material emissive, noEmissive;
 
     public enum States
     {
@@ -64,9 +65,7 @@ public class Floor1Switch : MonoBehaviour
                 }
                 for (int i = 0; i < material.Length; i++)
                 {
-                    Color emission = material[i].material.GetColor("_EmissionColor");
-                    emission *= 1;
-                    material[i].material.SetColor("_EmissionColor",emission);
+                    material[i].material = noEmissive;
                 }
             }
             else
@@ -78,9 +77,7 @@ public class Floor1Switch : MonoBehaviour
                 }
                 for (int i = 0; i < material.Length; i++)
                 {
-                    Color emission = material[i].material.GetColor("_EmissionColor");
-                    emission *= 8;
-                    material[i].material.SetColor("_EmissionColor", emission);
+                    material[i].material = emissive;
                 }
             }
             

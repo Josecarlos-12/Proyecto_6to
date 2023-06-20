@@ -4,11 +4,15 @@ using UnityEngine;
 
 public class PanelPills : MonoBehaviour
 {
-    [SerializeField]private GameObject[] pills;
+    [SerializeField] private GameObject[] pills;
     [SerializeField] private GameObject panel, tutoPills;
     [SerializeField] private int one;
     [SerializeField] AnimTrue animPill;
     public bool bPills, bPanel;
+
+    [Header("Panel")]
+    [SerializeField] private Animator animPa;
+    [SerializeField] private Animator animLetter;
 
     private void Update()
     {
@@ -36,23 +40,35 @@ public class PanelPills : MonoBehaviour
 
     public void InputPills()
     {
-        if(animPill.init && Input.GetKeyDown(KeyCode.Alpha2))
+        if (animPill.init && Input.GetKeyDown(KeyCode.Alpha2))
         {
-            tutoPills.SetActive(false);
+            animLetter.SetBool("Exit", true);
             animPill.init = false;
             panel.SetActive(true);
-            Time.timeScale = 1;
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
-            bPanel= true;
+            StartCoroutine("PanelFalse");
+            //tutoPills.SetActive(false);
+            //Time.timeScale = 1;
+            //Cursor.lockState = CursorLockMode.None;
+            //Cursor.visible = true;
+            //bPanel= true;
         }
+    }
+
+    public IEnumerator PanelFalse()
+    {
+        yield return new WaitForSeconds(10);
+        animPa.SetBool("Off", true);
+        yield return new WaitForSeconds(2);
+        panel.SetActive(false);
+        enabled = false;
+        tutoPills.SetActive(false);
     }
 
     public void ButtonAccept()
     {
-        Time.timeScale = 1;
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        //Time.timeScale = 1;
+        //Cursor.lockState = CursorLockMode.Locked;
+        //Cursor.visible = false;
         panel.SetActive(false);
         bPanel= false;
         this.gameObject.GetComponent<PanelPills>().enabled = false;
