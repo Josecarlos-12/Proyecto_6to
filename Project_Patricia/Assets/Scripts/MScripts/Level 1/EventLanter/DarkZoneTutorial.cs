@@ -12,31 +12,13 @@ public class DarkZoneTutorial : MonoBehaviour
 
     void Update()
     {
-        if(into && Input.GetKeyDown(KeyCode.E))
-        {
-            
-            //Time.timeScale = 0;
-            //Cursor.lockState = CursorLockMode.None;
-            //Cursor.visible = true;
-        }
     }
 
-    public IEnumerator FalsePanel()
-    {
-        otherColl.enabled = true;
-        yield return new WaitForSeconds(10);
-        animPanel.SetBool("Off", true);
-        yield return new WaitForSeconds(2);
-        panel.SetActive(false);
-    }
+    
 
     public void Accetp()
     {
-        panel.SetActive(false);
-        //Time.timeScale = 1;
-        //Cursor.lockState = CursorLockMode.Locked;
-        //Cursor.visible = false;
-        otherColl.enabled = true;
+
     }
 
     private void OnTriggerEnter(Collider other)
@@ -45,12 +27,20 @@ public class DarkZoneTutorial : MonoBehaviour
         {
             thisColl.enabled = false;
             textE.SetActive(false);
-            into = false;
             panel.SetActive(true);
             StartCoroutine("FalsePanel");
             //into = true;
             //textE.SetActive(true);
         }
+    }
+    public IEnumerator FalsePanel()
+    {
+        otherColl.enabled = true;
+        yield return new WaitForSeconds(10);
+        animPanel.SetBool("Off", true);
+        yield return new WaitForSeconds(2);
+        panel.SetActive(false);
+        Destroy(transform.parent.gameObject);
     }
 
     private void OnTriggerExit(Collider other)

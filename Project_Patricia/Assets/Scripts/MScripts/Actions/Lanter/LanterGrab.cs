@@ -64,7 +64,7 @@ public class LanterGrab : MonoBehaviour
     {
         yield return new WaitForSeconds(1.30f);
         tutoLanter.SetActive(false);
-        Destroy(gameObject);
+        //Destroy(gameObject);
     }
 
     private void OnTriggerEnter(Collider other)

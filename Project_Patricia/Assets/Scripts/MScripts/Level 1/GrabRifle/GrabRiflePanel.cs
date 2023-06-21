@@ -9,6 +9,8 @@ public class GrabRiflePanel : MonoBehaviour
     [SerializeField] GameObject textE, panel;
     [SerializeField] Collider thisColl, otherCollider;
 
+    [SerializeField] private Animator panelAnim;
+
     void Start()
     {
         
@@ -17,7 +19,7 @@ public class GrabRiflePanel : MonoBehaviour
 
     void Update()
     {
-        if(into && grab.grab && Input.GetKeyDown(KeyCode.E))
+       /* if(into && grab.grab && Input.GetKeyDown(KeyCode.E))
         {
             Time.timeScale = 0;
             Cursor.lockState = CursorLockMode.None;
@@ -26,7 +28,7 @@ public class GrabRiflePanel : MonoBehaviour
             into = false;
             thisColl.enabled= false;
             textE.SetActive(false);
-        }
+        }*/
     }
 
     public void Accept()
@@ -45,10 +47,24 @@ public class GrabRiflePanel : MonoBehaviour
         {
             if (grab.grab)
             {
-                textE.SetActive(true);
-                into = true;
+                panel.SetActive(true);
+                into = false;
+                thisColl.enabled = false;
+                StartCoroutine("FalsePanel");
+                //textE.SetActive(true);
+                //into = true;
             }
         }
+    }
+
+    public IEnumerator FalsePanel()
+    {
+        otherCollider.enabled = true;
+        yield return new WaitForSeconds(10);
+        panelAnim.SetBool("Off", true);
+        yield return new WaitForSeconds(2);
+        panel.SetActive(false);
+        enabled = false;
     }
 
     private void OnTriggerExit(Collider other)
