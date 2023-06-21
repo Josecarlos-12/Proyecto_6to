@@ -21,16 +21,4 @@ public class ChartCatBasement : MonoBehaviour
         animDoor.SetBool("Close", false);
         shed.SetActive(true);
     }
-
-    void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.E) && init)
-        {
-            cam.SetActive(false);
-            prota.SetActive(true);
-            chart.SetActive(true);
-            Cursor.visible = false;
-            Cursor.lockState = CursorLockMode.Locked;
-        }
-    }
 }

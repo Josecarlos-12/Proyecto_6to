@@ -1,11 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class NotePopUp2 : MonoBehaviour
 {
     [SerializeField] private LayerMask layer;
     [SerializeField] private Camera cam;
+    [SerializeField] private NoteInteraction note;
+    public NotesUI noteList;
+    [SerializeField] private string cod;
+    [SerializeField] private Sprite spri;
+
+    [Header("Player")]
+    [SerializeField] private GameObject camGame;
+    [SerializeField] private GameObject player;
 
     private void Update()
     {
@@ -16,13 +25,23 @@ public class NotePopUp2 : MonoBehaviour
 
             if (Physics.Raycast(ray, out hit, 1000, layer))
             {
-                    // Se ha hecho clic en un objeto
-                    GameObject objetoClicado = hit.collider.gameObject;
-                    Debug.Log("Se ha hecho clic en: " + objetoClicado.name);
+                if (hit.transform.CompareTag("Note"))
+                {
+                    cod = note.noteText;
+                    spri = note.image;
 
-                    // Obtener las coordenadas del punto de impacto
-                    Vector3 coordenadasImpacto = hit.point;
-                    Debug.Log("Coordenadas de impacto: " + coordenadasImpacto);      
+                    noteList.sNote.Add(spri);
+                    noteList.traducttionNote.Add(cod);
+
+                    print("Toco nota");
+                    Destroy(hit.transform.gameObject);
+
+                    camGame.SetActive(false);
+                    player.SetActive(true);
+
+                    Cursor.visible = false;
+                    Cursor.lockState = CursorLockMode.Locked;
+                }
             }
         }
     }
