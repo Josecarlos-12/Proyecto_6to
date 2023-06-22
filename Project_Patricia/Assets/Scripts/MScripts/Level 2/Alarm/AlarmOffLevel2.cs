@@ -18,6 +18,9 @@ public class AlarmOffLevel2 : MonoBehaviour
     [SerializeField] private AudioSource mike;
     [SerializeField] private AudioClip[] clip;
 
+    [SerializeField] private Animator alarmAnim;
+
+
     public enum Alarm
     {
         one, two, three
@@ -31,6 +34,7 @@ public class AlarmOffLevel2 : MonoBehaviour
             case Alarm.one:
                 if (into && Input.GetKeyDown(KeyCode.E))
                 {
+                    alarmAnim.SetBool("On", false);
                     col.enabled = false;
                     into = false;
                     textE.SetActive(false);
@@ -42,6 +46,7 @@ public class AlarmOffLevel2 : MonoBehaviour
             case Alarm.two:
                 if (into && Input.GetKeyDown(KeyCode.E))
                 {
+                    alarmAnim.SetBool("On", false);
                     col.enabled = false;
                     into = false;
                     textE.SetActive(false);
@@ -53,6 +58,7 @@ public class AlarmOffLevel2 : MonoBehaviour
             case Alarm.three:
                 if (into && Input.GetKeyDown(KeyCode.E))
                 {
+                    alarmAnim.SetBool("On", false);
                     colliderActive.SetActive(true);
                     col.enabled = false;
                     into = false;
@@ -63,8 +69,6 @@ public class AlarmOffLevel2 : MonoBehaviour
                 }
                 break;
         }
-
-        
     }
 
     public IEnumerator Dialogue()

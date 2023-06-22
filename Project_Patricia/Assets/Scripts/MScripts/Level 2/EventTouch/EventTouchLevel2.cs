@@ -29,6 +29,8 @@ public class EventTouchLevel2 : MonoBehaviour
     [SerializeField] private AudioSource audioMike;
     [SerializeField] private AudioClip clipMike;
 
+    [SerializeField] private Animator alarmAnim;
+
     public enum Interaction
     {
         interaction, touch, vino
@@ -47,6 +49,7 @@ public class EventTouchLevel2 : MonoBehaviour
             case Interaction.interaction:
                 if (Input.GetKeyDown(KeyCode.E) && into)
                 {
+                    alarmAnim.SetBool("On", true);
                     textE.SetActive(false);
                     into = false;
                     active = true;
@@ -77,6 +80,7 @@ public class EventTouchLevel2 : MonoBehaviour
                     break;
                 case Interaction.touch:
                     StartCoroutine("DialogueAlarm2");
+                    alarmAnim.SetBool("On", true);
                     alarm.Play();
                     col.enabled = false;
                     animDoor.SetBool("Close", false);
@@ -114,6 +118,7 @@ public class EventTouchLevel2 : MonoBehaviour
 
         text.SetActive(true);
         text.GetComponent<TextMeshProUGUI>().text = mike;
+        alarmAnim.SetBool("On", true);
         alarm2.SetActive(true);
         yield return new WaitForSeconds(2);
         text.SetActive(false);
