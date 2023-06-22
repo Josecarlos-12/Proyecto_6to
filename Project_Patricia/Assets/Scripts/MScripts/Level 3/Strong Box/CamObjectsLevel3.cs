@@ -133,6 +133,7 @@ public class CamObjectsLevel3 : MonoBehaviour
 
     public IEnumerator AnimTrue()
     {
+        yield return new WaitForSeconds(4);
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         yield return new WaitForSeconds(2);

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 5.8697777, g: 4.5282784, b: 4.8101425, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1682,9 +1682,9 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 883775121}
   m_FillRect: {fileID: 1836617303}
   m_HandleRect: {fileID: 883775120}
-  m_Direction: 0
+  m_Direction: 1
   m_MinValue: 0
-  m_MaxValue: 1
+  m_MaxValue: 0.9
   m_WholeNumbers: 0
   m_Value: 0
   m_OnValueChanged:
@@ -44816,7 +44816,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.25}
   m_AnchorMax: {x: 1, y: 0.75}
-  m_AnchoredPosition: {x: -5, y: 0}
+  m_AnchoredPosition: {x: 5, y: 0}
   m_SizeDelta: {x: -20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &836989635
@@ -46444,7 +46444,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -110302,6 +110302,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -97310207193682024, guid: da94a45f71c78c74cbcc48973773561d,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 4c9b77fffc4c6fb4bbf1c94b891be524, type: 2}
     - target: {fileID: 885630778728172437, guid: da94a45f71c78c74cbcc48973773561d,
         type: 3}
       propertyPath: m_IsActive
@@ -112575,7 +112580,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -134163,17 +134168,17 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 14e3de5051fff2a42b764757b6d81be0, type: 2}
+      objectReference: {fileID: 2100000, guid: 00024d38b394dd440a891833b3f4b5ff, type: 2}
     - target: {fileID: 985038735772720386, guid: e273931c552290449b618d5523b28349,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: be2070fb88906c54b94d240b75edb357, type: 2}
+      objectReference: {fileID: 2100000, guid: 00024d38b394dd440a891833b3f4b5ff, type: 2}
     - target: {fileID: 1719473076665824227, guid: e273931c552290449b618d5523b28349,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 14e3de5051fff2a42b764757b6d81be0, type: 2}
+      objectReference: {fileID: 2100000, guid: 00024d38b394dd440a891833b3f4b5ff, type: 2}
     - target: {fileID: 1983165889436410198, guid: e273931c552290449b618d5523b28349,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -134183,7 +134188,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 14e3de5051fff2a42b764757b6d81be0, type: 2}
+      objectReference: {fileID: 2100000, guid: 00024d38b394dd440a891833b3f4b5ff, type: 2}
     - target: {fileID: 6246061511553355396, guid: e273931c552290449b618d5523b28349,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -134203,7 +134208,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 14e3de5051fff2a42b764757b6d81be0, type: 2}
+      objectReference: {fileID: 2100000, guid: 00024d38b394dd440a891833b3f4b5ff, type: 2}
     - target: {fileID: 7929380139369143686, guid: e273931c552290449b618d5523b28349,
         type: 3}
       propertyPath: m_RootOrder
