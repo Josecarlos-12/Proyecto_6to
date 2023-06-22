@@ -60,8 +60,8 @@ public class PanelPills : MonoBehaviour
         animPa.SetBool("Off", true);
         yield return new WaitForSeconds(2);
         panel.SetActive(false);
-        enabled = false;
         tutoPills.SetActive(false);
+        enabled = false;
     }
 
     public void ButtonAccept()

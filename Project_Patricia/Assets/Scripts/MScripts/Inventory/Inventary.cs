@@ -25,7 +25,7 @@ public class Inventary : MonoBehaviour
     [SerializeField] private GameObject text;
     [SerializeField] private GameObject eventPills, eventSleep, eventLaders;
     public bool complete;
-    public Animator keyPad;
+    public Animator keyPad, alarm;
 
 
     [Header("Audio")]
@@ -189,5 +189,6 @@ public class Inventary : MonoBehaviour
         cam.SetActive(true);
         //Alarma
         keyPad.SetBool("On", true);
+        alarm.SetBool("On", true);
     }
 }
