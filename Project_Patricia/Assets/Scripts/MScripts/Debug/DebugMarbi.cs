@@ -5,6 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class DebugMarbi : MonoBehaviour
 {
+    [Header("Options")]
+    [SerializeField] private GameObject options;
+    [SerializeField] private GameObject menuOptions;
+    [SerializeField] private GameObject menu, texto;
+
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Alpha0))
@@ -42,6 +47,27 @@ public class DebugMarbi : MonoBehaviour
         Time.timeScale = 1;
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
+    }
+
+    public void NO()
+    {
+        options.SetActive(false);
+        menu.SetActive(false);
+        menuOptions.SetActive(true);
+        texto.SetActive(true);
+    }
+
+    public void Menu2()
+    {
+        texto.SetActive(false);
+        menuOptions.SetActive(false);
+        menu.SetActive(true);
+    }
+
+    public void Options()
+    {
+        menuOptions.SetActive(false);
+        options.SetActive(true);
     }
 
 }

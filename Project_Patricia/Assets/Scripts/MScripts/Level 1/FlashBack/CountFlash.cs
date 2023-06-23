@@ -10,6 +10,8 @@ public class CountFlash : MonoBehaviour
     [SerializeField] private int count;
     public bool ring;
     public GameObject cat, chair, episode;
+    [SerializeField] private GameObject house, newHouse;
+
 
     public enum State
     {
@@ -53,6 +55,7 @@ public class CountFlash : MonoBehaviour
                         cat.SetActive(true);
                         chair.SetActive(true);
                         episode.SetActive(true);
+                        
                     }
                 }
             }
@@ -87,6 +90,8 @@ public class CountFlash : MonoBehaviour
 
     public IEnumerator Ring()
     {
+        newHouse.SetActive(true);
+        house.SetActive(false);
         yield return new WaitForSeconds(10);
         ringtone.Play();
         ring= true;

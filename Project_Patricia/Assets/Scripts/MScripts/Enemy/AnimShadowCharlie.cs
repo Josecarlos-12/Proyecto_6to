@@ -43,6 +43,7 @@ public class AnimShadowCharlie : MonoBehaviour
         yield return new WaitForSeconds(1);
         animCharlie.SetBool("Scream", true);
         audioS.clip = clip;
+        audioS.volume = 0.1f;
         audioS.Play();
         audioS.loop= false;
     }

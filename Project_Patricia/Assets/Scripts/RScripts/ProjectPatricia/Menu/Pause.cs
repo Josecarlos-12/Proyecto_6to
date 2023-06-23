@@ -11,6 +11,8 @@ public class Pause : MonoBehaviour
     public bool shoot;
 
     [SerializeField] private NotesUI note;
+    [SerializeField] private DebugMarbi debug;
+
 
     private void Start()
     {
@@ -26,6 +28,8 @@ public class Pause : MonoBehaviour
                 //pauseSound.Play();
                 ResumeGame();
                 Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
+                debug.NO();
                 shoot = true;
             }
             else
