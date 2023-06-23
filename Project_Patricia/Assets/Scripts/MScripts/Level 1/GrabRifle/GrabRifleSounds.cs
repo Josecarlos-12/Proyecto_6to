@@ -81,7 +81,13 @@ public class GrabRifleSounds : MonoBehaviour
         strainCharlie.Play();
         shadowBattle.SetActive(true);
         text.SetActive(false);
-        
+        yield return new WaitForSeconds(2);
+        audioMike.clip = clip[1];
+        audioMike.Play();
+        text.SetActive(true);
+        text.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: Tal vez Cat ya haya regresado y pueda ayudarme a buscarlo";
+        yield return new WaitForSeconds(5);
+        text.SetActive(false);
     }
 
     public void MouseClick()

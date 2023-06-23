@@ -118,7 +118,7 @@ public class PlayerHealth : MonoBehaviour
                 Scream();
                 sleep.ModeDreams();
                 StartCoroutine("OffDreams");
-                childScrean.Play();
+                //childScrean.Play();
             }
         }
 
