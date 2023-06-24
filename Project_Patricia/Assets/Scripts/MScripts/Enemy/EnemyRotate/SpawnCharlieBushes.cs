@@ -40,6 +40,7 @@ public class SpawnCharlieBushes : MonoBehaviour
                         break;
                         case Enemy.Charlie:
                         charSpawn = Instantiate(charlie,transform.position,transform.rotation);
+                        charSpawn.transform.parent = transform.parent;
                         charSpawn.SetActive(true);
 
                         break;

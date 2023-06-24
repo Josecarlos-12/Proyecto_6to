@@ -19,6 +19,7 @@ public class EventWPV2 : MonoBehaviour
 
     [SerializeField] private AudioSource audioMike, audi, back;
     [SerializeField] private AudioClip[] clip;
+    [SerializeField] private GameObject charlies;
 
     private void Start()
     {
@@ -108,6 +109,8 @@ public class EventWPV2 : MonoBehaviour
 
     public IEnumerator Box()
     {
+        Destroy(charlies);
+
         back.Play();
 
         box.GetComponent<Collider>().enabled = false;
