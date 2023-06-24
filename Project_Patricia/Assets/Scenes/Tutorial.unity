@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 5.872158, g: 4.5282116, b: 4.8095074, a: 1}
+  m_IndirectSpecularColor: {r: 5.8724556, g: 4.5281963, b: 4.80937, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -8202,10 +8202,7 @@ GameObject:
   m_Component:
   - component: {fileID: 226299536}
   - component: {fileID: 226299533}
-  - component: {fileID: 226299530}
   - component: {fileID: 226299532}
-  - component: {fileID: 226299531}
-  - component: {fileID: 226299537}
   m_Layer: 11
   m_Name: Firewood1
   m_TagString: Untagged
@@ -8213,46 +8210,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &226299530
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 226299529}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a74f40d8c7ff6b94db4640393e6383ab, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isPickable: 0
-  rotation: 50
-  trahs: 0
-  audioSource: {fileID: 0}
-  audioClip: {fileID: 0}
---- !u!114 &226299531
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 226299529}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2a367f679a8aee84f8745abb4603cbd1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pick: {fileID: 226299530}
-  position: {fileID: 242246822}
-  col: {fileID: 226299533}
-  rbd: {fileID: 226299532}
-  touch: 0
-  into: 0
-  objectGarbage: {fileID: 331164572}
-  size: 7
-  player: {fileID: 1301812975}
-  sizePlayer: 7
-  countPlayer: 0
 --- !u!54 &226299532
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -8298,29 +8255,6 @@ Transform:
   m_Father: {fileID: 1013548137}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &226299537
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 226299529}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 55193fea7558a3b428d6d0098747b423, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  note: {fileID: 0}
-  anim: {fileID: 445935662}
-  pick: {fileID: 226299530}
-  clouth: {fileID: 0}
-  into: 0
-  col: {fileID: 0}
-  boxMusic: {fileID: 0}
-  strong: {fileID: 0}
-  pPills: {fileID: 0}
-  alarm: {fileID: 0}
-  objGames: 0
 --- !u!1 &228577185
 GameObject:
   m_ObjectHideFlags: 0
@@ -12903,7 +12837,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 331164572}
-  - component: {fileID: 331164568}
   m_Layer: 0
   m_Name: Chimney
   m_TagString: Untagged
@@ -12911,31 +12844,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &331164568
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 331164567}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f36d08fb5c21a92419d1bcf59f518142, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  open: 0
-  anim: {fileID: 0}
-  pick: {fileID: 2011594019}
-  pick2: {fileID: 226299530}
-  trashOne: {fileID: 2011594020}
-  trashTwo: {fileID: 226299531}
-  note: {fileID: 1301812979}
-  count: 0
-  closeAudio: {fileID: 0}
-  dumpster: {fileID: 0}
-  finish: {fileID: 617032334}
-  time: 0.5
-  word: 2
 --- !u!4 &331164572
 Transform:
   m_ObjectHideFlags: 0
@@ -40335,7 +40243,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &709573194
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -113382,8 +113290,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   trash:
-  - {fileID: 2011594020}
-  - {fileID: 226299531}
+  - {fileID: 0}
+  - {fileID: 0}
   - {fileID: 163187267}
   - {fileID: 1316305350}
   - {fileID: 248707136}
@@ -126066,10 +125974,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2011594025}
   - component: {fileID: 2011594022}
-  - component: {fileID: 2011594019}
   - component: {fileID: 2011594021}
-  - component: {fileID: 2011594020}
-  - component: {fileID: 2011594026}
   m_Layer: 11
   m_Name: Firewood
   m_TagString: Untagged
@@ -126077,46 +125982,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &2011594019
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2011594018}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a74f40d8c7ff6b94db4640393e6383ab, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isPickable: 0
-  rotation: 50
-  trahs: 0
-  audioSource: {fileID: 104396105}
-  audioClip: {fileID: 8300000, guid: 6cc30b8526c4f1849afb7ec9c53779a7, type: 3}
---- !u!114 &2011594020
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2011594018}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2a367f679a8aee84f8745abb4603cbd1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pick: {fileID: 2011594019}
-  position: {fileID: 1549621072}
-  col: {fileID: 2011594022}
-  rbd: {fileID: 2011594021}
-  touch: 0
-  into: 0
-  objectGarbage: {fileID: 331164572}
-  size: 7
-  player: {fileID: 1301812975}
-  sizePlayer: 7
-  countPlayer: 0
 --- !u!54 &2011594021
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -126162,29 +126027,6 @@ Transform:
   m_Father: {fileID: 1013548137}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2011594026
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2011594018}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 55193fea7558a3b428d6d0098747b423, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  note: {fileID: 0}
-  anim: {fileID: 2056369127}
-  pick: {fileID: 2011594019}
-  clouth: {fileID: 0}
-  into: 0
-  col: {fileID: 0}
-  boxMusic: {fileID: 0}
-  strong: {fileID: 0}
-  pPills: {fileID: 0}
-  alarm: {fileID: 0}
-  objGames: 0
 --- !u!1 &2011899840
 GameObject:
   m_ObjectHideFlags: 0

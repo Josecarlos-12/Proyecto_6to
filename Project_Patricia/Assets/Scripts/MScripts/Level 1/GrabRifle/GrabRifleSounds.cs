@@ -46,6 +46,7 @@ public class GrabRifleSounds : MonoBehaviour
 
             wayPoint.SetActive(true);
             inve.rifle = true;
+            inve.spriteRifle = true;
             pressE.SetActive(false);
             weapon.shootTwo = true;
 

@@ -145,6 +145,11 @@ public class LightInRoom : MonoBehaviour
 
            
         }
+
+        if(Input.GetKeyDown(KeyCode.F11))
+        {
+            time = maxTime + 3;
+        }
     }
 
     /*public IEnumerator NextLight()

@@ -8,6 +8,7 @@ public class OpenDoorCustom : MonoBehaviour
     [SerializeField] private TouchDoorCustom front;
     [SerializeField] private TouchDoorCustom behind;
     [SerializeField] private TouchDoorCustom close;
+    [SerializeField] private PickUpObject pick;
 
     [Header("Open Door")]
     [SerializeField] private Animator animDoor;
@@ -19,7 +20,7 @@ public class OpenDoorCustom : MonoBehaviour
 
     public void OpenDoor()
     {
-        if (Input.GetKeyDown(KeyCode.E) && front.front && !close.frontM && !close.backM)
+        if (Input.GetKeyDown(KeyCode.E) && front.front && !close.frontM && !close.backM )
         {
             //animDoor.SetBool("Behind", false);
             animDoor.SetBool("Front", true);
