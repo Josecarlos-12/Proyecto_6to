@@ -25,7 +25,7 @@ public class OpenDoorCustom : MonoBehaviour
             //animDoor.SetBool("Behind", false);
             animDoor.SetBool("Front", true);
         }
-        if (Input.GetKeyDown(KeyCode.E) && close.frontM)
+        if (Input.GetKeyDown(KeyCode.E) && close.frontM && close.close)
         {
             animDoor.SetBool("Behind", false);
             animDoor.SetBool("Front", false);
@@ -37,7 +37,7 @@ public class OpenDoorCustom : MonoBehaviour
             //animDoor.SetBool("Front", false);
             animDoor.SetBool("Behind", true);
         }
-        if(Input.GetKeyDown(KeyCode.E) && close.backM)
+        if(Input.GetKeyDown(KeyCode.E) && close.backM && close.close)
         {
             animDoor.SetBool("Front", false);
             animDoor.SetBool("Behind", false);

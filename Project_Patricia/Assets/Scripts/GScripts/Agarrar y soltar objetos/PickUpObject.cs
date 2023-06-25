@@ -17,6 +17,8 @@ public class PickUpObject : MonoBehaviour
     public float newRadius;
     public float timer;
 
+    [SerializeField] private bool door;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -69,7 +71,7 @@ public class PickUpObject : MonoBehaviour
 
         else if (PickedObject != null)
         {
-            if (Input.GetKeyDown(KeyCode.E))
+            if (Input.GetKeyDown(KeyCode.E) && !door)
             {
                 PickedObject.GetComponent<PickableObject>().isPickable = true;
                 PickedObject.transform.SetParent(null);
@@ -90,6 +92,22 @@ public class PickUpObject : MonoBehaviour
         //player.radius = Mathf.Lerp(player.radius, newRadius, timer);
         //7player.center = Vector3.Lerp(player.center, newCenter, timer);
         //timer += Time.deltaTime;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Door"))
+        {
+            door = true;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.CompareTag("Door"))
+        {
+            door= false;
+        }
     }
 
 }
