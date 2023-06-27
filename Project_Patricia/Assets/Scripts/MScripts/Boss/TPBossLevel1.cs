@@ -42,6 +42,11 @@ public class TPBossLevel1 : MonoBehaviour
 
     [SerializeField] private AudioSource attack;
 
+    [Header("Call Other Script")]
+    [SerializeField] private TasksUILevel2 task;
+    [SerializeField] private KeyGrab key;
+    [SerializeField] private GameObject tasUI;
+
     void Update()
     {
         AttackBossLife();
@@ -346,8 +351,8 @@ public class TPBossLevel1 : MonoBehaviour
 
         prota.SetActive(true);
         cam.SetActive(false);
-        boxInta.transform.position = transform.position;
-        boxInta.SetActive(true);
+        //boxInta.transform.position = transform.position;
+        //boxInta.SetActive(true);
 
         Destroy(character);
 
@@ -355,8 +360,17 @@ public class TPBossLevel1 : MonoBehaviour
         text.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: Tengo que...";
         //audioMike.clip = clip[0];
         //audioMike.Play();        
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(2);
+        text.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: Charlie";
+
+        yield return new WaitForSeconds(2);
         text.SetActive(false);
+
+        tasUI.SetActive(true);
+        task.go = true;
+        task.task = "Enter the attic";
+        key.numberKey = 1;
+        key.inve.bKEy = true;
         Destroy(containerBoss);
     }
 

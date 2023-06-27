@@ -13,6 +13,7 @@ public class AnimKeyEvent : MonoBehaviour
     [Header("Dialogue")]
     [SerializeField] private AudioSource mike;
     [SerializeField] private AudioClip[] clip;
+    [SerializeField] private GameObject task;
 
 
 
@@ -40,11 +41,12 @@ public class AnimKeyEvent : MonoBehaviour
         text.SetActive(true);
         text.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: Te lo advertí";
         yield return new WaitForSeconds(2);
-        active.active2 = true;
-        Destroy(shadow);
+        task.SetActive(true);
+        active.active2 = true;        
         boss.SetActive(true);
         text.SetActive(false);
         cam.SetActive(false);
         prota.SetActive(true);
+        Destroy(shadow);
     }
 }

@@ -18,6 +18,10 @@ public class EventFindCharlie : MonoBehaviour
     [SerializeField] private AudioSource mike;
     [SerializeField] private AudioClip clip;
 
+    [Header("TaskUI")]
+    [SerializeField] private TasksUILevel2 task;
+    [SerializeField] private GameObject taskUI;
+
     void Start()
     {
      this.gameObject.SetActive(false);   
@@ -43,6 +47,10 @@ public class EventFindCharlie : MonoBehaviour
         text.SetActive(true);
         text.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: Todo está muy tranquilo...";
         yield return new WaitForSeconds(3);
+        taskUI.SetActive(true);
+        task.go = true;
+        task.task = "Exit and close the door";
+
         text.SetActive(false);
         handle.SetBool("On", true);
         activeDorr= true;

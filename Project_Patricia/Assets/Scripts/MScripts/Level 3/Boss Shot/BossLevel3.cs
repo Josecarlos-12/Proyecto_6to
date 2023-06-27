@@ -5,15 +5,15 @@ using UnityEngine;
 using UnityEngine.AI;
 
 public class BossLevel3 : MonoBehaviour
-{ 
+{
     [Header("Follow Player")]
     [SerializeField] private NavMeshAgent agent;
     [SerializeField] private Animator animMike;
     [SerializeField] private float size;
     [SerializeField] private Transform player;
-    [SerializeField] private Vector3 posPivot; 
+    [SerializeField] private Vector3 posPivot;
     [SerializeField] private float posY;
-    [SerializeField] private GameObject container, rifle;
+    [SerializeField] private GameObject container, rifle, rifle2;
 
     [Header("Random TP")]
     [SerializeField] private Transform[] pos;
@@ -35,6 +35,7 @@ public class BossLevel3 : MonoBehaviour
 
     [Header("Don´t Move")]
     [SerializeField] private float sizeMove;
+    [SerializeField] private float soundGizmo;
 
     [Header("Call Other Script")]
     [SerializeField] private EventsBossLevel3 count;
@@ -46,6 +47,18 @@ public class BossLevel3 : MonoBehaviour
     [Header("Raycast")]
     [SerializeField] private LayerMask layerPlayer;
     [SerializeField] private float distance;
+    [SerializeField] private GameObject punch;
+    [SerializeField] private Collider col;
+
+    [Header("Transparency")]
+    [SerializeField] private bool countShoot;
+    [SerializeField] private Color myColor;
+    [SerializeField, Range(0, 1)] private float myAlpha;
+    [SerializeField] private SkinnedMeshRenderer charlie;
+    [SerializeField] private float timeT, maxTimeT;
+    [SerializeField] private AudioSource[] mikeAudio;
+    [SerializeField] private GameObject door;
+    [SerializeField] private AudioSource shootAudio;
 
     private void Update()
     {
@@ -53,6 +66,30 @@ public class BossLevel3 : MonoBehaviour
         CountShoot();
         ShootBack(); 
         FollowReset();
+        Transparency();
+    }
+
+    public void Transparency()
+    {
+        myColor.a = myAlpha;
+        charlie.material.color = myColor;
+        if (countShoot)
+        {
+            
+            
+
+            timeT += Time.deltaTime;
+
+            if (timeT > maxTimeT)
+            {
+                timeT = 0;
+                if (myAlpha > 0)
+                {
+                    myAlpha -= 0.2f;
+                }
+
+            }
+        }       
     }
 
     public void CountShoot()
@@ -67,9 +104,6 @@ public class BossLevel3 : MonoBehaviour
                 print("Le dispararon 3 veces");
                 agent.enabled= false;
                 animMike.SetBool("Walk", false);
-                int range = Random.Range(0, pos.Length);
-                transform.position = pos[range].position;
-                print(range);
                 StartCoroutine("ResetCount");
             }
         }
@@ -81,12 +115,10 @@ public class BossLevel3 : MonoBehaviour
 
             if (bTP == 1)
             {
+                
                 print("Le dispararon 3 veces");
                 agent.enabled = false;
-                animMike.SetBool("Walk", false);
-                int range = Random.Range(0, pos.Length);
-                transform.position = pos[range].position;
-                print(range);
+                animMike.SetBool("Walk", false);                
                 StartCoroutine("ResetCount");
                 StopCoroutine("NoBullet");
             }
@@ -95,12 +127,38 @@ public class BossLevel3 : MonoBehaviour
 
     public IEnumerator ResetCount()
     {
-        back = 0;
+        door.SetActive(true);
+        countShoot = true;
+        rifle.SetActive(false);
+        col.enabled = false;
+        animMike.SetBool("Death", true);
+        yield return new WaitForSeconds(3);
+
+        for (int i = 0; i < mikeAudio.Length; i++)
+        {
+            mikeAudio[i].Play();
+        }
+
+        countShoot = false;
+        myAlpha = 1;
+        col.enabled= true;
         desactive = true;
+        int range = Random.Range(0, pos.Length);
+        transform.position = pos[range].position;
+        print(range);
+        yield return new WaitForSeconds(2);
+        animMike.SetBool("Death", false); 
+        back = 0;
+
         yield return new WaitForSeconds(4);
         count.life += 4;
-        yield return new WaitForSeconds(4);
-        desactive= false;
+        yield return new WaitForSeconds(4); 
+        door.SetActive(false);
+        for (int i = 0; i < mikeAudio.Length; i++)
+        {
+            mikeAudio[i].Stop();
+        }
+        desactive = false;
         print("Reset");
         shoot = maxShoot;
         count.shootCount = 0;
@@ -125,14 +183,21 @@ public class BossLevel3 : MonoBehaviour
 
     public void ShootBack()
     {
-        if(desactive && Vector3.Distance(transform.position, player.position) < size)
+        if(desactive && Vector3.Distance(transform.position, player.position) < soundGizmo)
         {
             if(back<3)
             back++;
 
             if(back == 1)
             {
-                
+
+                for (int i = 0; i < mikeAudio.Length; i++)
+                {
+                    mikeAudio[i].Stop();
+                }
+
+                myAlpha = 1;
+                door.SetActive(false);
                 desactive = false;
                 print("Reset");
                 shoot = maxShoot;
@@ -168,40 +233,40 @@ public class BossLevel3 : MonoBehaviour
                 agent.destination = player.position;
                 StopCoroutine("FalseWalk");
                 followReset = false;
-
+                if (shoot > 0)
+                {
+                    // El raycast ha detectado al jugador
+                    Debug.Log("¡Jugador detectado!");
+                    Shoot();
+                }
                 RaycastHit hit;
                 if (Physics.Raycast(transform.position, transform.forward, out hit, distance, layerPlayer))
                 {
                     // Verifica si el raycast golpeó al jugador
-                    if (hit.collider.CompareTag("Player") && shoot > 0)
-                    {
-                        // El raycast ha detectado al jugador
-                        Debug.Log("¡Jugador detectado!");
-                        Shoot();
-                    }
+                    
                 }
 
             }
             if (Vector3.Distance(transform.position, player.position) < size && bBack)
             {
                 //animMike.SetBool("Walk", true);
-                followReset = false;
+               /* followReset = false;
                 Vector3 direction = transform.position - player.position;
                 direction.Normalize();
                 Vector3 targetPosition = transform.position + direction * distanceToPlayer;
                 agent.SetDestination(targetPosition);
 
-                StopCoroutine("FalseWalk");
+                StopCoroutine("FalseWalk");*/
 
                 RaycastHit hit;
                 if (Physics.Raycast(transform.position, transform.forward, out hit, distance, layerPlayer))
                 {
                     // Verifica si el raycast golpeó al jugador
-                    if (hit.collider.CompareTag("Player") && shoot > 0)
+                    if ( shoot > 0)
                     {
                         // El raycast ha detectado al jugador
                         Debug.Log("¡Jugador detectado!");
-                        Shoot();
+                        //Shoot();
                     }
                 }
             }
@@ -219,13 +284,22 @@ public class BossLevel3 : MonoBehaviour
                 bBack = false;
             }
 
-            if(Vector3.Distance(transform.position, player.position) > 13 && Vector3.Distance(transform.position, player.position) < size && !bBack)
+            if(Vector3.Distance(transform.position, player.position) > sizeMove && Vector3.Distance(transform.position, player.position) < size && !bBack)
             {
                 animMike.SetBool("Walk", true);
+                animMike.SetBool("Punch", false);
             }
-            else if (Vector3.Distance(transform.position, player.position) > 4 && Vector3.Distance(transform.position, player.position) < sizeMove &&  bBack)
+            else if ( bBack)
             {
-                animMike.SetBool("Walk", true);
+                rifle.SetActive(false);
+                rifle2.SetActive(true);
+                animMike.SetBool("Punch", true);
+            }
+            else
+            {
+                rifle2.SetActive(false);
+                punch.SetActive(false);
+                animMike.SetBool("Punch", false);
             }
 
             if (Vector3.Distance(transform.position, player.position) > 4 && Vector3.Distance(transform.position, player.position) < sizeMove && !bBack)
@@ -254,6 +328,7 @@ public class BossLevel3 : MonoBehaviour
 
     public IEnumerator NoBullet()
     {
+        door.SetActive(true);
         back = 0;
         desactive = true;
         count.shootCount = 4;
@@ -262,9 +337,20 @@ public class BossLevel3 : MonoBehaviour
         animMike.SetBool("Walk", false);
         int range = Random.Range(0, pos.Length);
         transform.position = pos[range].position;
+
+        for (int i = 0; i < mikeAudio.Length; i++)
+        {
+            mikeAudio[i].Play();
+        }
         yield return new WaitForSeconds(4);
+        myAlpha = 1;
         count.life += 4;
         yield return new WaitForSeconds(4);
+        door.SetActive(false);
+        for (int i = 0; i < mikeAudio.Length; i++)
+        {
+            mikeAudio[i].Stop();
+        }
         noBullet = 0;
         shoot = maxShoot;
         count.shootCount = 0;
@@ -280,6 +366,7 @@ public class BossLevel3 : MonoBehaviour
 
         if (time > maxTime)
         {
+            shootAudio.Play();
             shoot--;
             rifle.SetActive(true);
             time = 0;
@@ -305,6 +392,9 @@ public class BossLevel3 : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, backSize);
 
         Gizmos.DrawLine(transform.position, transform.position + transform.forward * distance);
+
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, soundGizmo);
 
     }
 }

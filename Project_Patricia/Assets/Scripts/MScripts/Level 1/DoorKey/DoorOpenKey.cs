@@ -9,6 +9,9 @@ public class DoorOpenKey : MonoBehaviour
     [SerializeField] Animator anim;
     [SerializeField] GameObject dialogue;
 
+    [Header("Call Other Script")]
+    [SerializeField] private TasksUILevel2 task;
+
 
     void Update()
     {
@@ -17,6 +20,7 @@ public class DoorOpenKey : MonoBehaviour
             anim.SetBool("Open", true);
             into = false;
             numberKey.numberKey = 0;
+            task.taskCount = 2;
         }
     }
 

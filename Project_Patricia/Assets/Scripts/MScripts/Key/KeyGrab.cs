@@ -8,7 +8,7 @@ public class KeyGrab : MonoBehaviour
     public int numberKey = 0;
     [SerializeField] GameObject text, dialogue, containerKey;
     [SerializeField] bool into;
-    [SerializeField] Inventary inve;
+    public Inventary inve;
     [SerializeField] Collider col;
 
     [SerializeField] private AudioSource audioMike;

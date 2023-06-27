@@ -55,6 +55,12 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] private float time, maxtime;
     public bool bulletBoos;
 
+    [Header("Retroceso")]
+    [SerializeField] private float speedR = 3;
+    [SerializeField] CharacterController character;
+    [SerializeField] Vector3 direction;
+
+
     void Start()
     {
         //cam = GetComponent<PlayerCamera>();
@@ -134,12 +140,29 @@ public class PlayerHealth : MonoBehaviour
 
                 if (bossTouch == 1)
                 {
-                    punch = true;
+                //rb.AddForce(new Vector3(other.gameObject.transform.position.x - transform.position.x, 0, other.gameObject.transform.position.z - transform.position.z).normalized * 500, ForceMode.Impulse);
+                punch = true;
                     //bossAudio.Play();
                     sanity -= 10;
                     sleep.ModeDreams();
                     StartCoroutine("OffDreams");
                 }
+        }
+        if (other.gameObject.CompareTag("PunchBoss"))
+        {
+            direction = -transform.forward * speedR;
+            character.Move(direction * Time.deltaTime);
+            if (bossTouch < 3)
+                bossTouch++;
+
+            if (bossTouch == 1)
+            {
+                 punch = true;
+                sanity -= 10;
+                sleep.ModeDreams();
+                StartCoroutine("OffDreams");
+            }
+            
         }
     }
 

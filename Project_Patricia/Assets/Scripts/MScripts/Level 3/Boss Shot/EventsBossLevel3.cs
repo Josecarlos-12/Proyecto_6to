@@ -20,6 +20,9 @@ public class EventsBossLevel3 : MonoBehaviour
     [SerializeField] private GameObject note;
     [SerializeField] private Vector3 pos;
 
+    [Header("Punch")]
+    [SerializeField] private GameObject punch;
+
     public void Shoot()
     {
         GameObject bulletInstatiate = Instantiate(bullet, point.position, point.rotation);
@@ -30,6 +33,16 @@ public class EventsBossLevel3 : MonoBehaviour
     {
         animMike.SetBool("Shoot", false);
         rifle.SetActive(false);
+    }
+
+    public void Punch()
+    {
+        punch.SetActive(true);
+    }
+
+    public void PunchFalse()
+    {
+        punch.SetActive(false);
     }
 
     public void LessLife()
