@@ -22,7 +22,7 @@ public class KeyTutorial : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.W) && animPanel.finish || Input.GetKeyDown(KeyCode.A) && animPanel.finish || Input.GetKeyDown(KeyCode.S) && animPanel.finish || Input.GetKeyDown(KeyCode.D) && animPanel.finish)
         {            
             anim.SetBool("Exit", true);
-            task.go = true;
+            
 
             if(on<3)
             on++;

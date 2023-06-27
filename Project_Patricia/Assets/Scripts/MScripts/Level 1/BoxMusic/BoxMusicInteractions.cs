@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.Jobs;
 using UnityEngine;
+using static UnityEngine.Rendering.VirtualTexturing.Debugging;
 
 public class BoxMusicInteractions : MonoBehaviour
 {
@@ -40,6 +42,8 @@ public class BoxMusicInteractions : MonoBehaviour
     [SerializeField] Animator animBox;
     [SerializeField] int intBox;
     [SerializeField] Collider boxInteration;
+
+    [SerializeField] private BoxPlayMusic box;
 
     public enum Work
     {
@@ -109,6 +113,8 @@ public class BoxMusicInteractions : MonoBehaviour
         yield return new WaitForSeconds(3);
         text.SetActive(false);
         boxInteration.enabled= true;
+        yield return new WaitForSeconds(3);
+        box.StartAnim();
     }
 
 

@@ -17,6 +17,7 @@ public class Bullet : MonoBehaviour
 
     public int damageAmount = 1;
 
+
     private void Start()
     {
         render = GetComponent<Renderer>();
@@ -24,7 +25,7 @@ public class Bullet : MonoBehaviour
 
         rb = GetComponent<Rigidbody>();
         rb.AddForce(transform.forward * speed * Time.deltaTime, ForceMode.Impulse);
-        Destroy(gameObject, 8);
+        Destroy(gameObject, 4);
     }
 
     private void Update()
@@ -60,6 +61,11 @@ public class Bullet : MonoBehaviour
         {
             //other.GetComponent<EmilioHealth>().TakeDamage(damageAmount);
            // Destroy(this.gameObject);
+        }
+        int layerMask = other.gameObject.layer;
+        if (layerMask == LayerMask.NameToLayer("Obstruction"))
+        {
+            Destroy(gameObject);
         }
     }
 }

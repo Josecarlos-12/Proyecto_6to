@@ -20,8 +20,8 @@ public class DrawersOpen : MonoBehaviour
                 count++;
                 if (count == 1)
                 {
-                    col.enabled = false;
-                    noteColl.enabled = true;
+                    //col.enabled = false;
+                    //noteColl.enabled = true;
                 }
             }
         }

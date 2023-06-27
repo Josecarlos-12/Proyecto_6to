@@ -11,37 +11,44 @@ public class CloseDoorBoss : MonoBehaviour
     [SerializeField] private bool bDoor, player;
     [SerializeField] private List<OpenDoorCustom> doors = new List<OpenDoorCustom>();
     [SerializeField] private List<AudioSource> audios = new List<AudioSource>();
+    [SerializeField] private int count;
 
     private void OnDisable()
     {
         doors.Clear();
         audios.Clear();
+        bDoor = false;
+        player = false;
+        count = 0;
     }
 
     private void Update()
     {
         if(player && bDoor)
         {
+            if(count<3)
+            count++;
 
+            if (count == 1)
+            {
                 for (int i = 0; i < doors.Count; i++)
                 {
                     doors[i].open = true;
 
-                    if(doors[i].open == true)
+                    if (doors[i].open == true)
                     {
                         doors[i].open = false;
                         doors[i].animDoor.SetBool("Behind", false);
                         doors[i].animDoor.SetBool("Front", false);
                         for (int x = 0; x < audios.Count; x++)
                         {
-                            audios[i].clip= clip;
+                            audios[i].clip = clip;
                             audios[i].Play();
                         }
-
-
-
                     }
                 }
+            }
+                
         }
     }
 
@@ -51,10 +58,19 @@ public class CloseDoorBoss : MonoBehaviour
         {
             player = true;
         }
-        if (other.gameObject.CompareTag("Door") )
+        if (other.gameObject.CompareTag("Door"))
         {
-            bDoor= true;
+            OpenDoorCustom door = other.gameObject.GetComponent<OpenDoorCustom>();
+            AudioSource audio = other.gameObject.GetComponent<AudioSource>();
+
+            if (door != null && door.open == true && audio != null)
+            {
+                doors.Add(door);
+                audios.Add(audio);
+                bDoor = true;
+            }
         }
+            
     }
 
     private void OnTriggerExit(Collider other)
@@ -65,8 +81,7 @@ public class CloseDoorBoss : MonoBehaviour
         }
         if (other.gameObject.CompareTag("Door"))
         {
-            doors.Add(other.gameObject.GetComponent<OpenDoorCustom>());
-            audios.Add(other.gameObject.GetComponent<AudioSource>());
+            
             bDoor = false;
         }
     }

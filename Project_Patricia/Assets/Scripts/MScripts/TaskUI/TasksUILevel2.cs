@@ -13,6 +13,7 @@ public class TasksUILevel2 : MonoBehaviour
     [SerializeField] private int count;
     public int taskCount = 1;
     public int countT = 0;
+    [SerializeField] private AudioSource audioTask;
 
     void Update()
     {
@@ -57,9 +58,10 @@ public class TasksUILevel2 : MonoBehaviour
 
     public IEnumerator TaskUIOff()
     {
+        audioTask.Play();
         text.SetActive(true);
         textMesh.text = task;
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(8);
         text.SetActive(false);        
         yield return new WaitForSeconds(20);
         count = 0;

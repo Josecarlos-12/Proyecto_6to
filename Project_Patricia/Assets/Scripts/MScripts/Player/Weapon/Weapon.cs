@@ -13,6 +13,7 @@ public class Weapon : MonoBehaviour
     [SerializeField] private float initialShoot, timeShoot, saveTime, saveTimeMax;
     public GameObject bullet, weapon, aim;
     [SerializeField] private Transform initialBullet;
+    [SerializeField] private Camera cam;
     [SerializeField] private Text bulletText, handleText;
     [SerializeField] private GameObject bulletContainer;
     [SerializeField] private Animator animBullet, animRifle;
@@ -150,6 +151,20 @@ public class Weapon : MonoBehaviour
                 shootSound.Play();
                 animBullet.SetBool("Exit", false);
                 Instantiate(bullet, initialBullet.transform.position, initialBullet.transform.rotation);
+
+                /*GameObject bulletInstantiate = Instantiate(bullet, initialBullet.transform.position, initialBullet.transform.rotation);
+                RaycastHit hit;
+
+                if (Physics.Raycast(cam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f)).origin, cam.transform.forward, out hit, 1000))
+                {
+                    bullet.GetComponent<Rigidbody>().velocity = (hit.point- bulletInstantiate.transform.position).normalized * 20;
+                }
+                else
+                {
+                    bulletInstantiate.GetComponent<Rigidbody>().velocity = bulletInstantiate.transform.forward* 20;
+                }*/
+
+
                 health.sanity -= 4;
                 initialShoot = Time.time + timeShoot;
                 shoot = true;

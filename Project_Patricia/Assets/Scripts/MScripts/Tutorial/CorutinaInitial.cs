@@ -113,6 +113,7 @@ public class CorutinaInitial : MonoBehaviour
 
         textContainer.SetActive(false);
         press = true;
+        task.go = true;
     }
 
     private void Update()
@@ -124,6 +125,7 @@ public class CorutinaInitial : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.F12) && !press) 
         {
+            task.go = true;
             audioMike.Stop();
             audioCatelyn.Stop();
             StopCoroutine("Start");

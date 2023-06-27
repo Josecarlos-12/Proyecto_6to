@@ -12,10 +12,12 @@ public class TasksUI : MonoBehaviour
     public bool go;
     public int count, countT ;
     public int taskCount=1;
+    [SerializeField] private AudioSource audioTask;
+
 
     public enum TaskNumber
     {
-        one, two
+        one, two, three
     }
     public TaskNumber number;
     
@@ -60,8 +62,12 @@ public class TasksUI : MonoBehaviour
                 {
                     case TaskNumber.one:
                         StartCoroutine("TaskUIOff");
-                        break; case TaskNumber.two:
+                        break; 
+                    case TaskNumber.two:
                         StartCoroutine("TaskUIOff2");
+                        break;
+                    case TaskNumber.three:
+                        StartCoroutine("TaskUIOff3");
                         break;
                 }
                 
@@ -72,9 +78,10 @@ public class TasksUI : MonoBehaviour
     public IEnumerator TaskUIOff()
     {
         yield return new WaitForSeconds(20);
+        audioTask.Play();
         text.SetActive(true);
         textMesh.text= task;
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(8);
         text.SetActive(false);
         count = 0;
     }
@@ -82,9 +89,21 @@ public class TasksUI : MonoBehaviour
     public IEnumerator TaskUIOff2()
     {
         yield return new WaitForSeconds(2);
+        audioTask.Play();
         text.SetActive(true);
         textMesh.text = task;
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(8);
+        text.SetActive(false);
+        yield return new WaitForSeconds(18);
+        count = 0;
+    }
+
+    public IEnumerator TaskUIOff3()
+    {
+        audioTask.Play();
+        text.SetActive(true);
+        textMesh.text = task;
+        yield return new WaitForSeconds(8);
         text.SetActive(false);
         yield return new WaitForSeconds(18);
         count = 0;

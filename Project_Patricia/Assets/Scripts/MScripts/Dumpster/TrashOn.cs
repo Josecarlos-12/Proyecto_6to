@@ -32,6 +32,7 @@ public class TrashOn : MonoBehaviour
                 rbd.useGravity = false;
                 rbd.isKinematic = true;
                 into = true;
+                print("Coloco");
             }
         }
 

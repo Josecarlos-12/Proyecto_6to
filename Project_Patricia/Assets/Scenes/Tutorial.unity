@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 5.868099, g: 4.527767, b: 4.8105164, a: 1}
+  m_IndirectSpecularColor: {r: 5.872158, g: 4.5282116, b: 4.8095074, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4101,6 +4101,7 @@ MonoBehaviour:
   weapon: {fileID: 1738030997}
   aim: {fileID: 968060113}
   initialBullet: {fileID: 109796666}
+  cam: {fileID: 0}
   bulletText: {fileID: 1756201294}
   handleText: {fileID: 1736817211}
   bulletContainer: {fileID: 491715272}
@@ -12157,6 +12158,7 @@ GameObject:
   m_Component:
   - component: {fileID: 320203704}
   - component: {fileID: 320203705}
+  - component: {fileID: 320203706}
   m_Layer: 5
   m_Name: TasksUI
   m_TagString: Untagged
@@ -12206,7 +12208,104 @@ MonoBehaviour:
   count: 0
   countT: 0
   taskCount: 1
-  number: 0
+  audioTask: {fileID: 320203706}
+  number: 1
+--- !u!82 &320203706
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 320203703}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: c351e65986370dc40a8be0a68b288975, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &320468155
 GameObject:
   m_ObjectHideFlags: 0
@@ -70424,6 +70523,9 @@ MonoBehaviour:
   time: 0
   maxtime: 0
   bulletBoos: 0
+  speedR: 3
+  character: {fileID: 0}
+  direction: {x: 0, y: 0, z: 0}
 --- !u!114 &1301812979
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -134481,6 +134583,8 @@ MonoBehaviour:
   openDoor: {fileID: 0}
   mike: {fileID: 0}
   clip: {fileID: 0}
+  task: {fileID: 0}
+  taskUI: {fileID: 0}
 --- !u!65 &2120458096
 BoxCollider:
   m_ObjectHideFlags: 0

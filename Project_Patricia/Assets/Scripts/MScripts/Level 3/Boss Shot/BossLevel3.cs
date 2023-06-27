@@ -39,6 +39,7 @@ public class BossLevel3 : MonoBehaviour
 
     [Header("Call Other Script")]
     [SerializeField] private EventsBossLevel3 count;
+    [SerializeField] private FeetsBossLevel3 feets;
 
     [Header("Follow Reset")]
     [SerializeField] private bool followReset;
@@ -127,7 +128,7 @@ public class BossLevel3 : MonoBehaviour
 
     public IEnumerator ResetCount()
     {
-        door.SetActive(true);
+        
         countShoot = true;
         rifle.SetActive(false);
         col.enabled = false;
@@ -138,7 +139,7 @@ public class BossLevel3 : MonoBehaviour
         {
             mikeAudio[i].Play();
         }
-
+        door.SetActive(true);
         countShoot = false;
         myAlpha = 1;
         col.enabled= true;
@@ -226,28 +227,47 @@ public class BossLevel3 : MonoBehaviour
         {
             //posPivot = new Vector3(container.transform.position.x, posY, container.transform.position.z);
 
-            if (Vector3.Distance(transform.position, player.position) < size && !bBack)
+            if (Vector3.Distance(transform.position, player.position) < size && !bBack && !feets.ladder)
             {
                 
                 //animMike.SetBool("Walk", true);
                 agent.destination = player.position;
                 StopCoroutine("FalseWalk");
                 followReset = false;
-                if (shoot > 0)
-                {
-                    // El raycast ha detectado al jugador
-                    Debug.Log("¡Jugador detectado!");
-                    Shoot();
-                }
+                agent.stoppingDistance = 35;
+
                 RaycastHit hit;
                 if (Physics.Raycast(transform.position, transform.forward, out hit, distance, layerPlayer))
                 {
-                    // Verifica si el raycast golpeó al jugador
                     
+                    if (hit.transform.CompareTag("Player"))
+                    {
+                        // Verifica si el raycast golpeó al jugador
+                        if (shoot > 0)
+                        {
+                            Shoot();
+                            Debug.Log(hit.transform.name);
+                            // El raycast ha detectado al jugador
+                            
+                        }
+                        agent.stoppingDistance = 35;
+                    }              
+                    else if (!hit.transform.CompareTag("Player"))
+                    {
+                        print(hit.transform.name);
+                        print("Buscar");
+                        agent.destination = player.position;
+                        agent.stoppingDistance = 3;
+                    }
                 }
 
             }
-            if (Vector3.Distance(transform.position, player.position) < size && bBack)
+            if (Vector3.Distance(transform.position, player.position) < size && !bBack && feets.ladder)
+            {
+                agent.destination = player.position;
+                agent.stoppingDistance = 3;
+            }
+                if (Vector3.Distance(transform.position, player.position) < size && bBack)
             {
                 //animMike.SetBool("Walk", true);
                /* followReset = false;
