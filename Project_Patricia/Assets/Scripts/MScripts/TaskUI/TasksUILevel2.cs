@@ -15,6 +15,12 @@ public class TasksUILevel2 : MonoBehaviour
     public int countT = 0;
     [SerializeField] private AudioSource audioTask;
 
+    private void OnDisable()
+    {
+        countT = 0;
+        taskCount = 1;
+    }
+
     void Update()
     {
         TaskActive();

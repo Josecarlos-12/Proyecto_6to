@@ -13,6 +13,8 @@ public class FusesCount : MonoBehaviour
     [SerializeField] private AudioSource mike;
     [SerializeField] private AudioClip clip;
 
+    [SerializeField] private AudioSource catAudio;
+
     private void Update()
     {
         if (fuses[0].touch)
@@ -98,6 +100,9 @@ public class FusesCount : MonoBehaviour
         yield return new WaitForSeconds(3);
         dialogue.SetActive(false);
         yield return new WaitForSeconds(1);
+        catAudio.Play();
+
+
         cat.SetActive(true);
         dialogue.SetActive(true);
         dialogue.GetComponent<TextMeshProUGUI>().text = "Catelyn Schmith: Mike, ¿Por qué Charlie no está en su habitación?";

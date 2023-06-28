@@ -9,6 +9,7 @@ public class GrabLanterCat : MonoBehaviour
     [SerializeField] private Animator animLanter;
     [SerializeField] private bool into;
     [SerializeField] private Collider col;
+    [SerializeField] private GameObject cat;
 
 
     void Update()
@@ -25,6 +26,7 @@ public class GrabLanterCat : MonoBehaviour
             text.SetActive(false);
             into = false;
             col.enabled= false;
+            cat.SetActive(true);
             Destroy(lanter);
         }
     }

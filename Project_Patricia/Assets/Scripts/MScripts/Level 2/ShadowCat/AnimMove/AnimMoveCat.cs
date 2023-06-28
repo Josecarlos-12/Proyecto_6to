@@ -15,6 +15,8 @@ public class AnimMoveCat : MonoBehaviour
     [SerializeField] private AudioSource mike;
     [SerializeField] private AudioClip[] clip;
 
+    [SerializeField] private AudioSource punch;
+    [SerializeField] private AudioSource bodyFall, lanterFall;
 
     public IEnumerator DialogueInit()
     {
@@ -52,18 +54,34 @@ public class AnimMoveCat : MonoBehaviour
         ligthLanter.enabled = true;
         dialogue.SetActive(false);
         yield return new WaitForSeconds(2);
-        cat.SetActive(true);
+        //cat.SetActive(true);
+    }
+
+    public void LanterFall()
+    {
+        lanterFall.Play();
     }
 
     public void CursorMouse()
     {
+        
         sun.intensity= 20;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
 
-    public void Walk()
+    public void BodyFall()
     {
+        bodyFall.Play();
+    }
+
+    public void PunchSound()
+    {
+        punch.Play();
+    }
+
+    public void Walk()
+    {        
         anim.SetBool("Walk", true);
     }
 

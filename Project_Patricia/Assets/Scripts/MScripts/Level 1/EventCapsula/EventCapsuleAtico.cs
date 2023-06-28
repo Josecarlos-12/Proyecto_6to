@@ -84,9 +84,10 @@ public class EventCapsuleAtico : MonoBehaviour
         animKeyBox.SetBool("On", true);
 
         yield return new WaitForSeconds(4);
-
+        task.task = "Look for the keybox near the entrance";
         taskUI.SetActive(true);
         task.go = true;
+        
         step.SetActive(true);
         text.SetActive(false);
         Destroy(gameObject);
