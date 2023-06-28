@@ -96,7 +96,7 @@ public class Enemy : MonoBehaviour
                     //transform.LookAt(player.transform.position);
                     agent.destination = player.transform.position;
                     detected = true;
-                    agent.speed = 15;
+                    agent.speed = 10;
                     agent.acceleration = 70;
                     agent.stoppingDistance = 10;
                     StopCoroutine("FalseFollow");
@@ -108,7 +108,7 @@ public class Enemy : MonoBehaviour
                 break;
                 case State.follow:
                 agent.destination = player.transform.position;
-                agent.speed = 15;
+                agent.speed = 10;
                 agent.acceleration = 70;
                 agent.stoppingDistance = 10;
                 break;

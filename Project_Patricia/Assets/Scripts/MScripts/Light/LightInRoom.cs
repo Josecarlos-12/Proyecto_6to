@@ -186,7 +186,7 @@ public class LightInRoom : MonoBehaviour
             down[index].SetActive(true);
         }
 
-        yield return new WaitForSeconds(15);
+        yield return new WaitForSeconds(4);
 
         // Apagar los objetos encendidos de la matriz "up"
         foreach (int index in upIndexes)

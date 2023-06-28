@@ -13,7 +13,9 @@ public class DoorCloseCatSotano : MonoBehaviour
     [Header("Chart")]
     [SerializeField] private GameObject chart;
     [SerializeField] private GameObject camChart, prota;
-    
+
+    [SerializeField] private TasksUILevel2 task;
+
     public enum Change
     {
         door, chart
@@ -27,6 +29,7 @@ public class DoorCloseCatSotano : MonoBehaviour
             switch (change)
             {
                 case Change.door:
+                    task.taskCount = 2;
                     Desactive();
                     spotLight.SetActive(false);
                     StartCoroutine("ChartShiny");

@@ -66,7 +66,7 @@ public class BoosLife : MonoBehaviour
         switch (levels)
         {
             case Levels.two:
-                if (other.gameObject.name == "Spot Light")
+                if (other.gameObject.name == "Return Light")
                 {
                     print("Spot");
                     gameLight = other.gameObject;
@@ -74,6 +74,11 @@ public class BoosLife : MonoBehaviour
                 }
                 break;
         }
+        
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
         
     }
 }

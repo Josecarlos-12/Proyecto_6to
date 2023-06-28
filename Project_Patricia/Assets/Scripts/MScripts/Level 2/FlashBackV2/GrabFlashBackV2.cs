@@ -21,6 +21,11 @@ public class GrabFlashBackV2 : MonoBehaviour
     [SerializeField] private Animator animFlash;
     [SerializeField] private Collider collFlash, collNext;
 
+    [Header("Audios")]
+    [SerializeField] private AudioSource cat;
+    [SerializeField] private AudioSource mike;
+    [SerializeField] private AudioClip[] clipCat;
+
     public enum Dialogue
     {
         one, two, thre
@@ -80,10 +85,10 @@ public class GrabFlashBackV2 : MonoBehaviour
     public IEnumerator FLSB()
     {
         dialogue.SetActive(true);
-        //audi.clip = clip[0];
-        //audi.Play();
+        cat.clip = clipCat[0];
+        cat.Play();
         dialogue.GetComponent<TextMeshProUGUI>().text = "Catelyn Schmith: Mike, llama a la ambulancia! pero, ¿Cómo pudo pasar esto? ¡¿Dónde estabas tú?! ";
-        yield return new WaitForSeconds(4);
+        yield return new WaitForSeconds(7);
         dialogue.SetActive(false);
 
         panel.SetActive(false);
@@ -94,13 +99,13 @@ public class GrabFlashBackV2 : MonoBehaviour
     public IEnumerator FLSB2()
     {
         dialogue.SetActive(true);
-        //audi.clip = clip[0];
-        //audi.Play();
+        cat.clip = clipCat[0];
+        cat.Play();
         dialogue.GetComponent<TextMeshProUGUI>().text = "Catelyn Schmith: Por favor, necesito que hablemos sobre lo que pasó, cariño, no puedo vivir así. Lo que pasó fue un accidente, solo quiero que juntos podamos superarl-";
-        yield return new WaitForSeconds(7);
-       // audi.clip = clip[1];
-        //audi.Play();
-        dialogue.GetComponent<TextMeshProUGUI>().text = "Catelyn Schmith: Mike: ¡Te dije que no menciones más el tema!... ya sé lo que hice...";
+        yield return new WaitForSeconds(9);
+        mike.clip = clipCat[1];
+        mike.Play();
+        dialogue.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: ¡Te dije que no menciones más el tema!... ya sé lo que hice...";
         yield return new WaitForSeconds(5);
         dialogue.SetActive(false);
 
@@ -113,10 +118,10 @@ public class GrabFlashBackV2 : MonoBehaviour
     public IEnumerator FLSB3()
     {
         dialogue.SetActive(true);
-        //audi.clip = clip[0];
-        //audi.Play();
+        cat.clip = clipCat[0];
+        cat.Play();
         dialogue.GetComponent<TextMeshProUGUI>().text = "Catelyn Schmith: Ya no puedo más con todo esto... Lo siento Charlie... Perdóname Mike...";
-        yield return new WaitForSeconds(7);
+        yield return new WaitForSeconds(9);
         dialogue.SetActive(false);
 
         panel.SetActive(false);

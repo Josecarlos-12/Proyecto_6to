@@ -59,6 +59,7 @@ public class SpoonsInteractionFinish : MonoBehaviour
             {
                 textReapeat.SetActive(false);
                 textReapeat.GetComponent<RepeatText>().sText = "Mike Schmith: Faltan un par de vasos"; 
+                textReapeat.GetComponent<RepeatText>().time = 1; 
                 textReapeat.SetActive(true);
                 trash.enabled = true;
                 pickableObject.enabled = true;

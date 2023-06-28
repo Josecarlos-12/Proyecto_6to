@@ -25,6 +25,7 @@ public class OpenDoorCharlie : MonoBehaviour
     [SerializeField] private AudioSource frontDoor ,doorClose, mike;
     [SerializeField] private AudioClip close, creak;
     [SerializeField] private AudioClip[] clipMike;
+    [SerializeField] private TasksUILevel2 task;
 
 
     void Update()
@@ -42,6 +43,7 @@ public class OpenDoorCharlie : MonoBehaviour
 
         if(into && Input.GetKeyDown(KeyCode.E) && col.enabled)
         {
+            task.taskCount = 2;
             walk.canWalk = false;
             crouch.crouchCan = false;
             thisColl.enabled= false;
@@ -55,15 +57,18 @@ public class OpenDoorCharlie : MonoBehaviour
 
     public IEnumerator TrueWalk()
     {
-        mike.clip= clipMike[0];
-        mike.Play();
+        //mike.clip= clipMike[0];
+        //mike.Play();
 
-        dialogue.SetActive(true);
-        dialogue.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: Creo que ya se durmió...";
+        //dialogue.SetActive(true);
+        //dialogue.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: Creo que ya se durmió...";
         yield return new WaitForSeconds(0.5f);
         walk.canWalk = true;
         crouch.crouchCan = true;
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(0.5f);
+        dialogue.SetActive(true);
+        mike.clip= clipMike[0];
+        mike.Play();
         dialogue.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: Al parecer todo está bien";
         yield return new WaitForSeconds(3f);
         frontDoor.Play();        

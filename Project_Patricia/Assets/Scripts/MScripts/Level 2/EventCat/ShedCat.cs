@@ -14,34 +14,41 @@ public class ShedCat : MonoBehaviour
     [SerializeField] private Inventary inventory;
     [SerializeField] private Weapon weapon;
 
+    [SerializeField] private AudioSource mike;
+    [SerializeField] private AudioClip[] clip;
+
     private void Update()
     {
-        if(rifleWeapon.activeInHierarchy)
+        if (rifleWeapon.activeInHierarchy)
         {
-            if(count<3)
-            count++;
+            if (count < 3)
+                count++;
 
             if (count == 1)
             {
-                animRifle.SetBool("Change", false);                
-            }            
-        }   
+                animRifle.SetBool("Change", false);
+            }
+        }
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            col.enabled= false;
+            col.enabled = false;
             StartCoroutine("Dialogue");
         }
     }
 
     public IEnumerator Dialogue()
     {
+        mike.clip = clip[0];
+        mike.Play();
         dialogue.SetActive(true);
         dialogue.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: Sigue con el candado...";
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(3);
+        mike.clip = clip[1];
+        mike.Play();
         dialogue.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: Se ve viejo y frágil";
           
         inventory.spriteRifle = true;

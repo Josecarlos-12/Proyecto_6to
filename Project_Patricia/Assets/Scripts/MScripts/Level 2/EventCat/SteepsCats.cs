@@ -27,6 +27,10 @@ public class SteepsCats : MonoBehaviour
     [SerializeField] private CameraLook camLook;
     [SerializeField] private CatDoorSotano cat;
 
+    [SerializeField] private TasksUILevel2 task;
+    [SerializeField] private GameObject taskUI;
+
+
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -75,6 +79,10 @@ public class SteepsCats : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         wakingUp.WakingOn();
         yield return new WaitForSeconds(1);
+
+        task.go = true;
+        task.task = "Go to the basement";
+        taskUI.SetActive(true);
         eyes.SetActive(false);
         //this.gameObject.SetActive(false);
     }

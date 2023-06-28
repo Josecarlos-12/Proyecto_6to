@@ -20,5 +20,6 @@ public class ChartCatBasement : MonoBehaviour
         init= true;
         animDoor.SetBool("Close", false);
         shed.SetActive(true);
+        enabled= false;
     }
 }

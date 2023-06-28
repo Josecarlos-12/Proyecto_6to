@@ -13,7 +13,7 @@ public class BossLevel3 : MonoBehaviour
     [SerializeField] private Transform player;
     [SerializeField] private Vector3 posPivot;
     [SerializeField] private float posY;
-    [SerializeField] private GameObject container, rifle, rifle2;
+    public GameObject container, rifle, rifle2;
 
     [Header("Random TP")]
     [SerializeField] private Transform[] pos;

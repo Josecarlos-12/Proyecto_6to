@@ -290,7 +290,11 @@ public class TPBossLevel1 : MonoBehaviour
     {        
         if (bPunch)
         {
+            anim.SetBool("Damage", true);
             anim.SetBool("Run", false);
+            anim.SetBool("Hit", false);
+            anim.SetBool("Walk", false);
+            anim.SetBool("OffLight", false);
             anim.SetBool("Punch", false);
             life -= 13;
             StopCoroutine("PunchCorutine");            
@@ -308,10 +312,21 @@ public class TPBossLevel1 : MonoBehaviour
         }
         else
         {
+            anim.SetBool("Damage", true);
+            anim.SetBool("Run", false);
+            anim.SetBool("Hit", false);
+            anim.SetBool("Walk", false);
+            anim.SetBool("OffLight", false);
+            anim.SetBool("Punch", false);
             life -= 13;
+            StartCoroutine("DamageFalse");
         } 
     }
-
+    public IEnumerator DamageFalse()
+    {
+        yield return new WaitForSeconds(1);
+        anim.SetBool("Damage", false);
+    }
     public IEnumerator DamageCorutine()
     {
         time = 0;

@@ -22,6 +22,7 @@ public class EventsBossLevel3 : MonoBehaviour
 
     [Header("Punch")]
     [SerializeField] private GameObject punch;
+    [SerializeField] BossLevel3 boss;
 
     public void Shoot()
     {
@@ -56,6 +57,7 @@ public class EventsBossLevel3 : MonoBehaviour
             note.SetActive(true);
         }
     }
+
 
     private void OnTriggerEnter(Collider other)
     {

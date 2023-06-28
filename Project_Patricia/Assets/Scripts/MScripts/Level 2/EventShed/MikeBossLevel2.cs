@@ -271,6 +271,7 @@ public class MikeBossLevel2 : MonoBehaviour
         agent.acceleration = 0;
         anim.SetBool("Run", false);
         anim.SetBool("Punch", false);
+        anim.SetBool("OffLight", true);
 
         bPunch = true;
         List<Collider> disabledColliders = new List<Collider>();
@@ -293,6 +294,7 @@ public class MikeBossLevel2 : MonoBehaviour
         yield return new WaitForSeconds(1);
         offLight= true;
         yield return new WaitForSeconds(4);
+        anim.SetBool("OffLight", false);
         stateMikeRandom = 0;
 
         offLight = false;
@@ -421,7 +423,11 @@ public class MikeBossLevel2 : MonoBehaviour
     {
         if (bPunch)
         {
+            anim.SetBool("Damage", true);
             anim.SetBool("Run", false);
+            anim.SetBool("Hit", false);
+            anim.SetBool("Walk", false);
+            anim.SetBool("OffLight", false);
             anim.SetBool("Punch", false);
             life -= 13;
             StopCoroutine("PunchCorutine");
@@ -441,8 +447,21 @@ public class MikeBossLevel2 : MonoBehaviour
         }
         else
         {
+            anim.SetBool("Damage", true);
+            anim.SetBool("Run", false);
+            anim.SetBool("Hit", false);
+            anim.SetBool("Walk", false);
+            anim.SetBool("OffLight", false);
+            anim.SetBool("Punch", false);
             life -= 13;
+            StartCoroutine("DamageFalse");
         }
+    }
+
+    public IEnumerator DamageFalse()
+    {
+        yield return new WaitForSeconds(1);
+        anim.SetBool("Damage", false);
     }
 
     public IEnumerator DamageCorutine()
@@ -450,8 +469,9 @@ public class MikeBossLevel2 : MonoBehaviour
         time = 0;
         myAlpha = 1;
         change = true;
-
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(1);
+        anim.SetBool("Damage", false);
+        yield return new WaitForSeconds(2);
         change = false;
         myAlpha = 1;
 
