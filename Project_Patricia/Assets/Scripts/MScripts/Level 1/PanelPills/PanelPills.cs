@@ -13,6 +13,7 @@ public class PanelPills : MonoBehaviour
     [Header("Panel")]
     [SerializeField] private Animator animPa;
     [SerializeField] private Animator animLetter;
+    [SerializeField] private TasksUILevel2 task;
 
     private void Update()
     {
@@ -31,6 +32,7 @@ public class PanelPills : MonoBehaviour
 
             if (one == 1)
             {
+                task.taskCount = 2;
                 this.gameObject.transform.GetChild(0).gameObject.SetActive(false);
                 tutoPills.SetActive(true);
                 bPills = true;

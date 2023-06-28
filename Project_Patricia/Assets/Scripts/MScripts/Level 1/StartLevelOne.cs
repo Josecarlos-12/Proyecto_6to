@@ -14,6 +14,7 @@ public class StartLevelOne : MonoBehaviour
     [SerializeField] private AudioClip[] clip;
 
     [SerializeField] private Animator note;
+    [SerializeField] private Collider colNote;
 
     IEnumerator Start()
     {
@@ -46,6 +47,7 @@ public class StartLevelOne : MonoBehaviour
         audioMike.clip = clip[0];
         audioMike.Play();
         yield return new WaitForSeconds(13f);
+        colNote.enabled= true;
         text.SetActive(false);
         note.SetBool("On", true);
     }

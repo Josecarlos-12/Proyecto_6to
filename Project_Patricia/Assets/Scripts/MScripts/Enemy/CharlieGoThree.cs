@@ -81,8 +81,8 @@ public class CharlieGoThree : MonoBehaviour
         audioMike.Play();
         yield return new WaitForSeconds(2);
         text.GetComponent<TextMeshProUGUI>().text = "Mike Schmith:  ¡¿Dónde estás?!";
-        audioMike.clip = clip[2];
-        audioMike.Play();
+        //audioMike.clip = clip[2];
+        //audioMike.Play();
         yield return new WaitForSeconds(2);
         cam.SetActive(true);
         prota.SetActive(false);

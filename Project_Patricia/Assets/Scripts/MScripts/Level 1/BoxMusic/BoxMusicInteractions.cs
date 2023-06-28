@@ -45,6 +45,10 @@ public class BoxMusicInteractions : MonoBehaviour
 
     [SerializeField] private BoxPlayMusic box;
 
+    [SerializeField] private TasksUILevel2 task;
+    [SerializeField] private GameObject taskUI;
+
+
     public enum Work
     {
         tras, shopping, firewood, boxMusic, chart
@@ -188,6 +192,9 @@ public class BoxMusicInteractions : MonoBehaviour
         yield return new WaitForSecondsRealtime(3);
         text.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: Están en mi habitación";
         yield return new WaitForSecondsRealtime(2);
+        task.go = true;
+        task.task = "Look for your pills in your room";
+        taskUI.SetActive(true);
         text.SetActive(false);
     }
 }

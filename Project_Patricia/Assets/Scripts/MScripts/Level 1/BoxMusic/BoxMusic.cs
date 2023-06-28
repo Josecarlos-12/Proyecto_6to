@@ -16,6 +16,7 @@ public class BoxMusic : MonoBehaviour
     [SerializeField] private AudioSource audioMike;
     [SerializeField] private AudioClip[] clip;
     [SerializeField] private Animator animBox;
+    [SerializeField] private TasksUILevel2 task;
 
     public bool bBox;
 
@@ -55,6 +56,7 @@ public class BoxMusic : MonoBehaviour
 
     public IEnumerator Dialogue()
     {
+        task.taskCount = 2;
         texMes.SetActive(true);   
         textMeshPro.text = "Mike Schmith: Ahora esto.";
         audioMike.clip = clip[0];

@@ -17,6 +17,9 @@ public class StrongBox : MonoBehaviour
     [SerializeField] int count;
     [SerializeField] Animator animKeyPad;
 
+    [SerializeField] private GameObject taskUi;
+    [SerializeField] private TasksUILevel2 task;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -28,6 +31,9 @@ public class StrongBox : MonoBehaviour
     {
         if(into && Input.GetKeyDown(KeyCode.E) && note==null)
         {
+            task.go = true;
+            task.task = "Check the music box";
+            taskUi.SetActive(true);
             into = false;
             pass = true;
             pasword.text = "2604";
