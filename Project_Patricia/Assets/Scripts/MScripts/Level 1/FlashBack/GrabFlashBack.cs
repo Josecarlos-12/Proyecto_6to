@@ -25,7 +25,7 @@ public class GrabFlashBack : MonoBehaviour
     [Header("PopUp")]
     [SerializeField] private GameObject popUp;
     [SerializeField] private GameObject textOff;
-    [SerializeField] private bool one, two, three;
+    [SerializeField] private bool oneB, twoB, threeB;
 
     public enum Dialogue
     {
@@ -41,7 +41,16 @@ public class GrabFlashBack : MonoBehaviour
 
     public void PopUpOff()
     {
-        if (one && Input.GetKeyDown(KeyCode.E))
+        if (oneB && Input.GetKeyDown(KeyCode.E))
+        {
+            popUp.SetActive(false);
+            prota.SetActive(true);
+            textOff.SetActive(false);
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
+            enabled = false;
+        }
+        if (twoB && Input.GetKeyDown(KeyCode.E))
         {
             popUp.SetActive(false);
             prota.SetActive(true);
@@ -91,9 +100,10 @@ public class GrabFlashBack : MonoBehaviour
                     StartCoroutine("FLSB");
                     break;
                 case Dialogue.two:
-                    cam.SetActive(true);
+                    Cursor.visible = true;
+                    Cursor.lockState = CursorLockMode.None;
+                    popUp.SetActive(true);
                     prota.SetActive(false);
-                    panel.SetActive(true);
                     StartCoroutine("FLSB2");
                     break;
                 case Dialogue.thre:
@@ -118,7 +128,7 @@ public class GrabFlashBack : MonoBehaviour
         dialogue.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: Sabes que no puedes salir, estás enfermo";
         yield return new WaitForSeconds(4);
         dialogue.SetActive(false);
-        one = true;
+        oneB = true;
         textOff.SetActive(true);
 
         panel.SetActive(false);
@@ -134,10 +144,12 @@ public class GrabFlashBack : MonoBehaviour
         dialogue.GetComponent<TextMeshProUGUI>().text = "Charlie Schmith: ¡Mira papá! Este eres tú, este soy yo y esta es mamá. Te gusta? Espero ser tan bueno como ella.";
         yield return new WaitForSeconds(9);
         dialogue.SetActive(false);
+        twoB = true;
+        textOff.SetActive(true);
 
-        panel.SetActive(false);
-        cam.SetActive(false);
-        prota.SetActive(true);
+        //panel.SetActive(false);
+        //cam.SetActive(false);
+        //prota.SetActive(true);
     }
 
 

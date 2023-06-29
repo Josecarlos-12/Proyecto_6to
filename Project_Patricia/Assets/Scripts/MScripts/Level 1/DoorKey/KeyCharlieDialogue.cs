@@ -7,7 +7,8 @@ public class KeyCharlieDialogue : MonoBehaviour
 {
     [SerializeField] GameObject text, otherCol;
     [SerializeField] Collider col;
-    [SerializeField] AudioSource audi;
+    [SerializeField] AudioSource audi, mike;
+    [SerializeField] AudioClip clip;
 
     public enum Dialogues
     {
@@ -44,6 +45,9 @@ public class KeyCharlieDialogue : MonoBehaviour
 
     public IEnumerator Dialogue2()
     {
+        mike.clip = clip;
+        mike.Play();
+        
         text.SetActive(true);
         text.GetComponent<TextMeshProUGUI>().text = "Mike Schmith:  No lo entiendo... ¿Qué sucede?";
         yield return new WaitForSeconds(2);
@@ -55,6 +59,9 @@ public class KeyCharlieDialogue : MonoBehaviour
 
     public IEnumerator Dialogue()
     {
+        mike.clip = clip;
+        mike.Play();
+
         text.SetActive(true);
         text.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: ¿Charlie? ¡Estás aquí!";
         yield return new WaitForSeconds(2);
