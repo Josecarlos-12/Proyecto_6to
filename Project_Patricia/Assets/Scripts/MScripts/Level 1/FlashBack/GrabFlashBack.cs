@@ -59,6 +59,15 @@ public class GrabFlashBack : MonoBehaviour
             Cursor.lockState = CursorLockMode.Locked;
             enabled = false;
         }
+        if (threeB && Input.GetKeyDown(KeyCode.E))
+        {
+            popUp.SetActive(false);
+            prota.SetActive(true);
+            textOff.SetActive(false);
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
+            enabled = false;
+        }
     }
 
     public void PressInput()
@@ -107,9 +116,10 @@ public class GrabFlashBack : MonoBehaviour
                     StartCoroutine("FLSB2");
                     break;
                 case Dialogue.thre:
-                    cam.SetActive(true);
+                    Cursor.visible = true;
+                    Cursor.lockState = CursorLockMode.None;
+                    popUp.SetActive(true);
                     prota.SetActive(false);
-                    panel.SetActive(true);
                     StartCoroutine("FLSB3");
                     break;
             }
@@ -165,10 +175,11 @@ public class GrabFlashBack : MonoBehaviour
         dialogue.GetComponent<TextMeshProUGUI>().text = "Mike: No es un juguete y no deberías estar preguntando esas cosas. Aún eres muy pequeño.";
         yield return new WaitForSeconds(5);
         dialogue.SetActive(false);
-
-        panel.SetActive(false);
-        cam.SetActive(false);
-        prota.SetActive(true);
+        threeB = true;
+        textOff.SetActive(true);
+        //panel.SetActive(false);
+        //cam.SetActive(false);
+        //prota.SetActive(true);
     }
 
 

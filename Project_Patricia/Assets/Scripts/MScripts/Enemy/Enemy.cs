@@ -25,6 +25,11 @@ public class Enemy : MonoBehaviour
     [SerializeField] private DetectedPlayer big;
     [SerializeField] private AudioSource steeps;
 
+    [SerializeField] private float size;
+
+    public float raycastDistance = 10f;
+    [SerializeField] private LayerMask layer;
+
     public enum State
     {
         normal, follow
@@ -92,15 +97,24 @@ public class Enemy : MonoBehaviour
         switch (state)
         {
             case State.normal:
-                if (small.small && count == 0 || mediun.mediun && count == 0 || big.big && count == 0)
+                if (Vector3.Distance(transform.position, player.transform.position) < size)
                 {
-                    //transform.LookAt(player.transform.position);
-                    agent.destination = player.transform.position;
-                    detected = true;
-                    agent.speed = 10;
-                    agent.acceleration = 70;
-                    agent.stoppingDistance = 10;
-                    StopCoroutine("FalseFollow");
+                    RaycastHit hit;
+                    if (Physics.Raycast(transform.position, transform.forward, out hit, raycastDistance))
+                    {
+                        if (hit.collider.CompareTag("Player"))
+                        {
+                            //transform.LookAt(player.transform.position);
+                            agent.destination = player.transform.position;
+                            detected = true;
+                            agent.speed = 10;
+                            agent.acceleration = 70;
+                            agent.stoppingDistance = 10;
+                            StopCoroutine("FalseFollow");
+                        }
+                    }
+
+                    
                 }
                 else
                 {
@@ -114,15 +128,6 @@ public class Enemy : MonoBehaviour
                 agent.acceleration = 70;
                 agent.stoppingDistance = 10;
                 break;
-        }
-
-        if (agent.velocity.magnitude > 0)
-        {
-            //steeps.Play();
-        }
-        else
-        {
-            //steeps.Stop();
         }
     }
 
@@ -152,6 +157,8 @@ public class Enemy : MonoBehaviour
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, radius);
+
+        Gizmos.DrawLine(transform.position, transform.position + transform.forward * raycastDistance);
     }
 
     private void OnTriggerEnter(Collider other)
