@@ -8,18 +8,15 @@ public class FusesInteraction : MonoBehaviour
     [SerializeField] private GameObject cam, prota, text;
     [SerializeField] private bool into;
     [SerializeField] private Collider col;
+    [SerializeField] private AudioSource background3;
+    [SerializeField] private float time, maxTime;
+    [SerializeField] private bool less;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
     void Update()
     {
         if(into && Input.GetKeyDown(KeyCode.E))
         {
+            less= true;
             into = false;
             col.enabled= false;
             text.SetActive(false);
@@ -28,6 +25,21 @@ public class FusesInteraction : MonoBehaviour
             animCam.enabled= true;
             Cursor.visible=true;
             Cursor.lockState = CursorLockMode.None;
+        }
+        if (less)
+        {
+            time += Time.deltaTime;
+            if (time > maxTime)
+            {
+                time = 0;
+                background3.volume -= 0.03f;
+            }
+        }
+        if(background3.volume< 0.018f)
+        {
+            background3.Stop();
+            background3.volume = 1;
+            enabled= false;
         }
     }
 

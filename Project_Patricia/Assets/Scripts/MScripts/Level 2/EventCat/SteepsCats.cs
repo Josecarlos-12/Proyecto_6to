@@ -29,10 +29,13 @@ public class SteepsCats : MonoBehaviour
 
     [SerializeField] private TasksUILevel2 task;
     [SerializeField] private GameObject taskUI;
+    [SerializeField] private Light sun; 
 
 
     void Start()
     {
+        sun.intensity = 3.5f;
+        print(sun.intensity);
         agent = GetComponent<NavMeshAgent>();
     }
 

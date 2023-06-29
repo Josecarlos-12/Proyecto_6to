@@ -16,6 +16,7 @@ public class CatelynMove : MonoBehaviour
     [SerializeField] private float sizeP;
     [SerializeField] private bool bPunch, touch;
     [SerializeField] private int pCount;
+    [SerializeField] private bool catT;
 
 
     [Header("Lanter Player")]
@@ -25,6 +26,8 @@ public class CatelynMove : MonoBehaviour
     [Header("Other Cat")]
     public GameObject catV2;
     public GameObject catChangePos;
+
+    [SerializeField] private AudioSource steeps;
 
     public enum state
     {
@@ -49,8 +52,31 @@ public class CatelynMove : MonoBehaviour
             case state.none:
                 break;
         }
+        if (agent.velocity.magnitude > 0)
+        {
+            //steeps.Play();
+        }
+        else
+        {
+            //steeps.Stop();
+        }
 
-        
+        if (catT)
+        {
+            count++;
+            if (count == 2)
+            {
+                animdoor.SetBool("Close", true);
+                touch = true;
+                follow = false;
+                animCat.SetBool("Walk", false);
+                animCat.SetBool("Flash", true);
+                agent.speed = 0;
+                lanter.enabled = false;
+
+            }
+            
+        }
     }
 
     public void Follow()
@@ -69,7 +95,7 @@ public class CatelynMove : MonoBehaviour
 
     public void Punch()
     {
-        if(Vector3.Distance(new Vector3(transform.position.x, transform.position.y + 4, transform.position.z), player.transform.position) < sizeP)
+        if(Vector3.Distance(new Vector3(transform.position.x, transform.position.y + 4, transform.position.z), player.transform.position) < sizeP && !catT)
         {
             
             bPunch = true;
@@ -99,22 +125,7 @@ public class CatelynMove : MonoBehaviour
     {
         if (other.gameObject.name == "DeEyes")
         {
-            if (lanter.enabled)
-            {
-                count++;
-                if (count == 1)
-                {
-                    animdoor.SetBool("Close", true);
-                    touch = true;
-                    follow = false;
-                    animCat.SetBool("Walk", false);
-                    animCat.SetBool("Flash", true);
-                    agent.speed = 0;
-                    lanter.enabled = false;
-
-                }
-            }
-
+            catT = true;                
         }
 
     }
@@ -122,7 +133,6 @@ public class CatelynMove : MonoBehaviour
     public IEnumerator Rotate()
     {
         yield return new WaitForSeconds(2);
-        print("S");
         lightsAll.SetActive(true);
         
         //cat.transform.rotation = container.transform.rotation;

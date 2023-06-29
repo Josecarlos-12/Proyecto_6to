@@ -46,6 +46,16 @@ public class TasksUILevel2 : MonoBehaviour
             }
 
         }
+
+        if(Input.GetKeyDown(KeyCode.Q))
+        {
+            text.SetActive(true);
+            textMesh.text = task;
+        }
+        else if (Input.GetKeyUp(KeyCode.Q))
+        {
+            text.SetActive(false);
+        }
     }
 
     public void TaskActive()

@@ -31,7 +31,7 @@ public class AnimMoveCat : MonoBehaviour
 
     public IEnumerator DialogueFinish()
     {
-        sun.intensity = 9;
+        //sun.intensity = 9;
 
         //Mathf.Lerp(242.1584f, 7, 0.5f);
 
@@ -64,10 +64,10 @@ public class AnimMoveCat : MonoBehaviour
 
     public void CursorMouse()
     {
-        
-        sun.intensity= 20;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        sun.intensity = 6;
+        print(sun.intensity);
     }
 
     public void BodyFall()

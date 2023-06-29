@@ -23,6 +23,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private DetectedPlayer small;
     [SerializeField] private DetectedPlayer mediun;
     [SerializeField] private DetectedPlayer big;
+    [SerializeField] private AudioSource steeps;
 
     public enum State
     {
@@ -107,6 +108,7 @@ public class Enemy : MonoBehaviour
                 }
                 break;
                 case State.follow:
+                
                 agent.destination = player.transform.position;
                 agent.speed = 10;
                 agent.acceleration = 70;
@@ -114,7 +116,14 @@ public class Enemy : MonoBehaviour
                 break;
         }
 
-        
+        if (agent.velocity.magnitude > 0)
+        {
+            //steeps.Play();
+        }
+        else
+        {
+            //steeps.Stop();
+        }
     }
 
     public IEnumerator FalseFollow()
@@ -130,6 +139,7 @@ public class Enemy : MonoBehaviour
     {
         if(colition)
         {
+            
             agent.speed = 0;
             transform.position = points[0].position;
             transform.rotation = points[0].rotation;
@@ -156,8 +166,6 @@ public class Enemy : MonoBehaviour
                 agent.speed = 0;
                 StartCoroutine(Col());
             }
-
-            
         }
         if (other.gameObject.CompareTag("BulletPlayer"))
         {
