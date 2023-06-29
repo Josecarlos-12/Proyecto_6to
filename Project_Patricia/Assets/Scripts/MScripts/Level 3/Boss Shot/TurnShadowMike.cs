@@ -16,6 +16,11 @@ public class TurnShadowMike : MonoBehaviour
     [SerializeField] private PlayerCrouch crouch;
     [SerializeField] private Weapon weapon;
 
+    [Header("Audio")]
+    [SerializeField] private AudioSource shadowMike;
+    [SerializeField] private AudioClip[] clip;
+
+
     void Start()
     {
         
@@ -39,6 +44,9 @@ public class TurnShadowMike : MonoBehaviour
 
     public IEnumerator Dialogue()
     {
+        shadowMike.clip = clip[0];
+        shadowMike.Play();
+
         dialogue.SetActive(true);
         dialogue.GetComponent<TextMeshProUGUI>().text = "No pudiste salvarlos...";
         yield return new WaitForSeconds(2);
@@ -48,6 +56,9 @@ public class TurnShadowMike : MonoBehaviour
         anim.SetBool("Standing", false);
         anim.SetBool("Walk", false);
         yield return new WaitForSeconds(2);
+        shadowMike.clip = clip[1];
+        shadowMike.Play();
+
         dialogue.SetActive(true);
         dialogue.GetComponent<TextMeshProUGUI>().text = "Y no lo harás ahora";
         move.canWalk = true;

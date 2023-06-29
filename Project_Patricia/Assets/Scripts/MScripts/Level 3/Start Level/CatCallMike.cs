@@ -22,6 +22,11 @@ public class CatCallMike : MonoBehaviour
     [SerializeField] private PlayerCrouch crouch;
     [SerializeField] private Weapon weapon;
     [SerializeField] private CameraLook look;
+
+    [Header("Audios")]
+    [SerializeField] private AudioSource shadowMikeAudio;
+    [SerializeField] private AudioClip[] clip;
+
     public enum Touch
     {
         charlie, mikeCatRoom, PentHouse
@@ -118,10 +123,19 @@ public class CatCallMike : MonoBehaviour
         look.xRotation = 0;
         // Abre los Ojos
         yield return new WaitForSeconds(2);
+        shadowMikeAudio.clip = clip[0];
+        shadowMikeAudio.Play();
+
         dialogue.GetComponent<TextMeshProUGUI>().text = "¿Escuchas sus voces?";
         yield return new WaitForSeconds(2);
+        shadowMikeAudio.clip = clip[1];
+        shadowMikeAudio.Play();
+
         dialogue.GetComponent<TextMeshProUGUI>().text = "Igual yo...";
         yield return new WaitForSeconds(2);
+        shadowMikeAudio.clip = clip[2];
+        shadowMikeAudio.Play();
+
         eyes.SetActive(false);
         dialogue.GetComponent<TextMeshProUGUI>().text = "Todo el tiempo...";
         yield return new WaitForSeconds(2);
