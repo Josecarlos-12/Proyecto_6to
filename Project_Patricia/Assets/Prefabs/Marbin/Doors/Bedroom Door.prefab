@@ -108,6 +108,10 @@ MonoBehaviour:
   pick: {fileID: 0}
   animDoor: {fileID: 7599371763704001488}
   open: 0
+  door: {fileID: 6905614568104965580}
+  clip:
+  - {fileID: 8300000, guid: 3f5ed496f3d61dc4dbdec5589b2848c5, type: 3}
+  - {fileID: 8300000, guid: 8a0559e43e4e6e5498e1c4eeb2a8caf0, type: 3}
 --- !u!82 &6905614568104965580
 AudioSource:
   m_ObjectHideFlags: 0
@@ -128,7 +132,7 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 2
+  MinDistance: 8
   MaxDistance: 200
   Pan2D: 0
   rolloffMode: 0

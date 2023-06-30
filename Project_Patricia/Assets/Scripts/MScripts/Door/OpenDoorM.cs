@@ -7,6 +7,8 @@ public class OpenDoorM : MonoBehaviour
     [SerializeField] private Animator anim;
     public bool into, op;
     public bool  open, close;
+    [SerializeField] private AudioSource door;
+    [SerializeField] private AudioClip[] clip;
 
     private void Start()
     {
@@ -30,12 +32,16 @@ public class OpenDoorM : MonoBehaviour
                     op= false;
                     anim.SetBool("Open", false);
                     open= false;
+                    door.clip = clip[1];
+                    door.Play();
                 }
                 if (!op && open)
                 {
                     op= true;
                     anim.SetBool("Open", true);
                     close= false;
+                    door.clip = clip[0];
+                    door.Play();
                 }
 
             }

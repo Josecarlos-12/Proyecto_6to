@@ -27,6 +27,8 @@ public class OpenDoorCharlie : MonoBehaviour
     [SerializeField] private AudioClip[] clipMike;
     [SerializeField] private TasksUILevel2 task;
 
+    [SerializeField] private AudioSource door;
+    [SerializeField] private AudioClip clip;
 
     void Update()
     {
@@ -49,6 +51,8 @@ public class OpenDoorCharlie : MonoBehaviour
             thisColl.enabled= false;
             text.SetActive(false);
             into = false;
+            door.clip= clip;
+            door.Play();
             animDoor.SetBool("Open", false);
             animHandle.SetBool("On", false);
             StartCoroutine("TrueWalk");

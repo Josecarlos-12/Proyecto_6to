@@ -40,11 +40,13 @@ public class WalkPatron : MonoBehaviour
 
                 break; case State.cam:
                 transform.LookAt(shadow.position);
-                if (agent.remainingDistance < 1 && count <= points.Length - 1 && move.moveCam)
+                if(agent.enabled)
                 {
-                    GotoNextPoint();
-
-                }
+                    if (agent.remainingDistance < 1 && count <= points.Length - 1 && move.moveCam)
+                    {
+                        GotoNextPoint();
+                    }
+                }                
                 break;
         }
 

@@ -14,6 +14,9 @@ public class OpenDoorCustom : MonoBehaviour
     public Animator animDoor;
     public bool open;
 
+    public AudioSource door;
+    public AudioClip[] clip;
+
     private void Update()
     {
         OpenDoor();
@@ -26,12 +29,16 @@ public class OpenDoorCustom : MonoBehaviour
             open = true;
             //animDoor.SetBool("Behind", false);
             animDoor.SetBool("Front", true);
+            door.clip = clip[0];
+            door.Play();
         }
         if (Input.GetKeyDown(KeyCode.E) && close.frontM && close.close)
         {
             open = false;
             animDoor.SetBool("Behind", false);
             animDoor.SetBool("Front", false);
+            door.clip = clip[1];
+            door.Play();
         }
 
 
@@ -39,11 +46,15 @@ public class OpenDoorCustom : MonoBehaviour
         {open = true;
             //animDoor.SetBool("Front", false);
             animDoor.SetBool("Behind", true);
+            door.clip = clip[0];
+            door.Play();
         }
         if(Input.GetKeyDown(KeyCode.E) && close.backM && close.close)
         {open = false;
             animDoor.SetBool("Front", false);
             animDoor.SetBool("Behind", false);
+            door.clip = clip[1];
+            door.Play();
         }
     }
 
