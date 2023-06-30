@@ -11,6 +11,7 @@ public class DoorBasementKey : MonoBehaviour
     [Header("Call Other Script")]
     [SerializeField] private Inventary inventory;
     [SerializeField] private KeyGrabShed key;
+    [SerializeField] private AudioSource door;
 
     void Update()
     {
@@ -21,6 +22,7 @@ public class DoorBasementKey : MonoBehaviour
             into = false;
             key.key = 0;
             inventory.bKEy = false;
+            door.Play();
         }
     }
 

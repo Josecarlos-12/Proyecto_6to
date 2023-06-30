@@ -11,7 +11,7 @@ public class DoorOpenKey : MonoBehaviour
 
     [Header("Call Other Script")]
     [SerializeField] private TasksUILevel2 task;
-
+    [SerializeField] private AudioSource door;
 
     void Update()
     {
@@ -21,6 +21,7 @@ public class DoorOpenKey : MonoBehaviour
             into = false;
             numberKey.numberKey = 0;
             task.taskCount = 2;
+            door.Play();
         }
     }
 

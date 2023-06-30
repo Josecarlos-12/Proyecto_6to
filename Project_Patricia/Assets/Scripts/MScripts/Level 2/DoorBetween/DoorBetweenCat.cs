@@ -8,7 +8,8 @@ public class DoorBetweenCat : MonoBehaviour
     public bool into, op;
     public bool open, close;
     [SerializeField] private int count;
-
+    [SerializeField] private AudioSource door;
+    [SerializeField] private AudioClip[] clip;
 
     private void Start()
     {
@@ -32,6 +33,8 @@ public class DoorBetweenCat : MonoBehaviour
                     op = false;
                     anim.SetBool("Open", false);
                     open = false;
+                    door.clip = clip[0];
+                    door.Play();
                 }
                 if (!op && open)
                 {
@@ -39,7 +42,8 @@ public class DoorBetweenCat : MonoBehaviour
                     anim.SetBool("Between", false);
                     anim.SetBool("Open", true);
                     close = false;
-
+                    door.clip = clip[1];
+                    door.Play();
                 }
 
             }

@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.HighDefinition;
 
 public class PopUpEvents : MonoBehaviour
 {
@@ -17,6 +19,35 @@ public class PopUpEvents : MonoBehaviour
     [SerializeField] private Transform point;
     [SerializeField] private GameObject mikeWalk, inteDoor;
     [SerializeField] private Animator animDoor;
+
+    [Header("Environment")]
+    [SerializeField] private GameObject sun;
+    [SerializeField] private GameObject moon;
+    [SerializeField] private Light sunLight;
+    [SerializeField] private Volume volume;
+    [SerializeField] private Fog fog;
+    [SerializeField] private CloudLayer cloudLayer;
+
+    private void Awake()
+    {
+        if (volume != null)
+        {
+            volume.profile.TryGet(out Fog vFog);
+            fog = vFog;
+
+            volume.profile.TryGet(out CloudLayer vCloud);
+            cloudLayer= vCloud;
+        }
+    }
+
+    public void ChangeLight()
+    {
+        fog.active = false;
+        sun.transform.rotation = Quaternion.Euler(25.1f, 83.097f, -1.791f);
+        sunLight.intensity = 40;
+        cloudLayer.active= false;
+        moon.SetActive(false);
+    }
 
     public void OpenEyes()
     {
