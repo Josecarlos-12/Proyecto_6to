@@ -14,7 +14,8 @@ public class Enemy : MonoBehaviour
     [SerializeField] private bool detected, colition, punch;
     [SerializeField] private Animator anim;
     [SerializeField] private int count;
-    [SerializeField] private GameObject cat, container;
+    [SerializeField] private GameObject cat, container , pointRota;
+    [SerializeField] private Transform playerPoint;
 
     [Header("Life")]
     [SerializeField] private float life = 100;
@@ -29,6 +30,8 @@ public class Enemy : MonoBehaviour
 
     public float raycastDistance = 10f;
     [SerializeField] private LayerMask layer;
+    [SerializeField] private int range;
+    [SerializeField] private int countCol, countFalse;
 
     public enum State
     {
@@ -47,17 +50,25 @@ public class Enemy : MonoBehaviour
         switch (state)
         {
             case State.normal:
-                if (agent.remainingDistance < distancePoint && !detected && count == 0)
+                if (agent.enabled)
                 {
-                    GoToNextPoint();
+                    if (agent.remainingDistance < distancePoint && !detected && count == 0)
+                    {
+                        GoToNextPoint();
+                    }
                 }
+                
                 break;
                 case State.follow:
                 break;
         }
         
-        Detected();
         Collition();
+
+        if(agent.enabled)
+        {
+            Detected();
+        }        
     }
 
     public void GoToNextPoint()
@@ -73,54 +84,60 @@ public class Enemy : MonoBehaviour
 
     public void Detected()
     {
-        if(Vector3.Distance(transform.position, player.transform.position) < radius )
-        {
-            transform.LookAt(player.transform.position);
-            punch = true;
-            anim.SetBool("Attack", true);
-            // agent.destination = player.transform.position;
-            //detected= true;
-            //agent.speed = 10;
-            //agent.acceleration = 15;
-            //agent.stoppingDistance = 1;
-        }
-        else if (Vector3.Distance(transform.position, player.transform.position) > radius)
-        {
-            punch= false;
-            anim.SetBool("Attack", false);
-            //detected = false;
-            //agent.speed = 3.5f;
-            //agent.acceleration = 8;
-            //agent.stoppingDistance = 0;
-        }
-
         switch (state)
         {
             case State.normal:
                 if (Vector3.Distance(transform.position, player.transform.position) < size)
                 {
+                    transform.LookAt(playerPoint.position);
                     RaycastHit hit;
-                    if (Physics.Raycast(transform.position, transform.forward, out hit, raycastDistance))
+                    if (Physics.Raycast(transform.position, transform.forward, out hit, raycastDistance, layer))
                     {
                         if (hit.collider.CompareTag("Player"))
                         {
-                            //transform.LookAt(player.transform.position);
+                            print("DetectoPlayer");
                             agent.destination = player.transform.position;
                             detected = true;
                             agent.speed = 10;
                             agent.acceleration = 70;
                             agent.stoppingDistance = 10;
                             StopCoroutine("FalseFollow");
+
+                            if (Vector3.Distance(transform.position, player.transform.position) < radius)
+                            {
+                                //transform.LookAt(player.transform.position);
+                                punch = true;
+                                anim.SetBool("Attack", true);
+                            }
                         }
                     }
 
                     
                 }
-                else
+                else if (Vector3.Distance(transform.position, player.transform.position) > size && detected)
                 {
-                    StartCoroutine("FalseFollow");
+                    if(countFalse<3)
+                    countFalse++;
+
+                    if(countFalse == 1)
+                    {
+                        print("DSASDA");
+                        agent.destination = player.transform.position;
+                        agent.speed = 10;
+                        agent.acceleration = 70;
+                        agent.stoppingDistance = 10;
+                        StartCoroutine("FalseFollow");
+                    }
+
+                    
                 }
-                break;
+
+                if (Vector3.Distance(transform.position, player.transform.position) > radius)
+                {
+                    punch = false;
+                    anim.SetBool("Attack", false);
+                }
+                    break;
                 case State.follow:
                 
                 agent.destination = player.transform.position;
@@ -133,8 +150,15 @@ public class Enemy : MonoBehaviour
 
     public IEnumerator FalseFollow()
     {
+        
         yield return new WaitForSeconds(5);
+        countFalse=0;
         detected = false;
+        if (agent.enabled)
+        {
+            agent.destination = points[destPoint].position;
+        }
+        
         agent.speed = 3.5f;
         agent.acceleration = 8;
         agent.stoppingDistance = 0;
@@ -144,12 +168,16 @@ public class Enemy : MonoBehaviour
     {
         if(colition)
         {
-            
-            agent.speed = 0;
-            transform.position = points[0].position;
-            transform.rotation = points[0].rotation;
-            cat.transform.rotation = Quaternion.Euler(0,180,0);
-            anim.SetBool("Scare", false);
+            countCol++;
+
+            if (countCol == 1)
+            {
+                agent.speed = 0;
+                transform.position = points[range].position;
+                //transform.rotation = points[range].rotation;
+                anim.SetBool("Scare", false);
+                //cat.GetComponent<Animator>().enabled = true;
+            }
         }
     }
 
@@ -159,6 +187,9 @@ public class Enemy : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, radius);
 
         Gizmos.DrawLine(transform.position, transform.position + transform.forward * raycastDistance);
+
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(transform.position, size);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -169,9 +200,10 @@ public class Enemy : MonoBehaviour
 
             if (count == 1)
             {
-                anim.SetBool("Scare", true);
+                //anim.SetBool("Scare", true);
                 agent.speed = 0;
                 StartCoroutine(Col());
+                agent.enabled= false;
             }
         }
         if (other.gameObject.CompareTag("BulletPlayer"))
@@ -183,11 +215,21 @@ public class Enemy : MonoBehaviour
     public IEnumerator Col()
     {
         yield return new WaitForSeconds(3);
+        anim.SetBool("Attack", false);
+        range = Random.Range(0, points.Length - 1);
         colition = true;
         count = 0;
         yield return new WaitForSeconds(3);
-        colition= false;
-        agent.destination = points[destPoint].position;
+        countCol = 0;
+        agent.enabled = true;
+        colition = false;
+        if(agent.enabled)
+        {
+            agent.destination = points[destPoint].position;
+        }        
+        agent.speed = 3.5f;
+        agent.acceleration = 8;
+        agent.stoppingDistance = 0;
     }
 
 }
