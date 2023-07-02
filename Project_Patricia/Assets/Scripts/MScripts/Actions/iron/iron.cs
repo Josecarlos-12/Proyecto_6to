@@ -109,7 +109,7 @@ public class iron : MonoBehaviour
                 audioSource.PlayOneShot(taskClip);//Aqui poner Sonidos 
                 break;
             case Check.nine:
-                audioSource.PlayOneShot(taskClip);
+                //audioSource.PlayOneShot(taskClip);
                 break;
         }
         

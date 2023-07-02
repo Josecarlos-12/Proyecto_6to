@@ -67,7 +67,6 @@ public class NotesUI : MonoBehaviour
                 lines[2].SetActive(true);
                 lines[3].SetActive(true);
                 lines[4].SetActive(true);
-                lines[5].SetActive(true);
                 break;
         }
         
@@ -186,7 +185,7 @@ public class NotesUI : MonoBehaviour
             if (check == 9)
             {
                 nine = true;
-                lines[8].SetActive(true);
+                //lines[8].SetActive(true);
             }
         }
         else
