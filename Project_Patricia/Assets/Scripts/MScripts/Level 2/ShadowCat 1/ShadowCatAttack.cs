@@ -28,6 +28,10 @@ public class ShadowCatAttack : MonoBehaviour
     [SerializeField] private bool colition;
     [SerializeField] private int countCol;
 
+    [SerializeField] private AudioSource soundDetected;
+    [SerializeField] private AudioSource soundMove;
+    [SerializeField] private int countSound;
+
     private void Update()
     {
         if (agent.enabled)
@@ -53,6 +57,16 @@ public class ShadowCatAttack : MonoBehaviour
             agent.stoppingDistance = 5f;
             anim.SetBool("Move", false);
             anim.SetBool("Attack", true);
+
+            if(countSound<3)
+            countSound++;
+
+            if (countSound == 1)
+            {
+                soundDetected.Play();
+            }
+
+            
         }
 
         if (Vector3.Distance(transform.position, player.transform.position) < size)
@@ -66,7 +80,6 @@ public class ShadowCatAttack : MonoBehaviour
                 if (hit.collider.CompareTag("Player"))
                 {
                     detected = true;
-                    
                 }
             }
         }
@@ -112,6 +125,8 @@ public class ShadowCatAttack : MonoBehaviour
         agent.speed = 3.5f;
         agent.acceleration = 8;
         agent.stoppingDistance = 0;
+        yield return new WaitForSeconds(3);
+        countSound= 0;
     }
 
     public void GoToNextPoint()
@@ -120,6 +135,7 @@ public class ShadowCatAttack : MonoBehaviour
         {
             return;
         }
+        soundMove.Play();
         anim.SetBool("Move", true);
         agent.destination = points[destPoint].position;
         destPoint = (destPoint + 1) % points.Length;
@@ -134,6 +150,7 @@ public class ShadowCatAttack : MonoBehaviour
 
             if (count == 1)
             {
+                soundMove.Stop();
                 print("TRA");
                 StopCoroutine("FollowFalse"); 
                 anim.SetBool("Scare", true);
@@ -165,6 +182,8 @@ public class ShadowCatAttack : MonoBehaviour
         agent.speed = 3.5f;
         agent.acceleration = 8;
         agent.stoppingDistance = 0;
+        yield return new WaitForSeconds(3);
+        countSound = 0;
     }
 
     private void OnDrawGizmos()

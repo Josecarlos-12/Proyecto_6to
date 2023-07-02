@@ -32,6 +32,7 @@ public class Weapon : MonoBehaviour
 
     [Header("Sound")]
     [SerializeField] AudioSource shootSound;
+    [SerializeField] AudioSource reloadingSound;
     [SerializeField] ParticleSystem smoke;
 
     private void Start()
@@ -62,6 +63,7 @@ public class Weapon : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.R) && handle > 0)
         {
+            reloadingSound.Play();
             canShoot = false;
             shoot = true;
             StartCoroutine("ReloadCcorutine");
@@ -70,7 +72,11 @@ public class Weapon : MonoBehaviour
 
     public IEnumerator ReloadCcorutine()
     {
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(0.1f);
+        animRifle.SetBool("Shoot", true);
+        yield return new WaitForSeconds(0.4f);
+        animRifle.SetBool("Shoot", false);
+        yield return new WaitForSeconds(1.6f);
         shoot = false;
         canShoot=true;
         handle -= 1;

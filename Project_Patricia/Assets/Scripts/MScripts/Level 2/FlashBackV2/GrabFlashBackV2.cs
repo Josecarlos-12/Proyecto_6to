@@ -63,7 +63,6 @@ public class GrabFlashBackV2 : MonoBehaviour
             }
 
 
-            panel.SetActive(true);
             cam.SetActive(true);
             prota.SetActive(false);
 
