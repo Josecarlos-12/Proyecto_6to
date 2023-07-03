@@ -24,6 +24,13 @@ public class KeypadController : MonoBehaviour
     [SerializeField] private Animator animBox;
     [SerializeField] private GameObject gameObjects;
     [SerializeField] private Collider colActive;
+    public StrongBox sBox;
+
+    public enum Levels
+    {
+        level3, level1
+    }public Levels levels;
+
     private void Start()
     {
         passwordText.text = "";
@@ -59,22 +66,35 @@ public class KeypadController : MonoBehaviour
     {
         if (passwordText.text == password)
         {
-            //door.lockedByPassword = false;
-            print("Abrio");
-            cam.SetActive(false);
-            prota.SetActive(true);
-            col.enabled = false;
-            box.enabled = false;
-            animBox.SetBool("Open", true);
-            print("DD");
-            StartCoroutine("OnObjects");
-            Cursor.visible = false;
-            Cursor.lockState = CursorLockMode.Locked;
-            //if (audioSource != null)
-            //  audioSource.PlayOneShot(correctSound);
+            switch (levels)
+            {
+                case Levels.level3:
+                    //door.lockedByPassword = false;
+                    print("Abrio");
+                    cam.SetActive(false);
+                    prota.SetActive(true);
+                    col.enabled = false;
+                    box.enabled = false;
+                    animBox.SetBool("Open", true);
+                    print("DD");
+                    StartCoroutine("OnObjects");
+                    Cursor.visible = false;
+                    Cursor.lockState = CursorLockMode.Locked;
+                    //if (audioSource != null)
+                    //  audioSource.PlayOneShot(correctSound);
 
-            passwordText.color = Color.green;
-            StartCoroutine(waitAndClear());
+                    passwordText.color = Color.green;
+                    StartCoroutine(waitAndClear());
+                    break; 
+                case Levels .level1:
+                    cam.SetActive(false);
+                    prota.SetActive(true);
+                    Cursor.visible = false;
+                    Cursor.lockState = CursorLockMode.Locked;
+                    sBox.Next();
+                    break;
+            }
+            
         }
         else
         {

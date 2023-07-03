@@ -15,6 +15,7 @@ public class StrongBoxCode : MonoBehaviour
     public Collider coll;
     public GameObject cam, prota;
     public bool touch;
+    public Animator animObjects;
 
     // Start is called before the first frame update
     void Start()
@@ -39,7 +40,7 @@ public class StrongBoxCode : MonoBehaviour
 
         if(inside == true && Input.GetKeyDown(KeyCode.E))
         {
-            
+            animObjects.SetBool("On", true);
             inside = false;
             //coll.enabled = false;
             eText.SetActive(false);

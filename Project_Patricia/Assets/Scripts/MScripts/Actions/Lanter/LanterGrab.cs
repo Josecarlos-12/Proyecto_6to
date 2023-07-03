@@ -46,8 +46,7 @@ public class LanterGrab : MonoBehaviour
         yield return new WaitForSeconds(2);
         tutoLanter.SetActive(true);
         yield return new WaitForSeconds(1);
-        dialogueText.SetActive(false);
-       
+        dialogueText.SetActive(false);        
     }
 
     public void LanterInput()
@@ -64,7 +63,8 @@ public class LanterGrab : MonoBehaviour
     {
         yield return new WaitForSeconds(1.30f);
         tutoLanter.SetActive(false);
-        //Destroy(gameObject);
+        yield return new WaitForSeconds(5f);
+        Destroy(gameObject);
     }
 
     private void OnTriggerEnter(Collider other)
