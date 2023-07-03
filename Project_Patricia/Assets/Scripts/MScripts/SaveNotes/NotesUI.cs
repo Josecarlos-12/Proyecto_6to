@@ -175,7 +175,7 @@ public class NotesUI : MonoBehaviour
             if (check == 7)
             {
                 seven=true;
-                lines[6].SetActive(true);
+                //lines[6].SetActive(true);
             }
             if (check == 8)
             {

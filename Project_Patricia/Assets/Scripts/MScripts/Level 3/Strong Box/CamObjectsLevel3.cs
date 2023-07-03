@@ -17,12 +17,16 @@ public class CamObjectsLevel3 : MonoBehaviour
     [SerializeField] private bool bOne, bTwo, bThree, bFour;
     [SerializeField] private int count;
     [SerializeField] private Collider col;
+    [SerializeField] private Animator animObjects;
+    [SerializeField] private bool press;
+    [SerializeField] private GameObject texE;
 
 
     private void Update()
     {
         if (into && Input.GetKeyDown(KeyCode.E))
         {
+            animObjects.SetBool("On", false);
             into= false; 
             eText.SetActive(false);
             viewObjects= true;
@@ -52,6 +56,17 @@ public class CamObjectsLevel3 : MonoBehaviour
             {
                 objectCount = 3;
             }
+        }
+
+        if(press && Input.GetKeyDown(KeyCode.E))
+        {
+            texE.SetActive(false);
+            press = false;
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+            cam.SetActive(false);
+            camAnim.SetActive(true);
+            col.enabled = false;
         }
 
     }
@@ -188,13 +203,9 @@ public class CamObjectsLevel3 : MonoBehaviour
 
     public IEnumerator AnimTrue()
     {
-        yield return new WaitForSeconds(4);
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
-        yield return new WaitForSeconds(2);
-        cam.SetActive(false);
-        camAnim.SetActive(true);
-        col.enabled = false;
+        yield return new WaitForSeconds(3);
+        press = true;
+        texE.SetActive(true);        
     }
 
     private void OnTriggerStay(Collider other)

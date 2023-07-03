@@ -19,6 +19,7 @@ public class StrongBox : MonoBehaviour
 
     [SerializeField] private GameObject taskUi;
     [SerializeField] private TasksUILevel2 task;
+    [SerializeField] private GameObject player, cam;
 
     // Start is called before the first frame update
     void Start()
@@ -31,17 +32,17 @@ public class StrongBox : MonoBehaviour
     {
         if(into && Input.GetKeyDown(KeyCode.E) && note==null)
         {
-            task.go = true;
-            task.task = "Check the music box";
-            taskUi.SetActive(true);
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
             into = false;
             pass = true;
-            pasword.text = "2604";
+            //pasword.text = "101203";
             text.SetActive(false);
-            col.enabled = false;
-            anim.SetBool("Close", true);
+            col.enabled = false;            
             animKeyPad.SetBool("On", false);
-            noteUI.check = 7;
+            player.SetActive(false);
+            cam.SetActive(true);
+            
         }
         if(note==null)
         {
@@ -53,6 +54,15 @@ public class StrongBox : MonoBehaviour
                 animKeyPad.SetBool("On", true);
             }            
         }
+    }
+
+    public void Next()
+    {
+        task.go = true;
+        task.task = "Check the music box";
+        taskUi.SetActive(true);
+        anim.SetBool("Close", true);
+        noteUI.check = 7;
     }
 
     private void OnTriggerEnter(Collider other)

@@ -40,7 +40,7 @@ public class DarkZoneTutorial : MonoBehaviour
         animPanel.SetBool("Off", true);
         yield return new WaitForSeconds(2);
         panel.SetActive(false);
-        Destroy(transform.parent.gameObject);
+       // Destroy(transform.parent.gameObject);
     }
 
     private void OnTriggerExit(Collider other)
