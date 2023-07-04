@@ -35,7 +35,7 @@ MonoBehaviour:
     customBufferFormat: 12
     supportedLitShaderMode: 2
     planarReflectionResolution:
-      m_Values: 000100000004000000080000
+      m_Values: 000200000004000000080000
       m_SchemaId:
         m_Id: With3Levels
     supportDecals: 1
@@ -68,7 +68,7 @@ MonoBehaviour:
         m_Bits: 0
       supportFabricConvolution: 0
       maxDirectionalLightsOnScreen: 16
-      maxPunctualLightsOnScreen: 512
+      maxPunctualLightsOnScreen: 1024
       maxAreaLightsOnScreen: 64
       maxEnvLightsOnScreen: 32
       maxDecalsOnScreen: 512
@@ -77,9 +77,9 @@ MonoBehaviour:
       maxLocalVolumetricFogSize: 32
       maxLocalVolumetricFogOnScreen: 64
     hdShadowInitParams:
-      maxShadowRequests: 2000
+      maxShadowRequests: 5000
       directionalShadowsDepthBits: 16
-      shadowFilteringQuality: 2
+      shadowFilteringQuality: 1
       punctualLightShadowAtlas:
         shadowAtlasResolution: 4096
         shadowAtlasDepthBits: 16
