@@ -11,13 +11,30 @@ public class CameraLook : MonoBehaviour
 
     public Sensibility sen;
 
+    public enum State
+    {
+        one, two
+    }
+    public State state;
 
     private IEnumerator Start()
     {
-        Cursor.lockState = CursorLockMode.Confined;
-        Cursor.lockState = CursorLockMode.Locked;
-        yield return new WaitForSeconds(0.3f);
-        moveCamera = true;
+        switch (state)
+        {
+            case State.one:
+                Cursor.lockState = CursorLockMode.Confined;
+                Cursor.lockState = CursorLockMode.Locked;
+                yield return new WaitForSeconds(0.3f);
+                moveCamera = true;
+                break;
+            case State.two:
+                moveCamera = false;
+                yield return new WaitForSeconds(0.3f);
+                moveCamera = false;
+                break;
+        }
+
+        
     }
 
 

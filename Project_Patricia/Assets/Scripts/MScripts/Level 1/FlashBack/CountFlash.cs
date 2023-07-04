@@ -55,7 +55,8 @@ public class CountFlash : MonoBehaviour
                         cat.SetActive(true);
                         //chair.SetActive(true);
                         episode.SetActive(true);
-                        
+                        newHouse.SetActive(true);
+                        house.SetActive(false);
                     }
                 }
             }

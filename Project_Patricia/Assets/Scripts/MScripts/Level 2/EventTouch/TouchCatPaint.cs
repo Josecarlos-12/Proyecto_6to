@@ -11,9 +11,14 @@ public class TouchCatPaint : MonoBehaviour
     [SerializeField] Collider col;
 
     [Header("Chapter")]
+    [SerializeField] bool into;
+    [SerializeField] Animator animDoor, animPlayer;
+    [SerializeField] AudioSource audioDoor;
     [SerializeField] GameObject cam;
+    [SerializeField] GameObject eText;
     [SerializeField] GameObject chair;
     [SerializeField] GameObject prota, panel, text;
+    [SerializeField] GameObject eyes;
 
 
     public enum Cat
@@ -21,6 +26,30 @@ public class TouchCatPaint : MonoBehaviour
         touch, chapter
     }
     public Cat type;
+
+    private void Update()
+    {
+        switch (type)
+        {
+            case Cat.chapter:
+                if(into && Input.GetKeyDown(KeyCode.E))
+                {
+                    animDoor.SetBool("Open", true);
+                    animPlayer.enabled= true;
+                    audioDoor.Play();
+                    into = false;
+                    eText.SetActive(false);
+                    col.enabled = false;
+                    prota.SetActive(false);
+                    cam.SetActive(true);
+                }
+                break;
+        }
+    }
+    public void EyesCClose()
+    {
+        eyes.SetActive(true);
+    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -34,13 +63,23 @@ public class TouchCatPaint : MonoBehaviour
                     StartCoroutine("DesactiveCat");
                     break;
                 case Cat.chapter:
-                    col.enabled = false;
-                    audioSound2.Play();
-                    StartCoroutine("Chapter");
+                    into = true;
+                    eText.SetActive(true);
                     break;
             }
 
             
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        switch (type)
+        {
+            case Cat.chapter:
+                into = false;
+                eText.SetActive(false);
+                break;
         }
     }
 

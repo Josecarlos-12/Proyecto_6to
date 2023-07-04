@@ -27,15 +27,26 @@ public class CatCallMike : MonoBehaviour
     [SerializeField] private AudioSource shadowMikeAudio;
     [SerializeField] private AudioClip[] clip;
 
+    [SerializeField] private WakingUpMode waking;
+
     public enum Touch
     {
         charlie, mikeCatRoom, PentHouse
     }
     public Touch touch;
 
+    private void Awake()
+    {
+        
+        eyes.SetActive(true);
+        animEyes.SetBool("Open", true);
+    }
+
     private void Start()
     {
-        this.gameObject.SetActive(false);
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible= false;
+        StartCoroutine("PentHouse");
     }
 
     private void OnTriggerEnter(Collider other)
@@ -91,41 +102,28 @@ public class CatCallMike : MonoBehaviour
 
     public IEnumerator PentHouse()
     {
-        dialogue.SetActive(true);
-        dialogue.GetComponent<TextMeshProUGUI>().text = "Catelyn: ¡Miiiiiike! \n Charlie: ¡Papaaaaaaa! ";
-        yield return new WaitForSeconds(4);
-        dialogue.GetComponent<TextMeshProUGUI>().text = "Catelyn: ¡Miiiiiike! \n Charlie: ¡Papiiii! por favooor";
-        //agitado
-        hectic.Play();
-        yield return new WaitForSeconds(4);
-        dialogue.GetComponent<TextMeshProUGUI>().text = "Catelyn: ¡Miiiiiiiiikee! ¡Ayudaaa! \n Charlie: ¡Papaaaaaaa! ";
-        //agitado
-        hectic.Play();
-        yield return new WaitForSeconds(4);
-        dialogue.GetComponent<TextMeshProUGUI>().text = "Catelyn: ¡Miiiiiiiiikee, te lo suplicoo!";
-        hectic.Play();
-        yield return new WaitForSeconds(3);
-        dialogue.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: ¡AAAAAAAHHHHHHH!";
-        //Cierra Ojos
-        eyes.SetActive(true);
-        yield return new WaitForSeconds(3);
-        prota.transform.position = point.transform.position;
-        prota.transform.rotation = point.transform.rotation;
-        dialogue.GetComponent<TextMeshProUGUI>().text = "Catelyn: ¡Miiiiiike! \n Charlie: ¡Papaaaaaaa! ";
-        hectic.Play();
-        shadowMike.SetActive(true);
-        yield return new WaitForSeconds(2);
-        animEyes.SetBool("Open", true);
+        look.moveCamera = false;
         move.canWalk = false;
         crouch.crouchCan = false;
         weapon.shoot = false;
-        weapon.shootTwo= false;
+        weapon.shootTwo = false;
+        yield return new WaitForSeconds(0.4f);
+        look.moveCamera = false;
+        waking.WakingOn();
+        yield return new WaitForSeconds(2);
+        
+        
+        
+        shadowMike.SetActive(true);
+        
+        
         look.xRotation = 0;
         // Abre los Ojos
         yield return new WaitForSeconds(2);
+        look.moveCamera = true;
         shadowMikeAudio.clip = clip[0];
         shadowMikeAudio.Play();
-
+        dialogue.SetActive(true);
         dialogue.GetComponent<TextMeshProUGUI>().text = "¿Escuchas sus voces?";
         yield return new WaitForSeconds(2);
         shadowMikeAudio.clip = clip[1];

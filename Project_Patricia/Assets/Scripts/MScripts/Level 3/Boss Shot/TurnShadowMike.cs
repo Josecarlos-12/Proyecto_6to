@@ -61,12 +61,13 @@ public class TurnShadowMike : MonoBehaviour
 
         dialogue.SetActive(true);
         dialogue.GetComponent<TextMeshProUGUI>().text = "Y no lo harás ahora";
+       
+
+        yield return new WaitForSeconds(4);
         move.canWalk = true;
         crouch.crouchCan = true;
         weapon.shoot = true;
         weapon.shootTwo = true;
-
-        yield return new WaitForSeconds(2);
         dialogue.SetActive(false);
         battleMike.SetActive(true);
         Destroy(gameObject.transform.parent.parent.gameObject);
