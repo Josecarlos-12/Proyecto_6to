@@ -25,7 +25,7 @@ public class Sensibility : MonoBehaviour
                 break;
         }
 
-        Cursor.visible = false;
+        //Cursor.visible = false;
         sensibility.value = PlayerPrefs.GetFloat("SenMouse", sliderValue);
     }
 
