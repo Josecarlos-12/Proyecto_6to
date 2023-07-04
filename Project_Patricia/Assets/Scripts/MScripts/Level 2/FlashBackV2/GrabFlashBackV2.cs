@@ -16,6 +16,7 @@ public class GrabFlashBackV2 : MonoBehaviour
     [SerializeField] GameObject dialogue, cam, prota;
     [SerializeField] AudioSource audi;
     [SerializeField] AudioClip[] clip;
+    [SerializeField] GameObject one, two;
 
     [Header("Flash")]
     [SerializeField] private Animator animFlash;
@@ -116,6 +117,8 @@ public class GrabFlashBackV2 : MonoBehaviour
 
     public IEnumerator FLSB3()
     {
+        one.SetActive(true);
+        two.SetActive(true);
         dialogue.SetActive(true);
         cat.clip = clipCat[0];
         cat.Play();

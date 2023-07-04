@@ -39,10 +39,8 @@ public class GrabRifleSounds : MonoBehaviour
     {
         if (grab && into && Input.GetKeyDown(KeyCode.E))
         {
-            Lanter.SetActive(false);
-            lanterAll.transform.parent = container.transform;
-            spotL.transform.position = pointL.transform.position;
-            spotL.transform.rotation = pointL.transform.rotation;
+            lanterAll.SetActive(false);
+            spotL.SetActive(true);
 
             wayPoint.SetActive(true);
             inve.rifle = true;

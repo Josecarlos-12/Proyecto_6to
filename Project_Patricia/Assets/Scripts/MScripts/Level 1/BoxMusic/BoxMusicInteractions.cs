@@ -47,7 +47,7 @@ public class BoxMusicInteractions : MonoBehaviour
 
     [SerializeField] private TasksUILevel2 task;
     [SerializeField] private GameObject taskUI;
-
+    [SerializeField] private WakingUpMode wakingUp;
 
     public enum Work
     {
@@ -158,6 +158,7 @@ public class BoxMusicInteractions : MonoBehaviour
     public IEnumerator NoSleep()
     {
         yield return new WaitForSeconds(2);
+        wakingUp.WakingOn();
         prota.transform.position = posEventPills.transform.position;
         prota.transform.rotation = posEventPills.transform.rotation;
         prota.SetActive(true);
