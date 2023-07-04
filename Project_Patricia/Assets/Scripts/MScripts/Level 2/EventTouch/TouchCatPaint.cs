@@ -7,10 +7,12 @@ public class TouchCatPaint : MonoBehaviour
 {
     [SerializeField] GameObject cat;
     [SerializeField] AudioSource audioSound;
+    [SerializeField] AudioSource audioSound2;
     [SerializeField] Collider col;
 
     [Header("Chapter")]
     [SerializeField] GameObject cam;
+    [SerializeField] GameObject chair;
     [SerializeField] GameObject prota, panel, text;
 
 
@@ -33,7 +35,7 @@ public class TouchCatPaint : MonoBehaviour
                     break;
                 case Cat.chapter:
                     col.enabled = false;
-                    audioSound.Play();
+                    audioSound2.Play();
                     StartCoroutine("Chapter");
                     break;
             }
@@ -44,21 +46,13 @@ public class TouchCatPaint : MonoBehaviour
 
     public IEnumerator DesactiveCat()
     {   
+        chair.SetActive(true);
+        yield return new WaitForSeconds(1.1f);
         cat.SetActive(true);
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1f);
+        chair.SetActive(false);
         cat.SetActive(false);
         yield return new WaitForSeconds(0.5f);
-        cat.SetActive(true);
-        yield return new WaitForSeconds(0.5f);
-        cat.SetActive(false);
-        yield return new WaitForSeconds(0.5f);
-        cat.SetActive(true);
-        yield return new WaitForSeconds(0.5f);
-        cat.SetActive(false);
-        yield return new WaitForSeconds(0.5f);
-        cat.SetActive(true);
-        yield return new WaitForSeconds(0.5f);
-        cat.SetActive(false);
         Destroy(gameObject);
     }
 

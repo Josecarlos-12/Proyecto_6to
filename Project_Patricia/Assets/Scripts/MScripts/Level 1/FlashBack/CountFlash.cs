@@ -53,7 +53,7 @@ public class CountFlash : MonoBehaviour
                     {
                         ringtone.Play();
                         cat.SetActive(true);
-                        chair.SetActive(true);
+                        //chair.SetActive(true);
                         episode.SetActive(true);
                         
                     }

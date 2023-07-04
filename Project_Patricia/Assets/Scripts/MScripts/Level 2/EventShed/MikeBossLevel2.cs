@@ -388,6 +388,10 @@ public class MikeBossLevel2 : MonoBehaviour
         agent.acceleration = 0;
     }
 
+    public void EyesClose()
+    {
+
+    }
 
     public IEnumerator TPCorutine()
     {
