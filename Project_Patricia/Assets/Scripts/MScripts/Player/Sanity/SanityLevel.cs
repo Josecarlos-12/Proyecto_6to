@@ -19,7 +19,7 @@ public class SanityLevel : MonoBehaviour
     [SerializeField] private GameObject gameOver, prota, cam;
 
     [Header("Less Life")]
-    [SerializeField] private bool into;
+    public bool into;
     [SerializeField] private int count;
     [SerializeField] private float time, maxTime;
     [SerializeField] private Light lightLanter;

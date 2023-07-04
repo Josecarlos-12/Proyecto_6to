@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.TextCore.Text;
@@ -54,6 +55,7 @@ public class TPBossLevel1 : MonoBehaviour
     [SerializeField] private GameObject tasUI;
     [SerializeField] private WakingUpMode waking;
     [SerializeField] private Weapon weapon;
+    [SerializeField] private Inventary inventory;
 
     void Update()
     {
@@ -418,6 +420,13 @@ public class TPBossLevel1 : MonoBehaviour
         lanterRifle.SetActive(false);
         rifle.SetActive(false);
         aim.SetActive(false);
+        inventory.spriteRifle = false;
+        inventory.count.text = string.Empty;
+        inventory.rifleCount.SetActive(false);
+        inventory.sRifle.SetActive(false);
+        inventory.bPills = false;
+        inventory.bKeyComfi = false;
+
         weapon.shoot= false;
         weapon.shootTwo= false;
         waking.WakingOff();

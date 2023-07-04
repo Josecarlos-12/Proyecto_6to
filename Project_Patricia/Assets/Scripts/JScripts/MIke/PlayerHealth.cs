@@ -36,7 +36,7 @@ public class PlayerHealth : MonoBehaviour
     public float size;
     public int count = 0;
     public int bossTouch = 0, catPunch;
-    [SerializeField] private SleepMode sleep;
+    public SleepMode sleep;
     RaycastHit hit;
 
     [Header("Call Other Script")]
@@ -195,7 +195,6 @@ public class PlayerHealth : MonoBehaviour
 
     public void DamageNormal()
     {
-        
         sleep.ModeDreams();
     }
     

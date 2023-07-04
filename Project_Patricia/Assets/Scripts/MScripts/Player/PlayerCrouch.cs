@@ -7,7 +7,7 @@ public class PlayerCrouch : MonoBehaviour
     private Animator anim;
     [SerializeField] private Head head;
     [SerializeField] PlayerFPSt player;
-    [SerializeField] private bool press;
+    public bool press;
     public bool crouch;
     public bool crouchCan;
 

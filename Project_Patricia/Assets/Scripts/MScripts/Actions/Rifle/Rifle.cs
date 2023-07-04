@@ -34,6 +34,7 @@ public class Rifle : MonoBehaviour
     [SerializeField] GameObject gameCTRL;
     [SerializeField] AnimTrue animTrue;
     [SerializeField] PlayerFPSt player;
+    [SerializeField] PlayerCrouch crouch;
     [SerializeField] private Head head;
 
     private void Update()
@@ -103,6 +104,7 @@ public class Rifle : MonoBehaviour
         crTuto.active = true;
         player.canWalk = false;
         yield return new WaitForSeconds(1f);
+        crouch.crouchCan = true;
         panel.SetActive(true);
          yield return new WaitForSeconds(11f);
         animCrouch.SetBool("Off", true);

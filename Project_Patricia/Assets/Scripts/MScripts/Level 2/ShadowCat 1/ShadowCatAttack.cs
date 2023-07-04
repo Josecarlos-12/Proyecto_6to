@@ -31,9 +31,12 @@ public class ShadowCatAttack : MonoBehaviour
     [SerializeField] private AudioSource soundMove;
     [SerializeField] private int countSound;
 
+
+    [SerializeField] private Transform point;
+    [SerializeField] private BoxSingLevel2 box;
     private void Update()
     {
-        if (agent.enabled)
+        if (agent.enabled && !box.bBox)
         {
             if (agent.remainingDistance < 1 && !detected)
             {
@@ -42,6 +45,15 @@ public class ShadowCatAttack : MonoBehaviour
         }
         Detected();
         Collition();
+        GoPoint();
+    }
+
+    public void GoPoint()
+    {
+        if (!detected && box.bBox)
+        {
+            agent.destination = point.position;
+        }
     }
 
     public void Detected()
@@ -120,7 +132,16 @@ public class ShadowCatAttack : MonoBehaviour
         anim.SetBool("Attack", false);
         countNoFollow = 0;
         detected= false;
-        agent.destination = points[destPoint].position;
+        if (box.bBox==false)
+        {
+            agent.destination = points[destPoint].position;
+        }
+        else
+        {
+            agent.destination = point.position;
+        }
+
+        
         agent.speed = 3.5f;
         agent.acceleration = 8;
         agent.stoppingDistance = 0;
@@ -176,7 +197,14 @@ public class ShadowCatAttack : MonoBehaviour
         agent.enabled = true;
         if (agent.enabled)
         {
-            agent.destination = points[destPoint].position;
+            if (box.bBox == false)
+            {
+                agent.destination = points[destPoint].position;
+            }
+            else
+            {
+                agent.destination = point.position;
+            }
         }
         agent.speed = 3.5f;
         agent.acceleration = 8;

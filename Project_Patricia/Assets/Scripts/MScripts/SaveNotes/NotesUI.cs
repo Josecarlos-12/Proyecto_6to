@@ -108,7 +108,7 @@ public class NotesUI : MonoBehaviour
             {
                 cam.moveCamera = false;
                 player.canWalk= false;
-                crouch.crouchCan = false;
+                //crouch.crouchCan = false;
                 note.SetActive(true);
                 shoot = false;               
             }
@@ -116,7 +116,7 @@ public class NotesUI : MonoBehaviour
             {
                 cam.moveCamera = true;
                 player.canWalk = true;
-                crouch.crouchCan = true;
+                //crouch.crouchCan = true;
                 note.SetActive(false);
                 shoot = true;
             }                       

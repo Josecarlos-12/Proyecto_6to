@@ -5,6 +5,7 @@ using UnityEngine;
 public class Feet : MonoBehaviour
 {
     [SerializeField] private CharacterController character;
+    
 
 
     private void OnTriggerStay(Collider other)

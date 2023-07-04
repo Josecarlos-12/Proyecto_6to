@@ -29,6 +29,8 @@ public class CatelynMove : MonoBehaviour
 
     [SerializeField] private AudioSource steeps;
 
+    [SerializeField] private GameObject boxSing;
+
     public enum state
     {
         none, catFollow
@@ -66,6 +68,7 @@ public class CatelynMove : MonoBehaviour
             count++;
             if (count == 2)
             {
+                boxSing.SetActive(true);
                 animdoor.SetBool("Close", true);
                 touch = true;
                 follow = false;

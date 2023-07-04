@@ -21,7 +21,11 @@ public class LightInRoom : MonoBehaviour
     [SerializeField] private GameObject first, second;
     [SerializeField] private int count;
 
-    [SerializeField] public GameObject[] LightBasement;
+    [SerializeField] private GameObject[] LightBasement;
+    [SerializeField] private GameObject boxSing;
+    [SerializeField] private BoxSingLevel2 box;
+
+    public bool finish;
 
     IEnumerator Start()
     {
@@ -138,6 +142,8 @@ public class LightInRoom : MonoBehaviour
 
             if (count == 1)
             {
+                finish = true;
+                
                 for (int i = 0; i < LightBasement.Length; i++)
                 {
                     LightBasement[i].SetActive(true);

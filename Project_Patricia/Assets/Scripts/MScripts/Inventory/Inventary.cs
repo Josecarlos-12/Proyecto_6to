@@ -14,7 +14,7 @@ public class Inventary : MonoBehaviour
     [SerializeField] private GameObject cam, prota, panel;
     [SerializeField] private bool one;
     public AudioSource boxMusic;
-    [SerializeField] GameObject rifleCount;
+    public GameObject rifleCount;
     
     [Header("Call Other Script")]
     [SerializeField] private PlayerHealth sanity;
