@@ -224,7 +224,7 @@ public class PlayerHealth : MonoBehaviour
                 time = 0;
                 if(sanity < 50)
                 {
-                    sanity += 5;
+                    sanity += 2;
                     if (sanity > 50)
                     {
                         sanity = 50;

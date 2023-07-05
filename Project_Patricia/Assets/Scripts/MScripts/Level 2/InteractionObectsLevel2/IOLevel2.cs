@@ -61,7 +61,7 @@ public class IOLevel2 : MonoBehaviour
         textDialogue.SetActive(false);
         prota.SetActive(true);
         cam.SetActive(false);
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(2f);
         mike.clip = clip[1];
         mike.Play();
 

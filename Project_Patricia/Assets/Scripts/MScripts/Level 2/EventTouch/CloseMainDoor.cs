@@ -16,6 +16,8 @@ public class CloseMainDoor : MonoBehaviour
     [Header("Audio")]
     [SerializeField] private AudioSource mike;
     [SerializeField] private AudioClip clip;
+    [SerializeField] private RepeatText repeat;
+    [SerializeField] private AudioClip clipRepeat;
 
     public enum CloseDoor
     {
@@ -43,6 +45,7 @@ public class CloseMainDoor : MonoBehaviour
                     trash.enabled = true;
                     pickableObject.enabled = true;
                     pickableObject.isPickable = true;
+                    repeat.clip= clipRepeat;
                     dialogue.GetComponent<RepeatText>().sText = "Mike Schmith: Bien, ahora siguen los platos";
                     dialogue.SetActive(true);
                     StartCoroutine("One");

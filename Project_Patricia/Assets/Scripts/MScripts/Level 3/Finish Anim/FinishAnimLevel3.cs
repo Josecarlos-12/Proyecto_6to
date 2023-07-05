@@ -12,6 +12,9 @@ public class FinishAnimLevel3 : MonoBehaviour
     [SerializeField] private GameObject anim;
     [SerializeField] private GameObject animBack;
 
+    [SerializeField] private AudioSource mikeAudio;
+    [SerializeField] private AudioClip[] clip;
+
     public void ActiveAnim()
     {
         anim.SetActive(true);
@@ -25,9 +28,15 @@ public class FinishAnimLevel3 : MonoBehaviour
 
     public IEnumerator Dialogue()
     {
+        mikeAudio.clip=clip[0];
+        mikeAudio.Play();
+
         dialogue.SetActive(true);
         dialogue.GetComponent<TextMeshProUGUI>().text = "Charlie Schmith: Tranquilo papá, estaremos bien";
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(6);
+        mikeAudio.clip = clip[1];
+        mikeAudio.Play();
+
         dialogue.GetComponent<TextMeshProUGUI>().text = "Catelyn Schmith: Ya no es necesario que te preocupes más por nosotros";
         yield return new WaitForSeconds(3);
         dialogue.SetActive(false);
@@ -35,9 +44,12 @@ public class FinishAnimLevel3 : MonoBehaviour
 
     public IEnumerator MikeFinish()
     {
+        mikeAudio.clip = clip[0];
+        mikeAudio.Play();        
+        yield return new WaitForSeconds(6);
         dialogue.SetActive(true);
         dialogue.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: Lo sé";
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(6);
         dialogue.SetActive(false);
     }
 

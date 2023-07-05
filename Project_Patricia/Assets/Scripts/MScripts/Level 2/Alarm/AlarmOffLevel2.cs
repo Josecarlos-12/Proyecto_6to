@@ -105,10 +105,16 @@ public class AlarmOffLevel2 : MonoBehaviour
 
     public IEnumerator Dialogue3()
     {
+        mike.clip = clip[0];
+        mike.Play();
+
         shadowCat.SetActive(true);
         dialogue.SetActive(true);
         dialogue.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: Dejaré la puerta como está";
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(3f);
+        mike.clip = clip[1];
+        mike.Play();
+
         dialogue.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: Un poco de aire no estaría mal ";        
         yield return new WaitForSeconds(2f);
         dialogue.SetActive(false);

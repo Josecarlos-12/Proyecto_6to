@@ -171,7 +171,7 @@ public class Weapon : MonoBehaviour
                 }*/
 
 
-                health.sanity -= 4;
+                //health.sanity -= 4;
                 initialShoot = Time.time + timeShoot;
                 shoot = true;
                 clicks -= 1;

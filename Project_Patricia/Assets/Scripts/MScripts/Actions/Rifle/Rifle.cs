@@ -36,6 +36,7 @@ public class Rifle : MonoBehaviour
     [SerializeField] PlayerFPSt player;
     [SerializeField] PlayerCrouch crouch;
     [SerializeField] private Head head;
+    
 
     private void Update()
     {
@@ -128,6 +129,7 @@ public class Rifle : MonoBehaviour
     {
         if(animTrue.init && Input.GetKeyDown(KeyCode.LeftControl))
         {
+            
             print("PresionoCTRL");
             animTrue.init = false;
             gameCTRL.transform.GetChild(0).GetComponent<Animator>().SetBool("Exit", true);

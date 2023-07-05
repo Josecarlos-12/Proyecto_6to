@@ -29,6 +29,9 @@ public class SpoonsInteractionFinish : MonoBehaviour
     [SerializeField] private AudioSource mike;
     [SerializeField] private AudioClip[] clip;
 
+    [SerializeField] private RepeatText repeat;
+    [SerializeField] private AudioClip glassesClip;
+
     void Update()
     {
         if(trashOne.into && trashTwo.into)
@@ -57,6 +60,7 @@ public class SpoonsInteractionFinish : MonoBehaviour
 
             if (count2 == 1)
             {
+                repeat.clip = glassesClip;
                 textReapeat.SetActive(false);
                 textReapeat.GetComponent<RepeatText>().sText = "Mike Schmith: Faltan un par de vasos"; 
                 textReapeat.GetComponent<RepeatText>().time = 1; 
@@ -101,9 +105,15 @@ public class SpoonsInteractionFinish : MonoBehaviour
 
     public IEnumerator DialogueGlass()
     {
+        mike.clip = clip[1];
+        mike.Play();
+
         textDialogue.SetActive(true);
         textDialogue.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: Un vino sería fabuloso para esta cena";
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(4);
+        mike.clip = clip[2];
+        mike.Play();
+
         textDialogue.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: Traeré el Bricco Magno que queda";
         yield return new WaitForSeconds(3);
         textDialogue.SetActive(false);
@@ -111,6 +121,8 @@ public class SpoonsInteractionFinish : MonoBehaviour
 
     public IEnumerator Dialogue()
     {
+        mike.clip = clip[0];
+        mike.Play();
         textDialogue.SetActive(true);
         textDialogue.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: Bien, ahora siguen los platos";
         yield return new WaitForSeconds(2);
@@ -119,7 +131,7 @@ public class SpoonsInteractionFinish : MonoBehaviour
 
     public IEnumerator DialogueWine()
     {
-        mike.clip = clip[0];
+        mike.clip = clip[3];
         mike.Play();
 
         textDialogue.SetActive(true);
@@ -127,12 +139,12 @@ public class SpoonsInteractionFinish : MonoBehaviour
         yield return new WaitForSeconds(2);
         textDialogue.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: Una flor para la mesa";
         yield return new WaitForSeconds(2);
-        mike.clip = clip[1];
+        mike.clip = clip[4];
         mike.Play();
 
         textDialogue.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: A Catelyn le encanta las margaritas";
         yield return new WaitForSeconds(3);
-        mike.clip = clip[2];
+        mike.clip = clip[5];
         mike.Play();
 
         textDialogue.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: Creo haber visto crecer algunas cerca de la entrada";

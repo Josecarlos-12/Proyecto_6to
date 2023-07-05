@@ -41,6 +41,8 @@ public class TPBossLevel1 : MonoBehaviour
     [SerializeField] int one, two, three;
 
     [SerializeField] private AudioSource attack;
+    [SerializeField] private AudioSource mike;
+    [SerializeField] private AudioClip clip;
     [SerializeField] private GameObject eyes;
     [SerializeField] private Animator animEyes;
     [SerializeField] private GameObject rifle, aim;
@@ -383,15 +385,12 @@ public class TPBossLevel1 : MonoBehaviour
         cam.SetActive(false);
         //boxInta.transform.position = transform.position;
         //boxInta.SetActive(true);
-
+        mike.clip = clip;
+        mike.Play();
         
 
         text.SetActive(true);
-        text.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: Tengo que...";
-        //audioMike.clip = clip[0];
-        //audioMike.Play();        
-        yield return new WaitForSeconds(2);
-        text.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: Charlie";
+        text.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: Por fin las tengo";
 
         yield return new WaitForSeconds(2);
         text.SetActive(false);

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class ActiveBoss : MonoBehaviour
@@ -8,6 +9,7 @@ public class ActiveBoss : MonoBehaviour
     [SerializeField] public GameObject boss;
     [SerializeField] public float time, maxTime;
     [SerializeField] private TPBossLevel1 tp;
+
 
     private void Update()
     {
@@ -23,4 +25,5 @@ public class ActiveBoss : MonoBehaviour
             tp.life = 0;
         }
     }
+
 }
