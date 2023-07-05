@@ -19,6 +19,10 @@ public class PickUpObject : MonoBehaviour
 
     [SerializeField] private bool door;
 
+    [Header("Shiny")]
+    [SerializeField] private GameObject shelf, shelfTwo;
+    [SerializeField] private Animator animShelf, animShelfTwo;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -43,6 +47,21 @@ public class PickUpObject : MonoBehaviour
                 //newCenter = new Vector3(0,0,0.2f);
                 newRadius = 0.7f;
                 timer = 0;
+
+                if (shelf != null)
+                {
+                    if (shelf == ObjectToPickUp)
+                    {
+                        animShelf.SetBool("On", true);
+                    }
+                    if (shelfTwo == ObjectToPickUp)
+                    {
+                        animShelfTwo.SetBool("On", true);
+                    }
+                }
+                
+
+
             }
 
             if (Input.GetKey(KeyCode.LeftArrow))
@@ -81,6 +100,15 @@ public class PickUpObject : MonoBehaviour
                 newCenter = new Vector3(0,0,0);
                 newRadius = 0.5f;
                 timer = 0;
+
+
+                if (shelf != null)
+                {
+                    animShelf.SetBool("On", false);
+                    animShelfTwo.SetBool("On", false);
+
+                }
+                
             }
         }
 
