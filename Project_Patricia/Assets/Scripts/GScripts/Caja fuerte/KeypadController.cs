@@ -87,6 +87,7 @@ public class KeypadController : MonoBehaviour
                     StartCoroutine(waitAndClear());
                     break; 
                 case Levels .level1:
+                    col.enabled = false;
                     cam.SetActive(false);
                     prota.SetActive(true);
                     Cursor.visible = false;

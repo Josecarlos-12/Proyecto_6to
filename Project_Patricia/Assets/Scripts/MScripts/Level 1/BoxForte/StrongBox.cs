@@ -8,7 +8,7 @@ public class StrongBox : MonoBehaviour
     [SerializeField] private Collider col;
     [SerializeField] private GameObject text, note;
     [SerializeField] private Text pasword;
-    [SerializeField] private bool into;
+    [SerializeField] private bool into, off;
     [SerializeField] private Animator anim;
     public bool pass;
     [SerializeField] NotesUI noteUI;
@@ -38,11 +38,11 @@ public class StrongBox : MonoBehaviour
             pass = true;
             //pasword.text = "101203";
             text.SetActive(false);
-            col.enabled = false;            
+            //col.enabled = false;            
             animKeyPad.SetBool("On", false);
             player.SetActive(false);
             cam.SetActive(true);
-            
+            StartCoroutine("OffNote");
         }
         if(note==null)
         {
@@ -54,6 +54,20 @@ public class StrongBox : MonoBehaviour
                 animKeyPad.SetBool("On", true);
             }            
         }
+
+        if (off && Input.GetKeyDown(KeyCode.E) && note == null)
+        {
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
+            player.SetActive(true);
+            cam.SetActive(false);
+        }
+    }
+
+    public IEnumerator OffNote()
+    {
+        yield return new WaitForSeconds(0.3f);
+        off = true;
     }
 
     public void Next()
@@ -71,6 +85,7 @@ public class StrongBox : MonoBehaviour
         {
             if(note==null)
             {
+                off = false;
                 text.SetActive(true);
                 into = true;
             }            

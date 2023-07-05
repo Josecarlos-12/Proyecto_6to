@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 8.808823, g: 5.5657597, b: 5.3806, a: 1}
+  m_IndirectSpecularColor: {r: 8.808823, g: 5.565668, b: 5.380577, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -6194,7 +6194,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &923801569
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8696,6 +8696,11 @@ GameObject:
   - component: {fileID: 1131050577}
   - component: {fileID: 1131050581}
   - component: {fileID: 1131050582}
+  - component: {fileID: 1131050587}
+  - component: {fileID: 1131050586}
+  - component: {fileID: 1131050585}
+  - component: {fileID: 1131050584}
+  - component: {fileID: 1131050583}
   m_Layer: 5
   m_Name: MainMenu
   m_TagString: Untagged
@@ -8815,6 +8820,79 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LoadingScreen: {fileID: 1229102562}
   LoadingBarFill: {fileID: 1874155849}
+--- !u!114 &1131050583
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1131050576}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ef35eded35889f40afd5b9630382196, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sensibility: {fileID: 215067293}
+  sliderValue: 3
+  value: 1
+--- !u!114 &1131050584
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1131050576}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7154f51dbb3510b48be4b523f32393ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  toggle: {fileID: 427115059}
+  resolucionDropDown: {fileID: 1752801835}
+--- !u!114 &1131050585
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1131050576}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4533dca2a4babc24babf05c85734750d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slider: {fileID: 1713280539}
+  sliderValue: 5
+  imagenMute: {fileID: 1794452684}
+--- !u!114 &1131050586
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1131050576}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0db62df132f70c549a86997547757420, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dropdown: {fileID: 1564000781}
+  calidad: 0
+--- !u!114 &1131050587
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1131050576}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7205c933e056cd549893e5f95b20f036, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slider: {fileID: 1329144557}
+  sliderValue: 0
+  PanelBrillo: {fileID: 1363757416}
 --- !u!136 &1133247395
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -9841,7 +9919,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1691287451}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Brillo, Assembly-CSharp
         m_MethodName: ChangeSlider
         m_Mode: 0
@@ -12446,10 +12524,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1691287449}
-  - component: {fileID: 1691287451}
-  - component: {fileID: 1691287454}
-  - component: {fileID: 1691287450}
-  - component: {fileID: 1691287453}
   - component: {fileID: 1691287452}
   m_Layer: 5
   m_Name: Settings
@@ -12480,36 +12554,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1691287450
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1691287448}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4533dca2a4babc24babf05c85734750d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  slider: {fileID: 1713280539}
-  sliderValue: 5
-  imagenMute: {fileID: 1794452684}
---- !u!114 &1691287451
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1691287448}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7205c933e056cd549893e5f95b20f036, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  slider: {fileID: 1329144557}
-  sliderValue: 0
-  PanelBrillo: {fileID: 1363757416}
 --- !u!114 &1691287452
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12525,34 +12569,6 @@ MonoBehaviour:
   sensibility: {fileID: 215067293}
   sliderValue: 3
   value: 1
---- !u!114 &1691287453
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1691287448}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7154f51dbb3510b48be4b523f32393ca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  toggle: {fileID: 427115059}
-  resolucionDropDown: {fileID: 1752801835}
---- !u!114 &1691287454
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1691287448}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0db62df132f70c549a86997547757420, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dropdown: {fileID: 1564000781}
-  calidad: 0
 --- !u!1 &1691397255
 GameObject:
   m_ObjectHideFlags: 0
@@ -12928,7 +12944,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1691287450}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Volumen, Assembly-CSharp
         m_MethodName: ChangeSlider
         m_Mode: 0
@@ -14953,7 +14969,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 238.09998, y: 180}
+  m_AnchoredPosition: {x: 238.09998, y: 47}
   m_SizeDelta: {x: 395.12, y: 141.6891}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1800000629
