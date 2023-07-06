@@ -31,11 +31,13 @@ public class AnimFlower : MonoBehaviour
     [SerializeField] private AudioSource back;
     [SerializeField] private AudioClip audioClip;
     [SerializeField] private GameObject hud;
+    [SerializeField] private AudioSource steeps;
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
+            steeps.Stop();
             hud.SetActive(false);
             animFlower.enabled = false;
             cam.SetActive(true);
@@ -76,7 +78,7 @@ public class AnimFlower : MonoBehaviour
 
     public IEnumerator ChangeMode()
     {        
-        yield return new WaitForSeconds(1f);        
+        yield return new WaitForSeconds(3f);        
         text.SetActive(true);
         mike.clip = clip[1];
         mike.Play();
