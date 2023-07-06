@@ -26,6 +26,7 @@ public class GrabFlashBackV2 : MonoBehaviour
     [SerializeField] private AudioSource cat;
     [SerializeField] private AudioSource mike;
     [SerializeField] private AudioClip[] clipCat;
+    [SerializeField] private GameObject aim;
 
     public enum Dialogue
     {
@@ -66,7 +67,7 @@ public class GrabFlashBackV2 : MonoBehaviour
 
             cam.SetActive(true);
             prota.SetActive(false);
-
+            aim.SetActive(false);
             switch (textD)
             {
                 case Dialogue.one:

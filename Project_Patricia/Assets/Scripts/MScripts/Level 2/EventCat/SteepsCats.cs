@@ -29,8 +29,8 @@ public class SteepsCats : MonoBehaviour
 
     [SerializeField] private TasksUILevel2 task;
     [SerializeField] private GameObject taskUI;
-    [SerializeField] private Light sun; 
-
+    [SerializeField] private Light sun;
+    [SerializeField] private GameObject boxForte;
 
     void Start()
     {
@@ -80,6 +80,7 @@ public class SteepsCats : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         wakingUp.WakingOff();
         yield return new WaitForSeconds(0.5f);
+        boxForte.SetActive(true);
         wakingUp.WakingOn();
         yield return new WaitForSeconds(1);
 

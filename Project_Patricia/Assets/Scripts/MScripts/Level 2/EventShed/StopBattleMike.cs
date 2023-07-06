@@ -13,6 +13,7 @@ public class StopBattleMike : MonoBehaviour
     [SerializeField] private Collider col;
     [SerializeField] private GameObject rifle, aim;
     [SerializeField] private Weapon weapon;
+    [SerializeField] private GameObject boxForte;
 
     private void Start()
     {
@@ -42,6 +43,7 @@ public class StopBattleMike : MonoBehaviour
         aim.SetActive(false);
         weapon.shoot= false;
         weapon.shootTwo= false;
+        boxForte.SetActive(false);
         waking.WakingOff();
         yield return new WaitForSeconds(1.12f);
         eyes.SetActive(false);

@@ -47,6 +47,7 @@ public class TPBossLevel1 : MonoBehaviour
     [SerializeField] private Animator animEyes;
     [SerializeField] private GameObject rifle, aim;
     [SerializeField] private GameObject lanterPlayer, lanterRifle;
+    [SerializeField] private GameObject boxForte;
 
 
 
@@ -57,6 +58,7 @@ public class TPBossLevel1 : MonoBehaviour
     [SerializeField] private WakingUpMode waking;
     [SerializeField] private Weapon weapon;
     [SerializeField] private Inventary inventory;
+    
 
     void Update()
     {
@@ -414,6 +416,7 @@ public class TPBossLevel1 : MonoBehaviour
 
     public void EyesClose()
     {
+        boxForte.SetActive(false);
         lanterPlayer.SetActive(true);
         lanterRifle.SetActive(false);
         rifle.SetActive(false);

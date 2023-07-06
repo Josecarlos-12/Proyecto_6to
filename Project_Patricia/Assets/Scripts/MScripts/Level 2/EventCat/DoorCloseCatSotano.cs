@@ -12,6 +12,7 @@ public class DoorCloseCatSotano : MonoBehaviour
 
     [Header("Chart")]
     [SerializeField] private GameObject chart;
+    [SerializeField] private GameObject aim;
     [SerializeField] private GameObject camChart, prota;
 
     [SerializeField] private TasksUILevel2 task;
@@ -36,6 +37,7 @@ public class DoorCloseCatSotano : MonoBehaviour
                     print("Puerta Cerrada");
                     break; 
                 case Change.chart:
+                    aim.SetActive(false);
                     Desactive();
                     chart.SetActive(false);
                     prota.SetActive(false);

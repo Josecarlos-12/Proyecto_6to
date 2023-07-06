@@ -15,6 +15,7 @@ public class Inventary : MonoBehaviour
     [SerializeField] private bool one;
     public AudioSource boxMusic;
     public GameObject rifleCount;
+    public GameObject boxForte;
     
     [Header("Call Other Script")]
     [SerializeField] private PlayerHealth sanity;
@@ -179,7 +180,8 @@ public class Inventary : MonoBehaviour
         text.SetActive(true);
         text.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: Oohhh... Creo que me siento mejor...Hmm no... no cerré... el... estudio";
         yield return new WaitForSeconds(14);
-        complete= true;
+        boxForte.SetActive(true);
+        complete = true;
         eventPills.SetActive(true);
         eventSleep.SetActive(true);
         eventLaders.SetActive(true);

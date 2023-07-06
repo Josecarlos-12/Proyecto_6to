@@ -34,6 +34,7 @@ public class Cushions : MonoBehaviour
     [SerializeField] private AudioSource radio;
 
     [SerializeField] private GameObject sunRot;
+    [SerializeField] private GameObject boxForte;
 
     private void Update()
     {
@@ -121,7 +122,9 @@ public class Cushions : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         panel.SetActive(true);
         //objeDreams.SetActive(true);
-        yield return new WaitForSeconds(2f);        
+        yield return new WaitForSeconds(2f);      
+        boxForte.SetActive(true);
+
         sleep.motionBlur.active = false;
         sleep.cAberration.active = false;
         sleep.run.canRun = true;

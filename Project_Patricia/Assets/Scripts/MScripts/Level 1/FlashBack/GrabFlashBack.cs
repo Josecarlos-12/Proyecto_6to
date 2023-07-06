@@ -25,6 +25,7 @@ public class GrabFlashBack : MonoBehaviour
     [Header("PopUp")]
     [SerializeField] private GameObject popUp;
     [SerializeField] private GameObject textOff;
+    [SerializeField] private GameObject aim;
     [SerializeField] private bool oneB, twoB, threeB;
 
     public enum Dialogue
@@ -102,6 +103,7 @@ public class GrabFlashBack : MonoBehaviour
             switch (textD)
             {
                 case Dialogue.one:
+                    aim.SetActive(false);
                     Cursor.visible = true;
                     Cursor.lockState = CursorLockMode.None;
                     popUp.SetActive(true);
@@ -109,6 +111,7 @@ public class GrabFlashBack : MonoBehaviour
                     StartCoroutine("FLSB");
                     break;
                 case Dialogue.two:
+                    aim.SetActive(false);
                     Cursor.visible = true;
                     Cursor.lockState = CursorLockMode.None;
                     popUp.SetActive(true);
@@ -116,6 +119,7 @@ public class GrabFlashBack : MonoBehaviour
                     StartCoroutine("FLSB2");
                     break;
                 case Dialogue.thre:
+                    aim.SetActive(false);
                     Cursor.visible = true;
                     Cursor.lockState = CursorLockMode.None;
                     popUp.SetActive(true);

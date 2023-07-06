@@ -19,13 +19,14 @@ public class CamObjectsLevel3 : MonoBehaviour
     [SerializeField] private Collider col;
     [SerializeField] private Animator animObjects;
     [SerializeField] private bool press;
-    [SerializeField] private GameObject texE;
+    [SerializeField] private GameObject texE, aim;
 
 
     private void Update()
     {
         if (into && Input.GetKeyDown(KeyCode.E))
         {
+            aim.SetActive(false);
             animObjects.SetBool("On", false);
             into= false; 
             eText.SetActive(false);
