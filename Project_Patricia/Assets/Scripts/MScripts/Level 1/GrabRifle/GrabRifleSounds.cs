@@ -19,6 +19,8 @@ public class GrabRifleSounds : MonoBehaviour
     [SerializeField] private Inventary inve;
     [SerializeField] private AudioSource audioMike;
     [SerializeField] private AudioClip[] clip;
+    [SerializeField] private TasksUILevel2 task;
+    [SerializeField] private GameObject taskUI;
 
     [Header("TutoRifle")]
     [SerializeField] GameObject tutoRifle;
@@ -81,6 +83,10 @@ public class GrabRifleSounds : MonoBehaviour
         shadowBattle.SetActive(true);
         text.SetActive(false);
         yield return new WaitForSeconds(2);
+        task.task = "Go back home";
+        task.go = true;
+        taskUI.SetActive(true);
+
         audioMike.clip = clip[1];
         audioMike.Play();
         text.SetActive(true);

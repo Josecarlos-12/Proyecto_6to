@@ -38,7 +38,7 @@ public class EventWPV2 : MonoBehaviour
                 obj = this.gameObject;
                 obj.SetActive(false);
                 break;
-            case Event.three:
+            case Event.three:                
                 obj = this.gameObject;
                 obj.SetActive(false);
                 break;
@@ -112,6 +112,7 @@ public class EventWPV2 : MonoBehaviour
 
     public IEnumerator Box()
     {
+        tasks.taskCount = 2;
         pills[0].SetActive(true);
         pills[1].SetActive(true);
         pills[2].SetActive(true);

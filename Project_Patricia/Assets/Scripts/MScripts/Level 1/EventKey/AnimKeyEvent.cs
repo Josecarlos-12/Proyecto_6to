@@ -15,6 +15,7 @@ public class AnimKeyEvent : MonoBehaviour
     [SerializeField] private AudioClip[] clip;
     [SerializeField] private GameObject task;
     [SerializeField] private GameObject hud;
+    [SerializeField] private GameObject aim;
 
 
 
@@ -31,6 +32,8 @@ public class AnimKeyEvent : MonoBehaviour
 
     public IEnumerator AciveSound()
     {
+        aim.SetActive(false);
+        hud.SetActive(false);
         for (int i = 0; i < sound.Length; i++)
         {
             sound[i].Play();
@@ -42,7 +45,8 @@ public class AnimKeyEvent : MonoBehaviour
         text.SetActive(true);
         text.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: Te lo advertí";
         yield return new WaitForSeconds(2);
-        hud.SetActive(false);
+        hud.SetActive(true);
+        aim.SetActive(true);
         task.SetActive(true);
         active.active2 = true;        
         boss.SetActive(true);
