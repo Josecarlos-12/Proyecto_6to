@@ -8,6 +8,8 @@ public class ShinyLevel2Best : MonoBehaviour
     [SerializeField] private PickableObject pick;
     [SerializeField] Animator anim;
     [SerializeField] bool into;
+    [SerializeField] TasksUILevel2 task;
+    [SerializeField] int count;
 
     private void Update()
     {
@@ -24,6 +26,19 @@ public class ShinyLevel2Best : MonoBehaviour
             if (pick.isPickable)
             {
                 anim.SetBool("On", true);
+
+                if (task != null)
+                {
+                    if(count<3)
+                    count++;
+
+                    if (count == 1)
+                    {
+                        task.taskCount = 2;
+                    }
+
+                    
+                }
             }
         }
     }

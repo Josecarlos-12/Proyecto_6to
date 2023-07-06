@@ -26,6 +26,7 @@ public class BoxMusicInteractions : MonoBehaviour
 
     [SerializeField] private GameObject lanter;
     [SerializeField] private Animator animDoor;
+    [SerializeField] private Animator eyesPills;
     [SerializeField] private GameObject pass;
     public bool bAlarm;
 
@@ -128,7 +129,7 @@ public class BoxMusicInteractions : MonoBehaviour
     {
         if (inve.pillsTakes == 3 && inve.complete)
         {
-            inve.boxMusic.volume -= 0.003f;
+            inve.boxMusic.volume -= 0.007f;
             if (inve.boxMusic.volume == 0)
             {
                 inve.boxMusic.Pause();
@@ -163,6 +164,8 @@ public class BoxMusicInteractions : MonoBehaviour
         prota.transform.rotation = posEventPills.transform.rotation;
         prota.SetActive(true);
         cam.SetActive(false);
+        eyesPills.SetBool("Open", true);
+        yield return new WaitForSeconds(2);
         panel.SetActive(false);
     }
 

@@ -30,6 +30,9 @@ public class OpenDoorCharlie : MonoBehaviour
     [SerializeField] private AudioSource door;
     [SerializeField] private AudioClip clip;
 
+    [SerializeField] private GameObject cam, prota;
+
+
     void Update()
     {
         if (charlie.activeDorr)
@@ -66,10 +69,14 @@ public class OpenDoorCharlie : MonoBehaviour
 
         //dialogue.SetActive(true);
         //dialogue.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: Creo que ya se durmió...";
+
+        cam.SetActive(true);
+        prota.SetActive(false);
         yield return new WaitForSeconds(0.5f);
         walk.canWalk = true;
         crouch.crouchCan = true;
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.5f);        
+
         dialogue.SetActive(true);
         mike.clip= clipMike[0];
         mike.Play();
@@ -80,6 +87,10 @@ public class OpenDoorCharlie : MonoBehaviour
         yield return new WaitForSeconds(1f);
         frontDoor.clip = close;
         frontDoor.Play();
+        
+
+
+
         yield return new WaitForSeconds(1f);
         steps.SetActive(true);
         yield return new WaitForSeconds(7f);

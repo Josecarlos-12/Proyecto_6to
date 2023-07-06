@@ -17,6 +17,7 @@ public class BoxMusic : MonoBehaviour
     [SerializeField] private AudioClip[] clip;
     [SerializeField] private Animator animBox;
     [SerializeField] private TasksUILevel2 task;
+    [SerializeField] private GameObject taskUI;
 
     public bool bBox;
 
@@ -50,6 +51,9 @@ public class BoxMusic : MonoBehaviour
         audioMike.clip = clip[2];
         audioMike.Play();
         textMeshPro.text = "Mike Schmith: Hmmm hay piezas que fallan, iré a ver si tengo en mi estudio algo que pueda servirme.";
+        task.go = true;
+        task.task = "Find the missing part in the studio";
+        taskUI.SetActive(true);
         yield return new WaitForSeconds(5);
         texMes.SetActive(false);
     }

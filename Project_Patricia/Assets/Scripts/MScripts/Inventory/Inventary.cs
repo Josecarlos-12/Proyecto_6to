@@ -179,7 +179,9 @@ public class Inventary : MonoBehaviour
         audioMike.Play();
         text.SetActive(true);
         text.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: Oohhh... Creo que me siento mejor...Hmm no... no cerré... el... estudio";
-        yield return new WaitForSeconds(14);
+        yield return new WaitForSeconds(12);
+        panel.SetActive(true);
+        yield return new WaitForSeconds(2);
         boxForte.SetActive(true);
         complete = true;
         eventPills.SetActive(true);
@@ -187,7 +189,7 @@ public class Inventary : MonoBehaviour
         eventLaders.SetActive(true);
         text.SetActive(false);
         prota.SetActive(false);
-        panel.SetActive(true);
+        
         cam.SetActive(true);
         //Alarma
         keyPad.SetBool("On", true);

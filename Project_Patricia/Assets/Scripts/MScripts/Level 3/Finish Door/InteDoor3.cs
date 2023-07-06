@@ -10,11 +10,13 @@ public class InteDoor3 : MonoBehaviour
     [SerializeField] private Animator door;
     [SerializeField] private Collider col;
     [SerializeField] private GameObject aim, hud;
+    [SerializeField] private AudioSource audioMike;
 
     private void Update()
     {
         if(into && Input.GetKeyDown(KeyCode.E))
         {
+            audioMike.Play();
             aim.SetActive(false);
             hud.SetActive(false);
             col.enabled= false;
