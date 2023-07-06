@@ -12,6 +12,7 @@ public class DoorBasementKey : MonoBehaviour
     [SerializeField] private Inventary inventory;
     [SerializeField] private KeyGrabShed key;
     [SerializeField] private AudioSource door;
+    [SerializeField] private AudioClip clip;
 
     void Update()
     {
@@ -22,6 +23,7 @@ public class DoorBasementKey : MonoBehaviour
             into = false;
             key.key = 0;
             inventory.bKEy = false;
+            door.clip = clip;
             door.Play();
         }
     }

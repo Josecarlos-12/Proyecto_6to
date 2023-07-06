@@ -20,6 +20,9 @@ public class EventWPV2 : MonoBehaviour
     [SerializeField] private AudioSource audioMike, audi, back;
     [SerializeField] private AudioClip[] clip;
     [SerializeField] private GameObject charlies;
+    [SerializeField] private GameObject[] pills;
+    [SerializeField] private GameObject taskUI;
+    [SerializeField] private TasksUILevel2 tasks;
 
     private void Start()
     {
@@ -109,6 +112,10 @@ public class EventWPV2 : MonoBehaviour
 
     public IEnumerator Box()
     {
+        pills[0].SetActive(true);
+        pills[1].SetActive(true);
+        pills[2].SetActive(true);
+
         Destroy(charlies);
 
         back.Play();
@@ -147,7 +154,10 @@ public class EventWPV2 : MonoBehaviour
         text.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: ¡Charlie! ¡Ya voy!";
         audi.clip = clip[1];
         audi.Play();
-        yield return new WaitForSeconds(2);       
+        yield return new WaitForSeconds(2);    
+        taskUI.SetActive(true);
+        tasks.go = true;
+        tasks.task = "find out who is shouting";
         text.SetActive(false);
     }
 }

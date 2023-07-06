@@ -27,6 +27,7 @@ public class Inventary : MonoBehaviour
     [SerializeField] private GameObject eventPills, eventSleep, eventLaders;
     public bool complete;
     public Animator keyPad, alarm;
+    public GameObject otherPills;
 
 
     [Header("Audio")]
@@ -182,6 +183,7 @@ public class Inventary : MonoBehaviour
         yield return new WaitForSeconds(12);
         panel.SetActive(true);
         yield return new WaitForSeconds(2);
+        otherPills.SetActive(true);
         boxForte.SetActive(true);
         complete = true;
         eventPills.SetActive(true);

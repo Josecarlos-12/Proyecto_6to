@@ -50,6 +50,7 @@ public class EventCapsuleAtico : MonoBehaviour
 
     public IEnumerator Dialogue()
     {
+        task.taskCount = 2;
         mikeAudio.clip = clip[0];
         mikeAudio.Play();
 

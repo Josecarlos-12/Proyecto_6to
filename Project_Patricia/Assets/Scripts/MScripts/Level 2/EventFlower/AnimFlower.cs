@@ -11,7 +11,7 @@ public class AnimFlower : MonoBehaviour
     [SerializeField] private Animator animDoor, animDoorV2;    
     [SerializeField] private GameObject switchGog, switchBad;
     [SerializeField] private GameObject[] lightDesactive;
-    [SerializeField] private GameObject openDoor;
+    [SerializeField] private GameObject openDoor, pills;
     
 
     [Header("Task")]
@@ -54,6 +54,7 @@ public class AnimFlower : MonoBehaviour
 
         text.SetActive(true);
         text.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: Aahh, me recuerdan a ella";
+        pills.SetActive(true);
         yield return new WaitForSeconds(2);
         text.SetActive(false);
     }

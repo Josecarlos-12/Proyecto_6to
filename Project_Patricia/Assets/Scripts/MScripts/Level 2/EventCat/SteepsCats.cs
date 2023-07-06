@@ -30,7 +30,7 @@ public class SteepsCats : MonoBehaviour
     [SerializeField] private TasksUILevel2 task;
     [SerializeField] private GameObject taskUI;
     [SerializeField] private Light sun;
-    [SerializeField] private GameObject boxForte;
+    [SerializeField] private GameObject boxForte, coll;
 
     void Start()
     {
@@ -51,6 +51,7 @@ public class SteepsCats : MonoBehaviour
 
             if (count == 1)
             {
+                coll.SetActive(true);
                 cat.into = true;
                 colliderMove.SetActive(false);
                 chart.SetActive(true);

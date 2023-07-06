@@ -10,7 +10,9 @@ public class GrabLanterCat : MonoBehaviour
     [SerializeField] private bool into;
     [SerializeField] private Collider col;
     [SerializeField] private GameObject cat;
-
+    [SerializeField] private GameObject panel;
+    [SerializeField] private MeshRenderer mesh;
+    [SerializeField] private Animator animPanel;
 
     void Update()
     {
@@ -27,8 +29,21 @@ public class GrabLanterCat : MonoBehaviour
             into = false;
             col.enabled= false;
             cat.SetActive(true);
-            Destroy(lanter);
+            mesh.enabled= false;
+            lanter.SetActive(false);
+            StartCoroutine("Panel");
         }
+    }
+
+    public IEnumerator Panel()
+    {
+        yield return new WaitForSeconds(5);
+        panel.SetActive(true);
+        yield return new WaitForSeconds(15);
+        animPanel.SetBool("Off", true);
+        yield return new WaitForSeconds(5);
+        panel.SetActive(false);
+        Destroy(gameObject);
     }
 
     private void OnTriggerEnter(Collider other)
