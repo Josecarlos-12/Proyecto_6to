@@ -186,20 +186,20 @@ public class LightInRoom : MonoBehaviour
     public IEnumerator NextLight()
     {
         // Encender 4 objetos aleatorios de la matriz "up"
-        upIndexes = GenerateRandomIndexes(up.Length, 2);
+        upIndexes = GenerateRandomIndexes(up.Length, 3);
         foreach (int index in upIndexes)
         {
             up[index].SetActive(true);
         }
 
         // Encender 4 objetos aleatorios de la matriz "down"
-        downIndexes = GenerateRandomIndexes(down.Length, 2);
+        downIndexes = GenerateRandomIndexes(down.Length, 3);
         foreach (int index in downIndexes)
         {
             down[index].SetActive(true);
         }
 
-        yield return new WaitForSeconds(4);
+        yield return new WaitForSeconds(6);
 
         // Apagar los objetos encendidos de la matriz "up"
         foreach (int index in upIndexes)
