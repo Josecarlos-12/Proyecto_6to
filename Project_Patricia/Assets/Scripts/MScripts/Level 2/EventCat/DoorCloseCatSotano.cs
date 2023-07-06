@@ -15,7 +15,7 @@ public class DoorCloseCatSotano : MonoBehaviour
     [SerializeField] private GameObject aim;
     [SerializeField] private GameObject camChart, prota;
 
-    [SerializeField] private TasksUILevel2 task;
+    [SerializeField] private GameObject taskUI;
 
     public enum Change
     {

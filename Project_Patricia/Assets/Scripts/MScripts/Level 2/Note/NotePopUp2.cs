@@ -15,6 +15,8 @@ public class NotePopUp2 : MonoBehaviour
     [Header("Player")]
     [SerializeField] private GameObject camGame;
     [SerializeField] private GameObject player;
+    [SerializeField] private GameObject taskUI;
+    [SerializeField] private TasksUILevel2 task;
 
     private void Update()
     {
@@ -27,6 +29,10 @@ public class NotePopUp2 : MonoBehaviour
             {
                 if (hit.transform.CompareTag("Note"))
                 {
+                    task.go = true;
+                    task.task= "Go to the shed";
+                    taskUI.SetActive(true);
+
                     cod = note.noteText;
                     spri = note.image;
 
