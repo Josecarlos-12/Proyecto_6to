@@ -10,6 +10,7 @@ public class Weapon : MonoBehaviour
 {
     [Header("Weapon")]
     public bool canShoot, save, shoot, shootTwo;
+    public int reloading;
     [SerializeField] private float initialShoot, timeShoot, saveTime, saveTimeMax;
     public GameObject bullet, weapon, aim;
     [SerializeField] private Transform initialBullet;
@@ -61,12 +62,16 @@ public class Weapon : MonoBehaviour
 
     public void Reloaded()
     {
-        if (Input.GetKeyDown(KeyCode.R) && handle > 0)
+        if (Input.GetKeyDown(KeyCode.R) && handle > 0 && clicks<clickMax)
         {
-            reloadingSound.Play();
-            canShoot = false;
-            shoot = true;
-            StartCoroutine("ReloadCcorutine");
+            reloading++;
+            if (reloading == 0)
+            {
+                reloadingSound.Play();
+                canShoot = false;
+                shoot = true;
+                StartCoroutine("ReloadCcorutine");
+            }            
         }
     }
 
@@ -77,6 +82,7 @@ public class Weapon : MonoBehaviour
         yield return new WaitForSeconds(0.4f);
         animRifle.SetBool("Shoot", false);
         yield return new WaitForSeconds(1.6f);
+        reloading = -1;
         shoot = false;
         canShoot=true;
         handle -= 1;
