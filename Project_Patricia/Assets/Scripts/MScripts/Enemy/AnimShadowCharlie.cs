@@ -12,6 +12,7 @@ public class AnimShadowCharlie : MonoBehaviour
     [SerializeField] private CharlieGoThree go;
     [SerializeField] private SleepMode sleep;
     [SerializeField] private Animator animCharlie;
+    [SerializeField] private GameObject hud;
 
     [Header("Dialogue")]
     [SerializeField] private AudioSource audioMike;
@@ -50,6 +51,7 @@ public class AnimShadowCharlie : MonoBehaviour
 
     public void FinAnim()
     {
+        hud.SetActive(true);
         animCharlie.SetBool("Scream", false);
         prota.transform.position = pointCamera.transform.position;
         prota.transform.rotation = pointCamera.transform.rotation;

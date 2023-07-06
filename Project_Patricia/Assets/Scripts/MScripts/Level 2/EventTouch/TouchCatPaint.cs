@@ -20,7 +20,7 @@ public class TouchCatPaint : MonoBehaviour
     [SerializeField] GameObject prota, panel, text;
     [SerializeField] GameObject eyes;
 
-
+    [SerializeField] private GameObject hud;
     public enum Cat
     {
         touch, chapter
@@ -34,6 +34,7 @@ public class TouchCatPaint : MonoBehaviour
             case Cat.chapter:
                 if(into && Input.GetKeyDown(KeyCode.E))
                 {
+                    hud.SetActive(false);
                     animDoor.SetBool("Open", true);
                     animPlayer.enabled= true;
                     audioDoor.Play();

@@ -15,6 +15,7 @@ public class TurnShadowMike : MonoBehaviour
     [SerializeField] private PlayerFPSt move;
     [SerializeField] private PlayerCrouch crouch;
     [SerializeField] private Weapon weapon;
+    [SerializeField] private GameObject hud;
 
     [Header("Audio")]
     [SerializeField] private AudioSource shadowMike;
@@ -64,6 +65,7 @@ public class TurnShadowMike : MonoBehaviour
        
 
         yield return new WaitForSeconds(4);
+        hud.SetActive(true);
         move.canWalk = true;
         crouch.crouchCan = true;
         weapon.shoot = true;

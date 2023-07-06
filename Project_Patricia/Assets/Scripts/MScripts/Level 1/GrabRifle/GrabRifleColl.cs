@@ -10,6 +10,7 @@ public class GrabRifleColl : MonoBehaviour
     [SerializeField] private Animator doorBoss;
     [SerializeField] private TasksUI task;
     [SerializeField] private GameObject limit;
+    [SerializeField] private GameObject hud;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -20,6 +21,7 @@ public class GrabRifleColl : MonoBehaviour
 
             if (count == 1)                
             {
+                hud.SetActive(false);
                 Destroy(limit);
                 task.taskCount = 2;
                 chain.SetActive(false);

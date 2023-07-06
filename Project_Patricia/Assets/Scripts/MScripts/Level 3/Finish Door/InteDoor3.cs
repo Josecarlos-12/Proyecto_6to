@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Burst.Intrinsics;
 using UnityEngine;
 
 public class InteDoor3 : MonoBehaviour
@@ -8,11 +9,14 @@ public class InteDoor3 : MonoBehaviour
     [SerializeField] private GameObject eText, animCam,prota;
     [SerializeField] private Animator door;
     [SerializeField] private Collider col;
+    [SerializeField] private GameObject aim, hud;
 
     private void Update()
     {
         if(into && Input.GetKeyDown(KeyCode.E))
         {
+            aim.SetActive(false);
+            hud.SetActive(false);
             col.enabled= false;
             eText.SetActive(false);
             into = false;

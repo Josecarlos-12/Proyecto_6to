@@ -30,11 +30,13 @@ public class AnimFlower : MonoBehaviour
     [SerializeField] private AudioSource audioDoor;
     [SerializeField] private AudioSource back;
     [SerializeField] private AudioClip audioClip;
+    [SerializeField] private GameObject hud;
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
+            hud.SetActive(false);
             animFlower.enabled = false;
             cam.SetActive(true);
             prota.SetActive(false);
@@ -97,6 +99,7 @@ public class AnimFlower : MonoBehaviour
 
     public void Finish()
     {
+        hud.SetActive(true);
         cam.SetActive(false);
         prota.SetActive(true);
     }

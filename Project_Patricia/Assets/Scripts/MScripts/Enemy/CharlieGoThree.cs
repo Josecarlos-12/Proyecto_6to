@@ -23,6 +23,7 @@ public class CharlieGoThree : MonoBehaviour
     [SerializeField] private AudioClip[] clip;
 
     [SerializeField] private GameObject charlie;
+    [SerializeField] private GameObject hud;
 
     void Start()
     {
@@ -84,6 +85,7 @@ public class CharlieGoThree : MonoBehaviour
         //audioMike.clip = clip[2];
         //audioMike.Play();
         yield return new WaitForSeconds(2);
+        hud.SetActive(false);
         cam.SetActive(true);
         prota.SetActive(false);
         text.SetActive(false);

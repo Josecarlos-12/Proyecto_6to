@@ -46,6 +46,7 @@ public class MikeBossLevel2 : MonoBehaviour
     [SerializeField] private int stateMikeRandom;
 
     [SerializeField] private AudioSource attack;
+    [SerializeField] private GameObject hud;
 
     void Update()
     {
@@ -505,7 +506,7 @@ public class MikeBossLevel2 : MonoBehaviour
 
     public IEnumerator ActiveProta()
     {
-
+        hud.SetActive(true);
         prota.SetActive(true);
         cam.SetActive(false);
         //boxInta.transform.position = transform.position;
@@ -524,6 +525,7 @@ public class MikeBossLevel2 : MonoBehaviour
 
     public void ReduceTra()
     {
+        hud.SetActive(false);
         change = true;
     }
 }

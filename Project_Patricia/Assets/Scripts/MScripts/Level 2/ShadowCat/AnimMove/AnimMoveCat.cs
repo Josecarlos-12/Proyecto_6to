@@ -6,7 +6,7 @@ using UnityEngine;
 public class AnimMoveCat : MonoBehaviour
 {
     [SerializeField] private Animator anim, thisAnim;
-    [SerializeField] private GameObject dialogue, prota, cam;
+    [SerializeField] private GameObject dialogue, prota, cam, hud;
     [SerializeField] private GameObject lanterGod, lanterBad, LanterPlayer;
     [SerializeField] private Lantern lanter;
     [SerializeField] private Light sun, ligthLanter;
@@ -34,7 +34,7 @@ public class AnimMoveCat : MonoBehaviour
         //sun.intensity = 9;
 
         //Mathf.Lerp(242.1584f, 7, 0.5f);
-
+        hud.SetActive(true);
         lanterGod.SetActive(false);
         lanterBad.SetActive(true);
         LanterPlayer.SetActive(false);
@@ -64,6 +64,7 @@ public class AnimMoveCat : MonoBehaviour
 
     public void CursorMouse()
     {
+        
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         sun.intensity = 6;

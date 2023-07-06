@@ -27,6 +27,7 @@ public class EventKeyShadow : MonoBehaviour
 
     [Header("kinematics")]
     [SerializeField] private GameObject cam;
+    [SerializeField] private GameObject hud;
     [SerializeField] private GameObject player;
     [SerializeField] private Animator animCine;
     [SerializeField] private int countAnim;
@@ -79,6 +80,7 @@ public class EventKeyShadow : MonoBehaviour
         text.SetActive(true);
         text.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: ¡Hablo en serio!";
         yield return new WaitForSeconds(2);
+        hud.SetActive(false);
         animCine.enabled= true;
         text.SetActive(false);
         cam.SetActive(true);

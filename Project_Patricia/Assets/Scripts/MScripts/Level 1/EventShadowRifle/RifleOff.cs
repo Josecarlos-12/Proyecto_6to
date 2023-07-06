@@ -5,6 +5,7 @@ using UnityEngine;
 public class RifleOff : MonoBehaviour
 {
     [SerializeField] private GameObject cam, prota, point;
+    [SerializeField] private GameObject hud;
     [SerializeField] private Animator rifle;
     [SerializeField] private AudioSource[] sound;   
 
@@ -18,6 +19,7 @@ public class RifleOff : MonoBehaviour
 
  public void AnimationOff()
     {
+        hud.SetActive(true);
         prota.transform.position= point.transform.position;
         prota.transform.rotation= point.transform.rotation;
         cam.SetActive(false);

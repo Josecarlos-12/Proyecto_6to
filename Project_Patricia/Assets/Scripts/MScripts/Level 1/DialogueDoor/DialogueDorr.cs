@@ -19,7 +19,7 @@ public class DialogueDorr : MonoBehaviour
     [SerializeField] private AudioSource backgroundSound;
     [SerializeField] private AudioSource sfxSounds, sfxSounds2;
     [SerializeField] private AudioClip breathing, door, horror;
-
+    [SerializeField] private GameObject hud;
 
     public void BackGround()
     {
@@ -81,6 +81,7 @@ public class DialogueDorr : MonoBehaviour
 
     public void Finish()
     {
+        hud.SetActive(true);
         fin.prota.SetActive(true);
         fin.cam.SetActive(false);
     }

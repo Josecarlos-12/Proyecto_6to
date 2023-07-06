@@ -7,11 +7,12 @@ using UnityEngine.SceneManagement;
 public class DialoguesLevel2Final : MonoBehaviour
 {
     [SerializeField] private GameObject dialogue;
-    [SerializeField] private GameObject chapter;
+    [SerializeField] private GameObject chapter;    
     [SerializeField] private AudioSource audioChapter;
 
     public IEnumerator Dialogues()
     {
+        
         dialogue.SetActive(true);
         dialogue.GetComponent<TextMeshProUGUI>().text = "Charlie Schmith: ¡Papá, ayudaaaa!";
         yield return new WaitForSeconds(2);

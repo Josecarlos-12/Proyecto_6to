@@ -24,6 +24,7 @@ public class EventChild : MonoBehaviour
     
     [SerializeField] private AudioSource audioMike;
     [SerializeField] private AudioClip[] clip;
+    [SerializeField] private GameObject hud;
 
 
     public enum EnumAction
@@ -162,6 +163,7 @@ public class EventChild : MonoBehaviour
         dialogue.SetActive(false);
         yield return new WaitForSeconds(timeTwo[4]);        
         panel.SetActive(true);
+        hud.SetActive(false);
         prota.SetActive(false);
         cam.SetActive(true);
         yield return new WaitForSeconds(timeTwo[5]);      
