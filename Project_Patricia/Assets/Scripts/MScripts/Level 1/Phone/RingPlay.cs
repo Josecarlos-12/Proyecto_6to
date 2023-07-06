@@ -16,6 +16,7 @@ public class RingPlay : MonoBehaviour
     {
         if (count.ring && into && Input.GetKeyDown(KeyCode.E))
         {
+            prota.SetActive(false);
             finishLevel.Play();
             col.enabled= false;
             into = false;
@@ -23,7 +24,7 @@ public class RingPlay : MonoBehaviour
             panel.SetActive(true);
             Level2.SetActive(true);
             cam.SetActive(true);
-            prota.SetActive(false);
+            
             StartCoroutine("NextLevel");
         }
     }

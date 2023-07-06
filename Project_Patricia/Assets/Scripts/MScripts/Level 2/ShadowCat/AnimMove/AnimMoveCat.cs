@@ -67,7 +67,7 @@ public class AnimMoveCat : MonoBehaviour
         
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-        sun.intensity = 6;
+        sun.intensity = 56.5f;
         print(sun.intensity);
     }
 

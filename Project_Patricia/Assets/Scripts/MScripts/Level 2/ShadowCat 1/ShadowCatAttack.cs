@@ -28,6 +28,7 @@ public class ShadowCatAttack : MonoBehaviour
     [SerializeField] private int countCol;
 
     [SerializeField] private AudioSource soundDetected;
+    [SerializeField] private AudioSource soundFollow;
     [SerializeField] private AudioSource soundMove;
     [SerializeField] private int countSound;
 
@@ -75,6 +76,7 @@ public class ShadowCatAttack : MonoBehaviour
             if (countSound == 1)
             {
                 soundDetected.Play();
+                soundFollow.Play();
             }
 
             
@@ -128,6 +130,7 @@ public class ShadowCatAttack : MonoBehaviour
     public IEnumerator FollowFalse()
     {
         yield return new WaitForSeconds(3);
+        soundFollow.Stop();
         anim.SetBool("Move", true);
         anim.SetBool("Attack", false);
         countNoFollow = 0;

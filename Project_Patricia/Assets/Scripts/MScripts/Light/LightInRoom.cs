@@ -10,6 +10,7 @@ public class LightInRoom : MonoBehaviour
     [SerializeField] CatelynMove cat;
     public int[] upIndexes;
     public int[] downIndexes;
+    public GameObject[] candles;
 
     [Header("Timer")]
     [SerializeField] private float time;
@@ -111,6 +112,12 @@ public class LightInRoom : MonoBehaviour
         {
             down[i].SetActive(false);
         }
+
+        for (int i = 0; i < candles.Length; i++)
+        {
+            candles[i].SetActive(false);
+        }
+
         StartCoroutine("NextLight");
 
         cat.catV2.SetActive(true);
@@ -147,6 +154,11 @@ public class LightInRoom : MonoBehaviour
                 for (int i = 0; i < LightBasement.Length; i++)
                 {
                     LightBasement[i].SetActive(true);
+                }
+
+                for (int i = 0; i < candles.Length; i++)
+                {
+                    candles[i].SetActive(true);
                 }
 
                 first.gameObject.SetActive(true);
