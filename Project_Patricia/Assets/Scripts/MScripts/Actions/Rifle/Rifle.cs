@@ -36,6 +36,7 @@ public class Rifle : MonoBehaviour
     [SerializeField] PlayerFPSt player;
     [SerializeField] PlayerCrouch crouch;
     [SerializeField] private Head head;
+    [SerializeField] private AudioSource steeps;
     
 
     private void Update()
@@ -79,14 +80,10 @@ public class Rifle : MonoBehaviour
         //dialogue.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: Se está moviendo entre los arbustos...";
         //audioMike.clip = clip[2];
         //audioMike.Play();
-        yield return new WaitForSeconds(2f);
-        dialogue.SetActive(true);
-        dialogue.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: Esta es mi oportunidad, tengo que evitar que me escuche";
-        audioMike.clip = clip[3];
-        audioMike.Play();
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(1f);
         dialogue.SetActive(false);
         yield return new WaitForSeconds(2f);
+        steeps.Stop();
         run.agent.enabled = false;
         run.run = false;
         run.anim.SetBool("Walk", false);
@@ -98,7 +95,7 @@ public class Rifle : MonoBehaviour
         //Cursor.lockState= CursorLockMode.None;
 
         shadow.transform.position = point.transform.position;
-        colliders.SetActive(true);
+        
 
         enemy.accept = true;
         coll.SetActive(true);
@@ -110,7 +107,8 @@ public class Rifle : MonoBehaviour
          yield return new WaitForSeconds(11f);
         animCrouch.SetBool("Off", true);
         yield return new WaitForSeconds(0.4f);
-         panel.SetActive(false);
+        colliders.SetActive(true);
+        panel.SetActive(false);
     }
 
     public void AcceptButton()

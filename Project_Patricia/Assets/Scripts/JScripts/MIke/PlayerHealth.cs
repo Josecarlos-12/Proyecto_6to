@@ -255,7 +255,7 @@ public class PlayerHealth : MonoBehaviour
         Debug.Log("AAAAAAA me asuste");
         jumpScare.SetActive(true);
         bjumpScare = true;
-        RecieveDamage(10);
+        RecieveDamage(8);
     }
 
     public void Damage()
