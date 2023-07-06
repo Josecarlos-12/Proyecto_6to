@@ -50,7 +50,14 @@ public class PlayerFPSt : MonoBehaviour
     public bool canWalk;
     [SerializeField] private AudioSource audioBreathing;
     [SerializeField] private AudioSource audioWalking;
-    [SerializeField] private AudioClip clipRun, clipWalk;
+    [SerializeField] private AudioClip clipRun, clipWalk, clipForestWalk, clipForestRun;
+    [SerializeField] private AudioClip clipsRun, clipsWalk;
+
+    [Header("Layers")]
+    [SerializeField] private LayerMask layer;
+    [SerializeField] private float raycastDistance = 10f;
+
+
     void Start()
     {
         /*currentStamina = maxStamina;
@@ -106,6 +113,43 @@ public class PlayerFPSt : MonoBehaviour
         Speed();
         UpdateEnergy();
         ReductionEnergy();
+
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position, -Vector3.up, out hit, raycastDistance, layer))
+        {
+            if (hit.collider.CompareTag("Floor"))
+            {
+                clipsRun = clipRun;
+                clipsWalk = clipWalk;
+                print("Piso");
+
+                if (Input.GetKeyDown(KeyCode.LeftShift) && bEnergy && canRun)
+                {
+                    audioWalking.clip = clipsRun;
+
+                }
+                else if (!shift && !crouch.crouch || !bEnergy)
+                {
+                    audioWalking.clip = clipsWalk;
+                }
+
+            }
+            else if (hit.collider.CompareTag("Forest"))
+            {
+                clipsRun = clipForestRun;
+                clipsWalk = clipForestWalk;
+                print("Forest");
+                if (shift && bEnergy && canRun)
+                {
+                    audioWalking.clip = clipsRun;
+
+                }
+                else if (!shift && !crouch.crouch || !bEnergy)
+                {
+                    audioWalking.clip = clipsWalk;
+                }
+            }
+        }
     }
 
     public void UpdateEnergy()
@@ -228,8 +272,9 @@ public class PlayerFPSt : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.LeftShift) && bEnergy && canRun)
         {
-            audioWalking.clip = clipRun;
+            audioWalking.clip = clipsRun;
             speed = speedMax;            
+
         }
         else if (crouch.crouch)
         {
@@ -238,9 +283,9 @@ public class PlayerFPSt : MonoBehaviour
         }
         else if(!shift && !crouch.crouch || !bEnergy)
         {
-            audioWalking.clip = clipWalk;
+            audioWalking.clip = clipsWalk;
             speed = speedNormal;
-            crounch = false;
+            crounch = false;            
         }
 
         if (Input.GetKeyDown(KeyCode.LeftShift))
@@ -303,5 +348,12 @@ public class PlayerFPSt : MonoBehaviour
             yield return regenTick;
         }
         regen = null;
+    }
+
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.green;
+        Gizmos.DrawLine(transform.position, transform.position - transform.up * raycastDistance);
     }
 }
