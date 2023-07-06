@@ -82,7 +82,7 @@ public class EnemyShed : MonoBehaviour
         audioMike.Play();
 
         text.SetActive(true);
-        text.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: Maldición, hice demasiado ruido ";
+        text.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: Maldición ¿Lo perdí? ";
         yield return new WaitForSeconds(3);
         audioMike.clip = speekClip;
         audioMike.Play();

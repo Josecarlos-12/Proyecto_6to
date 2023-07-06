@@ -54,7 +54,7 @@ public class Cupboard : MonoBehaviour
         yield return new WaitForSeconds(3f);
         text.SetActive(false);
         anim.SetBool("On", false);
-        yield return new WaitForSeconds(0.3f);
+        yield return new WaitForSeconds(0.5f);
         panel.SetActive(true);
         prota.SetActive(false);
         can.SetActive(true);

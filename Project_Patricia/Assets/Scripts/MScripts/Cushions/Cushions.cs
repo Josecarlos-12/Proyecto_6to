@@ -57,21 +57,10 @@ public class Cushions : MonoBehaviour
                 prota.SetActive(false);
                 cam.SetActive(true);                
                 StartCoroutine(Next());
-                StopCoroutine("After");
             }
                 
         }
 
-        if (note.one && note.two && note.three && note.four && note.eight && note.nine)
-        {
-            if(count2<3)
-            count2++;
-
-            if (count2 == 1)
-            {
-                StartCoroutine("After");
-            }                
-        }
 
         if(Vector3.Distance(playerDontMove.transform.position, transform.position) < 10 && playerDontMove.activeInHierarchy)
         {
@@ -97,7 +86,7 @@ public class Cushions : MonoBehaviour
 
     public IEnumerator After()
     {
-        yield return new WaitForSeconds(30);
+        yield return new WaitForSeconds(4);
         for (int i = 0; i < doorAll.Length; i++)
         {
             doorAll[i].SetBool("Front", true)
@@ -128,14 +117,6 @@ public class Cushions : MonoBehaviour
 
     public IEnumerator Next()
     {
-        for (int i = 0; i < doorAll.Length; i++)
-        {
-            doorAll[i].SetBool("Front", false);
-        }
-        for (int i = 0; i < openDoorScript.Length; i++)
-        {
-            openDoorScript[i].enabled= true;
-        }
         playerDontMove.SetActive(false);
         yield return new WaitForSeconds(0.5f);
         panel.SetActive(true);
