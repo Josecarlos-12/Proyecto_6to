@@ -41,7 +41,7 @@ public class Rifle : MonoBehaviour
 
     private void Update()
     {
-        CTRLButton();
+        //CTRLButton();
         InpuRifle();
        if (star)
         {            
@@ -59,56 +59,57 @@ public class Rifle : MonoBehaviour
 
     public IEnumerator DialogueFinal()
     {
+        run.run = true;
         player.canRun = false;
         yield return new WaitForSeconds(0.6f);
-        run.run = true;
-        audioMike.clip = clip[0];
-        audioMike.Play();
-        dialogue.SetActive(true);
-        dialogue.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: ¡Hey! ¿Quién eres tú? ¡¿Qué haces en mi propiedad?!";
+        
+        //audioMike.clip = clip[0];
+        //audioMike.Play();
+        //dialogue.SetActive(true);
+        //dialogue.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: ¡Hey! ¿Quién eres tú? ¡¿Qué haces en mi propiedad?!";
         yield return new WaitForSeconds(3f);        
-        dialogue.SetActive(false);            
+        //dialogue.SetActive(false);            
         yield return new WaitForSeconds(1f);
-        dialogue.SetActive(true);
-        dialogue.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: ¡Hey hablo enserio, vuelve aquí!";
-        audioMike.clip = clip[1];
-        audioMike.Play();
+        //dialogue.SetActive(true);
+        //dialogue.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: ¡Hey hablo enserio, vuelve aquí!";
+        //audioMike.clip = clip[1];
+        //audioMike.Play();
         yield return new WaitForSeconds(3f);        
-        dialogue.SetActive(false);
+        //dialogue.SetActive(false);
         //yield return new WaitForSeconds(1f);
         //dialogue.SetActive(true);
         //dialogue.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: Se está moviendo entre los arbustos...";
         //audioMike.clip = clip[2];
         //audioMike.Play();
         yield return new WaitForSeconds(1f);
-        dialogue.SetActive(false);
+        //dialogue.SetActive(false);
         yield return new WaitForSeconds(2f);
         steeps.Stop();
         run.agent.enabled = false;
         run.run = false;
         run.anim.SetBool("Walk", false);
-        gameCTRL.SetActive(true);
+        //gameCTRL.SetActive(true);
 
         
         //Time.timeScale = 0;
         //Cursor.visible= true;
         //Cursor.lockState= CursorLockMode.None;
-
+        shadow.SetActive(false);
         shadow.transform.position = point.transform.position;
         
 
         enemy.accept = true;
-        coll.SetActive(true);
-        crTuto.active = true;
-        player.canWalk = false;
+        //coll.SetActive(true);
+        //crTuto.active = true;
+        //player.canWalk = false;
         yield return new WaitForSeconds(1f);
-        crouch.crouchCan = true;
-        panel.SetActive(true);
+        //crouch.crouchCan = true;
+        //panel.SetActive(true);
          yield return new WaitForSeconds(11f);
-        animCrouch.SetBool("Off", true);
+        //animCrouch.SetBool("Off", true);
         yield return new WaitForSeconds(0.4f);
-        colliders.SetActive(true);
-        panel.SetActive(false);
+        //colliders.SetActive(true);
+        //panel.SetActive(false);
     }
 
     public void AcceptButton()

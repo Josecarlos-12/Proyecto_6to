@@ -30,7 +30,6 @@ public class DoorCloseCatSotano : MonoBehaviour
             switch (change)
             {
                 case Change.door:
-                    task.taskCount = 2;
                     Desactive();
                     spotLight.SetActive(false);
                     StartCoroutine("ChartShiny");

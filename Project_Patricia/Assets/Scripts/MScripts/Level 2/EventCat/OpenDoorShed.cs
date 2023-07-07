@@ -8,11 +8,13 @@ public class OpenDoorShed : MonoBehaviour
     [SerializeField] private GameObject textE;
     [SerializeField] private Collider col;
     [SerializeField] private bool into;
+    [SerializeField] private TasksUILevel2 task;
 
     private void Update()
     {
         if(into && Input.GetKeyDown(KeyCode.E))
         {
+            task.taskCount = 2;
             col.enabled= false;
             into = false;
             textE.SetActive(false);

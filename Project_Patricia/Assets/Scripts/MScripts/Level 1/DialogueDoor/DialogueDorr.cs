@@ -73,7 +73,11 @@ public class DialogueDorr : MonoBehaviour
         dialogue.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: Quién? Quién está ahí?";
         audioMike.clip = clip[2];
         audioMike.Play();
-        yield return new WaitForSeconds(2);       
+        yield return new WaitForSeconds(3);
+        dialogue.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: Hay un extraño cerca";
+        yield return new WaitForSeconds(3);
+        dialogue.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: Debo avisar a Cat";
+        yield return new WaitForSeconds(3);
         dialogue.SetActive(false);
         dialogue.GetComponent<TextMeshProUGUI>().text = string.Empty;
     }

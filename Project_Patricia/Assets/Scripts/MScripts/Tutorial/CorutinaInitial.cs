@@ -7,7 +7,7 @@ using UnityEngine.Rendering.HighDefinition;
 
 public class CorutinaInitial : MonoBehaviour
 {
-
+    [SerializeField] private AudioSource phone;
     [SerializeField] private float[] time;
     [SerializeField, TextArea(4,4)] private string[] text;
     [SerializeField] private TextMeshProUGUI textMeshPro;
@@ -46,8 +46,11 @@ public class CorutinaInitial : MonoBehaviour
 
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        yield return new WaitForSeconds(3.5f);
+        phone.Stop();
 
         yield return new WaitForSeconds(time[0]);
+        textContainer.SetActive(true);
         audioCatelyn.clip = clip[0];
         audioCatelyn.Play();
         textMeshPro.text = text[0];
@@ -68,11 +71,24 @@ public class CorutinaInitial : MonoBehaviour
 
         textMeshPro.text = text[4];
         yield return new WaitForSeconds(time[5]);
-        audioCatelyn.clip = clip[2];
-        audioCatelyn.Play();
-        textMeshPro.text = text[5];
+        textMeshPro.text = "Catelyn Schmith: ¿Podrías contestar el teléfono por favor?";
+        yield return new WaitForSeconds(4);
+        audioMike.clip = clip[7];
+        audioMike.Play();
+        textMeshPro.text = text[10];
+        yield return new WaitForSeconds(4);
+        panelTuto.SetActive(true);
+        phone.Play();
+        phone.volume = 1f;
+        prota.SetActive(true);
+        textContainer.SetActive(false);
+        press = true; 
+        Destroy(cam);
+        /*audioCatelyn.clip = clip[2];
+        //audioCatelyn.Play();
+        //textMeshPro.text = text[5];
         yield return new WaitForSeconds(time[6]);
-        audioMike.clip = clip[3];
+        audioMike.clip = clip[1];
         audioMike.Play();
         textMeshPro.text = text[6];
         yield return new WaitForSeconds(time[7]);
@@ -113,7 +129,7 @@ public class CorutinaInitial : MonoBehaviour
 
         textContainer.SetActive(false);
         press = true;
-        task.go = true;
+        task.go = true;*/
     }
 
     private void Update()
@@ -125,7 +141,7 @@ public class CorutinaInitial : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.F12) && !press) 
         {
-            task.go = true;
+            //task.go = true;
             audioMike.Stop();
             audioCatelyn.Stop();
             StopCoroutine("Start");
