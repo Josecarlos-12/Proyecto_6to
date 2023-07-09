@@ -20,6 +20,9 @@ public class Level2DoorFalse : MonoBehaviour
 
     public void Close()
     {
-        door[1].Play();
+        if (door[1].enabled)
+        {
+            door[1].Play();
+        }        
     }
 }

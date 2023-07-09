@@ -33,7 +33,7 @@ public class NoteTutorial : MonoBehaviour
 
         if(finish.finish && Input.GetKeyDown(KeyCode.N))
         {
-            animN.SetBool("Exit", true);
+            
             finish.finish = false;
             //Cursor.lockState = CursorLockMode.None;
             //Cursor.visible = true;
@@ -58,6 +58,8 @@ public class NoteTutorial : MonoBehaviour
         tutorialN.SetActive(true);
         yield return new WaitForSeconds(1.3f);
         noteUI.init = true;
+        yield return new WaitForSeconds(5);
+        animN.SetBool("Exit", true);
     }
 
 

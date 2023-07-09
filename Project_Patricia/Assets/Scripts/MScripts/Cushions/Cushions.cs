@@ -43,7 +43,7 @@ public class Cushions : MonoBehaviour
 
     public void Down()
     {
-        if(note.one && note.two && note.three && note.four && note.eight && note.nine && Input.GetKeyDown(KeyCode.E) && into)
+        if(note.one && note.two && note.three && note.four && note.eight && Input.GetKeyDown(KeyCode.E) && into)
         {  
             count++;
 
@@ -160,7 +160,7 @@ public class Cushions : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            if (note.one && note.two && note.three && note.four && note.eight && note.nine)
+            if (note.one && note.two && note.three && note.four && note.eight )
             {
                 into = true;
                 text.SetActive(true);

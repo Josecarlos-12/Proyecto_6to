@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class TrashInte2 : MonoBehaviour
@@ -23,16 +24,14 @@ public class TrashInte2 : MonoBehaviour
             if (count == 1)
             {
                 StartCoroutine("Sound");
-                note.check = 1;
-                anim.SetBool("Open", true);
-                closeAudio.PlayOneShot(dumpster);
+                note.check = 2;
             }
         }
     }
 
     public IEnumerator Sound()
     {
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(0.5f);
         finish.Play();
     }
 }

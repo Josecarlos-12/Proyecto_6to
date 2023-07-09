@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class DialogueDorr : MonoBehaviour
 {
+    [SerializeField] private Animator animDoor;
+
     [Header("Dialgoue")]
     [SerializeField] private GameObject dialogue;
 
@@ -93,5 +95,11 @@ public class DialogueDorr : MonoBehaviour
     public void DialogueTrue()
     {
         rifle.star = true;
+    }
+
+    public void ODoorBig()
+    {
+        animDoor.SetBool("Close", false);
+        animDoor.speed = 2;
     }
 }

@@ -88,14 +88,15 @@ public class iron : MonoBehaviour
                 cF = true;
                 break;
             case Check.nine:
-                trash.SetActive(true);
-                pickObject.PickedObject = trash;
-                trash.transform.parent = Point.transform;
-                trash.transform.position = Point.transform.position;
-                trash.GetComponent<Rigidbody>().useGravity = false;
-                trash.GetComponent<Rigidbody>().isKinematic= true;
-                pick.isPickable = false;
-                note.check = 9;
+                //trash.SetActive(true);
+                //pickObject.PickedObject = trash;
+                //trash.transform.parent = Point.transform;
+                //trash.transform.position = Point.transform.position;
+                //trash.GetComponent<Rigidbody>().useGravity = false;
+                //trash.GetComponent<Rigidbody>().isKinematic= true;
+                //pick.isPickable = false;
+                //note.check = 9;
+                note.check = 1;
                 break;
         }
         yield return new WaitForSeconds(0.5f);
@@ -109,7 +110,7 @@ public class iron : MonoBehaviour
                 audioSource.PlayOneShot(taskClip);//Aqui poner Sonidos 
                 break;
             case Check.nine:
-                //audioSource.PlayOneShot(taskClip);
+                audioSource.PlayOneShot(taskClip);
                 break;
         }
         

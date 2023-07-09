@@ -27,6 +27,7 @@ public class CorutinaInitial : MonoBehaviour
     public Bloom bloom;
     public MotionBlur motionBlur;
     public ChromaticAberration cAberration;
+    [SerializeField] private AudioSource one, two;
 
     public IEnumerator Start()
     {
@@ -55,6 +56,8 @@ public class CorutinaInitial : MonoBehaviour
         audioCatelyn.Play();
         textMeshPro.text = text[0];
         yield return new WaitForSeconds(time[1]);
+        one.enabled = true;
+        two.enabled = true;
         textMeshPro.text = text[1];
         yield return new WaitForSeconds(time[2]);
         textMeshPro.text = text[2];
@@ -82,7 +85,8 @@ public class CorutinaInitial : MonoBehaviour
         phone.volume = 1f;
         prota.SetActive(true);
         textContainer.SetActive(false);
-        press = true; 
+        press = true;
+        //task.go = true;
         Destroy(cam);
         /*audioCatelyn.clip = clip[2];
         //audioCatelyn.Play();
@@ -129,7 +133,7 @@ public class CorutinaInitial : MonoBehaviour
 
         textContainer.SetActive(false);
         press = true;
-        task.go = true;*/
+        */
     }
 
     private void Update()
@@ -141,6 +145,8 @@ public class CorutinaInitial : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.F12) && !press) 
         {
+            one.enabled = true;
+            two.enabled = true;
             phone.Play();
             phone.volume = 1f;
             //task.go = true;
@@ -156,9 +162,11 @@ public class CorutinaInitial : MonoBehaviour
             //Time.timeScale = 0;
             //Cursor.lockState = CursorLockMode.None;
             //Cursor.visible = true;
-            Destroy(cam);
+            //task.go = true;
+            
             prota.SetActive(true);
             textContainer.SetActive(false);
+            Destroy(cam);
         }
     }
 
@@ -170,6 +178,6 @@ public class CorutinaInitial : MonoBehaviour
         Destroy(cam);
         prota.SetActive(true);
         panelTuto.SetActive(false);
-        task.go = true;
+        
     }
 }

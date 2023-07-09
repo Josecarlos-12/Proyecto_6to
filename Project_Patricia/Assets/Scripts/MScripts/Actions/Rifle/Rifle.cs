@@ -7,6 +7,7 @@ using UnityEngine.Audio;
 public class Rifle : MonoBehaviour
 {
     [SerializeField] private bool into;
+    [SerializeField] private GameObject limit, three, three2;
     public bool canRifle;
     [SerializeField] private GameObject text;
     [SerializeField] private Collider col;
@@ -97,7 +98,9 @@ public class Rifle : MonoBehaviour
         //Cursor.lockState= CursorLockMode.None;
         shadow.SetActive(false);
         shadow.transform.position = point.transform.position;
-        
+        limit.SetActive(true);
+        three.SetActive(false);
+        three2.SetActive(false);
 
         enemy.accept = true;
         //coll.SetActive(true);

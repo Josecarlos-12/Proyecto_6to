@@ -46,7 +46,7 @@ public class SleepMode : MonoBehaviour
 
     public void CheckFour()
     {
-        if (note.one && note.two && note.three && note.four && note.eight && note.nine)
+        if (note.one && note.two && note.three && note.four && note.eight)
         {
             if (cFour < 3)
                 cFour++;

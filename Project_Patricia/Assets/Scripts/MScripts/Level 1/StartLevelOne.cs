@@ -15,6 +15,7 @@ public class StartLevelOne : MonoBehaviour
 
     [SerializeField] private Animator note;
     [SerializeField] private Collider colNote;
+    [SerializeField] private AudioSource audioDoor, door2;
 
     IEnumerator Start()
     {
@@ -46,7 +47,10 @@ public class StartLevelOne : MonoBehaviour
         text.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: ¿Qué, qué fue eso? Ooohhmm mi cabeza...¿A qué hora me dormí? Ohh, es tardísimoTengo que colocar la alarma.";
         audioMike.clip = clip[0];
         audioMike.Play();
-        yield return new WaitForSeconds(13f);
+        yield return new WaitForSeconds(2f);
+        audioDoor.enabled= true;
+        door2.enabled= true;
+        yield return new WaitForSeconds(11f);
         colNote.enabled= true;
         text.SetActive(false);
         note.SetBool("On", true);
