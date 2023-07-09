@@ -141,6 +141,8 @@ public class CorutinaInitial : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.F12) && !press) 
         {
+            phone.Play();
+            phone.volume = 1f;
             //task.go = true;
             audioMike.Stop();
             audioCatelyn.Stop();

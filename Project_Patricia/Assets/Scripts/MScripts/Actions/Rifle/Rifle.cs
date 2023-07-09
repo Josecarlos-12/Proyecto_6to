@@ -26,7 +26,7 @@ public class Rifle : MonoBehaviour
     [SerializeField] GameObject panel;
     [SerializeField] private GameObject shadow, point, colliders;
     [SerializeField] private CrouchTutorial crTuto;
-    [SerializeField] private GameObject coll;
+    [SerializeField] private GameObject coll, animPunch;
     [SerializeField] private EnemyShed enemy;
     [SerializeField] private Animator animCrouch;
 
@@ -84,6 +84,7 @@ public class Rifle : MonoBehaviour
         yield return new WaitForSeconds(1f);
         //dialogue.SetActive(false);
         yield return new WaitForSeconds(2f);
+        animPunch.SetActive(true);
         steeps.Stop();
         run.agent.enabled = false;
         run.run = false;
