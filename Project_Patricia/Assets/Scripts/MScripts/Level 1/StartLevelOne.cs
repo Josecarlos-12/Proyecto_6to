@@ -17,6 +17,10 @@ public class StartLevelOne : MonoBehaviour
     [SerializeField] private Collider colNote;
     [SerializeField] private AudioSource audioDoor, door2;
 
+    [SerializeField] private GameObject repeat;
+    [SerializeField] private RepeatText repeatText;
+    [SerializeField] private AudioClip clipRepeat;
+
     IEnumerator Start()
     {
         yield return new WaitForSeconds(4.10f);
@@ -51,6 +55,9 @@ public class StartLevelOne : MonoBehaviour
         audioDoor.enabled= true;
         door2.enabled= true;
         yield return new WaitForSeconds(11f);
+        repeat.SetActive(true);
+        repeatText.sText = "Mike Schmith: Me pareció haber visto algo cerca de la entrada";
+        repeatText.clip= clipRepeat;
         colNote.enabled= true;
         text.SetActive(false);
         note.SetBool("On", true);

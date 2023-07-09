@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class DoorOpenKey : MonoBehaviour
 {
+    [SerializeField] private GameObject repeat;
+    [SerializeField] private RepeatText repeatText;
+
     [SerializeField] KeyGrab numberKey;
     [SerializeField] bool into;
     [SerializeField] Animator anim;
@@ -17,6 +20,11 @@ public class DoorOpenKey : MonoBehaviour
     {
         if(numberKey.numberKey == 1 && into && Input.GetKeyDown(KeyCode.E))
         {
+            dialogue.SetActive(false);
+            repeatText.audio.Stop();
+            repeatText.texContainer.SetActive(false);
+            repeatText.StopCoroutine("Repeat2");
+            repeat.SetActive(false);
             anim.SetBool("Open", true);
             into = false;
             numberKey.numberKey = 0;

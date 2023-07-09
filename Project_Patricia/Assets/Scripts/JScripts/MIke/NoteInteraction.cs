@@ -35,6 +35,11 @@ public class NoteInteraction : MonoBehaviour
     [SerializeField] private TasksUI task;
     [SerializeField] private Collider drawerCol;
 
+    [Header("Move")]
+    [SerializeField] private CameraLook cam;
+    [SerializeField] private PlayerFPSt player;
+    [SerializeField] private PlayerCrouch crouch;
+
     public enum Check
     {
         normal, work, dialogue, codeOne, codeTwo, codeThree
@@ -58,6 +63,10 @@ public class NoteInteraction : MonoBehaviour
 
         if (count == 1)
         {
+            crouch.crouchCan = false;
+            cam.moveCamera = false;
+            player.canWalk= false;
+
             print("Dialogo star");
             switch (check)
             {
@@ -70,7 +79,7 @@ public class NoteInteraction : MonoBehaviour
                     noteNote.Dialogue();
                     break;
             }
-            Time.timeScale = 0;
+            //Time.timeScale = 0;
             imageNote.sprite = image;
             note.SetActive(true);
             text.text = noteText;
@@ -96,8 +105,12 @@ public class NoteInteraction : MonoBehaviour
             traduction.SetActive(false);
         }
         if (count == 4)
-        {            
-            Time.timeScale = 1;
+        {
+            //Time.timeScale = 1;
+
+            crouch.crouchCan = true;
+            cam.moveCamera = true;
+            player.canWalk = true;
             note.SetActive(false);
             
             switch (check)

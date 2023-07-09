@@ -7,6 +7,10 @@ using UnityEngine.TextCore.Text;
 
 public class TPBossLevel1 : MonoBehaviour
 {
+    [SerializeField] private GameObject repeat;
+    [SerializeField] private RepeatText repeatText;
+    [SerializeField] private AudioClip clipRepeat;
+
     [SerializeField] private GameObject player;
     [SerializeField] private NavMeshAgent agent;
     [SerializeField] private Vector3 posProta;
@@ -404,6 +408,12 @@ public class TPBossLevel1 : MonoBehaviour
         key.inve.bKEy = true;
         eyes.SetActive(false);
         yield return new WaitForSeconds(2);
+        repeatText.state = RepeatText.State.two;
+        repeat.SetActive(true);
+        repeatText.sText = "Mike Schmith: Cahrlie... Espérame";
+        repeatText.clip= clip;
+
+
         print("Des");
         Destroy(containerBoss);
     }

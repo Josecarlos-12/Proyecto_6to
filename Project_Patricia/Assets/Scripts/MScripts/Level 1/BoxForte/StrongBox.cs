@@ -20,6 +20,9 @@ public class StrongBox : MonoBehaviour
     [SerializeField] private GameObject taskUi;
     [SerializeField] private TasksUILevel2 task;
     [SerializeField] private GameObject player, cam;
+    [SerializeField] private AudioClip clip;
+    [SerializeField] private RepeatText repeatText;
+    [SerializeField] private GameObject repeat;
 
     // Start is called before the first frame update
     void Start()
@@ -31,7 +34,7 @@ public class StrongBox : MonoBehaviour
     void Update()
     {
         if(into && Input.GetKeyDown(KeyCode.E) && note==null)
-        {
+        {            
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
             into = false;
@@ -51,6 +54,12 @@ public class StrongBox : MonoBehaviour
 
             if (count == 1)
             {
+                repeatText.texContainer.SetActive(false);
+                repeatText.audio.Stop();
+                repeat.SetActive(false);
+                repeat.SetActive(true);
+                repeatText.clip = clip;
+                repeatText.sText = "Mike Schmith: Charlie's birthdate, Charlie's birthdate";
                 animKeyPad.SetBool("On", true);
             }            
         }

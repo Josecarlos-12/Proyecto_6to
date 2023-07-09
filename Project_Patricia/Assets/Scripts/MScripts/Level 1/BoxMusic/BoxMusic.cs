@@ -20,6 +20,8 @@ public class BoxMusic : MonoBehaviour
     [SerializeField] private GameObject taskUI;
 
     public bool bBox;
+    [SerializeField] private GameObject repeat;
+    [SerializeField] private RepeatText repeatText;
 
     void Update()
     {
@@ -95,13 +97,12 @@ public class BoxMusic : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-           
+            repeat.SetActive(false);
+            repeatText.StopCoroutine("Repeat3");
             if (intoTrue)
             {
                 into = true;
             }
-
-
         }
     }
 

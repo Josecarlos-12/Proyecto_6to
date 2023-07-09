@@ -6,6 +6,10 @@ using UnityEngine.UI;
 
 public class KeypadController : MonoBehaviour
 {
+    [SerializeField] private GameObject repeat;
+    [SerializeField] private RepeatText repeatText;
+    [SerializeField] private AudioClip clip;
+
     public DoorController door;
     public string password;
     public int passwordLimit;
@@ -87,12 +91,20 @@ public class KeypadController : MonoBehaviour
                     StartCoroutine(waitAndClear());
                     break; 
                 case Levels .level1:
+                    repeat.SetActive(false);
+                    repeatText.texContainer.SetActive(false);
+                    repeatText.audio.Stop();
+                    repeatText.sText = string.Empty;
+                    repeat.SetActive(true);
+                    repeatText.clip= clip;
+                    repeatText.sText = "Mike Schmith: Listo, ahora sigue la caja musical";
                     col.enabled = false;
                     cam.SetActive(false);
                     prota.SetActive(true);
                     Cursor.visible = false;
                     Cursor.lockState = CursorLockMode.Locked;
                     sBox.Next();
+                    passwordText.color = Color.green;
                     break;
             }
             

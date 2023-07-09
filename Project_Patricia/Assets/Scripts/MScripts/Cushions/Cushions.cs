@@ -7,6 +7,10 @@ using UnityEngine.Rendering.HighDefinition;
 
 public class Cushions : MonoBehaviour
 {
+    [SerializeField] private GameObject repeat;
+    [SerializeField] private RepeatText repeatText;
+    [SerializeField] private AudioClip clipGo;
+
     [SerializeField] private bool into;
     [SerializeField] private Collider col;
     [SerializeField] private GameObject cam, prota, text, panel, objeDreams, posProta, rifle;
@@ -142,10 +146,13 @@ public class Cushions : MonoBehaviour
         prota.SetActive(true);        
         yield return new WaitForSeconds(0.8f);       
         textDialogue.SetActive(true);
-        textDialogue.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: Oooohhmm ¿Qué? ¿Qué hora es? debo cerrar el estudio.";
+        textDialogue.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: Oooohhmm ¿Qué? ¿Qué hora es? debo cerrar el estudio";
         audioMike.clip = clip[0];
         audioMike.Play();
         yield return new WaitForSeconds(9f);
+        repeat.SetActive(true);
+        repeatText.clip= clipGo;
+        repeatText.sText = "Mike Schmith: debo cerrar el estudio";
         taskUI.SetActive(true);
         taskUI.GetComponent<TasksUI>().go = true;
         taskUI.GetComponent<TasksUI>().taskCount = 1;

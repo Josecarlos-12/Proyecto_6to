@@ -6,16 +6,16 @@ using UnityEngine;
 public class RepeatText : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI text;
-    [SerializeField] private GameObject texContainer;
+    public GameObject texContainer;
     [TextArea(4, 4)] public string sText;
     [SerializeField] private int count;
     public float time = 6;
-    [SerializeField] private AudioSource audio;
+    public AudioSource audio;
     public AudioClip clip;
 
     public enum State
     {
-        one, two
+        one, two, three
     }
     public State state;
 
@@ -39,6 +39,9 @@ public class RepeatText : MonoBehaviour
                 case State.two:
                     StartCoroutine("Repeat2");
                     break;
+                case State.three:
+                    StartCoroutine("Repeat3");
+                    break;
             }
 
             
@@ -48,8 +51,8 @@ public class RepeatText : MonoBehaviour
     private IEnumerator Repeat()
     {
         yield return new WaitForSeconds(time);
-        //audio.clip = clip;
-        //audio.Play();
+        audio.clip = clip;
+        audio.Play();
         texContainer.SetActive(true);
         text.text = sText;
         yield return new WaitForSeconds(4);
@@ -69,5 +72,21 @@ public class RepeatText : MonoBehaviour
         text.text = string.Empty;
         yield return new WaitForSeconds(12);
         yield return Repeat2();
+    }
+
+    private IEnumerator Repeat3()
+    {
+        yield return new WaitForSeconds(20);
+        texContainer.SetActive(true);
+        if (clip != null)
+        {
+            audio.clip = clip;
+            audio.Play();
+        }        
+        text.text = sText;
+        yield return new WaitForSeconds(4);
+        texContainer.SetActive(false);
+        text.text = string.Empty;
+        yield return Repeat3();
     }
 }

@@ -12,6 +12,9 @@ public class GrabRifleColl : MonoBehaviour
     [SerializeField] private GameObject limit;
     [SerializeField] private GameObject hud;
 
+    [SerializeField] private GameObject repeat;
+    [SerializeField] private RepeatText repeatText;
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
@@ -21,6 +24,8 @@ public class GrabRifleColl : MonoBehaviour
 
             if (count == 1)                
             {
+                repeatText.StopCoroutine("Repeat");
+                repeat.SetActive(false);
                 hud.SetActive(false);
                 Destroy(limit);
                 task.taskCount = 2;

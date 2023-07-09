@@ -50,6 +50,10 @@ public class BoxMusicInteractions : MonoBehaviour
     [SerializeField] private GameObject taskUI;
     [SerializeField] private WakingUpMode wakingUp;
 
+    [SerializeField] private GameObject repeat;
+    [SerializeField] private RepeatText repeatText;
+    [SerializeField] private AudioClip clipRepeat;
+
     public enum Work
     {
         tras, shopping, firewood, boxMusic, chart
@@ -196,6 +200,10 @@ public class BoxMusicInteractions : MonoBehaviour
         yield return new WaitForSecondsRealtime(3);
         text.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: Están en mi habitación";
         yield return new WaitForSecondsRealtime(2);
+        repeat.SetActive(true);
+        repeatText.sText = "Mike Schmith: necesito mis pastillas... Están en mi habitación";
+        repeatText.clip = clipRepeat;
+
         task.go = true;
         task.task = "Look for your pills in your room";
         taskUI.SetActive(true);
