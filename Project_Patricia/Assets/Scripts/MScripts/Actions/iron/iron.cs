@@ -18,6 +18,7 @@ public class iron : MonoBehaviour
     public AudioSource audioSource;
     public AudioClip audioClip;
     public AudioClip taskClip;
+    [SerializeField] private GameObject rabbit, rabbitRadio;
 
     public enum Check
     {
@@ -47,6 +48,8 @@ public class iron : MonoBehaviour
         if (into && Input.GetKeyDown(KeyCode.E) && count == 0 && noteGrab.grabNote)
         {
             count++;
+            rabbit.SetActive(false);
+            rabbitRadio.SetActive(true);
             prota.SetActive(false);
             panel.SetActive(true);
             cam.SetActive(true);

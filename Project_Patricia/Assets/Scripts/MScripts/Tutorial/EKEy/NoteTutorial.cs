@@ -11,6 +11,7 @@ public class NoteTutorial : MonoBehaviour
     [SerializeField] private NotesUI noteUI;
     [SerializeField] private Animator off, animN;
     [SerializeField] private GameObject tuto;
+    [SerializeField] private GameObject[] scares;
 
     void Start()
     {
@@ -27,6 +28,8 @@ public class NoteTutorial : MonoBehaviour
 
             if (count == 1)
             {
+                scares[0].SetActive(true);
+                scares[1].SetActive(true);
                 StartCoroutine("ActivePanel");
             }           
         }
