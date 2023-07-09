@@ -11,6 +11,8 @@ public class AnimPunch : MonoBehaviour
     [SerializeField] private Collider col;
     [SerializeField] private bool into;
     [SerializeField] private Animator animDoor;
+    [SerializeField] private GameObject repeat;
+    [SerializeField] private RepeatText textRepeat;
 
     public enum States
     {
@@ -46,6 +48,8 @@ public class AnimPunch : MonoBehaviour
             switch (states)
             {
                 case States.one:
+                    textRepeat.StopCoroutine("Repeat");
+                    repeat.SetActive(false);
                     col.enabled = false;
                     StartCoroutine("ChapterOne");
                     break;

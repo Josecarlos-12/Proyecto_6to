@@ -16,6 +16,7 @@ public class DialogueDorr : MonoBehaviour
 
     [SerializeField] private AudioSource audioMike;
     [SerializeField] private AudioClip[] clip;
+    [SerializeField] private GameObject repeat;
 
     [Header("Audios")]
     [SerializeField] private AudioSource backgroundSound;
@@ -90,6 +91,7 @@ public class DialogueDorr : MonoBehaviour
         hud.SetActive(true);
         fin.prota.SetActive(true);
         fin.cam.SetActive(false);
+        repeat.SetActive(true);
     }
 
     public void DialogueTrue()

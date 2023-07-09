@@ -10,6 +10,7 @@ public class ScareMikeTuto : MonoBehaviour
     [SerializeField] private Collider col;
     [SerializeField] private Animator anim;
     [SerializeField] private bool touch;
+    [SerializeField] private AudioSource horror;
 
     private void Update()
     {
@@ -48,6 +49,7 @@ public class ScareMikeTuto : MonoBehaviour
     {
         yield return new WaitForSeconds(2);
         Destroy(otherCol);
+        horror.Play();
         touch= true;        
         col.enabled= false;
         shadowMike.transform.position = point.transform.position;

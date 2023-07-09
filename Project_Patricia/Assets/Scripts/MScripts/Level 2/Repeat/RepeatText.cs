@@ -6,6 +6,7 @@ using UnityEngine;
 public class RepeatText : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI text;
+    [SerializeField] private GameObject texContainer;
     [TextArea(4, 4)] public string sText;
     [SerializeField] private int count;
     public float time = 6;
@@ -47,12 +48,14 @@ public class RepeatText : MonoBehaviour
     private IEnumerator Repeat()
     {
         yield return new WaitForSeconds(time);
-        audio.clip = clip;
-        audio.Play();
+        //audio.clip = clip;
+        //audio.Play();
+        texContainer.SetActive(true);
         text.text = sText;
         yield return new WaitForSeconds(4);
+        texContainer.SetActive(false);
         text.text = string.Empty;
-        yield return new WaitForSeconds(12);
+        yield return new WaitForSeconds(18);
         yield return Repeat();
     }
 

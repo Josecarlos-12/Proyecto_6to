@@ -12,6 +12,7 @@ public class CamLimitTouch : MonoBehaviour
     [SerializeField] private AudioSource mike;
     [SerializeField] private AudioClip clip;
     [SerializeField] private Transform point;
+    [SerializeField, TextArea(4, 4)] private string textOn;
 
     public enum State
     {
@@ -65,7 +66,7 @@ public class CamLimitTouch : MonoBehaviour
         mike.clip = clip;
         mike.Play();
         dialogue.SetActive(true);
-        dialogue.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: No puedo dejar que escape";
+        dialogue.GetComponent<TextMeshProUGUI>().text = textOn;
         yield return new WaitForSeconds(3);
         dialogue.SetActive(false);
     }
@@ -76,7 +77,7 @@ public class CamLimitTouch : MonoBehaviour
         mike.clip = clip;
         mike.Play();
         dialogue.SetActive(true);
-        dialogue.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: No puedo dejar que escape";
+        dialogue.GetComponent<TextMeshProUGUI>().text = textOn;
         yield return new WaitForSeconds(3);
         dialogue.SetActive(false);
     }
