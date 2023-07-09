@@ -36,13 +36,16 @@ public class StartLevel2 : MonoBehaviour
         text.SetActive(true);
         text.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: Eso fue muy extraño";
         yield return new WaitForSeconds(3);
+        piano.Play();
+        text.SetActive(false);
+
+        yield return new WaitForSeconds(9);
+        text.SetActive(true);
         mike.clip = clip[2];
         mike.Play();
         text.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: Aghh... mi cabeza";
+        
         yield return new WaitForSeconds(3);
-        piano.Play();
-        text.SetActive(false);
-        yield return new WaitForSeconds(9);
         text.SetActive(true);
         mike.clip = clip[3];
         mike.Play();

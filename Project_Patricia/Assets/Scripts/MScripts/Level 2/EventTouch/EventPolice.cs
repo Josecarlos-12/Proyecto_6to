@@ -11,6 +11,9 @@ public class EventPolice : MonoBehaviour
 
     [SerializeField] private AudioSource audioMike;
     [SerializeField] private AudioClip clip;
+    [SerializeField] private GameObject repeat;
+    [SerializeField] private RepeatText repeatText;
+    [SerializeField] private AudioClip clipRepeat;
 
     [Header("Call Other Script"),SerializeField] private TasksUILevel2 task;
 
@@ -23,6 +26,7 @@ public class EventPolice : MonoBehaviour
     {
         if(into && Input.GetKeyDown(KeyCode.E))
         {
+            repeat.SetActive(false);
             text.SetActive(false);
             task.taskCount = 2;
             col.enabled= false;
@@ -40,6 +44,9 @@ public class EventPolice : MonoBehaviour
         yield return new WaitForSeconds(1);
         dialogue.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: Tengo que revisar los fusibles rápido, no me siento bien con todo oscuro";
         yield return new WaitForSeconds(4);
+        repeat.SetActive(true);
+        repeatText.sText = "Mike Schmith: Debo revisar rápido los fusibles de la cocina";
+        repeatText.clip= clipRepeat;
         fuses.SetActive(true);
         dialogue.SetActive(false);
     }

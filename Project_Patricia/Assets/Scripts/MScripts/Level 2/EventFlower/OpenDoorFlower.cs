@@ -12,7 +12,9 @@ public class OpenDoorFlower : MonoBehaviour
     [SerializeField] private GameObject doorTrue, doorFalse;
 
     [Header("Call Other Script")]
-    [SerializeField] private TasksUILevel2 task;
+    [SerializeField] private GameObject repeat;
+    [SerializeField] private RepeatText repeatText;
+    [SerializeField] private AudioClip clipRepeat;
     [SerializeField] private GameObject taskGame;
 
     [Header("Audio")]
@@ -29,6 +31,8 @@ public class OpenDoorFlower : MonoBehaviour
     {
         if(into && Input.GetKeyUp(KeyCode.E))
         {
+            repeatText.audio.Stop();
+            repeat.SetActive(false);
             into= false;
             col.enabled= false;
             text.SetActive(false);
@@ -39,22 +43,20 @@ public class OpenDoorFlower : MonoBehaviour
 
     public IEnumerator Dialogue()
     {
+        yield return new WaitForSeconds(0.4f);
         mike.clip = clip;
         mike.Play();
 
         dialogue.SetActive(true);
         dialogue.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: Ya le había dicho a Cat que en esta casa siempre tiene que haber una luz encendida";
         yield return new WaitForSeconds(4);
-        task.taskCount = 2;
         dialogue.SetActive(false);
         doorFalse.SetActive(false);
         doorTrue.SetActive(true);
-        yield return new WaitForSeconds(1);        
-        task.countT = 0;
-        task.taskCount = 1;
-        taskGame.SetActive(true);
-        task.go = true;
-        task.task = "Search Catelyn in the guest bathroom";
+        yield return new WaitForSeconds(1);
+        repeat.SetActive(true);
+        repeatText.sText = "Mike Schmith: ¿Cat seguirá en el baño?";
+        repeatText.clip = clipRepeat;
     }
 
     private void OnTriggerEnter(Collider other)

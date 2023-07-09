@@ -15,8 +15,9 @@ public class AnimFlower : MonoBehaviour
     
 
     [Header("Task")]
-    [SerializeField] private TasksUILevel2 task;
-    [SerializeField] private GameObject taskGame;
+    [SerializeField] private GameObject repeat;
+    [SerializeField] private RepeatText repeatText;
+    [SerializeField] private AudioClip clipRepeat;
     [SerializeField] private Animator animFlower;
 
     [Header("Dialogue")]
@@ -91,12 +92,12 @@ public class AnimFlower : MonoBehaviour
         mike.Play();
 
         text.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: Agh, no creo que me escuche";
-        task.taskCount = 1;
-        taskGame.SetActive(true);
-        task.countT = 0;
-        task.go = true;
-        task.task = "Returns home";
-        yield return new WaitForSeconds(3f);        
+        
+        yield return new WaitForSeconds(3f);  
+        repeat.SetActive(true);
+        repeatText.sText = "Mike Schmith: Debo hallar la forma de entrar";
+        repeatText.clip = clipRepeat;
+
         text.SetActive(false);
     }
 
