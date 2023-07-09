@@ -15,6 +15,7 @@ public class StartLevel2 : MonoBehaviour
 
     [Header("Audios")]
     [SerializeField] private AudioSource mike;
+    [SerializeField] private AudioSource piano;
     [SerializeField] private AudioClip[] clip;
 
     public IEnumerator Start()
@@ -39,6 +40,10 @@ public class StartLevel2 : MonoBehaviour
         mike.Play();
         text.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: Aghh... mi cabeza";
         yield return new WaitForSeconds(3);
+        piano.Play();
+        text.SetActive(false);
+        yield return new WaitForSeconds(9);
+        text.SetActive(true);
         mike.clip = clip[3];
         mike.Play();
         text.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: Oh, no debo olvidarme de ir a ver a Charlie";

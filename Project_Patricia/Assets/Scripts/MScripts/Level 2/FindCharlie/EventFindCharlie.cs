@@ -19,8 +19,9 @@ public class EventFindCharlie : MonoBehaviour
     [SerializeField] private AudioClip clip;
 
     [Header("TaskUI")]
-    [SerializeField] private TasksUILevel2 task;
-    [SerializeField] private GameObject taskUI;
+    [SerializeField] private GameObject repeat;
+    [SerializeField] private RepeatText repeatText;
+    [SerializeField] private AudioClip clipRepeat;
 
     void Start()
     {
@@ -47,11 +48,14 @@ public class EventFindCharlie : MonoBehaviour
         text.SetActive(true);
         text.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: Todo está muy tranquilo...";
         yield return new WaitForSeconds(3);
-        taskUI.SetActive(true);
-        task.go = true;
-        task.task = "Exit and close the door";
-
         text.SetActive(false);
+        yield return new WaitForSeconds(2);
+        repeat.SetActive(true);
+        repeatText.clip= clipRepeat;
+        repeatText.sText= "Mike Schmith: Mejor salgo y cierro la puerta para dejarlo descansar ";
+
+
+        
         handle.SetBool("On", true);
         activeDorr= true;
     }

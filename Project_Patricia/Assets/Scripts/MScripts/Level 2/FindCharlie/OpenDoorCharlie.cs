@@ -31,7 +31,8 @@ public class OpenDoorCharlie : MonoBehaviour
     [SerializeField] private AudioClip clip;
 
     [SerializeField] private GameObject cam, prota;
-
+    [SerializeField] private GameObject repeat;
+    [SerializeField] private RepeatText repeatText;
 
     void Update()
     {
@@ -48,11 +49,14 @@ public class OpenDoorCharlie : MonoBehaviour
 
         if(into && Input.GetKeyDown(KeyCode.E) && col.enabled)
         {
-            task.taskCount = 2;
+            text.SetActive(false);
+            repeat.SetActive(false);
+            repeatText.texContainer.SetActive(false);
+            repeatText.audio.Stop();
             walk.canWalk = false;
             crouch.crouchCan = false;
             thisColl.enabled= false;
-            text.SetActive(false);
+            
             into = false;
             door.clip= clip;
             door.Play();
