@@ -17,6 +17,8 @@ public class ShedCat : MonoBehaviour
     [SerializeField] private AudioSource mike;
     [SerializeField] private AudioClip[] clip;
 
+    [SerializeField] private GameObject repeat;
+
     private void Update()
     {
         if (rifleWeapon.activeInHierarchy)
@@ -35,6 +37,8 @@ public class ShedCat : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
+            repeat.SetActive(false);
+
             col.enabled = false;
             StartCoroutine("Dialogue");
         }

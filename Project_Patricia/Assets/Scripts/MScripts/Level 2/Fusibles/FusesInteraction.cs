@@ -11,11 +11,16 @@ public class FusesInteraction : MonoBehaviour
     [SerializeField] private AudioSource background3;
     [SerializeField] private float time, maxTime;
     [SerializeField] private bool less;
+    [SerializeField] private GameObject repeat;
+    [SerializeField] private RepeatText repeatText;
 
     void Update()
     {
         if(into && Input.GetKeyDown(KeyCode.E))
         {
+            repeat.SetActive(false);
+            repeatText.texContainer.SetActive(false);
+            repeatText.audio.Stop();
             less= true;
             into = false;
             col.enabled= false;

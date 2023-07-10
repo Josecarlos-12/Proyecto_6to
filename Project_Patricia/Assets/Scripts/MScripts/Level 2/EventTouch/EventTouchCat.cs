@@ -20,6 +20,10 @@ public class EventTouchCat : MonoBehaviour
     [SerializeField] private AudioClip[] clip;
     [SerializeField] private AudioSource scare;
 
+    [SerializeField] private GameObject repeat;
+    [SerializeField] private RepeatText repeatText;
+    [SerializeField] private AudioClip clipRepeat;
+
 
     public enum Touch
     {
@@ -34,6 +38,7 @@ public class EventTouchCat : MonoBehaviour
             switch (touch)
             {
                 case Touch.between:
+                    repeat.SetActive(false);
                     col.enabled = false;
                     StartCoroutine("Dialogue");
                     break;
@@ -134,11 +139,9 @@ public class EventTouchCat : MonoBehaviour
         mike.clip = clip[2];
         mike.Play();
         dialogue.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: ¡Vete ahora mismo o llamaré a la policía!";
-        task.countT = 0;
-        task.taskCount = 1;
-        taskGame.SetActive(true);
-        task.go = true;
-        task.task = "Go to the cell house phone to call the police";
+        repeat.SetActive(true);
+        repeatText.sText = "Mike Schmith: Necesito el teléfono cuanto antes";
+        repeatText.clip= clipRepeat;
         yield return new WaitForSeconds(2);
         dialogue.SetActive(false);
         boxPolice.SetActive(true);
