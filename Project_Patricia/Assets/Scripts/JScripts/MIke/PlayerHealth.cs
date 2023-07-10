@@ -157,10 +157,10 @@ public class PlayerHealth : MonoBehaviour
 
             if (bossTouch == 1)
             {
-                 punch = true;
+                punch = true;
                 sanity -= 10;
                 sleep.ModeDreams();
-                StartCoroutine("OffDreams");
+                StartCoroutine("OffDreams2");
             }
             
         }
@@ -247,6 +247,18 @@ public class PlayerHealth : MonoBehaviour
         yield return new WaitForSeconds(2);
         count = 0;
         bossTouch= 0;
+        print("Off");
+    }
+
+    public IEnumerator OffDreams2()
+    {
+        catPunch = 0;
+        yield return new WaitForSeconds(5f);
+        sleep.OffDreams();
+        punch = false;
+        yield return new WaitForSeconds(2);
+        count = 0;
+        bossTouch = 0;
         print("Off");
     }
 

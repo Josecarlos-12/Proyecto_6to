@@ -312,12 +312,11 @@ public class BossLevel3 : MonoBehaviour
             else if ( bBack)
             {
                 rifle.SetActive(false);
-                rifle2.SetActive(true);
                 animMike.SetBool("Punch", true);
+                rifle.SetActive(false);
             }
             else
             {
-                rifle2.SetActive(false);
                 punch.SetActive(false);
                 animMike.SetBool("Punch", false);
             }
