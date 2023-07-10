@@ -17,6 +17,7 @@ public class AnimMoveCat : MonoBehaviour
 
     [SerializeField] private AudioSource punch;
     [SerializeField] private AudioSource bodyFall, lanterFall;
+    [SerializeField] private AudioSource soundFollow, scare;
 
     public IEnumerator DialogueInit()
     {
@@ -64,7 +65,7 @@ public class AnimMoveCat : MonoBehaviour
 
     public void CursorMouse()
     {
-        
+        soundFollow.Play();
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         sun.intensity = 56.5f;
@@ -88,6 +89,7 @@ public class AnimMoveCat : MonoBehaviour
 
     public void Flash()
     {
+        scare.Play();
         anim.SetBool("Flash", true);
     }
 

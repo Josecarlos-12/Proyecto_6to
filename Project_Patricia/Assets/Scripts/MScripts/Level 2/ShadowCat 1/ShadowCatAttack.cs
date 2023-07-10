@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.Burst.CompilerServices;
 using UnityEngine;
 using UnityEngine.AI;
@@ -27,8 +28,7 @@ public class ShadowCatAttack : MonoBehaviour
     [SerializeField] private bool colition;
     [SerializeField] private int countCol;
 
-    [SerializeField] private AudioSource soundDetected;
-    [SerializeField] private AudioSource soundFollow;
+    [SerializeField] private AudioSource soundDetected;    
     [SerializeField] private AudioSource soundMove;
     [SerializeField] private int countSound;
 
@@ -38,6 +38,13 @@ public class ShadowCatAttack : MonoBehaviour
 
     [SerializeField] private OpenDoorCatL2 cat2;
     [SerializeField] private bool cOpen;
+
+    [SerializeField] private int founCount;
+
+    private void Start()
+    {
+        StartCoroutine("Dialogue");
+    }
 
     private void Update()
     {
@@ -68,7 +75,7 @@ public class ShadowCatAttack : MonoBehaviour
         {
             if (cat2.door.openCat)
             {
-                cOpen= true;
+                cOpen = true;
                 anim.SetBool("Kick", true);
                 agent.enabled = false;
             }
@@ -94,21 +101,21 @@ public class ShadowCatAttack : MonoBehaviour
             anim.SetBool("Move", false);
             anim.SetBool("Attack", true);
 
-            if(countSound<3)
-            countSound++;
+            if (countSound < 3)
+                countSound++;
 
             if (countSound == 1)
             {
+                StartCoroutine("Punch");
                 soundDetected.Play();
-                soundFollow.Play();
             }
 
-            
+
         }
 
         if (Vector3.Distance(transform.position, player.transform.position) < size)
         {
-            
+
             transform.LookAt(pointPlayer.transform.position);
 
             RaycastHit hit;
@@ -117,18 +124,29 @@ public class ShadowCatAttack : MonoBehaviour
                 if (hit.collider.CompareTag("Player"))
                 {
                     detected = true;
+
+                    if (founCount < 3)
+                        founCount++;
+
+                    if (founCount == 1)
+                    {
+                        StopCoroutine("Dialogue");
+                        StartCoroutine("Found");
+                    }
                 }
             }
         }
-        else if (Vector3.Distance(transform.position, player.transform.position) > size && detected == true && count==0)
+        else if (Vector3.Distance(transform.position, player.transform.position) > size && detected == true && count == 0)
         {
-            if(countNoFollow<3)
-            countNoFollow++;
+            if (countNoFollow < 3)
+                countNoFollow++;
 
-            if(countNoFollow == 1) 
+            if (countNoFollow == 1)
             {
+                founCount = 0;
+
                 StartCoroutine("FollowFalse");
-            }            
+            }
         }
     }
 
@@ -154,12 +172,12 @@ public class ShadowCatAttack : MonoBehaviour
     public IEnumerator FollowFalse()
     {
         yield return new WaitForSeconds(3);
-        soundFollow.Stop();
+        StartCoroutine("Dialogue");
         anim.SetBool("Move", true);
         anim.SetBool("Attack", false);
         countNoFollow = 0;
-        detected= false;
-        if (box.bBox==false)
+        detected = false;
+        if (box.bBox == false)
         {
             agent.destination = points[destPoint].position;
         }
@@ -168,12 +186,12 @@ public class ShadowCatAttack : MonoBehaviour
             agent.destination = point.position;
         }
 
-        
+
         agent.speed = 3.5f;
         agent.acceleration = 8;
         agent.stoppingDistance = 0;
         yield return new WaitForSeconds(3);
-        countSound= 0;
+        countSound = 0;
     }
 
     public void GoToNextPoint()
@@ -192,14 +210,14 @@ public class ShadowCatAttack : MonoBehaviour
     {
         if (other.gameObject.name == "ReturnEnemy")
         {
-            if(count<3)
-            count++;
+            if (count < 3)
+                count++;
 
             if (count == 1)
             {
                 soundMove.Stop();
                 print("TRA");
-                StopCoroutine("FollowFalse"); 
+                StopCoroutine("FollowFalse");
                 anim.SetBool("Scare", true);
                 agent.speed = 0;
                 StartCoroutine(Col());
@@ -247,6 +265,92 @@ public class ShadowCatAttack : MonoBehaviour
 
         Gizmos.color = Color.red;
         Gizmos.DrawLine(transform.position, transform.position + transform.forward * raycastDistance);
+    }
+
+    public int random = -1;
+    public AudioSource audiCat;
+    public GameObject dialogue;
+    public AudioClip[] clipDialogue, clipFound, clipPunch;
+
+
+    public IEnumerator Dialogue()
+    {
+        yield return new WaitForSeconds(20);
+        dialogue.SetActive(true);
+        random = Random.Range(0, 3);
+        if (random == 0)
+        {
+            audiCat.clip = clipDialogue[0];
+            audiCat.Play();
+            dialogue.GetComponent<TextMeshProUGUI>().text = "Mike! Deja de evitarme";
+        }
+        else if (random == 1)
+        {
+            audiCat.clip = clipDialogue[1];
+            audiCat.Play();
+            dialogue.GetComponent<TextMeshProUGUI>().text = "Ya no quieres hablar conmigo";
+        }
+        else if(random == 2)
+        {
+            audiCat.clip = clipDialogue[0];
+            audiCat.Play();
+            dialogue.GetComponent<TextMeshProUGUI>().text = "Donde estás?!";
+        }
+
+        yield return new WaitForSeconds(4);
+        dialogue.SetActive(false);
+        yield return Dialogue();
+    }
+
+    public IEnumerator Found()
+    {
+        //dialogue.SetActive(true);
+        random = Random.Range(0, 3);
+        if (random == 0)
+        {
+          //  dialogue.GetComponent<TextMeshProUGUI>().text = "Te encontré!";
+        }
+        else if (random == 1)
+        {
+            //dialogue.GetComponent<TextMeshProUGUI>().text = "Ahí estás! ";
+        }
+        else if (random == 2)
+        {
+            //dialogue.GetComponent<TextMeshProUGUI>().text = "MMMMike ven aquí!";
+        }
+        yield return new WaitForSeconds(3);
+        dialogue.SetActive(false);
+    }
+
+    public IEnumerator Punch()
+    {
+        dialogue.SetActive(true);
+        random = Random.Range(0, 3);
+        if (random == 0)
+        {
+            audiCat.clip = clipPunch[0];
+            audiCat.Play();
+            dialogue.GetComponent<TextMeshProUGUI>().text = "Ups, ¿Te hice daño? ";
+        }
+        else if (random == 1)
+        {
+            audiCat.clip = clipDialogue[1];
+            audiCat.Play();
+            dialogue.GetComponent<TextMeshProUGUI>().text = "¡Si tan solo me hubieses escuchado!";
+        }
+        else if (random == 2)
+        {
+            audiCat.clip = clipPunch[2];
+            audiCat.Play();
+            dialogue.GetComponent<TextMeshProUGUI>().text = "¡Sólo queria que hablemos!";
+        }
+        yield return new WaitForSeconds(5);
+        dialogue.SetActive(false);
+    }
+
+    private void OnDisable()
+    {
+        dialogue.SetActive(false);
     }
 
 }

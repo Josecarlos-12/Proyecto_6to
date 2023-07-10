@@ -6,11 +6,9 @@ public class SoundLevel1T : MonoBehaviour
 {
     [SerializeField] private AudioSource sound;
     [SerializeField] private Collider col;
+    [SerializeField] Animator animDoor;
+    [SerializeField] AudioSource door;
 
-    private void Start()
-    {
-        gameObject.SetActive(false);
-    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -19,12 +17,24 @@ public class SoundLevel1T : MonoBehaviour
             sound.Play();
             col.enabled = false;
             StartCoroutine("DestroyObject");
+
+            if(animDoor != null)
+            {
+                door.enabled= false;
+                animDoor.SetBool("Front", false);
+                animDoor.SetBool("Chi", false);
+                animDoor.SetBool("Behind", true);
+            }
         }        
     }
 
     public IEnumerator DestroyObject()
     {
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(20);
         Destroy(gameObject);
+        if (animDoor != null)
+        {
+            door.enabled = true;
+        }
     }
 }
