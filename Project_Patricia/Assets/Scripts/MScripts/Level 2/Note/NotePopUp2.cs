@@ -13,6 +13,7 @@ public class NotePopUp2 : MonoBehaviour
     [SerializeField] private Sprite spri;
 
     [Header("Player")]
+    [SerializeField] private GameObject soundTree;
     [SerializeField] private GameObject camGame;
     [SerializeField] private GameObject player;
     [SerializeField] private GameObject repeat;
@@ -30,6 +31,7 @@ public class NotePopUp2 : MonoBehaviour
             {
                 if (hit.transform.CompareTag("Note"))
                 {
+                    soundTree.SetActive(true);
                     repeat.SetActive(true);
                     repeatText.sText = "Mike Schmith: Creo que el cobertizo estaba en la parte trasera de la casa ";
                     repeatText.clip= clip;

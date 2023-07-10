@@ -35,9 +35,13 @@ public class ShadowCatAttack : MonoBehaviour
 
     [SerializeField] private Transform point;
     [SerializeField] private BoxSingLevel2 box;
+
+    [SerializeField] private OpenDoorCatL2 cat2;
+    [SerializeField] private bool cOpen;
+
     private void Update()
     {
-        if (agent.enabled && !box.bBox)
+        if (agent.enabled && !box.bBox && !cOpen)
         {
             if (agent.remainingDistance < 1 && !detected)
             {
@@ -47,6 +51,7 @@ public class ShadowCatAttack : MonoBehaviour
         Detected();
         Collition();
         GoPoint();
+        OpenDoor();
     }
 
     public void GoPoint()
@@ -54,6 +59,25 @@ public class ShadowCatAttack : MonoBehaviour
         if (!detected && box.bBox)
         {
             agent.destination = point.position;
+        }
+    }
+
+    public void OpenDoor()
+    {
+        if (cat2 != null)
+        {
+            if (cat2.door.openCat)
+            {
+                cOpen= true;
+                anim.SetBool("Kick", true);
+                agent.enabled = false;
+            }
+            else if (!cat2.door.openCat)
+            {
+                cOpen = false;
+                anim.SetBool("Kick", false);
+                agent.enabled = true;
+            }
         }
     }
 

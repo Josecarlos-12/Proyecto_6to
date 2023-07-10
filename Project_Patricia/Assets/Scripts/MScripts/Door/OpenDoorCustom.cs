@@ -12,7 +12,7 @@ public class OpenDoorCustom : MonoBehaviour
 
     [Header("Open Door")]
     public Animator animDoor;
-    public bool open;
+    public bool open, openCat;
 
     public AudioSource door;
     public AudioClip[] clip;
@@ -20,6 +20,7 @@ public class OpenDoorCustom : MonoBehaviour
     private void Update()
     {
         OpenDoor();
+        DoorCat();
     }
 
     public void OpenDoor()
@@ -39,15 +40,43 @@ public class OpenDoorCustom : MonoBehaviour
 
 
         if (Input.GetKeyDown(KeyCode.E) && behind.back && !close.backM && !close.frontM)
-        {open = true;
+        {
+            open = true;
             //animDoor.SetBool("Front", false);
             animDoor.SetBool("Behind", true);
         }
         if(Input.GetKeyDown(KeyCode.E) && close.backM && close.close)
-        {open = false;
+        {
+            open = false;
             animDoor.SetBool("Front", false);
             animDoor.SetBool("Behind", false);
         }
+    }
+
+    public void DoorCat()
+    {
+        if (front.frontC && !close.frontM && !close.backM)
+        {
+            openCat= true;
+            open = true;
+            //animDoor.SetBool("Behind", false);
+            animDoor.SetBool("Front", true);
+            StartCoroutine("OpenDoorCat");
+        }
+        if (behind.backC && !close.backM && !close.frontM)
+        {
+            openCat = true;
+            open = true;
+            //animDoor.SetBool("Front", false);
+            animDoor.SetBool("Behind", true);
+            StartCoroutine("OpenDoorCat");
+        }
+    }
+
+    public IEnumerator OpenDoorCat()
+    {
+        yield return new WaitForSeconds(2f);
+        openCat = false;
     }
 
     public void OpenSound()

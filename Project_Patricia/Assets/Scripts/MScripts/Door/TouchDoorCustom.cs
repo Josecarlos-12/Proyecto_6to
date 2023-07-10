@@ -5,6 +5,7 @@ using UnityEngine;
 public class TouchDoorCustom : MonoBehaviour
 {
     public bool front, back, close;
+    public bool frontC, backC, closeC;
     public bool frontM, backM;
 
     public enum DoorState 
@@ -30,6 +31,21 @@ public class TouchDoorCustom : MonoBehaviour
                     break;
             }
         }
+        if (other.gameObject.CompareTag("Cat"))
+        {
+            switch (state)
+            {
+                case DoorState.Front:
+                    frontC = true;
+                    break;
+                case DoorState.Back:
+                    backC = true;
+                    break;
+                case DoorState.Close:
+                    closeC = true;
+                    break;
+            }
+        }
     }
 
     private void OnTriggerExit(Collider other)
@@ -46,6 +62,21 @@ public class TouchDoorCustom : MonoBehaviour
                     break;
                 case DoorState.Close:
                     close = false;
+                    break;
+            }
+        }
+        if (other.gameObject.CompareTag("Cat"))
+        {
+            switch (state)
+            {
+                case DoorState.Front:
+                    frontC = false;
+                    break;
+                case DoorState.Back:
+                    backC = false;
+                    break;
+                case DoorState.Close:
+                    closeC = false;
                     break;
             }
         }

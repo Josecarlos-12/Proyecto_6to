@@ -23,6 +23,8 @@ public class BoxMusic : MonoBehaviour
     [SerializeField] private GameObject repeat;
     [SerializeField] private RepeatText repeatText;
 
+    [SerializeField] private GameObject SoundsObject;
+
     void Update()
     {
         if (into && accept)
@@ -50,6 +52,7 @@ public class BoxMusic : MonoBehaviour
         audioMike.clip = clip[1];
         audioMike.Play();
         yield return new WaitForSeconds(5);
+        SoundsObject.SetActive(true);
         audioMike.clip = clip[2];
         audioMike.Play();
         textMeshPro.text = "Mike Schmith: Hmmm hay piezas que fallan, iré a ver si tengo en mi estudio algo que pueda servirme.";
