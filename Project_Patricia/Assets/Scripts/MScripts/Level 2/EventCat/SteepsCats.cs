@@ -54,7 +54,7 @@ public class SteepsCats : MonoBehaviour
                 coll.SetActive(true);
                 cat.into = true;
                 colliderMove.SetActive(false);
-                chart.SetActive(true);
+                //chart.SetActive(true);
                 wallFalse.SetActive(false);
                 move.canWalk = true;
                 cam.moveCamera = true;

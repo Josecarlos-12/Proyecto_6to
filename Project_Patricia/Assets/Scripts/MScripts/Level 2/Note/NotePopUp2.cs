@@ -15,8 +15,9 @@ public class NotePopUp2 : MonoBehaviour
     [Header("Player")]
     [SerializeField] private GameObject camGame;
     [SerializeField] private GameObject player;
-    [SerializeField] private GameObject taskUI;
-    [SerializeField] private TasksUILevel2 task;
+    [SerializeField] private GameObject repeat;
+    [SerializeField] private RepeatText repeatText;
+    [SerializeField] private AudioClip clip;
 
     private void Update()
     {
@@ -29,9 +30,10 @@ public class NotePopUp2 : MonoBehaviour
             {
                 if (hit.transform.CompareTag("Note"))
                 {
-                    task.go = true;
-                    task.task= "Go to the shed";
-                    taskUI.SetActive(true);
+                    repeat.SetActive(true);
+                    repeatText.sText = "Mike Schmith: Creo que el cobertizo estaba en la parte trasera de la casa ";
+                    repeatText.clip= clip;
+
 
                     cod = note.noteText;
                     spri = note.image;
