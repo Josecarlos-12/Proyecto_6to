@@ -81,9 +81,9 @@ public class StrongBox : MonoBehaviour
 
     public void Next()
     {
-        task.go = true;
-        task.task = "Check the music box";
-        taskUi.SetActive(true);
+        //task.go = true;
+        //task.task = "Check the music box";
+        //taskUi.SetActive(true);
         anim.SetBool("Close", true);
         noteUI.check = 7;
     }

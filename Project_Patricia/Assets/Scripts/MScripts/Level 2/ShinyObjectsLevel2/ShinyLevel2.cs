@@ -10,6 +10,8 @@ public class ShinyLevel2 : MonoBehaviour
     [SerializeField] bool into;
     public bool on;
     [SerializeField] private GameObject repeat;
+    [SerializeField] private RepeatText repeatText;
+    [SerializeField] private AudioClip clip;
 
     [Header("Dishes")]
     [SerializeField] PickableObject pick;
@@ -45,6 +47,8 @@ public class ShinyLevel2 : MonoBehaviour
 
     public void RepeatOn()
     {
+        repeatText.sText = "Mike Schmith: Debería empezar colocando los cubiertos en la mesa del comedor";
+        repeatText.clip= clip;
         repeat.SetActive(true);
     }
 
