@@ -95,6 +95,7 @@ public class KeypadController : MonoBehaviour
                     repeatText.texContainer.SetActive(false);
                     repeatText.audio.Stop();
                     repeatText.sText = string.Empty;
+                    repeatText.state = RepeatText.State.two;
                     repeat.SetActive(true);
                     repeatText.clip= clip;
                     repeatText.sText = "Mike Schmith: Listo, ahora sigue la caja musical";
