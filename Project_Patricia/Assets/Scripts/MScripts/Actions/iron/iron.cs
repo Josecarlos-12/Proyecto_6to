@@ -47,9 +47,7 @@ public class iron : MonoBehaviour
     {
         if (into && Input.GetKeyDown(KeyCode.E) && count == 0 && noteGrab.grabNote)
         {
-            count++;
-            rabbit.SetActive(false);
-            rabbitRadio.SetActive(true);
+            count++;            
             prota.SetActive(false);
             panel.SetActive(true);
             cam.SetActive(true);
@@ -64,6 +62,8 @@ public class iron : MonoBehaviour
         switch (check)
         {
             case Check.three:
+                rabbit.SetActive(false);
+                rabbitRadio.SetActive(true);
                 audioSource.PlayOneShot(audioClip);
                 break;
             case Check.four:
