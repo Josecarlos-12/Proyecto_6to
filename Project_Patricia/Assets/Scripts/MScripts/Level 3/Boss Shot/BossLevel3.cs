@@ -127,8 +127,7 @@ public class BossLevel3 : MonoBehaviour
     }
 
     public IEnumerator ResetCount()
-    {
-        
+    {   
         countShoot = true;
         rifle.SetActive(false);
         col.enabled = false;
@@ -257,7 +256,7 @@ public class BossLevel3 : MonoBehaviour
                         print(hit.transform.name);
                         print("Buscar");
                         agent.destination = player.position;
-                        agent.stoppingDistance = 3;
+                        agent.stoppingDistance = 6;
                     }
                 }
 
@@ -265,7 +264,7 @@ public class BossLevel3 : MonoBehaviour
             if (Vector3.Distance(transform.position, player.position) < size && !bBack && feets.ladder)
             {
                 agent.destination = player.position;
-                agent.stoppingDistance = 3;
+                agent.stoppingDistance = 6;
             }
                 if (Vector3.Distance(transform.position, player.position) < size && bBack)
             {
@@ -304,25 +303,27 @@ public class BossLevel3 : MonoBehaviour
                 bBack = false;
             }
 
-            if(Vector3.Distance(transform.position, player.position) > sizeMove && Vector3.Distance(transform.position, player.position) < size && !bBack || feets.ladder)
+            if(Vector3.Distance(transform.position, player.position) > sizeMove && Vector3.Distance(transform.position, player.position) < size && !bBack || feets.ladder && !bBack)
             {
                 animMike.SetBool("Walk", true);
-                animMike.SetBool("Punch", false);
+                //animMike.SetBool("Punch", false);
             }
             else if ( bBack)
             {
                 rifle.SetActive(false);
                 animMike.SetBool("Punch", true);
+                animMike.SetBool("Walk", false);
                 rifle.SetActive(false);
             }
-            else
+            else if (!bBack)
             {
                 punch.SetActive(false);
                 animMike.SetBool("Punch", false);
             }
 
-            if (Vector3.Distance(transform.position, player.position) > 4 && Vector3.Distance(transform.position, player.position) < sizeMove)
+            if ( Vector3.Distance(transform.position, player.position) < sizeMove && !feets.ladder && agent.stoppingDistance==35)
             {
+                StopCoroutine("FalseWalk");
                 animMike.SetBool("Walk", false);
             }
 
