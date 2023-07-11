@@ -23,6 +23,7 @@ public class EventWPV2 : MonoBehaviour
     [SerializeField] private GameObject[] pills;
     [SerializeField] private GameObject taskUI;
     [SerializeField] private TasksUILevel2 tasks;
+    [SerializeField] private Collider colBox;
 
     private void Start()
     {
@@ -112,6 +113,7 @@ public class EventWPV2 : MonoBehaviour
 
     public IEnumerator Box()
     {
+        colBox.enabled= true;
         tasks.taskCount = 2;
         pills[0].SetActive(true);
         pills[1].SetActive(true);

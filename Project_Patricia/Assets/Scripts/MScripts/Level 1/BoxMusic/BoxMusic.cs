@@ -23,7 +23,7 @@ public class BoxMusic : MonoBehaviour
     [SerializeField] private GameObject repeat;
     [SerializeField] private RepeatText repeatText;
 
-    [SerializeField] private GameObject SoundsObject;
+    [SerializeField] private GameObject SoundsObject, rabbit;
 
     void Update()
     {
@@ -52,6 +52,7 @@ public class BoxMusic : MonoBehaviour
         audioMike.clip = clip[1];
         audioMike.Play();
         yield return new WaitForSeconds(5);
+        rabbit.SetActive(false);
         SoundsObject.SetActive(true);
         audioMike.clip = clip[2];
         audioMike.Play();

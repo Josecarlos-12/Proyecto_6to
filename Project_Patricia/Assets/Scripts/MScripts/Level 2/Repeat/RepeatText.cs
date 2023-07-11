@@ -65,10 +65,12 @@ public class RepeatText : MonoBehaviour
     private IEnumerator Repeat2()
     {
         yield return new WaitForSeconds(time);
+        texContainer.SetActive(true);
         audio.clip = clip;
         audio.Play();
         text.text = sText;
         yield return new WaitForSeconds(4);
+        texContainer.SetActive(false);
         text.text = string.Empty;
         yield return new WaitForSeconds(12);
         yield return Repeat2();
