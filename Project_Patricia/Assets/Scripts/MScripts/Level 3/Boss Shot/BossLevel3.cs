@@ -304,7 +304,7 @@ public class BossLevel3 : MonoBehaviour
                 bBack = false;
             }
 
-            if(Vector3.Distance(transform.position, player.position) > sizeMove && Vector3.Distance(transform.position, player.position) < size && !bBack)
+            if(Vector3.Distance(transform.position, player.position) > sizeMove && Vector3.Distance(transform.position, player.position) < size && !bBack || feets.ladder)
             {
                 animMike.SetBool("Walk", true);
                 animMike.SetBool("Punch", false);
@@ -321,7 +321,7 @@ public class BossLevel3 : MonoBehaviour
                 animMike.SetBool("Punch", false);
             }
 
-            if (Vector3.Distance(transform.position, player.position) > 4 && Vector3.Distance(transform.position, player.position) < sizeMove && !bBack)
+            if (Vector3.Distance(transform.position, player.position) > 4 && Vector3.Distance(transform.position, player.position) < sizeMove)
             {
                 animMike.SetBool("Walk", false);
             }
