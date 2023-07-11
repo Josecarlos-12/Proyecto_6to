@@ -17,6 +17,8 @@ public class DialogueDorr : MonoBehaviour
     [SerializeField] private AudioSource audioMike;
     [SerializeField] private AudioClip[] clip;
     [SerializeField] private GameObject repeat;
+    [SerializeField] private RepeatText RepeatText;
+    [SerializeField] private AudioClip clipRepeat;
 
     [Header("Audios")]
     [SerializeField] private AudioSource backgroundSound;
@@ -96,6 +98,8 @@ public class DialogueDorr : MonoBehaviour
         fin.prota.SetActive(true);
         fin.cam.SetActive(false);
         repeat.SetActive(true);
+        RepeatText.sText = "Mike Schmith: Cat está en el cuarto de Charlie";
+        RepeatText.clip = clipRepeat;
     }
 
     public void DialogueTrue()

@@ -136,6 +136,7 @@ public class Cushions : MonoBehaviour
         panel.SetActive(false);
         cam.GetComponent<Animator>().SetBool("Up", true);
         wakingUp.WakingOn();
+        sunRot.GetComponent<Light>().colorTemperature = 20000;
         sunRot.transform.rotation = Quaternion.Euler(-0.54f, 81.328f, -0.812f);
         yield return new WaitForSeconds(1f);       
         rifle.SetActive(true);
