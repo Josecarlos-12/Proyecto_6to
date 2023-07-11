@@ -139,12 +139,15 @@ public class EventTouchCat : MonoBehaviour
         mike.clip = clip[2];
         mike.Play();
         dialogue.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: ¡Vete ahora mismo o llamaré a la policía!";
-        repeat.SetActive(true);
-        repeatText.sText = "Mike Schmith: Necesito el teléfono cuanto antes";
-        repeatText.clip= clipRepeat;
+        
         yield return new WaitForSeconds(2);
         dialogue.SetActive(false);
         boxPolice.SetActive(true);
+        yield return new WaitForSeconds(2);
+        repeat.SetActive(true);
+        repeatText.sText = "Mike Schmith: Necesito el teléfono cuanto antes";
+        repeatText.clip = clipRepeat;
+        
     }
 
     public IEnumerator Dialogue()
@@ -162,7 +165,7 @@ public class EventTouchCat : MonoBehaviour
 
 
         dialogue.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: Quizá fue a ver a Charlie";
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(4);
 
 
         dialogue.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: Bueno, subiré a verlos";

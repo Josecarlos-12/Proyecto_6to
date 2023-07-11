@@ -20,6 +20,7 @@ public class StartLevelOne : MonoBehaviour
     [SerializeField] private GameObject repeat;
     [SerializeField] private RepeatText repeatText;
     [SerializeField] private AudioClip clipRepeat;
+    [SerializeField] private GameObject tv;
 
     IEnumerator Start()
     {
@@ -51,10 +52,11 @@ public class StartLevelOne : MonoBehaviour
         text.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: ¿Qué, qué fue eso? Ooohhmm mi cabeza...¿A qué hora me dormí? Ohh, es tardísimoTengo que colocar la alarma.";
         audioMike.clip = clip[0];
         audioMike.Play();
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(2f);        
         audioDoor.enabled= true;
         door2.enabled= true;
         yield return new WaitForSeconds(11f);
+        tv.SetActive(true);
         repeat.SetActive(true);
         repeatText.sText = "Mike Schmith: Me pareció haber visto algo cerca de la entrada";
         repeatText.clip= clipRepeat;

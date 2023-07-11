@@ -13,6 +13,8 @@ public class AnimPunch : MonoBehaviour
     [SerializeField] private Animator animDoor;
     [SerializeField] private GameObject repeat;
     [SerializeField] private RepeatText textRepeat;
+    [SerializeField] private AudioSource mike;
+    [SerializeField] private AudioClip clip;
 
     public enum States
     {
@@ -91,6 +93,8 @@ public class AnimPunch : MonoBehaviour
 
     public IEnumerator Dialogue()
     {
+        mike.clip = clip;
+        mike.Play();
         dialogue.SetActive(true);
         dialogue.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: ¿Cat? ¿Charlie?";
         yield return new WaitForSeconds(3f);
