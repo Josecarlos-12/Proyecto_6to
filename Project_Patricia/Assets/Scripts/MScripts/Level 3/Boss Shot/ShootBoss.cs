@@ -6,6 +6,7 @@ public class ShootBoss : MonoBehaviour
 {
     [SerializeField] private Rigidbody rb;
     [SerializeField] private float speed;
+    public LayerMask collisionLayer;
 
     void Start()
     {
@@ -17,6 +18,11 @@ public class ShootBoss : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.name== "Health")
+        {
+            Destroy(gameObject);
+        }
+
+        if (collisionLayer == (collisionLayer | (1 << other.gameObject.layer)))
         {
             Destroy(gameObject);
         }
