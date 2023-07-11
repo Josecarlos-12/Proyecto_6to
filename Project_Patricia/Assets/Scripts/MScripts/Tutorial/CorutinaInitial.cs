@@ -19,6 +19,7 @@ public class CorutinaInitial : MonoBehaviour
     [SerializeField] private AudioSource audioMike;
     [SerializeField] private AudioSource audioCatelyn;
     [SerializeField] private AudioClip[] clip;
+    [SerializeField] private AudioClip clipNew;
 
     [SerializeField, Header("Call Other Scritp")] private SleepMode sleep;
 
@@ -74,6 +75,8 @@ public class CorutinaInitial : MonoBehaviour
 
         textMeshPro.text = text[4];
         yield return new WaitForSeconds(time[5]);
+        audioCatelyn.clip = clipNew;
+        audioCatelyn.Play();
         textMeshPro.text = "Catelyn Schmith: ¿Podrías contestar el teléfono por favor?";
         yield return new WaitForSeconds(4);
         audioMike.clip = clip[7];

@@ -22,6 +22,7 @@ public class PhoneOffTuto : MonoBehaviour
     [SerializeField] private bool press;
     [SerializeField] private TasksUI task;
     [SerializeField] private Collider colNote;
+    [SerializeField] private AudioClip mike, cat;
 
     private void Update()
     {
@@ -45,13 +46,17 @@ public class PhoneOffTuto : MonoBehaviour
         phone.volume = 0.3f;
         phone.Play();
         yield return new WaitForSeconds(1f);
+        audioMike.clip = mike;
+        audioMike.Play();
         dialogue.SetActive(true);
         dialogue.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: No era nadie cariño ";
         yield return new WaitForSeconds(3f);
+        audioCatelyn.clip = cat;
+        audioCatelyn.Play();
         dialogue.GetComponent<TextMeshProUGUI>().text = "Catelyn Schmith: En serio? bueno";
         yield return new WaitForSeconds(3f);
-        //audioCatelyn.clip = clip[2];
-        //audioCatelyn.Play();
+        audioCatelyn.clip = clip[2];
+        audioCatelyn.Play();
         textMeshPro.text = text[5];
         yield return new WaitForSeconds(time[6]);
         audioMike.clip = clip[3];

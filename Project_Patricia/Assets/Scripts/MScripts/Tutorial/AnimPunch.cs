@@ -80,11 +80,12 @@ public class AnimPunch : MonoBehaviour
 
     public IEnumerator ChapterOne()
     {
-        dialogue.SetActive(true);
-        dialogue.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: Cat debe estar en el cuarto de Charlie cuidándolo";
-        yield return new WaitForSeconds(3f);
-        dialogue.SetActive(false);
         activeCol.SetActive(true);
+        //dialogue.SetActive(true);
+        //dialogue.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: Cat debe estar en el cuarto de Charlie cuidándolo";
+        yield return new WaitForSeconds(3f);
+        //dialogue.SetActive(false);
+        
         Destroy(gameObject);
     }
 
