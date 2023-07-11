@@ -48,7 +48,7 @@ public class CorutinaInitial : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         yield return new WaitForSeconds(3.5f);
-        phone.Stop();
+        //phone.Stop();
 
         yield return new WaitForSeconds(time[0]);
         textContainer.SetActive(true);
@@ -81,7 +81,7 @@ public class CorutinaInitial : MonoBehaviour
         textMeshPro.text = text[10];
         yield return new WaitForSeconds(4);
         panelTuto.SetActive(true);
-        phone.Play();
+        //phone.Play();
         phone.volume = 1f;
         prota.SetActive(true);
         textContainer.SetActive(false);

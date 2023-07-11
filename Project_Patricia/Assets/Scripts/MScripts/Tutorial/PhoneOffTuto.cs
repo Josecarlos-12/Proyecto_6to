@@ -39,9 +39,12 @@ public class PhoneOffTuto : MonoBehaviour
     public IEnumerator Dialogue()
     {
         yield return new WaitForSeconds(0.1f);
+        phone.Stop();
         phone.clip= phoneClip;
+        yield return new WaitForSeconds(1f);
+        phone.volume = 0.3f;
         phone.Play();
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1f);
         dialogue.SetActive(true);
         dialogue.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: No era nadie cariño ";
         yield return new WaitForSeconds(3f);
