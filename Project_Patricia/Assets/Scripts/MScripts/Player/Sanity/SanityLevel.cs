@@ -55,16 +55,16 @@ public class SanityLevel : MonoBehaviour
         if (bGood && health.sanity > 60)
         {
 
-            BloomChange(-4f);
+            /*BloomChange(-4f);
 
             if (health.bloom.intensity.value <= 0.6)
             {
                 health.bloom.active = false;
-            }
+            }*/
         }
         if (bGood && health.sanity > 40)
         {
-            BloomChange(0.5f);
+           // BloomChange(0.5f);
         }
         if (bGood && health.sanity > 40)
         {
@@ -94,7 +94,7 @@ public class SanityLevel : MonoBehaviour
             sleep.motionBlur.active = false;
             sleep.cAberration.active = false;
 
-            BloomChange(0.9f);
+            //BloomChange(0.9f);
         }
     }
 
@@ -169,7 +169,7 @@ public class SanityLevel : MonoBehaviour
             sixty++;
 
 
-        BloomChange(0.5f);
+        //BloomChange(0.5f);
 
         if (sixty == 1)
         {
@@ -185,7 +185,7 @@ public class SanityLevel : MonoBehaviour
         if (forty < 3)
             forty++;
 
-        BloomChange(0.9f);
+        //BloomChange(0.9f);
 
         if (forty == 1)
         {
@@ -215,7 +215,7 @@ public class SanityLevel : MonoBehaviour
         if (ten < 3)
             ten++;
 
-        BloomChange(1.5f);
+        //BloomChange(1.5f);
 
         if (ten == 1)
         {

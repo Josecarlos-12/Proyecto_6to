@@ -59,7 +59,7 @@ public class BossLevel3 : MonoBehaviour
     [SerializeField] private float timeT, maxTimeT;
     [SerializeField] private AudioSource[] mikeAudio;
     [SerializeField] private GameObject door;
-    [SerializeField] private AudioSource shootAudio;
+    [SerializeField] private AudioSource shootAudio, scareMike;
 
     private void Update()
     {
@@ -310,6 +310,7 @@ public class BossLevel3 : MonoBehaviour
             }
             else if ( bBack)
             {
+                scareMike.Play();
                 rifle.SetActive(false);
                 animMike.SetBool("Punch", true);
                 animMike.SetBool("Walk", false);
