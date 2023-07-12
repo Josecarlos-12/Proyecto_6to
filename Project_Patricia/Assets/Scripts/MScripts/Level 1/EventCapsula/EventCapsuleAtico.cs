@@ -18,6 +18,8 @@ public class EventCapsuleAtico : MonoBehaviour
     [SerializeField] private AudioSource mikeAudio;
     [SerializeField] private AudioSource mikeCharlie;
     [SerializeField] private AudioClip[] clip;
+    [SerializeField] private GameObject repeat;
+    [SerializeField] private RepeatText repeatText;
 
     public enum Event
     {
@@ -105,6 +107,7 @@ public class EventCapsuleAtico : MonoBehaviour
         yield return new WaitForSeconds(2);
         text.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: Llaves del ático, deberian estar junto a la entrada";
         yield return new WaitForSeconds(4);
+        repeat.SetActive(true);        
         step.SetActive(true);
         text.SetActive(false);
         Destroy(gameObject);
@@ -112,6 +115,9 @@ public class EventCapsuleAtico : MonoBehaviour
 
     public IEnumerator Pad()
     {
+        repeat.SetActive(false);
+        repeatText.texContainer.SetActive(false);
+
         animKeyBox.SetBool("On", false);
 
         mikeAudio.clip = clip[0];

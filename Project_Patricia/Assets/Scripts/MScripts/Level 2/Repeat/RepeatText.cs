@@ -12,10 +12,11 @@ public class RepeatText : MonoBehaviour
     public float time = 6;
     public AudioSource audio;
     public AudioClip clip;
+    public AudioClip clip2;
 
     public enum State
     {
-        one, two, three
+        one, two, three, four
     }
     public State state;
 
@@ -41,6 +42,9 @@ public class RepeatText : MonoBehaviour
                     break;
                 case State.three:
                     StartCoroutine("Repeat3");
+                    break;
+                case State.four:
+                    StartCoroutine("Repeat4");
                     break;
             }
 
@@ -86,6 +90,24 @@ public class RepeatText : MonoBehaviour
             audio.Play();
         }        
         text.text = sText;
+        yield return new WaitForSeconds(4);
+        texContainer.SetActive(false);
+        text.text = string.Empty;
+        yield return Repeat3();
+    }
+
+    private IEnumerator Repeat4()
+    {
+        yield return new WaitForSeconds(6);
+        texContainer.SetActive(true);
+        if (clip != null)
+        {
+            audio.clip = clip;
+            audio.Play();
+        }
+        text.text = "Mike Schmith: Llaves, llaves... llaves del ático";
+        yield return new WaitForSeconds(3);
+        text.text = "Mike Schmith: Deben estar al lado del a entrada";
         yield return new WaitForSeconds(4);
         texContainer.SetActive(false);
         text.text = string.Empty;
