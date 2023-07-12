@@ -29,6 +29,7 @@ public class PopUpEvents : MonoBehaviour
     [SerializeField] private CloudLayer cloudLayer;
 
     [SerializeField] private AudioSource cry;
+    [SerializeField] private AudioSource tin;
     [SerializeField] private AudioClip clip;
 
     private void Awake()
@@ -88,6 +89,11 @@ public class PopUpEvents : MonoBehaviour
     {
         print("D");
         mike.transform.rotation = Quaternion.identity;
+    }
+
+    public void TinSound()
+    {
+        tin.Play();
     }
 
     public void StopCry()
