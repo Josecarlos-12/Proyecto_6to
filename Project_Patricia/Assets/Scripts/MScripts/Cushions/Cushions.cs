@@ -154,14 +154,15 @@ public class Cushions : MonoBehaviour
         yield return new WaitForSeconds(9f);
         repeat.SetActive(true);
         repeatText.clip= clipGo;
+        repeatText.time = 10;
         repeatText.sText = "Mike Schmith: debo cerrar el estudio";
-        taskUI.SetActive(true);
-        taskUI.GetComponent<TasksUI>().go = true;
-        taskUI.GetComponent<TasksUI>().taskCount = 1;
-        taskUI.GetComponent<TasksUI>().count = 0;
-        taskUI.GetComponent<TasksUI>().countT = 0;
-        taskUI.GetComponent<TasksUI>().number = TasksUI.TaskNumber.two;
-        taskUI.GetComponent<TasksUI>().task = "Go to the studio";
+        //taskUI.SetActive(true);
+        //taskUI.GetComponent<TasksUI>().go = true;
+        //taskUI.GetComponent<TasksUI>().taskCount = 1;
+        //taskUI.GetComponent<TasksUI>().count = 0;
+        //taskUI.GetComponent<TasksUI>().countT = 0;
+        //taskUI.GetComponent<TasksUI>().number = TasksUI.TaskNumber.two;
+        //taskUI.GetComponent<TasksUI>().task = "Go to the studio";
         textDialogue.SetActive(false);
     }
 

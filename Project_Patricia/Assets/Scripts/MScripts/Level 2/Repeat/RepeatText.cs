@@ -10,13 +10,13 @@ public class RepeatText : MonoBehaviour
     [TextArea(4, 4)] public string sText;
     [SerializeField] private int count;
     public float time = 6;
-    public AudioSource audio;
+    public AudioSource audio, audioCharlie;
     public AudioClip clip;
     public AudioClip clip2;
 
     public enum State
     {
-        one, two, three, four
+        one, two, three, four, five
     }
     public State state;
 
@@ -45,6 +45,9 @@ public class RepeatText : MonoBehaviour
                     break;
                 case State.four:
                     StartCoroutine("Repeat4");
+                    break;
+                case State.five:
+                    StartCoroutine("Repeat5");
                     break;
             }
 
@@ -108,6 +111,23 @@ public class RepeatText : MonoBehaviour
         text.text = "Mike Schmith: Llaves, llaves... llaves del ático";
         yield return new WaitForSeconds(3);
         text.text = "Mike Schmith: Deben estar al lado del a entrada";
+        yield return new WaitForSeconds(4);
+        texContainer.SetActive(false);
+        text.text = string.Empty;
+        yield return Repeat3();
+    }
+
+    private IEnumerator Repeat5()
+    {
+        yield return new WaitForSeconds(6);
+        texContainer.SetActive(true);
+        audioCharlie.clip = clip;
+        audioCharlie.Play();
+        text.text = "Charlie Schmith: ¡Papaaaaaaa! ¡Ayudameeeeeee!";
+        yield return new WaitForSeconds(3);
+        audio.clip = clip2;
+        audio.Play();    
+        text.text = "Mike Schmith: ¡Charlie! ¡Ya voy!";
         yield return new WaitForSeconds(4);
         texContainer.SetActive(false);
         text.text = string.Empty;

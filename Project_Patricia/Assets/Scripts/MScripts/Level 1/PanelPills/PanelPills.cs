@@ -14,6 +14,7 @@ public class PanelPills : MonoBehaviour
     [SerializeField] private Animator animPa;
     [SerializeField] private Animator animLetter;
     [SerializeField] private TasksUILevel2 task;
+    [SerializeField] private AudioSource box;
 
     private void Update()
     {
@@ -32,6 +33,7 @@ public class PanelPills : MonoBehaviour
 
             if (one == 1)
             {
+                box.volume -= 0.02f;
                 task.taskCount = 2;
                 this.gameObject.transform.GetChild(0).gameObject.SetActive(false);
                 tutoPills.SetActive(true);
@@ -58,7 +60,7 @@ public class PanelPills : MonoBehaviour
 
     public IEnumerator PanelFalse()
     {
-        yield return new WaitForSeconds(10);
+        yield return new WaitForSeconds(15);
         animPa.SetBool("Off", true);
         yield return new WaitForSeconds(2);
         panel.SetActive(false);

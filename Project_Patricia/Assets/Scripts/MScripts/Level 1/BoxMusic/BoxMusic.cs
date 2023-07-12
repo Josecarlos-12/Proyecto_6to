@@ -22,6 +22,7 @@ public class BoxMusic : MonoBehaviour
     public bool bBox;
     [SerializeField] private GameObject repeat;
     [SerializeField] private RepeatText repeatText;
+    [SerializeField] private AudioClip clipRepeat;
 
     [SerializeField] private GameObject SoundsObject, rabbit;
 
@@ -61,6 +62,9 @@ public class BoxMusic : MonoBehaviour
         task.task = "Find the missing part in the studio";
         taskUI.SetActive(true);
         yield return new WaitForSeconds(5);
+        repeat.SetActive(true);
+        repeatText.sText = "iré a ver si tengo en mi estudio algo que pueda servirme";
+        repeatText.clip = clipRepeat;
         texMes.SetActive(false);
     }
 
