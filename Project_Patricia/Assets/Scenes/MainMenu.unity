@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 8.662125, g: 10.473366, b: 15.327042, a: 1}
+  m_IndirectSpecularColor: {r: 68.88876, g: 40.62979, b: 21.107483, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3694,6 +3694,7 @@ MonoBehaviour:
   m_Script: {fileID: 1581267126}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_Entries: []
 --- !u!4 &470521288
 Transform:
   m_ObjectHideFlags: 19
@@ -17861,7 +17862,6 @@ GameObject:
   - component: {fileID: 1985917467}
   - component: {fileID: 1985917466}
   - component: {fileID: 1985917465}
-  - component: {fileID: 1985917468}
   m_Layer: 0
   m_Name: Sun
   m_TagString: Untagged
@@ -18003,7 +18003,7 @@ Light:
   m_Type: 1
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 4501.6724
+  m_Intensity: 5000
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -18068,26 +18068,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 5.77, y: -173.5, z: 0}
---- !u!95 &1985917468
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1985917464}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 2b58d96f87b0bee41bf739a06d43a95f, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
 --- !u!64 &1987582578
 MeshCollider:
   m_ObjectHideFlags: 0
