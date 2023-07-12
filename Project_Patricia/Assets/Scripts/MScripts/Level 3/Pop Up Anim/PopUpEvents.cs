@@ -28,6 +28,9 @@ public class PopUpEvents : MonoBehaviour
     [SerializeField] private Fog fog;
     [SerializeField] private CloudLayer cloudLayer;
 
+    [SerializeField] private AudioSource cry;
+    [SerializeField] private AudioClip clip;
+
     private void Awake()
     {
         if (volume != null)
@@ -38,6 +41,12 @@ public class PopUpEvents : MonoBehaviour
             volume.profile.TryGet(out CloudLayer vCloud);
             cloudLayer= vCloud;
         }
+    }
+
+    public void Cry()
+    {
+        cry.clip = clip;
+        cry.Play();
     }
 
     public void ChangeLight()

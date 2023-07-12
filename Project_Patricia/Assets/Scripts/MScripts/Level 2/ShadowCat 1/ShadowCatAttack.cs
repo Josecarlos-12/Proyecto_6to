@@ -40,6 +40,7 @@ public class ShadowCatAttack : MonoBehaviour
     [SerializeField] private bool cOpen;
 
     [SerializeField] private int founCount;
+    [SerializeField] private AudioSource scare;
 
     private void Start()
     {
@@ -215,6 +216,7 @@ public class ShadowCatAttack : MonoBehaviour
 
             if (count == 1)
             {
+                scare.Play();
                 soundMove.Stop();
                 print("TRA");
                 StopCoroutine("FollowFalse");
