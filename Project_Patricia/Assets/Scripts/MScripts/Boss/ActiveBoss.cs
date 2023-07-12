@@ -9,6 +9,8 @@ public class ActiveBoss : MonoBehaviour
     [SerializeField] public GameObject boss;
     [SerializeField] public float time, maxTime;
     [SerializeField] private TPBossLevel1 tp;
+    [SerializeField] private int count;
+    [SerializeField] private AudioSource scare;
 
 
     private void Update()
@@ -17,6 +19,14 @@ public class ActiveBoss : MonoBehaviour
         {
             if (active2)
             {                
+                if(count<3)
+                count++;
+
+                if (count == 1)
+                {
+                    scare.Play();
+                }
+
                 boss.SetActive(true);
             }
         }

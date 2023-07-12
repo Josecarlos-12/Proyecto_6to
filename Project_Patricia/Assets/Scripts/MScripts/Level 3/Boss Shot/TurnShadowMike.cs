@@ -20,7 +20,7 @@ public class TurnShadowMike : MonoBehaviour
     [Header("Audio")]
     [SerializeField] private AudioSource shadowMike;
     [SerializeField] private AudioClip[] clip;
-
+    [SerializeField] private AudioSource audioBattle;
 
     void Start()
     {
@@ -65,6 +65,7 @@ public class TurnShadowMike : MonoBehaviour
        
 
         yield return new WaitForSeconds(4);
+        audioBattle.Play();
         hud.SetActive(true);
         move.canWalk = true;
         crouch.crouchCan = true;
