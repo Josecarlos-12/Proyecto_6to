@@ -16,7 +16,7 @@ public class TouchCatPaint : MonoBehaviour
     [SerializeField] AudioSource audioDoor;
     [SerializeField] GameObject cam;
     [SerializeField] GameObject eText;
-    [SerializeField] GameObject chair;
+    [SerializeField] Animator chair;
     [SerializeField] GameObject prota, panel, text;
     [SerializeField] GameObject eyes;
 
@@ -85,12 +85,11 @@ public class TouchCatPaint : MonoBehaviour
     }
 
     public IEnumerator DesactiveCat()
-    {   
-        chair.SetActive(true);
+    {
+        chair.enabled = true;
         yield return new WaitForSeconds(1.1f);
         cat.SetActive(true);
         yield return new WaitForSeconds(1f);
-        chair.SetActive(false);
         cat.SetActive(false);
         yield return new WaitForSeconds(0.5f);
         Destroy(gameObject);
