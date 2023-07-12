@@ -17,6 +17,10 @@ public class AnimFlower : MonoBehaviour
     [Header("Task")]
     [SerializeField] private GameObject repeat;
     [SerializeField] private RepeatText repeatText;
+
+    [SerializeField] private GameObject repeat2;
+    [SerializeField] private RepeatText repeatText2;
+
     [SerializeField] private AudioClip clipRepeat;
     [SerializeField] private Animator animFlower;
 
@@ -34,10 +38,16 @@ public class AnimFlower : MonoBehaviour
     [SerializeField] private GameObject hud;
     [SerializeField] private AudioSource steeps;
 
+
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
+            repeat2.SetActive(false);
+            repeatText2.texContainer.SetActive(false);
+            repeatText2.audio.Stop();
+
             steeps.Stop();
             hud.SetActive(false);
             animFlower.enabled = false;

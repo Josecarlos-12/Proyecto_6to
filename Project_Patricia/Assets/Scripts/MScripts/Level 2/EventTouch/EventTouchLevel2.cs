@@ -143,6 +143,8 @@ public class EventTouchLevel2 : MonoBehaviour
     public IEnumerator DialogueAlarm3()
     {
         yield return new WaitForSeconds(1);
+        audioMike.clip = clipMike;
+        audioMike.Play();
         text.SetActive(true);
         text.GetComponent<TextMeshProUGUI>().text = mike;
         yield return new WaitForSeconds(2);

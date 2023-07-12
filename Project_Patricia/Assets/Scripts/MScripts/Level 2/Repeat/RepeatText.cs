@@ -16,7 +16,7 @@ public class RepeatText : MonoBehaviour
 
     public enum State
     {
-        one, two, three, four, five
+        one, two, three, four, five, six
     }
     public State state;
 
@@ -48,6 +48,9 @@ public class RepeatText : MonoBehaviour
                     break;
                 case State.five:
                     StartCoroutine("Repeat5");
+                    break;
+                case State.six:
+                    StartCoroutine("Repeat6");
                     break;
             }
 
@@ -131,6 +134,23 @@ public class RepeatText : MonoBehaviour
         yield return new WaitForSeconds(4);
         texContainer.SetActive(false);
         text.text = string.Empty;
-        yield return Repeat3();
+        yield return Repeat5();
+    }
+
+    private IEnumerator Repeat6()
+    {
+        yield return new WaitForSeconds(6);
+        texContainer.SetActive(true);
+        audio.clip = clip;
+        audio.Play();
+        text.text = "Mike Schmith: A Catelyn le encanta las margaritas";
+        yield return new WaitForSeconds(5);
+        audio.clip = clip2;
+        audio.Play();
+        text.text = "Mike Schmith: Creo haber visto crecer algunas cerca de la entrada";
+        yield return new WaitForSeconds(4);
+        texContainer.SetActive(false);
+        text.text = string.Empty;
+        yield return Repeat6();
     }
 }
