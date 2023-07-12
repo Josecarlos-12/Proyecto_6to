@@ -20,12 +20,27 @@ public class CamObjectsLevel3 : MonoBehaviour
     [SerializeField] private Animator animObjects;
     [SerializeField] private bool press;
     [SerializeField] private GameObject texE, aim;
+    [SerializeField] private bool sOne, sTwo, sThree, sFour;
 
+    [SerializeField] private int countO, countT, countThree;
+    
+
+    private IEnumerator Four()
+    {
+        yield return new WaitForSeconds(5);
+        sOne = true;
+        texE.SetActive(true);
+    }
 
     private void Update()
     {
+        int i = 0;
         if (into && Input.GetKeyDown(KeyCode.E))
-        {
+        {            
+                StartCoroutine("Four");
+
+            
+
             aim.SetActive(false);
             animObjects.SetBool("On", false);
             into= false; 
@@ -39,16 +54,36 @@ public class CamObjectsLevel3 : MonoBehaviour
         Animation();
         ObjectsRotate();
 
-        if (viewObjects && Input.GetKeyDown(KeyCode.RightArrow))
+        if (viewObjects && Input.GetKeyDown(KeyCode.E) && sOne)
         { 
-            objectCount++;
-            
+            objectCount=1;
+            texE.SetActive(false);
+
             if (objectCount > 3)
             {
                 objectCount = 0;
             }
         }
-        if (viewObjects && Input.GetKeyDown(KeyCode.LeftArrow))
+        if (viewObjects && Input.GetKeyDown(KeyCode.E) && sTwo)
+        {
+            texE.SetActive(false);
+            objectCount =2;
+
+            if (objectCount > 3)
+            {
+                objectCount = 0;
+            }
+        }
+        if (viewObjects && Input.GetKeyDown(KeyCode.E) && sThree)
+        {
+            objectCount=3;
+            texE.SetActive(false);
+            if (objectCount > 3)
+            {
+                objectCount = 0;
+            }
+        }
+        /*if (viewObjects && Input.GetKeyDown(KeyCode.LeftArrow))
         {
             
             objectCount--;
@@ -57,9 +92,9 @@ public class CamObjectsLevel3 : MonoBehaviour
             {
                 objectCount = 3;
             }
-        }
+        }*/
 
-        if(press && Input.GetKeyDown(KeyCode.E))
+        if (press && Input.GetKeyDown(KeyCode.E))
         {
             texE.SetActive(false);
             press = false;
@@ -106,6 +141,14 @@ public class CamObjectsLevel3 : MonoBehaviour
         {
             bTwo= true;
 
+            countO++;
+
+            if (countO == 1)
+            {
+                StartCoroutine("Two");
+            }
+
+            
             //1
             one[0].SetActive(false);
             one[1].SetActive(false);
@@ -134,6 +177,14 @@ public class CamObjectsLevel3 : MonoBehaviour
         {
             bThree= true;
 
+            countT++;
+
+            if(countT == 1)
+            {
+                StartCoroutine("Three");
+            }
+
+            
             //1
             one[0].SetActive(false);
             one[1].SetActive(false);
@@ -187,6 +238,22 @@ public class CamObjectsLevel3 : MonoBehaviour
             four[3].SetActive(true);
         }
     }
+
+    public IEnumerator Two()
+    {
+        yield return new WaitForSeconds(5);
+        sTwo = true;
+        texE.SetActive(true);
+    }
+
+    public IEnumerator Three()
+    {
+        yield return new WaitForSeconds(5);
+        sThree = true;
+        texE.SetActive(true);
+    }
+
+
 
     public void Animation()
     {

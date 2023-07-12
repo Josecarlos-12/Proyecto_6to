@@ -46,6 +46,7 @@ public class PopUpEvents : MonoBehaviour
     public void Cry()
     {
         cry.clip = clip;
+        cry.loop = true;
         cry.Play();
     }
 
@@ -87,6 +88,12 @@ public class PopUpEvents : MonoBehaviour
     {
         print("D");
         mike.transform.rotation = Quaternion.identity;
+    }
+
+    public void StopCry()
+    {
+        cry.Stop();
+        cry.loop = false;
     }
 
     public void Finish()
