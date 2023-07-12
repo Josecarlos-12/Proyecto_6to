@@ -11,6 +11,9 @@ public class ShinyLevel2Best : MonoBehaviour
     [SerializeField] TasksUILevel2 task;
     [SerializeField] int count;
 
+    [SerializeField] private GameObject repeat;
+    [SerializeField] private RepeatText repeatText;
+
     private void Update()
     {
         if (!pick.isPickable)
@@ -35,6 +38,8 @@ public class ShinyLevel2Best : MonoBehaviour
                     if (count == 1)
                     {
                         task.taskCount = 2;
+                        repeat.SetActive(false);
+                        repeatText.texContainer.SetActive(false);
                     }
 
                     

@@ -16,7 +16,7 @@ public class OffPassage : MonoBehaviour
             } 
             for (int i = 0;i < bad.Length; i++)
             {
-                bad[i].SetActive(true);
+                //bad[i].SetActive(true);
             }
             Destroy(gameObject);
         }

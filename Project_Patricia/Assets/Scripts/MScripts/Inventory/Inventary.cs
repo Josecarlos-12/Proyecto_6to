@@ -152,7 +152,7 @@ public class Inventary : MonoBehaviour
             //Mas sanidad
             if(sanity.sanity < sanity.sanityMax)
             {
-                sanity.sanity += 1;
+                sanity.sanity += 10;
             }
             
 

@@ -7,6 +7,7 @@ public class EventWPV2 : MonoBehaviour
 {
     [SerializeField] private GameObject text;
     [SerializeField] private Collider col;
+    [SerializeField] private GameObject otherCol;
     [SerializeField] private GameObject obj, active;
     [SerializeField] private GameObject box, boxOne, chart, chartFall, walk;
     [SerializeField] private AudioSource chartSound;
@@ -24,6 +25,9 @@ public class EventWPV2 : MonoBehaviour
     [SerializeField] private GameObject taskUI;
     [SerializeField] private TasksUILevel2 tasks;
     [SerializeField] private Collider colBox;
+
+    [SerializeField] private RepeatText repeatText;
+    [SerializeField] private GameObject repeat;
 
     private void Start()
     {
@@ -78,6 +82,7 @@ public class EventWPV2 : MonoBehaviour
                     StartCoroutine("Box");
                     break;
                 case Event.four:
+                    Destroy(otherCol);
                     col.enabled = false;
                     StartCoroutine("Chart");
                     break;
@@ -158,9 +163,13 @@ public class EventWPV2 : MonoBehaviour
         audi.clip = clip[1];
         audi.Play();
         yield return new WaitForSeconds(2);    
-        taskUI.SetActive(true);
-        tasks.go = true;
-        tasks.task = "find out who is shouting";
+        //taskUI.SetActive(true);
+        //tasks.go = true;
+        //tasks.task = "find out who is shouting";
         text.SetActive(false);
+        yield return new WaitForSeconds(2);
+        repeat.SetActive(true);
+        //repeatText.clip= clip[1];
+        //repeatText.sText = "Mike Schmith: ¡Charlie! ¡Ya voy!";
     }
 }

@@ -59,7 +59,7 @@ public class StrongBox : MonoBehaviour
                 repeat.SetActive(false);
                 repeat.SetActive(true);
                 repeatText.clip = clip;
-                repeatText.sText = "Mike Schmith: Charlie's birthdate, Charlie's birthdate";
+                repeatText.sText = "Mike Schmith: Fecha de nacimiento de Charlie, Fecha de nacimiento de Charlie";
                 animKeyPad.SetBool("On", true);
             }            
         }

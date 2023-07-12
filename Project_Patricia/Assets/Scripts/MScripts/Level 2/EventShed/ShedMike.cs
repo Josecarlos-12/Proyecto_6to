@@ -26,8 +26,8 @@ public class ShedMike : MonoBehaviour
     public IEnumerator Dialogue()
     {
         audioScare.Play();
-        dialogue.SetActive(true);
-        dialogue.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: ¿Qué? ¿Tú otra vez?";
+        //dialogue.SetActive(true);
+        //dialogue.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: ¿Qué? ¿Tú otra vez?";
         yield return new WaitForSeconds(0.3f);
         mike.SetActive(false);
         yield return new WaitForSeconds(0.5f);
@@ -35,7 +35,7 @@ public class ShedMike : MonoBehaviour
         yield return new WaitForSeconds(0.6f);
         mike.SetActive(false);
         yield return new WaitForSeconds(1.5f);
-        dialogue.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: ¡No tengo tiempo para esto!";
+        //dialogue.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: ¡No tengo tiempo para esto!";
 
         shadowMike.SetActive(true);
         stopBattle.SetActive(true);
@@ -43,7 +43,7 @@ public class ShedMike : MonoBehaviour
         audioBattle.Play();
         audioBattle.loop = true;
         yield return new WaitForSeconds(3);
-        dialogue.SetActive(false);
+        //dialogue.SetActive(false);
     }
 
 

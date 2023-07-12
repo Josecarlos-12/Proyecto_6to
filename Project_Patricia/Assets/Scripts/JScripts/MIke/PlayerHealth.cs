@@ -222,12 +222,12 @@ public class PlayerHealth : MonoBehaviour
             if (time >= maxtime)
             {
                 time = 0;
-                if(sanity < 50)
+                if(sanity < 40)
                 {
-                    sanity += 2;
-                    if (sanity > 50)
+                    sanity += 1;
+                    if (sanity > 40)
                     {
-                        sanity = 50;
+                        sanity = 40;
                     }
                 }                
             }

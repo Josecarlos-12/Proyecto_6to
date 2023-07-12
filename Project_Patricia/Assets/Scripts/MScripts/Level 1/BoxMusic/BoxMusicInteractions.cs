@@ -204,9 +204,9 @@ public class BoxMusicInteractions : MonoBehaviour
         repeatText.sText = "Mike Schmith: necesito mis pastillas... Están en mi habitación";
         repeatText.clip = clipRepeat;
 
-        task.go = true;
-        task.task = "Look for your pills in your room";
-        taskUI.SetActive(true);
+        //task.go = true;
+        //task.task = "Look for your pills in your room";
+        //taskUI.SetActive(true);
         text.SetActive(false);
     }
 }

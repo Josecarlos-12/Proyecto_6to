@@ -100,6 +100,7 @@ public class DialogueDorr : MonoBehaviour
         repeat.SetActive(true);
         RepeatText.sText = "Mike Schmith: Cat está en el cuarto de Charlie";
         RepeatText.clip = clipRepeat;
+        RepeatText.time = 5;
     }
 
     public void DialogueTrue()

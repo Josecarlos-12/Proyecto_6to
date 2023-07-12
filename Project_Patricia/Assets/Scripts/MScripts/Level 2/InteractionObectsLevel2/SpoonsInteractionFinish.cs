@@ -30,6 +30,7 @@ public class SpoonsInteractionFinish : MonoBehaviour
     [SerializeField] private AudioClip[] clip;
 
     [SerializeField] private RepeatText repeat;
+    [SerializeField] private GameObject rep;
     [SerializeField] private AudioClip glassesClip;
 
     void Update()
@@ -149,6 +150,7 @@ public class SpoonsInteractionFinish : MonoBehaviour
 
         textDialogue.GetComponent<TextMeshProUGUI>().text = "Mike Schmith: Creo haber visto crecer algunas cerca de la entrada";
         yield return new WaitForSeconds(3);
+        rep.SetActive(true);
         flower.SetActive(true);
         animFlower.enabled= true;
         textDialogue.SetActive(false);

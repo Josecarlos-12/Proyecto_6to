@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.HighDefinition;
+using UnityEngine.Rendering.PostProcessing;
 
 public class AnimMoveCat : MonoBehaviour
 {
@@ -18,6 +21,16 @@ public class AnimMoveCat : MonoBehaviour
     [SerializeField] private AudioSource punch;
     [SerializeField] private AudioSource bodyFall, lanterFall;
     [SerializeField] private AudioSource soundFollow, scare;
+
+    [SerializeField] private Volume volu;
+    [SerializeField] IndirectLightingController indi;
+
+    void Start()
+    {
+        //cam = GetComponent<PlayerCamera>();
+        volu.profile.TryGet(out IndirectLightingController iD);
+        indi = iD;
+    }
 
     public IEnumerator DialogueInit()
     {
@@ -68,7 +81,9 @@ public class AnimMoveCat : MonoBehaviour
         soundFollow.Play();
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-        sun.intensity = 56.5f;
+        indi.indirectDiffuseLightingMultiplier.value = 0.7f;
+        indi.reflectionLightingMultiplier.value = 0.5f;
+        sun.intensity = 5f;
         print(sun.intensity);
     }
 

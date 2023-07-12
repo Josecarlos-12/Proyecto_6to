@@ -37,6 +37,7 @@ public class GrabRifleSounds : MonoBehaviour
     [SerializeField] private GameObject spotL, Lanter, pointL, lanterAll;
     [SerializeField] private AudioSource strainCharlie;
 
+
     void Update()
     {
         if (grab && into && Input.GetKeyDown(KeyCode.E))
@@ -82,10 +83,12 @@ public class GrabRifleSounds : MonoBehaviour
         strainCharlie.Play();
         shadowBattle.SetActive(true);
         text.SetActive(false);
+        task.taskCount = 1;
         yield return new WaitForSeconds(2);
+        taskUI.SetActive(true);
         task.task = "Go back home";
         task.go = true;
-        taskUI.SetActive(true);
+        
 
         audioMike.clip = clip[1];
         audioMike.Play();

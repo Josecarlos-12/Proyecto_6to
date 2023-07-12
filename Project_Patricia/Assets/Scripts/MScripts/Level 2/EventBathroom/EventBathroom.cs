@@ -15,6 +15,9 @@ public class EventBathroom : MonoBehaviour
     [SerializeField] private AudioSource mike;
     [SerializeField] private AudioClip clip;
 
+    [SerializeField] private GameObject repeat;
+    [SerializeField] private RepeatText repeatText;
+
     private void Start()
     {
         this.gameObject.SetActive(false);
@@ -29,6 +32,9 @@ public class EventBathroom : MonoBehaviour
 
             if(count == 1)
             {
+                repeat.SetActive(false);
+                //repeatText.audio.Stop();
+                //repeatText.texContainer.SetActive(false);
                 shower.Play();
                 StartCoroutine("Dialogue");
             }
