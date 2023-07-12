@@ -47,7 +47,7 @@ public class Cushions : MonoBehaviour
 
     public void Down()
     {
-        if(note.one && note.two && note.three && note.four && note.eight && Input.GetKeyDown(KeyCode.E) && into)
+        if( note.two && note.four && note.eight && Input.GetKeyDown(KeyCode.E) && into)
         {  
             count++;
 
@@ -136,7 +136,8 @@ public class Cushions : MonoBehaviour
         panel.SetActive(false);
         cam.GetComponent<Animator>().SetBool("Up", true);
         wakingUp.WakingOn();
-        sunRot.GetComponent<Light>().colorTemperature = 20000;
+        //sunRot.GetComponent<Light>().colorTemperature = 20000;
+        sunRot.GetComponent<Light>().intensity = 21829.5f;
         sunRot.transform.rotation = Quaternion.Euler(-0.54f, 81.328f, -0.812f);
         yield return new WaitForSeconds(1f);       
         rifle.SetActive(true);
@@ -168,7 +169,7 @@ public class Cushions : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            if (note.one && note.two && note.three && note.four && note.eight )
+            if ( note.two && note.four && note.eight )
             {
                 into = true;
                 text.SetActive(true);

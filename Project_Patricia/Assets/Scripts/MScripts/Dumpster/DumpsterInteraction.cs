@@ -14,6 +14,8 @@ public class DumpsterInteraction : MonoBehaviour
     public AudioClip dumpster;
     [SerializeField] private AudioSource finish;
     [SerializeField] private float time;
+    [SerializeField] private GameObject rabbit, rabbitBad;
+
     public enum Work
     {
         trash, shopping, firewood
@@ -46,6 +48,8 @@ public class DumpsterInteraction : MonoBehaviour
                         note.check = 2;
                         break;
                     case Work.firewood:
+                        rabbit.SetActive(true);
+                        rabbitBad.SetActive(false);
                         note.check = 8;
                     break;
                 }
