@@ -9,11 +9,13 @@ public class TouchTVL1 : MonoBehaviour
     [SerializeField] private AudioSource audiTV, mike;
     [SerializeField] private GameObject dialogue;
     [SerializeField] private Collider col;
+    [SerializeField] private GameObject video;
 
     private void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.CompareTag("Player"))
         {
+            video.SetActive(true);
             audiTV.Play();
             col.enabled= false;
             StartCoroutine("Dialogue");
