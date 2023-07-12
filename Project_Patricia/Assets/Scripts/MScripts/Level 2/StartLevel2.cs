@@ -39,7 +39,7 @@ public class StartLevel2 : MonoBehaviour
         piano.Play();
         text.SetActive(false);
 
-        yield return new WaitForSeconds(9);
+        yield return new WaitForSeconds(6);
         text.SetActive(true);
         mike.clip = clip[2];
         mike.Play();

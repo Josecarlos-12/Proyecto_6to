@@ -9,10 +9,14 @@ public class ChartCatBasement : MonoBehaviour
     [SerializeField] private GameObject dialogue, shed;
     [SerializeField] private bool init;
     [SerializeField] private Animator animDoor;
+    [SerializeField] private AudioSource mike;
+    [SerializeField] private AudioClip clip;
 
     private IEnumerator Start()
     {
         yield return new WaitForSeconds(1f);
+        mike.clip= clip;
+        mike.Play();
         dialogue.SetActive(true);
         dialogue.GetComponent<TextMeshProUGUI>().text= "Mike Schmith: Cierto, la llave la guardé ahí, en el cobertizo";
         yield return new WaitForSeconds(2f);

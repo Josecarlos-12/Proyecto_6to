@@ -146,7 +146,7 @@ public class Inventary : MonoBehaviour
 
     public void Pills()
     {
-        if(bPills && pills > 0 && Input.GetMouseButtonDown(0) && !panelPills.bPanel)
+        if(bPills && pills > 0 && Input.GetMouseButtonDown(0))
         {
             pills--;
             //Mas sanidad
